@@ -1,0 +1,26 @@
+<?php
+
+namespace Build\Core\Policies;
+
+/*
+ * This file is part of the Build package.
+ *
+ * (c) Centagon <contact@centagon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+class WebsitePolicy extends Policy
+{
+
+    protected $capabilities = [
+        'index'    =>  ['admin'],
+        'create'    => [],
+        'edit'      => ['admin'],
+        'delete'    => [],
+        'activate'  => ['admin'],
+        'clone'     => [],
+        'export'    => [],
+    ];
+}

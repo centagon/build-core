@@ -1,0 +1,36 @@
+{
+  "name": "centagon-primer",
+  "description": "Commonly utilities used by Centagon for Zurb Foundation",
+  "main": [],
+  "dependencies": {
+    "susy": "^2.2.12",
+    "normalize-scss": "normalize.scss#^5.0.3"
+  },
+  "keywords": [
+    "centagon",
+    "foundation"
+  ],
+  "authors": [
+    "Jelle Spekken <jelle@centagon.com>",
+    "Joeri Kassenaar <joeri@centagon.com>",
+    "Rene Heijnemans <rene@centagon.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "src/components",
+    "npm-debug.log"
+  ],
+  "moduleType": [],
+  "homepage": "https://github.com/centagon/primer",
+  "version": "0.1.4",
+  "_release": "0.1.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.4",
+    "commit": "baa5283068826cd9a8f11d15eca76947fab2d279"
+  },
+  "_source": "https://github.com/centagon/primer.git",
+  "_target": "0.1.*",
+  "_originalSource": "centagon-primer"
+}

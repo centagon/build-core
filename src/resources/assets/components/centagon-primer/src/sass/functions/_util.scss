@@ -1,0 +1,40 @@
+/// Strip the unit of a number
+///
+/// @function  strip-unit
+/// @param     {*}  $n
+/// @return    {Number}
+@function strip-unit($n) {
+    @return $n / ($n * 0 + 1);
+}
+
+/// Convert a map into a serialized string.
+/// foo=bar&bar=baz
+///
+/// @function  serialize-map
+/// @param     {Map}  $map
+/// @return    {String}
+@function serialize-map($map) {
+    $str: '';
+
+    @each $key, $value in $map {
+        $str: $str + $key + '=' + ($value) + '&';
+    }
+
+    $str: str-slice($str, 1, -2);
+
+    @return $str;
+}
+
+/// Map deep get
+///
+/// @function  map-deep-get
+/// @param     {Map}      $map
+/// @param     {Arglist}  $keys
+/// @return    {*}
+@function map-deep-get($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+    
+    @return $map;
+}

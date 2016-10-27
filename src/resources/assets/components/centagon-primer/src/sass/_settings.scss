@@ -1,0 +1,188 @@
+@import 'functions/util';
+
+/// Susy settings
+/// @type Map
+$susy: (
+    columns: 12,
+    gutter-position: inside-static,
+    gutters: 30px / 70px,
+    column-width: 70px
+);
+
+/// The base pixel size rem values will be calculated on.
+///
+/// @type Number
+$pixel-base: 16px;
+
+$global-margin: gutter() !default;
+$global-padding: $global-margin !default;
+
+////
+/// Grid settings
+////
+
+/// Should primer automatically generate the grid css?
+///
+/// @type Bool
+/// @group Grid
+$grid-generate: true !default;
+
+/// Whether or not to boot in the debug mode.
+/// When debug is enabled, the debug image is shown on grid elements.
+///
+/// @type Bool
+$grid-debug: false !default;
+
+/// Set the container limit. When this value is set to False the grid will
+/// automatically be set to stretch to the full width of the window.
+///
+/// @type Number
+/// @group Grid | Bool
+$grid-container-limit: 1500px !default;
+
+/// Breakpoint settings. You can add more breakpoints to this map.
+/// Grid classnames are generated on the breakpoint keys.
+///
+/// @type Map
+$breakpoints: (
+    small: 0,
+    medium: 40em,
+    large: 64em,
+) !default;
+
+/// Default color settings. Colors can be a single value
+/// or a map of colors acting like a color palette.
+///
+/// @type Map
+$colors: (
+    black: rgb(20, 20, 20),
+    white: rgb(255, 255, 255),
+    blue: (
+        // Blue variants
+        aqua: rgb(127, 219, 255),
+        normal: rgb(0, 116, 217),
+        navy: rgb(0, 31, 63)
+    ),
+
+    // ... moar colors ...
+) !default;
+
+
+
+////
+/// Default font settings
+////
+
+/// Enable font antialiasing.
+///
+/// @type Bool
+/// @group Font
+$font-antialiasing: true !default;
+
+/// Default font family.
+///
+/// @type String
+/// @group Font
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+
+/// The default font-size.
+///
+/// @type Number.
+/// @group Font
+$font-size: 1rem !default;
+
+/// The default line height.
+///
+/// @type Number.
+/// @group Font
+$font-line-height: 1.5 !default;
+
+/// The default font color.
+///
+/// @type Color.
+/// @group Font
+$font-color: map-get($colors, black) !default;
+
+
+
+////
+/// Default button settings
+////
+
+/// The default font size of the buttons.
+///
+/// @type Number
+/// @group Button
+$button-font-size: $font-size !default;
+
+/// The default font-weight used on the buttons.
+///
+/// @type String
+/// @group Button
+$button-font-weight: normal !default;
+
+/// The default font color used on the buttons.
+///
+/// @type Color
+/// @group Button
+$button-font-color: map-deep-get($colors, blue, normal) !default;
+
+/// The default line height used on the buttons.
+///
+/// @type Number
+/// @group Button
+$button-line-height: $font-line-height !default;
+
+/// The default background color used on the buttons.
+///
+/// @type Color
+/// @group Button
+$button-background-color: map-get($colors, white) !default;
+
+/// The default button border.
+///
+/// @type mixed
+/// @group Button
+$button-border: 1px solid map-deep-get($colors, blue, normal) !default;
+
+/// The default button padding.
+///
+/// @type Number
+/// @group Button
+$button-padding: 0.5rem 1rem !default;
+
+
+
+////
+/// Default panel settings
+////
+
+/// The default panel margin.
+///
+/// @type Number
+/// @group Panel
+$panel-margin: $global-margin !default;
+
+/// The default panel padding.
+///
+/// @type Number
+/// @group Panel
+$panel-padding: $global-padding !default;
+
+/// The default panel border.
+///
+/// @type mxied
+/// @group Panel
+$panel-border: 1px solid map-get($colors, black) !default;
+
+
+
+/// Should images be lazily loaded?
+///
+/// @type Bool
+$lazyload-images: true !default;
+
+/// The global transition time limit.
+///
+/// @type Number
+$transition-time: 0.15s;

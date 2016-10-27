@@ -1,0 +1,21 @@
+$alignments: (
+    left, center, right
+);
+
+@each $align in $alignments {
+    .text-#{$align} {
+        text-align: $align;
+    }
+}
+
+@each $breakpoint, $value in $breakpoints {
+    @include susy-media($value) {
+
+        @each $align in $alignments {
+            .#{$breakpoint}-text-#{$align} {
+                text-align: $align;
+            }
+        }
+
+    }
+}

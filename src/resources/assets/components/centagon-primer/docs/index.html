@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Centagon Primer Docs</title>
+
+    <link rel="stylesheet" href="css/primer.css">
+    <link rel="stylesheet" href="css/docs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/atom-one-dark.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/languages/bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/languages/scss.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+
+    <div class="row">
+        <div class="medium-12 large-3">
+
+            <section class="sidebar">
+                <ul>
+                    <li>
+                        SCSS
+                        <ul>
+                            <li><a href="#scss-gettingstarted">Getting Started</a></li>
+                            <li><a href="#scss-buttons">Buttons</a></li>
+                            <li><a href="#scss-grid">Grid</a></li>
+                            <li><a href="#scss-images">Images</a></li>
+                            <li><a href="#scss-panels">Panels</a></li>
+                            <li><a href="#scss-typography">Typography</a></li>
+                            <li><a href="#scss-visibility">Visibility</a></li>
+                            <li><br></li>
+                            <li><a href="#scss-functions">Functions</a></li>
+                            <li><a href="#scss-mixins">Mixins</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        Javascript
+                        <ul>
+                            <li><a href="#js-gettingstarted">Getting Started</a></li>
+                            <li><a href="#js-anchor">Anchor</a></li>
+                            <li><a href="#js-equalizer">Equalizer</a></li>
+                            <li><a href="#js-form">Form</a></li>
+                            <li><a href="#js-lazyloading">Lazy loading</a></li>
+                            <li><a href="#js-scroll">Scroll</a></li>
+                            <li><a href="#js-socialmedia">Social media</a></li>
+                            <li><a href="#js-util">Utilities</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+        </div>
+
+        <div class="medium-12 large-9">
+            <article>
+
+                <div style="margin-top: 50px; margin-bottom: 50px;">
+                    <img src="img/primer-logo.png" alt="">
+                </div>
+
+                <a href="https://badge.fury.io/bo/centagon-primer">
+                    <img src="https://badge.fury.io/bo/centagon-primer.svg" alt="Bower version" data-canonical-src="https://badge.fury.io/bo/centagon-primer.svg" style="max-width:100%;">
+                </a>
+
+                <h3>Getting Started</h3>
+                <p>
+                    The quickest way to get started is with a <a href="#">basic download</a>.<br>
+                    Also, if you're rolling your own setup, you can install Primer through bower.
+                </p>
+
+                <pre><code class="bash">$ bower install centagon-primer</code></pre>
+
+                <h3>Contributing</h3>
+                <p>
+                    Have a bug? Please create an issue on <a href="https://github.com/centagon/primer/issues" rel="external">Github</a>
+                    that conforms with <a href="https://github.com/centagon/guidelines/blob/master/contributing.md">our contributing guidelines</a>.
+                    You can also browse the <a href="https://github.com/centagon/primer/labels/help%20wanted">Help Wanted</a>
+                    tag in our issue tracker to find things to do.
+                </p>
+
+                <h3>License</h3>
+                <p>
+                    This package is available under the <a href="#">MIT license.</a><br>
+                    Copyright (c) 2016 Centagon, B.V.
+                </p>
+            </article>
+
+            <article>
+                <h1>SCSS</h1>
+
+                <a name="scss-buttons"></a>
+                <h3>Buttons</h3>
+
+                <h4>Button example</h4>
+
+                <pre><code class="html">&#x3C;a href=&#x22;#&#x22; class=&#x22;button&#x22;&#x3E;Anchor&#x3C;/a&#x3E;
+&#x3C;button class=&#x22;button&#x22;&#x3E;Button&#x3C;/button&#x3E;
+&#x3C;input type=&#x22;submit&#x22; class=&#x22;button&#x22; value=&#x22;Submit&#x22;&#x3E;</code></pre>
+
+                <a href="#" class="button">Anchor</a>
+                <button class="button">Button</button>
+                <input type="submit" class="button" value="Submit">
+
+                <p>
+                    Primer tries to not force too much default styling on your elements.
+                    That's why buttons only set default properties like margins and padding to distinguish
+                    buttons from anchors and other elements.
+
+                    <pre><code class="scss">/// The default font size of the buttons.
+///
+/// @type Number
+$button-font-size: $font-size;
+
+/// The default font-weight used on the buttons.
+///
+/// @type String
+$button-font-weight: normal;
+
+/// The default font color used on the buttons.
+///
+/// @type Color
+$button-font-color: map-get($colors, blue);
+
+/// The default line height used on the buttons.
+///
+/// @type Number
+$button-line-height: $font-line-height;
+
+/// The default background color used on the buttons.
+///
+/// @type Color
+$button-background-color: map-get($colors, white);
+
+/// The default button border.
+///
+/// @type mixed
+$button-border: 1px solid map-get($colors, blue);
+
+/// The default button padding.
+///
+/// @type Number
+$button-padding: 0.5rem 1rem;</code></pre>
+
+                <a name="scss-grid"></a>
+                <h3>Grid</h3>
+
+                <pre><code class="html">&#x3C;div class=&#x22;container&#x22;&#x3E;
+    &#x3C;div class=&#x22;row&#x22;&#x3E;
+        &#x3C;div class=&#x22;small-12 medium-4 large-2&#x22;&#x3E;...&#x3C;/div&#x3E;
+        &#x3C;div class=&#x22;small-12 medium-8 large-10&#x22;&#x3E;...&#x3C;/div&#x3E;
+    &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;</code></pre>
+
+                <h4>Small grid example</h4>
+
+                <div class="row">
+                    <div class="small-1"><span class="column"></span></div>
+                    <div class="small-11"><span class="column"></span></div>
+                </div>
+
+                <div class="row">
+                    <div class="small-2"><span class="column"></span></div>
+                    <div class="small-10"><span class="column"></span></div>
+                </div>
+
+                <div class="row">
+                    <div class="small-3"><span class="column"></span></div>
+                    <div class="small-9"><span class="column"></span></div>
+                </div>
+
+                <div class="row">
+                    <div class="small-4"><span class="column"></span></div>
+                    <div class="small-8"><span class="column"></span></div>
+                </div>
+
+                <div class="row">
+                    <div class="small-5"><span class="column"></span></div>
+                    <div class="small-7"><span class="column"></span></div>
+                </div>
+
+                <div class="row">
+                    <div class="small-6"><span class="column"></span></div>
+                    <div class="small-6"><span class="column"></span></div>
+                </div>
+
+                <h4>Medium grid example</h4>
+
+                <div class="row">
+                    <div class="medium-1"><span class="column"></span></div>
+                    <div class="medium-11"><span class="column"></span></div>
+                </div>
+
+                <div class="row">
+                    <div class="medium-2"><span class="column"></span></div>
+                    <div class="medium-10"><span class="column"></span></div>
+                </div>
+
+                <div class="row">
+                    <div class="medium-3"><span class="column"></span></div>
+                    <div class="medium-9"><span class="column"></span></div>
+                </div>
+
+                <div class="row">
+                    <div class="medium-4"><span class="column"></span></div>
+                    <div class="medium-8"><span class="column"></span></div>
+                </div>
+
+                <div class="row">
+                    <div class="medium-5"><span class="column"></span></div>
+                    <div class="medium-7"><span class="column"></span></div>
+                </div>
+
+                <div class="row">
+                    <div class="medium-6"><span class="column"></span></div>
+                    <div class="medium-6"><span class="column"></span></div>
+                </div>
+
+                <h4>Large grid example</h4>
+
+                <div class="row">
+                    <div class="large-1"><span class="column"></span></div>
+                    <div class="large-11"><span class="column"></span></div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2"><span class="column"></span></div>
+                    <div class="large-10"><span class="column"></span></div>
+                </div>
+
+                <div class="row">
+                    <div class="large-3"><span class="column"></span></div>
+                    <div class="large-9"><span class="column"></span></div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4"><span class="column"></span></div>
+                    <div class="large-8"><span class="column"></span></div>
+                </div>
+
+                <div class="row">
+                    <div class="large-5"><span class="column"></span></div>
+                    <div class="large-7"><span class="column"></span></div>
+                </div>
+
+                <div class="row">
+                    <div class="large-6"><span class="column"></span></div>
+                    <div class="large-6"><span class="column"></span></div>
+                </div>
+
+                <h4>Grid settings</h4>
+                <pre><code class="scss">/// Susy settings
+///
+/// @type Map
+$susy: (
+    columns: 12,
+    gutter-position: inside-static,
+    gutters: 30px / 70px,
+    column-width: 70px
+);
+
+/// Should primer automatically generate the grid css?
+///
+/// @type Bool
+$grid-generate: true;
+
+/// Whether or not to boot in the debug mode.
+/// When debug is enabled, the debug image is shown on grid elements.
+///
+/// @type Bool
+$grid-debug: false;
+
+/// Set the container limit. When this value is set to False the grid will
+/// automatically be set to stretch to the full width of the window.
+///
+/// @type Number | Bool
+$grid-container-limit: 1500px;</code></pre>
+
+                <h4>Breakpoint settings</h4>
+<pre><code class="scss">/// Breakpoint settings. You can add more breakpoints to this map.
+/// Grid classnames are generated on the breakpoint keys.
+///
+/// @type Map
+$breakpoints: (
+    small: 0,
+    medium: 40em,
+    large: 64em,
+);</code></pre>
+
+                <a name="scss-images"></a>
+                <h3>Images</h3>
+                <pre><code class="scss">/// Should images be lazily loaded?
+///
+/// @type Bool
+$lazyload-images: true;</code></pre>
+
+                <a name="scss-panels"></a>
+                <h3>Panels</h3>
+
+                <h4>Panel example</h4>
+                <pre><code class="html">&#x3C;div class=&#x22;panel&#x22;&#x3E;
+    &#x3C;p&#x3E;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;</code></pre>
+                <div class="panel">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis deleniti dolorem doloribus earum expedita id ipsum itaque quas quidem quo reiciendis repellat rerum sed tempora, totam velit voluptate voluptatem!</p>
+                </div>
+
+                <pre><code class="scss">/// The default panel margin.
+///
+/// @type Number
+$panel-margin: $global-margin;
+
+/// The default panel padding.
+///
+/// @type Number
+$panel-padding: $global-padding;
+
+/// The default panel border.
+///
+/// @type mixed
+$panel-border: 1px solid map-get($colors, black);</code></pre>
+
+                <a name="scss-typography"></a>
+                <h3>Typograpgy</h3>
+                <pre><code class="scss">/// Enable font antialiasing.
+///
+/// @type Bool
+$font-antialiasing: true;
+
+/// Default font family.
+///
+/// @type String
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+/// The default font-size.
+///
+/// @type Number.
+$font-size: 1rem;
+
+/// The default line height.
+///
+/// @type Number.
+$font-line-height: 1.5;
+
+/// The default font color.
+///
+/// @type Color.
+$font-color: map-get($colors, black);</code></pre>
+
+                <a name="scss-functions"></a>
+                <h3>Functions</h3>
+
+                <h4>Calculations</h4>
+                <pre><code class="scss">// Converts a pixel value to matching rem value. *Any* value passed,
+// regardless of unit, is assumed to be a pixel value. By default,
+// the base pixel value used to calculate the rem value is
+// taken from the `$pixel-base` variable.
+to-rem($value, $base: null);
+
+// Converts one or more pixel values into matching rem values.
+rem-calc($values, $base: null);</code></pre>
+
+                <h4>Color</h4>
+                <pre><code class="scss">// Fetch a given color from the `$colors` map
+// found in the `_settings.scss` file.
+color-get($color);</code></pre>
+
+                <h4>Util</h4>
+                <pre><code class="scss">// Apply a function to *Any* value passed.
+apply-fn($fn, $values);
+
+// Strip the units from a number.
+strip-unit($n);</code></pre>
+
+                <a name="scss-mixins"></a>
+                <h3>Mixins</h3>
+
+                <h4>Calculations</h4>
+                <pre><code class="scss">@include rem-calc($property, $values);</code></pre>
+
+                <h4>Grid</h4>
+                <pre><code class="scss">@include make-column($type, $size);</code></pre>
+            </article>
+
+            <article>
+                <h1>Javascript</h1>
+
+                <a name="js-gettingstarted"></a>
+                <h3>Getting Started</h3>
+
+                <p>
+                    It's easy to start using Primer's javascript components, just import the required components
+                    in your next ES6 compatible project.
+                </p>
+
+                <h4>Booting Primer</h4>
+                <pre><code class="js">import Primer from './lib/Bootstrapper';
+
+(new Primer).boot(true);</code></pre>
+                <p>
+                    By defaults, Primer boots into production mode disabling all console logging.
+                    To counteract this behaviour just must pass <code>true</code> as the first argument on
+                    the <code>boot</code> method. This also enables console logging but also adds a warning
+                    message to the console like the one below:
+                </p>
+
+                <img src="img/primer-boot.png" width="100%">
+
+                <a name="js-anchor"></a>
+                <h3>Anchor</h3>
+                <pre><code class="js">import Anchor from './lib/Anchor';
+
+// Register rel=external handlers.
+Anchor.registerExternals();</code></pre>
+
+                <a name="js-equalizer"></a>
+                <h3>Equalizer</h3>
+                <pre><code class="js">import Equalizer from './lib/Equalizer';
+
+const equalizer = new Equalizer(selector = '.equalized');
+
+// Register/boot the equalizer
+equalizer.register(scope = window);
+
+// Reset all equalized elements
+equalizer.reset();</code></pre>
+
+                <a name="js-form"></a>
+                <h3>Form</h3>
+                <pre><code class="js">import Form from './lib/Form';
+
+Form.registerSwapHandler(selector = 'data-state-event');</code></pre>
+
+                <a name="js-lazyloading"></a>
+                <h3>Lazy Loading</h3>
+                <pre><code class="js">import LazyLoader from './lib/LazyLoader';
+
+new LazyLoader(selector = 'img[data-src]');</code></pre>
+
+                <a name="js-scroll"></a>
+                <h3>Scroll</h3>
+                <pre><code class="js">import Scroll from './lib/Scroll';
+
+// Create a new Scroll instance that triggers
+const scroll = new Scroll({
+    threshold: window.innerHeight / 2,
+    onBeforeThreshold: () => console.log('Before the threshold'),
+    onAfterThreshold: () => console.log('After the threshold')
+});
+
+// Animated scroll to a certain position on the page
+Scroll.to(offset, speed = 250);
+
+// Get the current scroll position in pixels.
+Scroll.getPosition();</code></pre>
+
+                <a name="js-socialmedia"></a>
+                <h3>Social Media</h3>
+                <pre><code class="js">import Share from './lib/Social/Share';
+
+// Import all available networks.
+import {
+    Facebook,
+    LinkedIn,
+    Twitter,
+    Xing
+} from './lib/Social/Networks';
+
+// Create the sharing registrar instance.
+const share = new Share(selector = '[data-social]');
+
+// Register the sharers.
+share.register('facebook', Facebook);
+share.register('linkedin', LinkedIn);
+share.register('twitter', Twitter);
+share.register('xing', Xing);
+
+// Boot the sharer and attach all needed event handlers.
+share.boot();</code></pre>
+
+                <a name="js-util"></a>
+                <h3>Utilities</h3>
+
+                <h4>Util.Element</h4>
+                <pre><code class="js">import { Element } from './Util';
+
+// Get the elements computed styles
+Element.getStyles(document.querySelector('.my-element'));
+
+// Get a specific computed style.
+Element.getStyle(document.querySelector('.my-element'));</code></pre>
+
+                <h4>Util.Orientation</h4>
+                <pre><code class="js">import { Orientation } from './Util';
+
+// Get the current device orientation
+Orientation.get(); // portait / landscape.
+
+// Listen to the orientation change event and execute a callback.
+Orientation.onChange((e) => {
+    console.log(`The orientation changed to ${Orientation.get()}`);
+});</code></pre>
+
+                <h4>Util.Visibility</h4>
+                <pre><code class="js">import { Visibility } from './Util';
+
+const element = document.getElementById('my-awesome-element');
+
+// Determine that the element is visible.
+Visibility.isVisible(element);
+
+// Determine that the element is hidden.
+Visibility.isHidden(element);</code></pre>
+
+                <h4>Util.Window</h4>
+
+                <pre><code class="js">import { Window } from './Util';
+
+// Open a new popup window
+Window.open(url, width = 600, height = 450, center = true);
+
+// Listen to an resize event and execute the supplied callback.
+Window.onResize((e) => {
+    console.log('The window is resized.');
+});</code></pre>
+
+                <h4>Util.String</h4>
+                <pre><code class="js">import { String } from './Util';
+
+// Decode a string into an object.
+String.toObject('a=foo&b=bar'); // { a: 'foo', b: 'bar' }</code></pre>
+
+            </article>
+        </div>
+    </div>
+
+    <script src="js/primer.js"></script>
+    <script>
+        (new Primer).boot(true);
+    </script>
+
+</body>
+</html>

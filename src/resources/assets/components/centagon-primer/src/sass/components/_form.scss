@@ -1,0 +1,16 @@
+form {
+
+    .error-message {
+        display: none;
+    }
+
+    .error {
+        position: relative;
+
+        & > .error-message {
+            position: absolute;
+            display: initial;
+        }
+    }
+
+}

@@ -1,0 +1,30 @@
+// Set the debug mode.
+@if $grid-debug {
+    @include susy-set(debug, (image: show-columns));
+}
+
+// Set the box-sizing.
+*,
+::after,
+::before {
+    box-sizing: inherit;
+}
+
+#_primer-mq {
+    font-family: '#{serialize-map($breakpoints)}';
+}
+
+@if $font-antialiasing {
+    html {
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+body {
+    font-family: $font-family;
+    font-size: rem-calc($font-size);
+    line-height: $font-line-height;
+    color: $font-color;
+}

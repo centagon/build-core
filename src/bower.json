@@ -1,0 +1,10 @@
+{
+  "name": "build-core",
+  "dependencies": {
+    "jquery": "2.2.*",
+    "centagon-primer": "0.1.*"
+  },
+  "resolutions": {
+    "jquery": "2.2.*"
+  }
+}

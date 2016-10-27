@@ -1,0 +1,45 @@
+@function to-rem($value, $base: null) {
+    // Check if the value is a number
+    @if type-of($value) != 'number' {
+        @warn inspect($value) + ' was passed to to-rem(), which is not a number.';
+        @return $value;
+    }
+
+    // Calculate rem if units for $value is not rem
+    @if unit($value) != 'rem' {
+        $value: strip-unit($value) / strip-unit($base) * 1rem;
+    }
+
+    // Turn 0rem into 0
+    @if $value == '0rem' {
+        $value: 0;
+    }
+
+    @return $value;
+}
+
+@function rem-calc($values, $base: null) {
+    $rem-values: ();
+    $count: length($values);
+
+    // If no base is defined, defer the global font size
+    @if $base == null {
+        $base: $pixel-base;
+    }
+
+    // If the base font size is a %, then multiply it by 16px
+    // This is because 100% font-size = 16px in most browsers.
+    @if unit($base) == '%' {
+        $base: ($base / 100%) * $pixel-base;
+    }
+
+    @if $count == 1 {
+        @return to-rem($values, $base);
+    }
+
+    @for $i from 1 through $count {
+        $rem-values: append($rem-values, to-rem(nth($values, $i), $base));
+    }
+
+    @return $rem-values;
+}

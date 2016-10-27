@@ -1,0 +1,35 @@
+[type=reset],
+[type=submit],
+button,
+html [type=button] {
+    border: 0;
+    -webkit-appearance: button;
+}
+
+a,
+button {
+    text-decoration: none;
+}
+
+.button {
+    display: inline-block;
+    padding: rem-calc($button-padding);
+    color: $button-font-color;
+    font-size: rem-calc($button-font-size);
+    font-weight: $button-font-weight;
+    line-height: $button-line-height;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    background-color: $button-background-color;
+
+    @if $button-border != false {
+        border: $button-border;
+    }
+
+    :focus {
+        outline: -webkit-focus-ring-color auto 5px;
+    }
+}

@@ -1,0 +1,39 @@
+header {
+    padding: rem-calc(10);
+    background-color: color-get(blue, dark);
+    font-size: rem-calc(14);
+
+    /**
+     * Navigation
+     */
+    nav::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        &.nav-left {
+            float: left;
+        }
+
+        &.nav-right {
+            float: right;
+        }
+
+        li {
+            display: inline-block;
+        }
+
+        li a {
+            color: color-get(white);
+            display: block;
+            padding: rem-calc(10);
+            line-height: 1;
+        }
+    }
+}
