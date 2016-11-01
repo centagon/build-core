@@ -22,3 +22,8 @@ Route::get('sign-in', [
     'as' => 'admin.sessions.create',
     'uses' => 'Auth\SessionsController@create'
 ]);
+
+Route::get('install', [
+    'as' => 'install',
+    'uses' => 'InstallController@index'
+]);

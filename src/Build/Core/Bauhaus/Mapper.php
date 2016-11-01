@@ -1,6 +1,6 @@
 <?php
 
-namespace Build\Core\Bauhaus\Mapper;
+namespace Build\Core\Bauhaus;
 
 /*
  * This file is part of the Build package.
@@ -11,12 +11,15 @@ namespace Build\Core\Bauhaus\Mapper;
  * file that was distributed with this source code.
  */
 
-class Mapper
+use Illuminate\Http\Response;
+use Build\Core\Support\NestedSet;
+
+class Mapper extends NestedSet
 {
 
     // query types.
-    const QUERY_TYPE_NONE     = 'none';
-    const QUERY_TYPE_SINGLE   = 'single';
+    const QUERY_TYPE_NONE = 'none';
+    const QUERY_TYPE_SINGLE = 'single';
     const QUERY_TYPE_MULTIPLE = 'multiple';
 
     /**
@@ -97,7 +100,7 @@ class Mapper
      */
     public function get($property, $default = null)
     {
-        if (!$this->has($property)) {
+        if (! $this->has($property)) {
             return $default;
         }
 
@@ -169,21 +172,21 @@ class Mapper
     /**
      * Add a new child.
      *
-     * @param  string  $instance
+     * @param  string         $instance
+     * @param  \Closure|null  $callback
      *
      * @return $this
+     * @throws \Exception
      */
     public function add($instance, $callback = null)
     {
         if (is_string($instance)) {
-            $instanceClass = $instance;
-            if (!class_exists($instance)) {
+            if (! class_exists($instance)) {
                 $instance = app('build.bauhaus.container')->get($instance);
             }
 
-            // Prevent a FATAL exception that cannot else be caught
             if (!class_exists($instance)) {
-                throw new \Exception("Mapper cannot create an instance of {$instanceClass}. Make sure it exists in the config");
+                throw new \Exception("Mapper cannot create an instance of {$instance}. Make sure it exists in the config");
             }
 
             $instance = new $instance;
@@ -267,44 +270,7 @@ class Mapper
 
         $view = strtolower(class_basename($this));
 
-        return sprintf('build.bauhaus::components.widgets.%s', $view);
-    }
-
-    /**
-     * Check if a permission needs to be satisfied
-     * @return boolean TRUE if permission is matched, FALSE if permission is not matched
-     */
-    public function checkPermission() {
-
-        if (!$this->has('permission')) {
-            return true;
-        }
-
-        $params = $this->get('permission_params');
-
-        $permission = $this->get('permission');
-        $permissions = is_array($permission) ? $permission : [$permission];
-
-        // Reverse the permission ?
-        switch ($this->get('permission_denies',false)) {
-            case true:
-                $result = false;
-                foreach ($permissions as $perm) {
-                    if (request()->user()->cannot( $perm, $params)) {
-                        $result = true;
-                    }
-                }
-                return $result;
-            default:
-                $result = false;
-                foreach ($permissions as $perm) {
-                    if (request()->user()->can( $perm, $params)) {
-                        $result = true;
-                    }
-                }
-                return $result;
-        }
-
+        return sprintf('build.core::components.widgets.%s', $view);
     }
 
     /**
@@ -314,12 +280,6 @@ class Mapper
      */
     public function render()
     {
-
-        // Check the permissions
-        if (!$this->checkPermission()) {
-            return null;
-        }
-
         return view($this->getView())->with([
             'node' => $this
         ])->render();

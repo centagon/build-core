@@ -11,8 +11,8 @@ namespace Build\Core\Bauhaus;
  * file that was distributed with this source code.
  */
 
-use Build\Core\Bauhaus\Mapper\Mapper;
-use Build\Core\Bauhaus\Builder\Builder;
+use Build\Core\Bauhaus\Mapper;
+use Build\Core\Bauhaus\Builder;
 
 class Manager
 {
@@ -121,7 +121,7 @@ class Manager
     public function execute()
     {
         app()->singleton('build.bauhaus.query', function () {
-            if (!$query = $this->getQuery()) {
+            if (! $query = $this->getQuery()) {
                 return null;
             }
 
@@ -148,7 +148,7 @@ class Manager
             return $this->view;
         }
 
-        return 'build.bauhaus::screens.default';
+        return 'build.core::screens.bauhaus.default-screen';
     }
 
     /**
@@ -158,13 +158,10 @@ class Manager
      */
     public function render($view = null)
     {
-        if (!$this->executed) {
+        if (! $this->executed) {
             $this->execute();
         }
 
-//        return view($view ?: $this->getView())->with([
-//            'manager' => $this
-//        ])->render();
         return view($view ?: $this->getView())->with([
             'manager' => $this
         ]);

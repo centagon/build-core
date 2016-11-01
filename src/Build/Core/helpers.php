@@ -9,7 +9,18 @@
  * file that was distributed with this source code.
  */
 
-if (!function_exists('build_route_string')) {
+if (! function_exists('alert')) {
+
+    /**
+     * @return Build\Core\Support\Alert\MessageBag
+     */
+    function alert()
+    {
+        return app('build.alert');
+    }
+}
+
+if (! function_exists('build_route_string')) {
 
     /**
      * Generate a named route string.
@@ -24,7 +35,7 @@ if (!function_exists('build_route_string')) {
     }
 }
 
-if (!function_exists('build_route')) {
+if (! function_exists('build_route')) {
 
     /**
      * Generate a URL to a named route.
@@ -32,7 +43,7 @@ if (!function_exists('build_route')) {
      * @param  string  $name
      * @param  array   $parameters
      * @param  bool    $absolute
-     * @param  \Illuminate\Routing\Route  $route
+     * @param  Illuminate\Routing\Route  $route
      *
      * @return string
      */
@@ -42,7 +53,7 @@ if (!function_exists('build_route')) {
     }
 }
 
-if (!function_exists('entity')) {
+if (! function_exists('entity')) {
 
     function entity($entity, $method = null)
     {
@@ -102,7 +113,7 @@ if (! function_exists('try_method')) {
      *
      * @param  mixed   $instance
      * @param  string  $method
-     * @param  array  $parameters
+     * @param  array   $parameters
      */
     function try_method($instance, $method, array $parameters = [])
     {

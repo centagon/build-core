@@ -26,9 +26,7 @@ class Query
     protected $query;
 
     /**
-     * Create a new Query instance.
-     *
-     * @param  callable  $query
+     * @param  Closure  $query
      */
     public function __construct(Closure $query)
     {

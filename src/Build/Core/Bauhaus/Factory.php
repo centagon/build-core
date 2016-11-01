@@ -22,7 +22,7 @@ class Factory
      */
     public function make($entity, $method = null)
     {
-        if ($method === null) {
+        if (! $method) {
             list($entity, $method) = explode('@', $entity);
         }
 

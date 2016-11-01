@@ -13,4 +13,5 @@ Route::get('/', function () {
     return view('build.core::screens.dashboard');
 })->name('admin.dashboard');
 
+require __DIR__ . '/guarded/user.php';
 require __DIR__ . '/guarded/website.php';

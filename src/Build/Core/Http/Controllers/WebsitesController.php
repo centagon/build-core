@@ -25,4 +25,13 @@ class WebsitesController extends \Build\Core\Http\Controller
             ->setQuery(Website::all())
             ->render();
     }
+
+    public function edit(Website $website)
+    {
+        $this->authorize('edit-website');
+
+        return entity(WebsitesEntity::class, 'edit')
+            ->setQuery($website)
+            ->render();
+    }
 }

@@ -31,7 +31,9 @@ function createLeftMenu($menu)
 
 function createRightMenu($menu)
 {
-    $menu->add('User management')->data('permission', 'index-user');
+    $menu->add('User management', route('admin.users.index'))
+        ->data('permission', 'index-user');
+
     $menu->add('Sign-out', route('admin.sessions.destroy'));
 
     return $menu;
