@@ -22,7 +22,7 @@ class Authenticate
      */
     public function handle($request, \Closure $next)
     {
-        if (app('auth')->guest()) {
+        if (auth()->guest()) {
             // No redirects for ajax requests.
             if ($request->ajax()) {
                 return response('Unauthorized', 401);
