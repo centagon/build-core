@@ -34,7 +34,7 @@ function createLeftMenu($menu)
 function createRightMenu($menu)
 {
     if ($currentSite = Discovery::backendWebsite()) {
-        $siteMenu = $menu->add($currentSite->name, '#');
+        $siteMenu = $menu->add($currentSite->name, route('admin.springboard.open', $currentSite->getKey()));
 
         foreach (Discovery::discoverUserWebsites() as $site) {
             if ($site->getKey() == $currentSite->getKey()) {
