@@ -57,6 +57,8 @@ class IndexController extends Controller
 
         alert()->success('Succesfully created a new language.')->flash();
 
+        $this->invalidateCaches();
+
         return redirect()->route('admin.languages.index');
     }
 
@@ -88,6 +90,8 @@ class IndexController extends Controller
 
         alert()->success('Successfully updated the language')->flash();
 
+        $this->invalidateCaches();
+
         return redirect()->route('admin.languages.index');
     }
 
@@ -110,6 +114,16 @@ class IndexController extends Controller
 
         Language::destroy(explode(',', request('ids')));
 
+        $this->invalidateCaches();
+
         return redirect()->back();
+    }
+
+    /**
+     * Invalidate all language caches.
+     */
+    protected function invalidateCaches()
+    {
+        app('cache')->forget('build.languages');
     }
 }
