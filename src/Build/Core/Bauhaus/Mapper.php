@@ -181,12 +181,15 @@ class Mapper extends NestedSet
     public function add($instance, $callback = null)
     {
         if (is_string($instance)) {
+            $class = $instance;
+
             if (! class_exists($instance)) {
                 $instance = app('build.bauhaus.container')->get($instance);
             }
 
-            if (!class_exists($instance)) {
-                throw new \Exception("Mapper cannot create an instance of {$instance}. Make sure it exists in the config");
+            // Try again.
+            if (! class_exists($instance)) {
+                throw new \Exception("Mapper cannot create an instance of `{$class}`. Make sure it exists in the config");
             }
 
             $instance = new $instance;
