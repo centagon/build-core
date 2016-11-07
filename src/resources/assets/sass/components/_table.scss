@@ -3,12 +3,17 @@ table {
     border-collapse: collapse;
     width: 100%;
 
+    thead tr {
+        background-color: color-get(gray, light);
+    }
+
+    thead th,
     tbody td {
         padding: rem-calc(10) rem-calc(15);
         border-bottom: 1px solid color-get(gray, medium);
     }
 
-    tr:hover {
+    tbody tr:hover {
         background-color: color-get(gray, light);
     }
 

@@ -1,6 +1,6 @@
 <section class="form-actions">
 	<div class="row">
-		<div class="small-12 medium-8 medium-offset-4">
+		<div class="small-12 medium-8 medium-push-4">
 			<button class="button button--success">
 				{{ $node->get('success-label', 'Save changes') }}
 			</button>

@@ -1,5 +1,7 @@
 .button {
 
+    padding-top: rem-calc(5);
+    padding-bottom: rem-calc(5);
     border-radius: 3px;
 
     @include modifier(success) {
