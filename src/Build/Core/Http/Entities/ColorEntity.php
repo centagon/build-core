@@ -17,7 +17,7 @@ use Build\Core\Bauhaus\Widgets\Content\Heading;
 class ColorEntity extends Manager
 {
 
-    public function create($mapper, $query)
+    public function create($mapper)
     {
         $heading = (new Heading)
             ->title('Colors')
