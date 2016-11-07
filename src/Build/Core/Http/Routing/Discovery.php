@@ -64,11 +64,11 @@ class Discovery
                 ->sorted()
                 ->firstOrFail();
         } catch (\RuntimeException $e) {
-            
-            // When we're unable to find an exact match we'll try to figure out the best match.
+
+            // When we're unable to find the exact matche we'll try to figure out the best match.
             // This is done by sorting all the domains by length (sortest first) and looping
-            // through those results untill we find the new `exact` match. This will be
-            // our current domain. Nothing is returned when nothing is found.
+            // through those results untill we're able to find a new `exact` match. This
+            // will be our current domain. Nothing is returned when nothing is found.
             $sites = Website::activated()
                 ->with([
                     'language'
