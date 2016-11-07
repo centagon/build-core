@@ -16,7 +16,6 @@ use Build\Core\Http\Routing\Discovery;
 use Build\Core\Providers\MenuServiceProvider;
 use Build\Core\Providers\AlertServiceProvider;
 use Build\Core\Providers\RouteServiceProvider;
-use Build\Core\Providers\FlashServiceProvider;
 use Build\Core\Providers\AssetServiceProvider;
 use Build\Core\Providers\PolicyServiceProvider;
 use Build\Core\Providers\ModulesServiceProvider;
@@ -80,7 +79,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->app->register(PolicyServiceProvider::class);
         $this->app->register(AlertServiceProvider::class);
         $this->app->register(AssetServiceProvider::class);
-        $this->app->register(FlashServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(MenuServiceProvider::class);
     }
