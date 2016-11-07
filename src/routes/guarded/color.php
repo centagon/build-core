@@ -9,4 +9,6 @@
  * file that was distributed with this source code.
  */
 
-Route::resource('colors', 'ColorsController');
+Route::resource('colors', 'ColorsController', [
+    'except' => ['show']
+]);
