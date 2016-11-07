@@ -11,7 +11,11 @@
 
 Route::get('languages/remove', [
     'as' => 'admin.languages.remove',
-    'uses' => 'LanguagesController@remove'
+    'uses' => 'Languages\IndexController@remove'
 ]);
 
-Route::resource('languages', 'LanguagesController');
+Route::resource('languages', 'Languages\IndexController', [
+    'except' => ['show']
+]);
+
+Route::resource('languages.entries', 'Languages\EntriesController');

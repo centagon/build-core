@@ -11,6 +11,7 @@ namespace Build\Core\Eloquent\Models;
  * file that was distributed with this source code.
  */
 
+use Build\Core\Support\Facades\Discovery;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Build\Core\Eloquent\Traits\Activatable;
@@ -55,5 +56,15 @@ class Language extends Model
     public function scopeMain($query)
     {
         $query->where('is_main', true)->limit(1);
+    }
+
+    public function scopeByWebsite($query)
+    {
+        if ($website = Discovery::backendWebsite()) {
+            $query
+                ->select('languages.*', 'websites.id')
+                ->leftJoin('websites', 'languages.id', '=', 'websites.language_id')
+                ->where('websites.id', $website->getKey());
+        }
     }
 }

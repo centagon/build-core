@@ -19,9 +19,9 @@ class LanguagePolicy extends Policy
      * @var array
      */
     protected $capabilities = [
-        'index'  => ['admin', 'editor'],
+        'index' => ['admin', 'editor'],
         'create' => [],
-        'edit'   => [],
+        'edit' => [],
         'delete' => [],
         'export' => []
     ];

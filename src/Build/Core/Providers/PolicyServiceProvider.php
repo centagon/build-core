@@ -17,7 +17,11 @@ use Build\Core\Policies\UserPolicy;
 use Build\Core\Policies\ColorPolicy;
 use Build\Core\Eloquent\Models\User;
 use Build\Core\Policies\WebsitePolicy;
+use Build\Core\Policies\LanguagePolicy;
+use Build\Core\Eloquent\Models\Language;
 use Illuminate\Contracts\Auth\Access\Gate;
+use Build\Core\Eloquent\Models\Language\Entry as LanguageEntry;
+use Build\Core\Policies\Language\EntryPolicy as LanguageEntryPolicy;
 
 class PolicyServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -28,7 +32,9 @@ class PolicyServiceProvider extends \Illuminate\Support\ServiceProvider
     protected $policies = [
         User::class => UserPolicy::class,
         Color::class => ColorPolicy::class,
-        Website::class => WebsitePolicy::class
+        Website::class => WebsitePolicy::class,
+        Language::class => LanguagePolicy::class,
+        LanguageEntry::class => LanguageEntryPolicy::class
     ];
 
     /**
