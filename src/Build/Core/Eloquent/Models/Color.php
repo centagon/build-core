@@ -12,6 +12,7 @@ namespace Build\Core\Eloquent\Models;
  */
 
 use Illuminate\Database\Eloquent\Model;
+use Build\Core\Support\Color as Support;
 
 class Color extends Model
 {
@@ -32,5 +33,34 @@ class Color extends Model
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = str_slug($value);
+    }
+
+    /**
+     * Convert the color value to hex.
+     *
+     * @return string
+     */
+    public function getHexColorAttribute()
+    {
+        $color = $this->attributes['color'];
+
+        return Support::toHex($color);
+    }
+
+    /**
+     * Convert the color value to rgb.
+     *
+     * @return string
+     */
+    public function getRgbColorAttribute()
+    {
+        $color = $this->attributes['color'];
+
+        return Support::toRgb($color);
+    }
+
+    public function getBestContrastAttribute()
+    {
+        return Support::bestContrast($this->attributes['color']);
     }
 }

@@ -11,8 +11,10 @@ namespace Build\Core\Providers;
  * file that was distributed with this source code.
  */
 
+use Build\Core\Eloquent\Color;
 use Build\Core\Eloquent\Website;
 use Build\Core\Policies\UserPolicy;
+use Build\Core\Policies\ColorPolicy;
 use Build\Core\Eloquent\Models\User;
 use Build\Core\Policies\WebsitePolicy;
 use Illuminate\Contracts\Auth\Access\Gate;
@@ -25,6 +27,7 @@ class PolicyServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     protected $policies = [
         User::class => UserPolicy::class,
+        Color::class => ColorPolicy::class,
         Website::class => WebsitePolicy::class
     ];
 
