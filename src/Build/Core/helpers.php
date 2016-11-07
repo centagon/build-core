@@ -108,6 +108,20 @@ if (! function_exists('has_trait')) {
     }
 }
 
+if (! function_exists('module_path')) {
+    /**
+     *
+     */
+    function module_path($slug)
+    {
+        $path = config('build.core.modules-path');
+
+        $module = \Build\Core\Support\Facades\Modules::where('slug', $slug);
+
+        return $path . '/' . $module['basename'];
+    }
+}
+
 if (! function_exists('try_method')) {
     /**
      * Test the existence of a certain method and try calling it when it does exist.
