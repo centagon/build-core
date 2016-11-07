@@ -27,3 +27,8 @@ Route::get('install', [
     'as' => 'install',
     'uses' => 'InstallController@index'
 ]);
+
+Route::put('install', [
+    'as' => 'install.run',
+    'uses' => 'InstallController@run'
+]);
