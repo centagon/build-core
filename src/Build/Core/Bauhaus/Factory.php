@@ -16,16 +16,20 @@ class Factory
 
     /**
      * @param  string       $entity
-     * @param  string|null  $method
+     * @param  string|null  $action
      *
      * @return mixed
      */
-    public function make($entity, $method = null)
+    public function make($entity, $action = null)
     {
-        if (! $method) {
-            list($entity, $method) = explode('@', $entity);
+        if (! $action) {
+            if (! str_contains($entity, '@')) {
+                throw new \InvalidArgumentException('No entity action provided.');
+            }
+
+            list($entity, $action) = explode('@', $entity);
         }
 
-        return (new $entity)->setMethod($method);
+        return (new $entity)->setMethod($action);
     }
 }
