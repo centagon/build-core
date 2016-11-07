@@ -120,17 +120,17 @@ class Manager
 
     public function execute()
     {
-        app()->singleton('build.bauhaus.query', function () {
-            if (! $query = $this->getQuery()) {
-                return null;
-            }
+        if ($query = $this->getQuery()) {
+            $query = $query->execute();
+        }
 
-            return $query->execute();
+        app()->singleton('build.bauhaus.query', function () use ($query) {
+            return $query;
         });
 
         $this
             ->setMapper($mapper = new Mapper)
-            ->{$this->getMethod()}($mapper, $this->getQuery());
+            ->{$this->getMethod()}($mapper, $query);
 
         (new Builder)->build($mapper);
 
