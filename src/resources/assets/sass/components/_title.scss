@@ -1,27 +1,19 @@
-section.title {
-    margin-top: rem-calc(25);
-    margin-bottom: rem-calc(45);
-    padding: 0 0 rem-calc(15);
-    border-bottom: 1px solid #eee;
+.title {
+
+    border-bottom: 1px solid color-get(gray, medium);
+
+    /**
+     * Navigation
+     */
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
 
     h1 {
-        font-size: rem-calc(27);
-        vertical-align: middle;
-
-        span {
-            opacity: .6;
-        }
+        font-size: rem-calc(26);
+        font-weight: normal;
     }
 
-    div.heading-scopes {
-        display: inline-block;
-        border-left: 1px solid #ddd;
-        margin-left: rem-calc(15);
-
-        a {
-            padding-left: rem-calc(15);
-            padding-right: rem-calc(15);
-            color: color-get(black);
-        }
-    }
 }

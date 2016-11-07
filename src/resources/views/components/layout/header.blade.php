@@ -12,8 +12,6 @@
     <title>[{{ strtoupper(app()->environment()) }}] &mdash; {{ config('build.core.title') }}</title>
 
     <link rel="shortcut icon" type="image/png" href="{{ asset('packages/build/foundation/favicon.png') }}">
-    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700">
     <link rel="stylesheet" href="{{ asset('../packages/build/core/src/public/css/core.css') }}">
     {!! Build\Core\Support\Facades\Asset::styles() !!}
     @stack('stylesheets')

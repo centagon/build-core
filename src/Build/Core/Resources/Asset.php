@@ -99,10 +99,6 @@ class Asset
      */
     public function styles()
     {
-        if (app()->runningInConsole()) {
-            return $this;
-        }
-
         $references = $this->stylesheetReferences->map(function ($style) {
             return $this->wrapReferenceStyle($style);
         });
@@ -116,10 +112,6 @@ class Asset
 
     public function scripts()
     {
-        if (app()->runningInConsole()) {
-            return $this;
-        }
-
         $references = $this->javascriptReferences->map(function ($script) {
             return $this->wrapReferenceScript($script);
         });

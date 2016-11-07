@@ -1,23 +1,10 @@
 .button {
 
-    padding: rem-calc(5) rem-calc(10);
-    font-size: rem-calc(14);
-    font-weight: bold;
-    border-radius: 4px;
-    border: none;
+    border-radius: 3px;
 
-    &.success {
-        background-color: color-get(green);
-        color: color-get(white);
+    @include modifier(success) {
+        color: color-get(green);
+        border-color: color-get(green);
     }
 
-    &.secondary {
-        background-color: transparent;
-        color: color-get(black);
-
-        &:hover {
-            background-color: color-get(gray);
-            color: color-get(white);
-        }
-    }
 }

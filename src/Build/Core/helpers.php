@@ -10,7 +10,6 @@
  */
 
 if (! function_exists('alert')) {
-
     /**
      * @return Build\Core\Support\Alert\MessageBag
      */
@@ -21,13 +20,13 @@ if (! function_exists('alert')) {
 }
 
 if (! function_exists('build_route_string')) {
-
     /**
      * Generate a named route string.
      *
      * @param  string  $name
      *
      * @return string
+     * @deprecated 2.0
      */
     function build_route_string($name)
     {
@@ -36,7 +35,6 @@ if (! function_exists('build_route_string')) {
 }
 
 if (! function_exists('build_route')) {
-
     /**
      * Generate a URL to a named route.
      *
@@ -46,6 +44,7 @@ if (! function_exists('build_route')) {
      * @param  Illuminate\Routing\Route  $route
      *
      * @return string
+     * @deprecated 2.0
      */
     function build_route($name, $parameters = [], $absolute = true, $route = null)
     {
@@ -62,7 +61,6 @@ if (! function_exists('entity')) {
 }
 
 if (! function_exists('get_traits')) {
-
     /**
      * Get all traits defined on the given class.
      *
@@ -83,7 +81,6 @@ if (! function_exists('get_traits')) {
 }
 
 if (! function_exists('has_trait')) {
-
     /**
      * Determine that the given trait exists on the given instance.
      *
@@ -107,7 +104,6 @@ if (! function_exists('has_trait')) {
 }
 
 if (! function_exists('try_method')) {
-
     /**
      * Test the existence of a certain method and try calling it when it does exist.
      *

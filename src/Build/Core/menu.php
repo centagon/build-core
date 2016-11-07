@@ -10,9 +10,10 @@
  */
 
 use Build\Core\Support\Facades\Menu;
+use Build\Core\Support\Facades\Discovery;
 
-$left = createLeftMenu(Menu::get('build.header-left'));
-$right = createRightMenu(Menu::get('build.header-right'));
+createLeftMenu(Menu::get('build.header-left'));
+createRightMenu(Menu::get('build.header-right'));
 
 function createLeftMenu($menu)
 {
@@ -24,6 +25,7 @@ function createLeftMenu($menu)
 
     $menu->structure->add('Websites', route('admin.websites.index'));
     $menu->design->add('Colors');
+    $menu->content->add('Language');
     $menu->administration->add('Universe');
 
     return $menu;
@@ -31,6 +33,18 @@ function createLeftMenu($menu)
 
 function createRightMenu($menu)
 {
+    if ($currentSite = Discovery::backendWebsite()) {
+        $siteMenu = $menu->add($currentSite->name, '#');
+
+        foreach (Discovery::discoverUserWebsites() as $site) {
+            if ($site->getKey() == $currentSite->getKey()) {
+                continue;
+            }
+
+            $siteMenu->add($site->name, route('admin.springboard.open', $site->getKey()));
+        }
+    }
+
     $menu->add('User management', route('admin.users.index'))
         ->data('permission', 'index-user');
 

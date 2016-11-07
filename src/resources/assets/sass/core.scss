@@ -4,8 +4,9 @@
 @import '../components/centagon-primer/src/sass/primer';
 
 // Component imports
+@import 'components/anchors';
 @import 'components/buttons';
-@import 'components/dropdown';
 @import 'components/header';
-@import 'components/sidebar';
+@import 'components/dropdown';
+@import 'components/table';
 @import 'components/title';

@@ -1,0 +1,24 @@
+table {
+
+    border-collapse: collapse;
+    width: 100%;
+
+    tbody td {
+        padding: rem-calc(10) rem-calc(15);
+        border-bottom: 1px solid color-get(gray, medium);
+    }
+
+    tr:hover {
+        background-color: color-get(gray, light);
+    }
+
+    td a {
+        font-weight: bold;
+    }
+
+    span.sub-column {
+        display: block;
+        font-size: rem-calc(14);
+    }
+
+}

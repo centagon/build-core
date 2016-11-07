@@ -28,6 +28,8 @@ class User extends Authenticatable
         'name', 'email', 'password'
     ];
 
+    protected $roleCache = [];
+
     /**
      * @return BelongsToMany
      */
@@ -103,6 +105,12 @@ class User extends Authenticatable
             $names = [$names];
         }
 
+        $key = implode(',', $names) . $website . (string) $exact;
+
+        if (isset($this->roleCache[$key])) {
+            return $this->roleCache[$key] > 0;
+        }
+
         $count = $this->roles()
             ->whereIn('roles.id', $names)
             ->where(function ($query) use ($website, $exact) {
@@ -112,6 +120,8 @@ class User extends Authenticatable
                     $query->orWhereNull('website_id');
                 }
             })->count();
+
+        $this->roleCache[$key] = $count;
 
         return $count > 0;
     }

@@ -18,6 +18,7 @@ class UserPolicy extends Policy
 {
 
     /**
+     * Define the policy capabilities.
      * @var array
      */
     protected $capabilities = [

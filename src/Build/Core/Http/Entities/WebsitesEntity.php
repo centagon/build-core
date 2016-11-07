@@ -23,12 +23,12 @@ class WebsitesEntity extends Manager
 
     public function index(Mapper $mapper)
     {
-        $heading = (new Heading)->title('Websites')->subtitle('Overview');
+        $heading = (new Heading)->title('Websites');
         
         $heading->add('navigation.button', function ($button) {
             $button
                 ->permission('create-website')
-                ->label('Create a new website')
+                ->label('New website')
                 ->style(Button::STYLE_SUCCESS)
                 ->to(route('admin.websites.create'));
         });

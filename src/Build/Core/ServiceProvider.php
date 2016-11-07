@@ -19,6 +19,7 @@ use Build\Core\Providers\RouteServiceProvider;
 use Build\Core\Providers\FlashServiceProvider;
 use Build\Core\Providers\AssetServiceProvider;
 use Build\Core\Providers\PolicyServiceProvider;
+use Build\Core\Providers\ModulesServiceProvider;
 use Build\Core\Providers\RoutingServiceProvider;
 use Build\Core\Providers\ConsoleServiceProvider;
 use Build\Core\Providers\BauhausServiceProvider;
@@ -71,6 +72,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->app->register(BauhausServiceProvider::class);
         $this->app->register(RoutingServiceProvider::class);
         $this->app->register(ConsoleServiceProvider::class);
+        $this->app->register(ModulesServiceProvider::class);
         $this->app->register(PolicyServiceProvider::class);
         $this->app->register(AlertServiceProvider::class);
         $this->app->register(AssetServiceProvider::class);

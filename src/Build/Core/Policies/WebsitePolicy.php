@@ -14,13 +14,17 @@ namespace Build\Core\Policies;
 class WebsitePolicy extends Policy
 {
 
+    /**
+     * Define the policy capabilities.
+     * @var array
+     */
     protected $capabilities = [
-        'index'    =>  ['admin'],
-        'create'    => [],
-        'edit'      => ['admin'],
-        'delete'    => [],
-        'activate'  => ['admin'],
-        'clone'     => [],
-        'export'    => [],
+        'index'    => ['admin'],
+        'create'   => [],
+        'edit'     => ['admin'],
+        'delete'   => [],
+        'activate' => ['admin'],
+        'clone'    => [],
+        'export'   => [],
     ];
 }

@@ -5,7 +5,7 @@
 
             <section class="title">
                 @if ($node->hasChildren())
-                    <div class="pull-right">
+                    <div class="float-right">
                         @foreach ($node->getChildren() as $child)
                             {!! $child->render() !!}
                         @endforeach

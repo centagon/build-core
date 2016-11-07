@@ -1,12 +1,19 @@
 $colors: (
-        black: rgb(29, 37, 48),
-        gray: rgb(153, 153, 153),
-        white: rgb(255, 255, 255),
-        green: rgb(52, 168, 83),
-        red: rgb(234, 67, 53),
-        blue: (
-                default: rgb(53, 114, 176),
-                dark: rgb(32, 80, 129)
-        ),
-        yellow: rgb(255, 193, 7)
+    black: rgb(92, 92, 92),
+    white: rgb(255, 255, 255),
+    gray: (
+        medium: rgb(213, 213, 213),
+        light: rgb(235, 235, 235)
+    ),
+    aqua: rgb(46, 130, 126),
+    green: rgb(0, 159, 77),
+    red: rgb(184, 58, 75),
+    orange: rgb(237, 139, 0),
+    blue: rgb(0, 119, 200)
 );
+
+$font-family: "Helvetica Neue", Arial, sans-serif !default;
+$font-size: 15px;
+
+$button-font-color: map-get($colors, black);
+$button-border: 1px solid map-get($colors, black);

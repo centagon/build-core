@@ -19,25 +19,62 @@ class Discovery
     /**
      * @var null|Website
      */
-    protected $website = null;
-    protected $backendWebsite = null;
+    protected $website;
 
+    /**
+     * @var null|Website
+     */
+    protected $backendWebsite;
+
+    /**
+     * @var null|Language
+     */
+    protected $language;
+
+    /**
+     * @var null|Language
+     */
+    protected $backendLanguage;
+
+    /**
+     * @deprecated 2.0.0
+     * @return Website|null
+     */
     public function discoverWebsite()
+    {
+        return $this->website();
+    }
+
+    /**
+     * Get the current website.
+     *
+     * @return Website|null
+     */
+    public function website()
     {
         $url = $this->getUrl();
 
         try {
             // First try to find exact matches.
             $this->website = Website::activated()
+                ->with([
+                    'language'
+                ])
                 ->byDomain($url)
                 ->sorted()
                 ->firstOrFail();
         } catch (\RuntimeException $e) {
-            // When we're unable to find the exact matches we'll try to figure out the best match.
+            
+            // When we're unable to find an exact match we'll try to figure out the best match.
             // This is done by sorting all the domains by length (sortest first) and looping
-            // through those results untill we find the new `exact` match. This will be our
-            // current domain. Nothing is returned when nothing is found.
-            $sites = Website::activated()->sorted()->get();
+            // through those results untill we find the new `exact` match. This will be
+            // our current domain. Nothing is returned when nothing is found.
+            $sites = Website::activated()
+                ->with([
+                    'language'
+                ])
+                ->sorted()
+                ->get();
 
             foreach ($sites as $site) {
                 if ((bool) strstr(str_finish($url, '/'), str_finish($site->domain, '/')) === true) {
@@ -55,12 +92,33 @@ class Discovery
 
     }
 
-    public function discoverUserWebsites()
+    public function language()
     {
+        if (! $this->website) {
+            return null;
+        }
 
+        return $this->website->language;
     }
 
-    public function discoverBackendLanguage($fallback = null)
+    public function discoverUserWebsites()
+    {
+        $user = request()->user();
+        if ( !$user ) return [];
+
+        // Check if the user has a default Role ; If so, he has access to any website
+        if ( $user->getRole(null) ) {
+            $websites = Website::all();
+        } else {
+            // Filter the websites that the user has access to
+            $websites = Website::all()->filter( function ($value) use ($user) {
+                return ($user->getRole($value->id, true) ? true:false);
+            });
+        }
+        return $websites;
+    }
+
+    public function backendWebsite($fallback = null)
     {
         if ($this->backendWebsite) {
             return $this->backendWebsite;
@@ -77,9 +135,19 @@ class Discovery
         return $fallback;
     }
 
+    /**
+     * @param null $fallback
+     * @return Website|null
+     * @deprecated 2.0
+     */
+    public function discoverBackendWebsite($fallback = null)
+    {
+        return $this->backendWebsite($fallback = null);
+    }
+
     public function discoverBackendWebsiteFromInput()
     {
-        if (($siteId = request()->get(config('build.cms.backendsession.input_key')))) {
+        if (($siteId = request()->get('backend.website_id'))) {
             return Website::where('id', $siteId )->first();
         }
 
@@ -88,7 +156,7 @@ class Discovery
 
     public function discoverBackendWebsiteFromSession() {
 
-        if (($siteId = session(config('build.cms.backendsession.session_key')))) {
+        if (($siteId = session('backend.website_id'))) {
             return Website::where('id', $siteId )->first();
         }
 
@@ -125,10 +193,5 @@ class Discovery
         }
 
         return trim(str_replace($this->website->domain, '', $this->getUrl()), '/') ?: '/';
-    }
-
-    public function discoverBackendWebsite()
-    {
-
     }
 }

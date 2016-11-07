@@ -12,18 +12,14 @@ namespace Build\Core\Providers;
  */
 
 use Build\Core\Support\Menu;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Auth\Events\Authenticated;
 
 class MenuServiceProvider extends ServiceProvider
 {
 
-    /**
-     * Boot the service provider.
-     */
-    public function boot()
-    {
-        require __DIR__ . '/../menu.php';
-    }
+    protected $count = 0;
 
     /**
      * Register the service provider.
@@ -31,5 +27,22 @@ class MenuServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('build.menu', Menu::class);
+    }
+
+    /**
+     * Boot the service provider.
+     */
+    public function boot()
+    {
+        /**
+         * @see https://github.com/laravel/framework/issues/15072
+         */
+        Event::listen(Authenticated::class, function () {
+            if ($this->count === 0) {
+                $this->count++;
+
+                require __DIR__ . '/../menu.php';
+            }
+        });
     }
 }

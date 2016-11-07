@@ -15,3 +15,4 @@ Route::get('/', function () {
 
 require __DIR__ . '/guarded/user.php';
 require __DIR__ . '/guarded/website.php';
+require __DIR__ . '/guarded/springboard.php';

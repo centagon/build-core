@@ -14,6 +14,7 @@ namespace Build\Core\Http;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 
 class Controller extends \Illuminate\Routing\Controller
 {
@@ -21,14 +22,4 @@ class Controller extends \Illuminate\Routing\Controller
     use DispatchesJobs;
     use ValidatesRequests;
     use AuthorizesRequests;
-
-    /**
-     * Construct a new controller instance.
-     */
-    public function __construct()
-    {
-        app('build.menu')->adjust();
-
-        view()->share('controller', $this);
-    }
 }

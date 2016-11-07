@@ -204,11 +204,15 @@ class NestedSet
      */
     public function getNeighbors()
     {
-        $neighbors = $this->getParent()->getChildren();
+        if (! $this->getParent()) {
+            return [$this];
+        }
+
+        $neighbors = $this->getNeighborsAndSelf();
         $current = $this;
 
         return array_values(array_filter($neighbors, function ($item) use ($current) {
-            return $item != $current;
+            return $item !== $current;
         }));
     }
 
@@ -220,6 +224,10 @@ class NestedSet
      */
     public function getNeighborsAndSelf()
     {
+        if (! $this->getParent()) {
+            return [];
+        }
+
         return $this->getParent()->getChildren();
     }
 
