@@ -30,7 +30,7 @@ function createLeftMenu($menu)
     $menu->design->add('Colors', route('admin.colors.index'));
     $menu->design->add('Assets', '#');
 
-    $menu->content->add('Language');
+    $menu->content->add('Language', route('admin.languages.index'));
     $menu->content->add('Downloads', '#');
 
     $menu->processes->add('Selectables', '#');
