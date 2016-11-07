@@ -87,11 +87,11 @@ class WebsitesController extends \Build\Core\Http\Controller
      */
     public function update(WebsiteRequest $request, Website $website)
     {
-        $this->authorize('edit-website', $website);
+        $this->authorize('edit-website');
 
         $language = Language::findOrFail($request->get('language_id'));
 
-        $website = new Website($request->all());
+        $website->update($request->all());
         $website->language()->associate($language);
         $website->save();
 

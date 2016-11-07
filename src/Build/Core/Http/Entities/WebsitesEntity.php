@@ -13,8 +13,8 @@ namespace Build\Core\Http\Entities;
 
 use Build\Core\Bauhaus\Mapper;
 use Build\Core\Bauhaus\Manager;
-use Build\Core\Bauhaus\Widgets\Form;
 use Build\Core\Eloquent\Models\Language;
+use Build\Core\Bauhaus\Widgets\Input\Form;
 use Build\Core\Bauhaus\Widgets\Content\Heading;
 use Build\Core\Bauhaus\Widgets\Navigation\Button;
 
@@ -35,7 +35,7 @@ class WebsitesEntity extends Manager
 
         $mapper->add($heading);
 
-        $mapper->add('table', function ($table) {
+        $mapper->add('data.table', function ($table) {
 //            if (request()->user()->can('delete-website')) {
 //                $table->selectable(true);
 //                $table->routes([
@@ -67,7 +67,7 @@ class WebsitesEntity extends Manager
                     return $link->getRow()->domain;
                 });
             });
-//
+
             $table->add('content.icon', function ($icon) {
                 $icon
                     ->name('is_activated')
@@ -84,55 +84,55 @@ class WebsitesEntity extends Manager
         $heading = (new Heading)
             ->title('Websites')
             ->subtitle('Create a new website')
-            ->add('button', function ($button) {
+            ->add('navigation.button', function ($button) {
                 $button
                     ->label('Cancel')
                     ->style(Button::STYLE_SECONDARY)
                     ->to(route('admin.websites.index'));
             });
 
-        $mapper->add($heading);
+        $mapper
+            ->add($heading)
+            ->add('input.form', function ($form) {
 
-        $mapper->add('form', function ($form) {
-            $form->action(route('admin.websites.store'));
+                $form->action(route('admin.websites.store'));
 
-            $form->add('input.text', function ($text) {
-                $text->name('name');
-                $text->label('The name of the website');
-                $text->placeholder('My awesome website');
+                $form->add('input.text', [
+                    'name' => 'name',
+                    'label' => 'The name of the website',
+                    'placeholder' => 'My awesome website'
+                ]);
+
+                $form->add('input.text', [
+                    'name' => 'domain',
+                    'label' => 'This website resolves to',
+                    'placeholder' => 'https://my-domain.com'
+                ]);
+
+                $form->add('input.color', [
+                    'name' => 'color',
+                    'label' => 'The color of the website'
+                ]);
+
+                $form->add('input.select', [
+                    'name' => 'language_id',
+                    'label' => 'The language',
+                    'options' => Language::pluck('name', 'id')
+                ]);
+
+                if (request()->user()->can('activate-website')) {
+                    $form->add('input.checkbox', function ($checkbox) {
+                        $checkbox->name('is_active');
+                        $checkbox->label('Is this website active?');
+                    });
+                }
+
+                $form->add('input.actions');
             });
-
-            $form->add('input.text', function ($text) {
-                $text->name('domain');
-                $text->label('This website resolves to');
-                $text->placeholder('https://my-domain.com');
-            });
-
-            $form->add('input.color', [
-                'name'  => 'color',
-                'label' => trans('build.color::entity.color.create.form.color')
-            ]);
-
-            $form->add('input.select', function ($select) {
-                $select->name('language_id');
-                $select->label('The language');
-                $select->options(Language::lists('name', 'id'));
-            });
-
-            $form->add('input.checkbox', function ($checkbox) {
-                $checkbox->permission('activate-website');
-                $checkbox->name('is_active');
-                $checkbox->label('Is this website active?');
-            });
-
-            $form->add('input.actions');
-        });
     }
 
-    public function edit(Mapper $mapper)
+    public function edit(Mapper $mapper, $query)
     {
-        $query = app('build.bauhaus.query');
-
         $heading = (new Heading)
             ->title('Websites')
             ->subtitle($query->name)
@@ -144,41 +144,42 @@ class WebsitesEntity extends Manager
 
         $mapper->add($heading);
 
-        $mapper->add('form', function ($form) use ($query) {
-//            $form->action(route('admin.websites.update', $query->getKey()));
-//            $form->method(Form::METHOD_PUT);
-//
-//            $form->add('input.text', function ($text) {
-//                $text->name('name');
-//                $text->label('The name of the website');
-//                $text->placeholder('My awesome website');
-//            });
-//
-//            $form->add('input.text', function ($text) {
-//                $text->name('domain');
-//                $text->label('This website resolves to');
-//                $text->palceholder('https://my-domain.com');
-//            });
-//
-//            $form->add('input.color', [
-//                'name'  => 'color',
-//                'label' => trans('build.color::entity.color.create.form.color')
-//            ]);
-//
-//            $form->add('input.select', function ($select) {
-//                $select->name('language_id');
-//                $select->label('The language');
-//                $select->options(Language::lists('name', 'id'));
-//            });
-//
-//            if (request()->user()->can('activate-website')) {
-//                $form->add('input.checkbox', function ($checkbox) {
-//                    $checkbox->name('is_active');
-//                    $checkbox->label('Is this website active?');
-//                });
-//            }
-//
-//            $form->add('input.actions');
+        $mapper->add('input.form', function ($form) use ($query) {
+            $form
+                ->action(route('admin.websites.update', $query->getKey()))
+                ->method(Form::METHOD_PUT);
+
+            $form->add('input.text', [
+                'name' => 'name',
+                'label' => 'The name of the website',
+                'placeholder' => 'My awesome website'
+            ]);
+
+            $form->add('input.text', [
+                'name' => 'domain',
+                'label' => 'This website resolves to',
+                'placeholder' => 'https://my-domain.com'
+            ]);
+
+            $form->add('input.color', [
+                'name' => 'color',
+                'label' => 'The color of the website'
+            ]);
+
+            $form->add('input.select', [
+                'name' => 'language_id',
+                'label' => 'The language',
+                'options' => Language::pluck('name', 'id')
+            ]);
+
+            if (request()->user()->can('activate-website')) {
+                $form->add('input.checkbox', function ($checkbox) {
+                    $checkbox->name('is_active');
+                    $checkbox->label('Is this website active?');
+                });
+            }
+
+            $form->add('input.actions');
         });
     }
 }
