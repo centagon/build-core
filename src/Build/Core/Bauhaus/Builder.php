@@ -75,7 +75,17 @@ class Builder
         }
 
         foreach ($query as $id => $entry) {
-            $row = (new Row)->setKey($entry->getKey());
+            if (is_array($entry)) {
+                $key = $id;
+
+                // Cast the entry to an object. This will make
+                // our life easier in a couple of steps.
+                $entry = (object) $entry;
+            } else {
+                $key = $entry->getKey();
+            }
+
+            $row = (new Row)->setKey($key);
 
             foreach ($mapper->getChildren() as $child) {
                 $clone = clone($child);
