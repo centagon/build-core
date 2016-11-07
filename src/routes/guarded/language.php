@@ -19,3 +19,4 @@ Route::resource('languages', 'Languages\IndexController', [
 ]);
 
 Route::resource('languages.entries', 'Languages\EntriesController');
+Route::resource('languages/dictionary', 'Languages\DictionaryController');

@@ -24,6 +24,11 @@ class LanguageEntity extends Manager
 
         if (auth()->user()->can('create-language')) {
             $heading->add('navigation.button', [
+                'to' => route('admin.languages.dictionary.index'),
+                'label' => 'Dictionary'
+            ]);
+
+            $heading->add('navigation.button', [
                 'to' => route('admin.languages.create'),
                 'label' => 'Create a new language',
                 'style' => 'button--success'
