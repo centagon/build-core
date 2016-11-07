@@ -24,7 +24,7 @@ function createLeftMenu($menu)
     $menu->add('Administration');
 
     $menu->structure->add('Websites', route('admin.websites.index'));
-    $menu->design->add('Colors');
+    $menu->design->add('Colors', route('admin.colors.index'));
     $menu->content->add('Language');
     $menu->administration->add('Universe');
 

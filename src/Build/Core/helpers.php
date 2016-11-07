@@ -53,7 +53,12 @@ if (! function_exists('build_route')) {
 }
 
 if (! function_exists('entity')) {
-
+    /**
+     * @param  string  $entity
+     * @param  null|string  $method
+     *
+     * @return \Illuminate\Http\Response
+     */
     function entity($entity, $method = null)
     {
         return (new Build\Core\Bauhaus\Factory)->make($entity, $method);
