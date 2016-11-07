@@ -35,7 +35,6 @@ function createLeftMenu($menu)
 
     $menu->processes->add('Selectables', '#');
 
-    $menu->administration->add('Universe');
     $menu->administration->add('Queue', '#');
     $menu->administration->add('Modules', route('admin.modules.index'));
 
