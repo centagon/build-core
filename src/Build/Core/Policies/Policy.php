@@ -13,9 +13,15 @@ namespace Build\Core\Policies;
 
 use Build\Core\Eloquent\Models\User;
 use Illuminate\Support\Facades\Gate;
+use Build\Core\Support\Facades\Discovery;
 
 abstract class Policy
 {
+
+    /**
+     * @var null|string
+     */
+    protected $policyName = null;
 
     /**
      * Handle the policy check.
@@ -34,7 +40,7 @@ abstract class Policy
 
         $ability = $this->getAbilityName($ability);
 
-        $websiteId = ($website = app('build.cms.discovery')->discoverBackendWebsite())
+        $websiteId = ($website = Discovery::backendWebsite())
             ? $website->getKey()
             : null;
 
@@ -72,7 +78,8 @@ abstract class Policy
      */
     protected function getPolicyName($ability = null)
     {
-        $name = str_replace('policy', '', strtolower(class_basename($this)));
+        $name = $this->policyName
+            ?: str_replace('policy', '', strtolower(class_basename(static::class)));
 
         return $ability
             ? implode('-', [$ability, $name])
