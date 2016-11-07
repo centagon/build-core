@@ -16,6 +16,11 @@ use Build\Core\Bauhaus\Widgets\Widget;
 class Form extends Widget
 {
 
+    const METHOD_GET = 'get';
+    const METHOD_PUT = 'put';
+    const METHOD_POST = 'post';
+    const METHOD_DELETE = 'delete';
+
     /**
      * Override the view path.
      * @var string

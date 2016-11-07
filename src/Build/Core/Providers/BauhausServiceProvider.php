@@ -21,7 +21,7 @@ class BauhausServiceProvider extends \Illuminate\Support\ServiceProvider
      * @var array
      */
     protected $dataWidgets = [
-        'table' => Widgets\Data\Table::class,
+        'data.table' => Widgets\Data\Table::class,
     ];
 
     /**
