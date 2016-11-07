@@ -33,7 +33,7 @@
 	<div class="row">
 		@foreach ($colors as $color)
 
-			<div class="small-12 medium-4">
+			<div class="small-6 medium-4 large-3">
 				<div class="panel" style="background-color: {{ $color->hex_color }};">
 					<a href="{{ route('admin.colors.edit', $color) }}" style="color: {{ $color->best_contrast }};">
 						{{ $color->name }}
