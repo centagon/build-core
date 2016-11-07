@@ -86,7 +86,7 @@ class Registrar
      */
     public function where($key, $value)
     {
-        return $this->all()->where($key, $value);
+        return $this->all()->where($key, $value)->first();
     }
 
     /**
@@ -162,15 +162,17 @@ class Registrar
         list($slug, $key) = explode('::', $property);
 
         $module = $this->where('slug', $slug);
-        $values = $module->first();
 
-        $values[$key] = $value;
+        if (isset($module[$key])) {
+            unset($module[$key]);
+        }
 
-        $content = $this->getCache()->merge(collect([
-            $module->keys()->first() => $values,
-        ]))->all();
+        $module[$key] = $value;
 
-        return $this->files->put($this->getCachePath(), json_encode($content, JSON_PRETTY_PRINT));
+        $module = collect([$module['basename'] => $module]);
+        $merged = $this->getCache()->merge($module);
+
+        return $this->files->put($this->getCachePath(), json_encode($merged->all(), JSON_PRETTY_PRINT));
     }
 
     /**
@@ -385,12 +387,20 @@ class Registrar
         $modules = collect();
 
         $basenames->each(function ($module) use ($modules, $cache) {
-            $manifest = collect($this->getManifest($module));
+            $basename = collect(['basename' => $module]);
+            $temp = $basename->merge(collect($cache->get($module)));
+            $manifest = $temp->merge(collect($this->getManifest($module)));
 
-            $modules->put($module, collect($cache->get($module))->merge($manifest));
+            $modules->put($module, $manifest);
+
+//            $manifest = collect($this->getManifest($module));
+//
+//            $modules->put($module, collect($cache->get($module))->merge($manifest));
         });
 
         $modules->each(function ($module) {
+            $module->put('id', crc32($module->get('slug')));
+
             if (! $module->has('enabled')) {
                 $module->put('enabled', config('build.core.modules-enabled', true));
             }
