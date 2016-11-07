@@ -1,6 +1,6 @@
 <?php
 
-namespace Build\Core\Bauhaus\Widgets\Content;
+namespace Build\Core\Bauhaus\Widgets\Input;
 
 /**
  * This file is part of the Centagon Build/Core package.
@@ -13,12 +13,12 @@ namespace Build\Core\Bauhaus\Widgets\Content;
 
 use Build\Core\Bauhaus\Widgets\Widget;
 
-class Label extends Widget
+class Divider extends Widget
 {
 
     /**
      * Override the view path.
      * @var string
      */
-    protected $view = 'build.core::components.bauhaus.content.label';
+    protected $view = 'build.core::components.bauhaus.input.divider';
 }

@@ -1,0 +1,1 @@
+@include($node->get('name'), $node->get('data', []))

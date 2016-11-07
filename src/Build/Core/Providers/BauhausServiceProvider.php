@@ -36,9 +36,11 @@ class BauhausServiceProvider extends \Illuminate\Support\ServiceProvider
         'input.email' => Widgets\Input\Email::class,
         'input.color' => Widgets\Input\Color::class,
         'input.radio' => Widgets\Input\Radio::class,
+        'input.label' => Widgets\Input\Label::class,
         'input.select' => Widgets\Input\Select::class,
         'input.hidden' => Widgets\Input\Hidden::class,
         'input.actions' => Widgets\Input\Actions::class,
+        'input.divider' => Widgets\Input\Divider::class,
         'input.checkbox' => Widgets\Input\Checkbox::class,
         'input.password' => Widgets\Input\Password::class,
         'input.textarea' => Widgets\Input\Textarea::class,
@@ -49,7 +51,6 @@ class BauhausServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     protected $contentWidgets = [
         'content.icon' => Widgets\Content\Icon::class,
-        'content.label' => Widgets\Content\Label::class,
         'content.heading' => Widgets\Content\Heading::class,
     ];
 
@@ -61,6 +62,10 @@ class BauhausServiceProvider extends \Illuminate\Support\ServiceProvider
         'navigation.button' => Widgets\Navigation\Button::class,
     ];
 
+    protected $miscWidgets = [
+        'partial' => Widgets\Partial::class,
+    ];
+
     /**
      * Register the service provider.
      */
@@ -68,6 +73,7 @@ class BauhausServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->app->singleton('build.bauhaus.container', Container::class);
 
+        app('build.bauhaus.container')->register($this->miscWidgets);
         app('build.bauhaus.container')->register($this->dataWidgets);
         app('build.bauhaus.container')->register($this->inputWidgets);
         app('build.bauhaus.container')->register($this->contentWidgets);

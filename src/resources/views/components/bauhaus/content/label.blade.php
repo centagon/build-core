@@ -1,1 +1,0 @@
-<span class="bauhaus-label">{!! $node->get('value') !!}</span>
