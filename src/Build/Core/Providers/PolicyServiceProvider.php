@@ -20,6 +20,7 @@ use Build\Core\Policies\WebsitePolicy;
 use Build\Core\Policies\LanguagePolicy;
 use Build\Core\Eloquent\Models\Language;
 use Illuminate\Contracts\Auth\Access\Gate;
+use Build\Core\Policies\Language\DictionaryPolicy;
 use Build\Core\Eloquent\Models\Language\Entry as LanguageEntry;
 use Build\Core\Policies\Language\EntryPolicy as LanguageEntryPolicy;
 
@@ -34,6 +35,7 @@ class PolicyServiceProvider extends \Illuminate\Support\ServiceProvider
         Color::class => ColorPolicy::class,
         Website::class => WebsitePolicy::class,
         Language::class => LanguagePolicy::class,
+        Dictionary::class => DictionaryPolicy::class,
         LanguageEntry::class => LanguageEntryPolicy::class
     ];
 

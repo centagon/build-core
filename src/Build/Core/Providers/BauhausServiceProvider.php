@@ -49,6 +49,7 @@ class BauhausServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     protected $contentWidgets = [
         'content.icon' => Widgets\Content\Icon::class,
+        'content.label' => Widgets\Content\Label::class,
         'content.heading' => Widgets\Content\Heading::class,
     ];
 
