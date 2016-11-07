@@ -130,7 +130,7 @@ class Manager
 
         $this
             ->setMapper($mapper = new Mapper)
-            ->{$this->getMethod()}($mapper);
+            ->{$this->getMethod()}($mapper, $this->getQuery());
 
         (new Builder)->build($mapper);
 
