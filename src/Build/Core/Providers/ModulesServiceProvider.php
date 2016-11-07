@@ -21,7 +21,7 @@ class ModulesServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function boot()
     {
-        $this->app['modules']->register();
+        $this->app['build.modules']->register();
     }
 
     /**
@@ -29,6 +29,6 @@ class ModulesServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('modules', Registrar::class);
+        $this->app->singleton('build.modules', Registrar::class);
     }
 }
