@@ -47,6 +47,10 @@ class Builder
             && (! $query instanceof Collection
             && ! $query instanceof LengthAwarePaginator)) {
 
+            if (is_array($query)) {
+                $query = (object) $query;
+            }
+
             $value = $query->{$mapper->get('name')};
 
             if (is_object($value)) {
