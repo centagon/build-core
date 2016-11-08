@@ -3,34 +3,47 @@
 @section('content')
 
     <div class="row">
-        <div class="small-12 medium-5">
+        <div class="small-12 medium-4 medium-push-4">
 
             <form method="post" action="{{ route('admin.sessions.store') }}">
                 {{ csrf_field() }}
 
-                <section class="branding-bar">
-                    <section class="title text-center">
-                        <h3>{{ config('build.core.title') }}</h3>
+                <div class="panel">
+                    <section class="branding-bar">
+                        <section class="title text-center">
+                            <h3>Centagon Build</h3>
+                        </section>
                     </section>
-                </section>
 
-                <div class="callout">
-                    <input type="email" id="f-email" name="email" placeholder="Email address" required>
-                    <input type="password" id="f-password" name="password" placeholder="Password" required>
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-                    <label>
-                        <input type="hidden" name="remember_me" value="0">
-                        <input type="checkbox" name="remember_me" value="1" checked>
-                        Remember me
-                    </label>
+                    <div class="callout">
+                        <input type="email" id="f-email" name="email" placeholder="Email address" required>
+                        <input type="password" id="f-password" name="password" placeholder="Password" required>
 
-                    <br>
+                        <label>
+                            <input type="hidden" name="remember_me" value="0">
+                            <input type="checkbox" name="remember_me" value="1" checked>
+                            Remember me
+                        </label>
 
-                    <button class="expanded success button">
-                        <span class="material-icons">lock</span>
-                        Sign-in
-                    </button>
+                        <br>
+
+                        <button class="button button--success">
+                            <i class="fa fa-lock"></i>
+                            Sign-in
+                        </button>
+                    </div>
                 </div>
+
             </form>
 
         </div>
