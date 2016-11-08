@@ -12,8 +12,8 @@ namespace Build\Core\Http\Entities\Language;
  */
 
 use Build\Core\Bauhaus\Manager;
-use Build\Core\Bauhaus\Widgets\Content\Heading;
 use Build\Core\Bauhaus\Widgets\Input\Form;
+use Build\Core\Bauhaus\Widgets\Content\Heading;
 use Build\Core\Bauhaus\Widgets\Navigation\Button;
 
 class DictionaryEntity extends Manager

@@ -12,11 +12,11 @@ namespace Build\Core\Http\Entities;
  */
 
 use Build\Core\Bauhaus\Manager;
+use Build\Core\Eloquent\Models\Role;
+use Build\Core\Eloquent\Models\Website;
 use Build\Core\Bauhaus\Widgets\Input\Form;
 use Build\Core\Bauhaus\Widgets\Content\Heading;
 use Build\Core\Bauhaus\Widgets\Navigation\Button;
-use Build\Core\Eloquent\Models\Role;
-use Build\Core\Eloquent\Models\Website;
 
 /**
  * Class UserEntity

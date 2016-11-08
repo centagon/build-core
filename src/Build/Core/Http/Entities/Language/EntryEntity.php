@@ -12,8 +12,8 @@ namespace Build\Core\Http\Entities\Language;
  */
 
 use Build\Core\Bauhaus\Manager;
-use Build\Core\Bauhaus\Widgets\Content\Heading;
 use Build\Core\Bauhaus\Widgets\Input\Form;
+use Build\Core\Bauhaus\Widgets\Content\Heading;
 use Build\Core\Eloquent\Models\Language\Dictionary;
 
 class EntryEntity extends Manager

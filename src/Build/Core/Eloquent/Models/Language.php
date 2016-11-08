@@ -11,9 +11,9 @@ namespace Build\Core\Eloquent\Models;
  * file that was distributed with this source code.
  */
 
-use Build\Core\Support\Facades\Discovery;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Build\Core\Support\Facades\Discovery;
 use Build\Core\Eloquent\Traits\Activatable;
 use Build\Core\Eloquent\Models\Language\Entry;
 use Illuminate\Database\Eloquent\Relations\HasMany;
