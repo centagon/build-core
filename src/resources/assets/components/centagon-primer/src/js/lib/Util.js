@@ -1,6 +1,22 @@
 export class Element {
 
     /**
+     * Determine that the element is "in view".
+     *
+     * @param   {Element}  element
+     *
+     * @returns {boolean}
+     */
+    static inView(element) {
+        const rect = element.getBoundingClientRect();
+
+        return rect.top >= 0
+            && rect.left >= 0
+            && rect.bottom <= Window.height()
+            && rect.right <= Window.width();
+    }
+
+    /**
      * Get a computed style property of an element.
      *
      * @param  {Element}  element
@@ -111,6 +127,47 @@ export class Window {
      */
     static onResize(callback) {
         window.onresize = (e) => callback(e)
+    }
+
+    /**
+     * Get the width of the current window.
+     *
+     * @returns {Number|number}
+     */
+    static width() {
+        return window.innerHeight || document.documentElement.clientHeight;
+    }
+
+    /**
+     * Get the height of the current window.
+     *
+     * @returns {Number|number}
+     */
+    static height() {
+        return window.innerWidth || document.documentElement.clientWidth;
+    }
+
+    /**
+     * Get the center position of the window.
+     *
+     * @param   {number}  w
+     * @param   {number}  h
+     * 
+     * @returns {{top: *, left: *}}
+     */
+    static getCenter(w, h) {
+        const dualScreenLeft = window.screenLeft != 'undefined'
+            ? window.screenLeft
+            : screen.left;
+
+        const dualScreenTop = window.screenTop != 'undefined'
+            ? window.screenTop
+            : screen.top;
+
+        const left = ((Window.width() / 2) - (w / 2)) + dualScreenLeft;
+        const top = ((Window.height() /  2) - (h / 2)) + dualScreenTop;
+
+        return { top, left };
     }
 }
 

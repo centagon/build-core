@@ -23,12 +23,12 @@
   ],
   "moduleType": [],
   "homepage": "https://github.com/centagon/primer",
-  "version": "0.1.4",
-  "_release": "0.1.4",
+  "version": "0.1.5",
+  "_release": "0.1.5",
   "_resolution": {
     "type": "version",
-    "tag": "0.1.4",
-    "commit": "baa5283068826cd9a8f11d15eca76947fab2d279"
+    "tag": "0.1.5",
+    "commit": "9e29f69fa5125620efdc67fc811d35066aa37a30"
   },
   "_source": "https://github.com/centagon/primer.git",
   "_target": "0.1.*",

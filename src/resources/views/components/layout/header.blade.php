@@ -9,10 +9,9 @@
     <meta name="_token" content="{{ csrf_token() }}">
     @stack('meta-extra')
 
-    <title>[{{ strtoupper(app()->environment()) }}] &mdash; {{ config('build.core.title') }}</title>
+    <title>[{{ strtoupper(app()->environment()) }}] &mdash; Centagon Build</title>
 
-    <link rel="shortcut icon" type="image/png" href="{{ asset('packages/build/foundation/favicon.png') }}">
-    <link rel="stylesheet" href="{{ asset('../packages/build/core/src/public/css/core.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/build/core/css/core.css') }}">
     {!! Build\Core\Support\Facades\Asset::styles() !!}
     @stack('stylesheets')
 

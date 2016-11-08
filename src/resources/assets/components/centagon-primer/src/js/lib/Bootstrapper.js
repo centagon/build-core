@@ -18,7 +18,7 @@ export default class {
      * @returns {string}
      */
     get version() {
-        return '0.1.3';
+        return '0.1.4';
     }
 
     /**
