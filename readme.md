@@ -49,7 +49,7 @@ Open the `config/auth.php` file and replace the user model with `Build\Core\Eloq
 	'users' => [
 		'driver' => 'eloquent',
 		'model' => Build\Core\Eloquent\Models\User::class,
-		],
+	],
 ],
 ```
 
