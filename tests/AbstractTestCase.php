@@ -38,4 +38,9 @@ abstract class AbstractTestCase extends AbstractPackageTestCase
     {
         return ServiceProvider::class;
     }
+
+    public function teardown()
+    {
+        $this->artisan('view:clear');
+    }
 }
