@@ -164,4 +164,73 @@ class NestedSetTest extends AbstractTestCase
         $this->assertCount(3, $child2->getNeighborsAndSelf());
         $this->assertCount(3, $child3->getNeighborsAndSelf());
     }
+
+    public function test_is_leaf()
+    {
+        $root = new NestedSet;
+
+        $this->assertTrue($root->isLeaf());
+
+        $root->addChild($child = new NestedSet);
+
+        $this->assertFalse($root->isLeaf());
+        $this->assertTrue($child->isLeaf());
+    }
+
+    public function test_is_root()
+    {
+        $root = new NestedSet;
+
+        $this->assertTrue($root->isRoot());
+
+        $root->addChild($child = new NestedSet);
+
+        $this->assertTrue($root->isRoot());
+        $this->assertFalse($child->isRoot());
+    }
+
+    public function test_is_child()
+    {
+        $root = new NestedSet;
+
+        $this->assertFalse($root->isChild());
+
+        $root->addChild($child = new NestedSet);
+
+        $this->assertFalse($root->isChild());
+        $this->assertTrue($child->isChild());
+    }
+
+    public function test_get_root()
+    {
+        $root = new NestedSet;
+        $root->addChild($child = new NestedSet);
+
+        $this->assertEquals($child->getRoot(), $root);
+    }
+
+    public function test_get_depth()
+    {
+        $root = new NestedSet;
+        $root->addChild($child = new NestedSet);
+
+        $this->assertEquals(0, $root->getDepth());
+        $this->assertEquals(1, $child->getDepth());
+    }
+
+    public function test_get_height()
+    {
+        $root = new NestedSet;
+
+        $this->assertEquals(0, $root->getHeight());
+
+        $root->addChild($child = new NestedSet);
+
+        $this->assertEquals(1, $root->getHeight());
+
+        $root->addChild(new NestedSet);
+        $child->addChild(new NestedSet);
+
+        $this->assertEquals(2, $root->getHeight());
+    }
 }
