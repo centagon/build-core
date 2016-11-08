@@ -41,14 +41,13 @@ if (! function_exists('build_route')) {
      * @param  string  $name
      * @param  array   $parameters
      * @param  bool    $absolute
-     * @param  Illuminate\Routing\Route  $route
      *
      * @return string
      * @deprecated 2.0
      */
-    function build_route($name, $parameters = [], $absolute = true, $route = null)
+    function build_route($name, $parameters = [], $absolute = true)
     {
-        return route(build_route_string($name), $parameters, $absolute, $route);
+        return route(build_route_string($name), $parameters, $absolute);
     }
 }
 
