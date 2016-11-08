@@ -1,6 +1,7 @@
 # Build Core for Laravel
 
 [![Total Downloads](https://poser.pugx.org/centagon/build-core/downloads.png)](https://packagist.org/packages/centagon/build-core)
+[![Build Status](https://img.shields.io/travis/centagon/build-core/master.svg?style=flat-square)](https://travis-ci.org/centagon/build-core)
 [![License](https://poser.pugx.org/centagon/build-core/license.png)](https://packagist.org/packages/centagon/build-core)
 
 ## Getting started
