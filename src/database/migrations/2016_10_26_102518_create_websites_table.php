@@ -18,7 +18,7 @@ class CreateWebsitesTable extends Migration
             $table->unsignedInteger('language_id');
             $table->string('name');
             $table->string('domain');
-            $table->string('color');
+            $table->string('color')->nullable();
             $table->tinyInteger('is_active')->default(0);
             $table->timestamps();
 
