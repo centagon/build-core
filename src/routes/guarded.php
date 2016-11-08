@@ -9,9 +9,7 @@
  * file that was distributed with this source code.
  */
 
-Route::get('/', function () {
-    return view('build.core::screens.dashboard');
-})->name('admin.dashboard');
+Route::get('/', 'DashboardController@index')->name('admin.dashboard');
 
 require __DIR__ . '/guarded/color.php';
 require __DIR__ . '/guarded/language.php';
