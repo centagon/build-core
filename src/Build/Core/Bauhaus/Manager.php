@@ -86,7 +86,9 @@ class Manager
     public function setQuery($query)
     {
         if (!is_callable($query)) {
-            $query = function () use ($query) { return $query; };
+            $query = function () use ($query) {
+                return $query;
+            };
         }
 
         $this->query = new Query($query);
