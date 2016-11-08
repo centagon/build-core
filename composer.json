@@ -1,5 +1,5 @@
 {
-  "name": "build-core",
+  "name": "centagon/build-core",
   "description": "The core of the Build CMS.",
   "keywords": ["cms", "framework", "laravel"],
   "license": "MIT",
