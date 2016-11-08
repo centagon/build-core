@@ -19,7 +19,7 @@ use Illuminate\Auth\Events\Authenticated;
 class MenuServiceProvider extends ServiceProvider
 {
 
-    protected $count = 0;
+    protected $booted = false;
 
     /**
      * Register the service provider.
@@ -38,10 +38,10 @@ class MenuServiceProvider extends ServiceProvider
          * @see https://github.com/laravel/framework/issues/15072
          */
         Event::listen(Authenticated::class, function () {
-            if ($this->count === 0) {
-                $this->count++;
+            if (! $this->booted) {
+                $this->booted = true;
 
-                require __DIR__ . '/../menu.php';
+                require_once __DIR__ . '/../menu.php';
             }
         });
     }
