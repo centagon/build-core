@@ -15,6 +15,7 @@ use Build\Core\Support\Context;
 use Build\Core\Http\Routing\Discovery;
 use Build\Core\Providers\MenuServiceProvider;
 use Build\Core\Providers\AlertServiceProvider;
+use Build\Core\Providers\ColorServiceProvider;
 use Build\Core\Providers\RouteServiceProvider;
 use Build\Core\Providers\AssetServiceProvider;
 use Build\Core\Providers\PolicyServiceProvider;
@@ -77,6 +78,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->app->register(ConsoleServiceProvider::class);
         $this->app->register(ModulesServiceProvider::class);
         $this->app->register(PolicyServiceProvider::class);
+        $this->app->register(ColorServiceProvider::class);
         $this->app->register(AlertServiceProvider::class);
         $this->app->register(AssetServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
