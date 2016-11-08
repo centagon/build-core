@@ -205,7 +205,7 @@ class NestedSet
     public function getNeighbors()
     {
         if (! $this->getParent()) {
-            return [$this];
+            return [];
         }
 
         $neighbors = $this->getNeighborsAndSelf();
@@ -225,7 +225,7 @@ class NestedSet
     public function getNeighborsAndSelf()
     {
         if (! $this->getParent()) {
-            return [];
+            return [$this];
         }
 
         return $this->getParent()->getChildren();
