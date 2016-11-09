@@ -21,4 +21,15 @@ class Text extends Widget
      * @var string
      */
     protected $view = 'build.core::components.bauhaus.input.text';
+
+    /**
+     * Set the field attributes.
+     * @var array
+     */
+    protected $attributes = [
+        'type' => 'text',
+        'name' => ':name',
+        'value' => ':value',
+        'placeholder' => ':placeholder'
+    ];
 }
