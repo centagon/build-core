@@ -21,4 +21,14 @@ class Textarea extends Widget
      * @var string
      */
     protected $view = 'build.core::components.bauhaus.input.textarea';
+
+    /**
+     * Set the field attributes.
+     * @var array
+     */
+    protected $attributes = [
+        'name' => ':name',
+        'id' => ':id',
+        'placeholder' => ':placeholder'
+    ];
 }
