@@ -35,6 +35,18 @@ class Mapper extends NestedSet
     protected $properties = [];
 
     /**
+     * Whether or not the query is paginated.
+     * @var bool
+     */
+    protected $isPaginated = false;
+
+    /**
+     * Holds the possible set of rows from the Builder.
+     * @var mixed
+     */
+    protected $rows;
+
+    /**
      * Magic method getter/setter.
      *
      * @param  string  $method

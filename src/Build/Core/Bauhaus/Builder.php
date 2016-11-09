@@ -75,7 +75,7 @@ class Builder
         $query = app('build.bauhaus.query');
 
         if ($query instanceof LengthAwarePaginator) {
-            $mapper->isPaginator = true;
+            $mapper->isPaginated = true;
         }
 
         foreach ($query as $id => $entry) {
