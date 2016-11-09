@@ -11,10 +11,10 @@ namespace Build\Core;
  * file that was distributed with this source code.
  */
 
-use Build\Core\Providers\EventServiceProvider;
 use Build\Core\Support\Context;
 use Build\Core\Http\Routing\Discovery;
 use Build\Core\Providers\MenuServiceProvider;
+use Build\Core\Providers\EventServiceProvider;
 use Build\Core\Providers\AlertServiceProvider;
 use Build\Core\Providers\ColorServiceProvider;
 use Build\Core\Providers\RouteServiceProvider;
