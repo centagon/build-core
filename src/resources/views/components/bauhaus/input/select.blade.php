@@ -33,10 +33,6 @@
 
 					</select>
 
-					@if ($errors->has($node->get('name')))
-						<span class="form-error is-visible">
-                {{ $errors->first($node->get('name')) }}
-            </span>
-		@endif
+			@include('build.core::components.bauhaus.partials.field-error')
 	</div>
 </div>
