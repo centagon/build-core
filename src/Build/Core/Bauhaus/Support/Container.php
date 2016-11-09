@@ -35,6 +35,8 @@ class Container
      */
     public function register($alias, $namespace = null)
     {
+        // It's possible to pass an array of key/value pairs to this method
+        // for easy and quick registration of multiple widgets at once.
         if (is_array($alias)) {
             foreach ($alias as $key => $namespace) {
                 $this->register($key, $namespace);
