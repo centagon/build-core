@@ -21,4 +21,14 @@ class Password extends Widget
      * @var string
      */
     protected $view = 'build.core::components.bauhaus.input.password';
+
+    /**
+     * Set the field attributes.
+     * @var array
+     */
+    protected $attributes = [
+        'type' => 'password',
+        'name' => ':name',
+        'placeholder' => ':placeholder'
+    ];
 }
