@@ -17,8 +17,16 @@ use Build\Core\Eloquent\Models\LoginAttempt as Attempt;
 class LoginAttempt
 {
 
+    /**
+     * @var mixed
+     */
     protected $event;
 
+    /**
+     * Handle the Login events.
+     *
+     * @param  mixed  $event
+     */
     public function handle($event)
     {
         $this->event = $event;
@@ -32,33 +40,23 @@ class LoginAttempt
         }
     }
 
+    /**
+     * Log the attempt.
+     */
     protected function logAttempt()
     {
         $user = User::where('email', $this->event->credentials['email'])->firstOrFail();
 
-        $login = new Attempt(['type' => Attempt::TYPE_ATTEMPT]);
-        $login->user()->associate($user);
-        $login->save();
-
-        return $login;
+        Attempt::log($user, Attempt::TYPE_ATTEMPT);
     }
 
+    /**
+     * Log the successfully login.
+     */
     protected function logSuccess()
     {
-        $user = $this->event->user->id;
+        $user = User::findOrFail($this->event->user->id);
 
-        $login = new Attempt(['type' => Attempt::TYPE_SUCCESS]);
-        $login->user()->associate($user);
-        $login->save();
-
-        // Try to clean-up the login attempts.
-        Attempt::where([
-                'user_id' => $user,
-                'type' => Attempt::TYPE_ATTEMPT
-            ])
-            ->whereBetween('created_at', [
-                $login->created_at->subSeconds(3), $login->created_at
-            ])
-            ->delete();
+        Attempt::log($user, Attempt::TYPE_SUCCESS);
     }
 }

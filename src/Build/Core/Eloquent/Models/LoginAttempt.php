@@ -40,4 +40,22 @@ class LoginAttempt extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * @param  User  $user
+     * @param  string  $type
+     */
+    public static function log(User $user, $type)
+    {
+        if (! in_array($type, [static::TYPE_ATTEMPT, static::TYPE_SUCCESS])) {
+            throw new \InvalidArgumentException('Cannot log attempts other than `attempt` or `success`.');
+        }
+
+        $attempt = new static([
+            'type' => $type,
+        ]);
+
+        $attempt->user()->associate($user);
+        $attempt->save();
+    }
 }
