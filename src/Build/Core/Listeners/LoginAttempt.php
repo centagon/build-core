@@ -12,7 +12,7 @@ namespace Build\Core\Listeners;
  */
 
 use Build\Core\Eloquent\Models\User;
-use Build\Core\Eloquent\Models\Login;
+use Build\Core\Eloquent\Models\LoginAttempt as Attempt;
 
 class LoginAttempt
 {
@@ -36,7 +36,7 @@ class LoginAttempt
     {
         $user = User::where('email', $this->event->credentials['email'])->firstOrFail();
 
-        $login = new Login(['type' => Login::TYPE_ATTEMPT]);
+        $login = new Attempt(['type' => Attempt::TYPE_ATTEMPT]);
         $login->user()->associate($user);
         $login->save();
 
@@ -47,14 +47,14 @@ class LoginAttempt
     {
         $user = $this->event->user->id;
 
-        $login = new Login(['type' => Login::TYPE_SUCCESS]);
+        $login = new Attempt(['type' => Attempt::TYPE_SUCCESS]);
         $login->user()->associate($user);
         $login->save();
 
         // Try to clean-up the login attempts.
-        Login::where([
+        Attempt::where([
                 'user_id' => $user,
-                'type' => Login::TYPE_ATTEMPT
+                'type' => Attempt::TYPE_ATTEMPT
             ])
             ->whereBetween('created_at', [
                 $login->created_at->subSeconds(3), $login->created_at
