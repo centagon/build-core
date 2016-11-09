@@ -11,12 +11,18 @@ namespace Build\Core\Http\Middleware;
  * file that was distributed with this source code.
  */
 
+use Illuminate\Http\Request;
 use Build\Core\Eloquent\Scope\Registry;
 
 class ScopeState
 {
 
-    public function handle($request, \Closure $next)
+    /**
+     * @param  Request  $request
+     * @param  \Closure $next
+     * @return mixed
+     */
+    public function handle(Request $request, \Closure $next)
     {
         if (($filter = $request->get('clearfilter'))) {
             Registry::getInstance()->clear($filter);
