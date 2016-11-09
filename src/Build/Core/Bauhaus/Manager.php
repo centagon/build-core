@@ -11,9 +11,6 @@ namespace Build\Core\Bauhaus;
  * file that was distributed with this source code.
  */
 
-use Build\Core\Bauhaus\Mapper;
-use Build\Core\Bauhaus\Builder;
-
 class Manager
 {
 
@@ -34,6 +31,12 @@ class Manager
      * @var Mapper
      */
     protected $mapper;
+
+    /**
+     * Holds the path to the view.
+     * @var null|string
+     */
+    protected $view = null;
 
     protected $executed = false;
 
@@ -85,7 +88,7 @@ class Manager
      */
     public function setQuery($query)
     {
-        if (!is_callable($query)) {
+        if (! is_callable($query)) {
             $query = function () use ($query) {
                 return $query;
             };
@@ -146,7 +149,7 @@ class Manager
      */
     public function getView()
     {
-        if (isset($this->view)) {
+        if ($this->view !== null) {
             return $this->view;
         }
 
@@ -156,7 +159,9 @@ class Manager
     /**
      * Render the mapper.
      *
-     * @return View
+     * @param  string|null  $view
+     *
+     * @return string
      */
     public function render($view = null)
     {
@@ -166,6 +171,6 @@ class Manager
 
         return view($view ?: $this->getView())->with([
             'manager' => $this
-        ]);
+        ])->render();
     }
 }

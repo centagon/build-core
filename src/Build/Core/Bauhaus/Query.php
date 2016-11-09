@@ -11,8 +11,6 @@ namespace Build\Core\Bauhaus;
  * file that was distributed with this source code.
  */
 
-use Closure;
-
 /**
  * Class Query
  * @package Build\Entity
@@ -26,9 +24,9 @@ class Query
     protected $query;
 
     /**
-     * @param  Closure  $query
+     * @param  callable  $query
      */
-    public function __construct(Closure $query)
+    public function __construct(callable $query)
     {
         $this->setQuery($query);
     }
