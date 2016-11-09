@@ -12,6 +12,7 @@ namespace Build\Core\Bauhaus\Widgets;
  */
 
 use Build\Core\Bauhaus\Mapper;
+use Illuminate\Support\HtmlString;
 
 /**
  * Class Widget
@@ -19,4 +20,29 @@ use Build\Core\Bauhaus\Mapper;
  */
 abstract class Widget extends Mapper
 {
+
+    protected $attributes = [];
+
+    public function renderedAttributes()
+    {
+        return implode(' ', array_map(function ($key, $value) {
+            if (starts_with($value, ':')) {
+                $value = $this->get($key);
+            }
+
+            if (! starts_with($value, '@')) {
+                $string = sprintf('%s=%s', $key, $value);
+            } else {
+                $modifier = 'get' . studly_case(substr($value, 1)) . 'Modifier';
+
+                if (! method_exists($this, $modifier)) {
+                    throw new \InvalidArgumentException("Cannot reach the `$modifier` modifier.");
+                }
+
+                $string = $this->{$modifier}();
+            }
+
+            return $string;
+        }, array_keys($this->attributes), $this->attributes));
+    }
 }

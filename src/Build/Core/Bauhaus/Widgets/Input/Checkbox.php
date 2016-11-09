@@ -23,15 +23,23 @@ class Checkbox extends Widget
     protected $view = 'build.core::components.bauhaus.input.checkbox';
 
     /**
-     * Get the data tags for this field
+     * Set the field attributes.
+     * @var array
+     */
+    protected $attributes = [
+        'type' => 'checkbox',
+        'name' => ':name',
+        'value' => '1',
+        'checked' => '@checked'
+    ];
+
+    /**
+     * Checked state modifier.
+     *
      * @return string
      */
-    public function getAttributes()
+    protected function getCheckedModifier()
     {
-        $attr = $this->get('attributes', []);
-
-        return implode(' ', array_map(function ($v, $k) {
-            return sprintf('%s="%s"', $k, $v);
-        }, $attr, array_keys($attr)));
+        return old($this->name, $this->value) == 1 ? 'checked' : '';
     }
 }
