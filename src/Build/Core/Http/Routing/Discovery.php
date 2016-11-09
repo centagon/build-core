@@ -58,7 +58,7 @@ class Discovery
             // First try to find exact matches.
             $this->website = Website::activated()
                 ->with([
-                    'language'
+                    'language',
                 ])
                 ->byDomain($url)
                 ->sorted()
@@ -71,7 +71,7 @@ class Discovery
             // will be our current domain. Nothing is returned when nothing is found.
             $sites = Website::activated()
                 ->with([
-                    'language'
+                    'language',
                 ])
                 ->sorted()
                 ->get();
@@ -200,8 +200,6 @@ class Discovery
      */
     public function getSlug()
     {
-        $this->discoverWebsite();
-
         if (! $this->website) {
             return false;
         }
