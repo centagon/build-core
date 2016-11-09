@@ -11,7 +11,6 @@ namespace Build\Core\Bauhaus;
  * file that was distributed with this source code.
  */
 
-use Illuminate\Http\Response;
 use Build\Core\Support\NestedSet;
 
 class Mapper extends NestedSet
@@ -45,6 +44,18 @@ class Mapper extends NestedSet
      * @var mixed
      */
     protected $rows;
+
+    /**
+     * Holds the current row.
+     * @var mixed
+     */
+    protected $row;
+
+    /**
+     * Holds the path to the view.
+     * @var null|string
+     */
+    protected $view = null;
 
     /**
      * Magic method getter/setter.
@@ -279,7 +290,7 @@ class Mapper extends NestedSet
      */
     public function getView()
     {
-        if (isset($this->view)) {
+        if ($this->view !== null) {
             return $this->view;
         }
 
@@ -291,7 +302,7 @@ class Mapper extends NestedSet
     /**
      * Get the rendered view.
      *
-     * @return Response
+     * @return string
      */
     public function render()
     {
