@@ -42,10 +42,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         ], 'migrations');
 
         $this->publishes([
-            __DIR__ . '/../../database/seeds' => database_path('seeds')
-        ], 'seeders');
-
-        $this->publishes([
             __DIR__ . '/../../resources/views' => resource_path('views/vendor/core')
         ], 'views');
 
