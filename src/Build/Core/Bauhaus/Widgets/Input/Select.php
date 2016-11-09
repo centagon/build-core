@@ -66,7 +66,7 @@ class Select extends Widget
             $default = $this->get('selected', null);
         }
 
-        return old( $this->get('name'), $this->get('value', $default));
+        return old($this->get('name'), $this->get('value', $default));
     }
 
     /**

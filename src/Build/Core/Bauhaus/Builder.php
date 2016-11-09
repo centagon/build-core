@@ -44,9 +44,9 @@ class Builder
         }
 
         if ($mapper->has('name')
-            && (! $query instanceof Collection
-            && ! $query instanceof LengthAwarePaginator)) {
-
+            && (! $query instanceof Collection && ! $query instanceof LengthAwarePaginator)) {
+            // It's possible to throw in an array as a query so when
+            // that happens, we need to convert it to an object.
             if (is_array($query)) {
                 $query = (object) $query;
             }

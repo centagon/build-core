@@ -96,7 +96,7 @@ class UserEntity extends Manager
                 'label' => 'Password'
             ]);
 
-            $form->add('input.password',[
+            $form->add('input.password', [
                 'name'  => 'password_confirmation',
                 'label' => 'Confirm password'
             ]);
@@ -145,7 +145,7 @@ class UserEntity extends Manager
                     'label' => 'New password'
                 ]);
 
-                $form->add('input.password',[
+                $form->add('input.password', [
                     'name' => 'password_confirmation',
                     'label' => 'Confirm new password'
                 ]);

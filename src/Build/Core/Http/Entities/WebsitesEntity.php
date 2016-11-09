@@ -36,22 +36,8 @@ class WebsitesEntity extends Manager
         $mapper->add($heading);
 
         $mapper->add('data.table', function ($table) {
-//            if (request()->user()->can('delete-website')) {
-                $table->selectable(true);
-//                $table->routes([
-//                    'remove' => route('admin.websites.remove'),
-//                    'destroy' => route('admin.websites.destroy', 0)
-//                ]);
-//            }
-//
-//            $table->add('box.websitecolor', function ($color) {
-//                $color->name('color');
-//                $color->label('');
-//                $color->websitecolorbox(function ($color) {
-//                    return $color->getRow()->color;
-//                });
-//            });
-//
+            $table->selectable(true);
+
             $table->add('navigation.link', function ($link) {
                 $link
                     ->name('name')

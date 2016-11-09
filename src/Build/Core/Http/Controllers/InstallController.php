@@ -23,6 +23,8 @@ use Illuminate\Contracts\Filesystem\Filesystem;
 class InstallController extends Controller
 {
 
+    protected $files;
+
     /**
      * @param  Filesystem  $files
      */

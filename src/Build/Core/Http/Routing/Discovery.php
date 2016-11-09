@@ -89,7 +89,6 @@ class Discovery
 
     public function discoverLanguage()
     {
-
     }
 
     public function language()
@@ -103,18 +102,22 @@ class Discovery
 
     public function discoverUserWebsites()
     {
-        $user = request()->user();
-        if ( !$user ) return [];
+        if (! $user = request()->user()) {
+            return [];
+        }
 
         // Check if the user has a default Role ; If so, he has access to any website
-        if ( $user->getRole(null) ) {
+        if ($user->getRole(null)) {
             $websites = Website::all();
         } else {
             // Filter the websites that the user has access to
-            $websites = Website::all()->filter( function ($value) use ($user) {
-                return ($user->getRole($value->id, true) ? true:false);
+            $websites = Website::all()->filter(function ($value) use ($user) {
+                return $user->getRole($value->id, true)
+                    ? true
+                    : false;
             });
         }
+
         return $websites;
     }
 
@@ -142,22 +145,28 @@ class Discovery
      */
     public function discoverBackendWebsite($fallback = null)
     {
-        return $this->backendWebsite($fallback = null);
+        return $this->backendWebsite($fallback);
     }
 
+    /**
+     * @return null|Website
+     */
     public function discoverBackendWebsiteFromInput()
     {
         if (($siteId = request()->get('backend.website_id'))) {
-            return Website::where('id', $siteId )->first();
+            return Website::where('id', $siteId)->first();
         }
 
         return null;
     }
 
-    public function discoverBackendWebsiteFromSession() {
-
+    /**
+     * @return null|Website
+     */
+    public function discoverBackendWebsiteFromSession()
+    {
         if (($siteId = session('backend.website_id'))) {
-            return Website::where('id', $siteId )->first();
+            return Website::where('id', $siteId)->first();
         }
 
         return null;

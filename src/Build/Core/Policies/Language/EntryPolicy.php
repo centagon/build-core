@@ -27,9 +27,9 @@ class EntryPolicy extends Policy
      * @var array
      */
     protected $capabilities = [
-        'index' => ['admin','editor'],
-        'create' => ['admin','editor'],
-        'edit' => ['admin','editor'],
+        'index' => ['admin', 'editor'],
+        'create' => ['admin', 'editor'],
+        'edit' => ['admin', 'editor'],
         'delete' => ['admin', 'editor']
     ];
 }

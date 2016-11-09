@@ -19,9 +19,9 @@ class ColorPolicy extends Policy
      * @var array
      */
     protected $capabilities = [
-        'index'    => ['admin','editor'],
-        'create'   => [],
-        'edit'     => [],
-        'delete'   => [],
+        'index' => ['admin', 'editor'],
+        'create' => [],
+        'edit' => [],
+        'delete' => [],
     ];
 }

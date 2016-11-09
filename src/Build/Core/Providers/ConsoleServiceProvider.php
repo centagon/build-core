@@ -13,5 +13,4 @@ namespace Build\Core\Providers;
 
 class ConsoleServiceProvider extends \Illuminate\Support\ServiceProvider
 {
-    
 }

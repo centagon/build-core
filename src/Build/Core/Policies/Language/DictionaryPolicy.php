@@ -21,10 +21,10 @@ class DictionaryPolicy extends Policy
      * @var array
      */
     protected $capabilities = [
-        'index' => ['admin','editor'],
+        'index' => ['admin', 'editor'],
         'create' => [],
         'edit' => ['admin'],
         'delete' => [],
-        'clearcache' => ['admin','editor'],
+        'clearcache' => ['admin', 'editor'],
     ];
 }
