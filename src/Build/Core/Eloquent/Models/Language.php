@@ -12,14 +12,13 @@ namespace Build\Core\Eloquent\Models;
  */
 
 use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Build\Core\Support\Facades\Discovery;
 use Build\Core\Eloquent\Traits\Activatable;
 use Build\Core\Eloquent\Models\Language\Entry;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Language extends Model
+class Language extends \Build\Core\Eloquent\Model
 {
 
     use Activatable;

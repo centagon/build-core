@@ -11,9 +11,7 @@ namespace Build\Core\Eloquent\Models;
  * file that was distributed with this source code.
  */
 
-use Illuminate\Database\Eloquent\Model;
-
-class LoginAttempt extends Model
+class LoginAttempt extends \Build\Core\Eloquent\Model
 {
 
     const TYPE_ATTEMPT = 'attempt';

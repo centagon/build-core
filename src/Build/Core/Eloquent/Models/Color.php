@@ -11,10 +11,9 @@ namespace Build\Core\Eloquent\Models;
  * file that was distributed with this source code.
  */
 
-use Illuminate\Database\Eloquent\Model;
 use Build\Core\Support\Color as Support;
 
-class Color extends Model
+class Color extends \Build\Core\Eloquent\Model
 {
 
     /**

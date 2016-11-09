@@ -11,11 +11,10 @@ namespace Build\Core\Eloquent\Models\Language;
  * file that was distributed with this source code.
  */
 
-use Illuminate\Database\Eloquent\Model;
 use Build\Core\Eloquent\Models\Language;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Entry extends Model
+class Entry extends \Build\Core\Eloquent\Model
 {
 
     /**

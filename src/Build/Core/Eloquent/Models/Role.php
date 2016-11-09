@@ -11,9 +11,7 @@ namespace Build\Core\Eloquent\Models;
  * file that was distributed with this source code.
  */
 
-use Illuminate\Database\Eloquent\Model;
-
-class Role extends Model
+class Role extends \Build\Core\Eloquent\Model
 {
 
     // Available user roles.

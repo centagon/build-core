@@ -11,9 +11,7 @@ namespace Build\Core\Eloquent\Models\Language;
  * file that was distributed with this source code.
  */
 
-use Illuminate\Database\Eloquent\Model;
-
-class Dictionary extends Model
+class Dictionary extends \Build\Core\Eloquent\Model
 {
 
     /**

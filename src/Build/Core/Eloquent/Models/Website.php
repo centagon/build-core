@@ -12,10 +12,9 @@ namespace Build\Core\Eloquent\Models;
  */
 
 use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Build\Core\Eloquent\Traits\Activatable;
 
-class Website extends Model
+class Website extends \Build\Core\Eloquent\Model
 {
 
     use Activatable;
