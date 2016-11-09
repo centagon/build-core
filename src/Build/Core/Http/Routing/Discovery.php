@@ -87,8 +87,13 @@ class Discovery
         return $this->website;
     }
 
+    /**
+     * @deprecated 2.0.0
+     * @return mixed|null
+     */
     public function discoverLanguage()
     {
+        return $this->language();
     }
 
     public function language()
