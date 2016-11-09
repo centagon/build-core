@@ -15,6 +15,11 @@ class Filter
 {
 
     /**
+     * @var Registry
+     */
+    protected $registry;
+
+    /**
      * @var string
      */
     protected $label;
@@ -39,8 +44,10 @@ class Filter
      * @param  string  $label
      * @param  string|null  $icon
      */
-    public function __construct($method, $label, $icon = null)
+    public function __construct(Registry $registry, $method, $label, $icon = null)
     {
+        $this->registry = $registry;
+
         $this->setMethod($method);
         $this->setLabel($label);
         $this->setIcon($icon);
