@@ -85,6 +85,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
     /**
      * Register the Build aliases.
+     * @deprecated 2.0.0
      */
     protected function registerAliases()
     {
