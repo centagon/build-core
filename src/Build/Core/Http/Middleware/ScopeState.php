@@ -18,27 +18,15 @@ class ScopeState
 {
 
     /**
-     * @var Registry
-     */
-    protected $registry;
-
-    /**
-     * @param  Registry  $registry
-     */
-    public function __construct(Registry $registry)
-    {
-        $this->registry = $registry;
-    }
-
-    /**
-     * @param  Request  $request
-     * @param  \Closure $next
-     * @return mixed
+     * @param  Request   $request
+     * @param  \Closure  $next
+     *
+     * @return Response
      */
     public function handle(Request $request, \Closure $next)
     {
         if (($filter = $request->get('clearfilter'))) {
-            $this->registry->clear($filter);
+            Registry::getInstance()->clear($filter);
         }
 
         if (($filter = $request->get('setfilter'))) {
@@ -51,7 +39,7 @@ class ScopeState
                 $value = $request->get('filtervalue');
             }
 
-            $this->registry->set($filter, $value);
+            Registry::getInstance()->set($filter, $value);
         }
 
         return $next($request);
