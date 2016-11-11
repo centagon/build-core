@@ -19,6 +19,6 @@ class Discovery extends \Illuminate\Support\Facades\Facade
      */
     public static function getFacadeAccessor()
     {
-        return 'build.cms.discovery';
+        return 'build.core.discovery';
     }
 }

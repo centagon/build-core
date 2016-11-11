@@ -89,7 +89,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     protected function registerAliases()
     {
-        $this->app->singleton('build.cms.discovery', Discovery::class);
+        $this->app->singleton('build.core.discovery', Discovery::class);
         $this->app->singleton('build.context', Context::class);
     }
 
