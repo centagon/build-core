@@ -25,14 +25,12 @@ function createLeftMenu($menu)
 
     $menu->structure->add('Websites', route('admin.websites.index'));
     $menu->structure->add('Groups', '#');
+    $menu->structure->add('Selectables', '#');
 
     $menu->design->add('Colors', route('admin.colors.index'));
     $menu->design->add('Assets', '#');
 
     $menu->content->add('Language', route('admin.languages.index'));
-    $menu->content->add('Downloads', '#');
-
-    $menu->processes->add('Selectables', '#');
 
     $menu->administration->add('Queue', '#');
     $menu->administration->add('Modules', route('admin.modules.index'));
