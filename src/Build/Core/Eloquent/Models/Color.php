@@ -58,6 +58,11 @@ class Color extends \Build\Core\Eloquent\Model
         return Support::toRgb($color);
     }
 
+    /**
+     * Get the best contrast for the current color.
+     *
+     * @return string
+     */
     public function getBestContrastAttribute()
     {
         return Support::bestContrast($this->attributes['color']);

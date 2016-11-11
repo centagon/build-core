@@ -12,8 +12,10 @@ namespace Build\Core\Providers;
  */
 
 use Illuminate\Auth\Events\Login;
+use Build\Core\Listeners\ModelSaved;
 use Build\Core\Listeners\LoginAttempt;
 use Illuminate\Auth\Events\Attempting;
+use Build\Core\Events\ModelSavedEvent;
 
 class EventServiceProvider extends \Illuminate\Foundation\Support\Providers\EventServiceProvider
 {
@@ -29,6 +31,10 @@ class EventServiceProvider extends \Illuminate\Foundation\Support\Providers\Even
 
         Login::class => [
             LoginAttempt::class
+        ],
+
+        ModelSavedEvent::class => [
+            ModelSaved::class
         ]
     ];
 }

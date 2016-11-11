@@ -12,6 +12,7 @@ namespace Build\Core\Eloquent;
  */
 
 use Illuminate\Database\Query\Builder;
+use Build\Core\Events\ModelSavedEvent;
 use Build\Core\Eloquent\Scope\Registry;
 
 class Model extends \Illuminate\Database\Eloquent\Model
@@ -39,5 +40,15 @@ class Model extends \Illuminate\Database\Eloquent\Model
                 view()->share('scope_result', $result);
             }
         }
+    }
+
+    /**
+     * Handle boot events.
+     */
+    public static function boot()
+    {
+        static::saved(function ($model) {
+            event(new ModelSavedEvent($model));
+        });
     }
 }
