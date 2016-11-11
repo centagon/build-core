@@ -12,6 +12,7 @@ namespace Build\Core\Http\Routing;
  */
 
 use Build\Core\Eloquent\Models\Website;
+use Illuminate\Database\Eloquent\Collection;
 
 class Discovery
 {
@@ -37,21 +38,16 @@ class Discovery
     protected $backendLanguage;
 
     /**
-     * @deprecated 2.0.0
-     * @return Website|null
-     */
-    public function discoverWebsite()
-    {
-        return $this->website();
-    }
-
-    /**
      * Get the current website.
      *
      * @return Website|null
      */
     public function website()
     {
+        if ($this->website) {
+            return $this->website;
+        }
+
         $url = $this->getUrl();
 
         try {
@@ -88,14 +84,10 @@ class Discovery
     }
 
     /**
-     * @deprecated 2.0.0
-     * @return mixed|null
+     * Get the current language.
+     *
+     * @return Language|null
      */
-    public function discoverLanguage()
-    {
-        return $this->language();
-    }
-
     public function language()
     {
         if (! $this->website) {
@@ -105,7 +97,12 @@ class Discovery
         return $this->website->language;
     }
 
-    public function discoverUserWebsites()
+    /**
+     * Get the websites that the user has access to.
+     *
+     * @return Collection|array
+     */
+    public function userWebsites()
     {
         if (! $user = request()->user()) {
             return [];
@@ -126,6 +123,13 @@ class Discovery
         return $websites;
     }
 
+    /**
+     * Retreive the current website the user is logged into.
+     *
+     * @param  Website|null  $fallback
+     *
+     * @return Website|null
+     */
     public function backendWebsite($fallback = null)
     {
         if ($this->backendWebsite) {
@@ -141,16 +145,6 @@ class Discovery
         }
 
         return $fallback;
-    }
-
-    /**
-     * @param null $fallback
-     * @return Website|null
-     * @deprecated 2.0
-     */
-    public function discoverBackendWebsite($fallback = null)
-    {
-        return $this->backendWebsite($fallback);
     }
 
     /**
