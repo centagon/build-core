@@ -5,6 +5,10 @@ filter:
         - "src/resources/*"
 checks:
     php: true
-    javascript: true
+    javascript: false
 coding_style:
-    php: {  }
+    php:
+      spaces:
+        around_operators:
+            concatenation: true
+            negation: true
