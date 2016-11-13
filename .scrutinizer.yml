@@ -5,7 +5,6 @@ filter:
         - "src/resources/*"
 checks:
     php: true
-    javascript: false
 coding_style:
     php:
       spaces:
