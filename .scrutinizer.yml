@@ -1,9 +1,10 @@
-tools:
-  php_code_sniffer:
-    config:
-      standard: "PSR2"
-
 filter:
-  excluded_paths:
-    - "src/database/migrations/*"
-    - "src/resources/*"
+    excluded_paths:
+        - 'tests/*'
+        - "src/database/migrations/*"
+        - "src/resources/*"
+checks:
+    php: true
+    javascript: true
+coding_style:
+    php: {  }
