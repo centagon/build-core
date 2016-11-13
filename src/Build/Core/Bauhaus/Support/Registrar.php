@@ -11,7 +11,7 @@ namespace Build\Core\Bauhaus\Support;
  * file that was distributed with this source code.
  */
 
-class Container
+class Registrar
 {
 
     /**

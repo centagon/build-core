@@ -12,7 +12,7 @@ namespace Build\Core\Providers;
  */
 
 use Build\Core\Bauhaus\Widgets;
-use Build\Core\Bauhaus\Support\Container;
+use Build\Core\Bauhaus\Support\Registrar;
 
 class BauhausServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -71,12 +71,12 @@ class BauhausServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('build.bauhaus.container', Container::class);
+        $this->app->singleton('build.bauhaus.container', Registrar::class);
 
-        app('build.bauhaus.container')->register($this->miscWidgets);
-        app('build.bauhaus.container')->register($this->dataWidgets);
-        app('build.bauhaus.container')->register($this->inputWidgets);
-        app('build.bauhaus.container')->register($this->contentWidgets);
-        app('build.bauhaus.container')->register($this->navigationWidgets);
+        app('build.bauhaus.registrar')->register($this->miscWidgets);
+        app('build.bauhaus.registrar')->register($this->dataWidgets);
+        app('build.bauhaus.registrar')->register($this->inputWidgets);
+        app('build.bauhaus.registrar')->register($this->contentWidgets);
+        app('build.bauhaus.registrar')->register($this->navigationWidgets);
     }
 }
