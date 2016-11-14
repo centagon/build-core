@@ -13,6 +13,7 @@ namespace Build\Core\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
 
 class Installed
 {
@@ -21,7 +22,7 @@ class Installed
      * @param  Request   $request
      * @param  \Closure  $next
      *
-     * @return Response
+     * @return Response|RedirectResponse
      */
     public function handle($request, \Closure $next)
     {

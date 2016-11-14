@@ -11,6 +11,10 @@ namespace Build\Core\Http\Middleware;
  * file that was distributed with this source code.
  */
 
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
+
 class Authenticate
 {
 
@@ -18,7 +22,7 @@ class Authenticate
      * @param  Request   $request
      * @param  \Closure  $next
      *
-     * @return RedirectResponse|Response
+     * @return Response|RedirectResponse
      */
     public function handle($request, \Closure $next)
     {

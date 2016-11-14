@@ -77,7 +77,7 @@ class Website extends \Build\Core\Eloquent\Model
     {
         $domain = sprintf('http%s://%s', request()->isSecure() ? 's' : '', trim($this->domain, '/'));
 
-        if ($slug) {
+        if ($slug !== null) {
             $domain.= '/' . $slug;
         }
 

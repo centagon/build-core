@@ -30,7 +30,7 @@ class ResourceRegistrar extends \Illuminate\Routing\ResourceRegistrar
         $parts = explode('.', $group);
         $first = array_shift($parts);
 
-        if ($parts) {
+        if ( ! empty($parts)) {
             $group = $first;
 
             $resource = implode('.', $parts) . '.' . $resource;
