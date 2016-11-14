@@ -153,7 +153,7 @@ class Registrar
      * Set the given module property values.
      *
      * @param  string  $property
-     * @param  string  $value
+     * @param  string|boolean  $value
      *
      * @return int
      */
