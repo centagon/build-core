@@ -72,14 +72,4 @@ class Entry extends \Build\Core\Eloquent\Model
             app('cache')->forget(sprintf('build.language.%s.%s', $row->locale, $row->entry));
         }
     }
-
-    /**
-     * Boot the model.
-     */
-    protected static function boot()
-    {
-        self::saving(function ($model) {
-            $model->invalidateCaches();
-        });
-    }
 }
