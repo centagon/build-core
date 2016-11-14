@@ -92,7 +92,7 @@ class Registrar
     /**
      * @param  string  $slug
      *
-     * @return mixed
+     * @return Collection
      */
     public function find($slug)
     {
@@ -153,9 +153,9 @@ class Registrar
      * Set the given module property values.
      *
      * @param  string  $property
-     * @param  mixed   $value
+     * @param  mixed  $value
      *
-     * @return bool
+     * @return int
      */
     public function set($property, $value)
     {
@@ -376,7 +376,7 @@ class Registrar
     /**
      * Update cached repository of module information.
      *
-     * @return bool
+     * @return int
      */
     public function updateCache()
     {

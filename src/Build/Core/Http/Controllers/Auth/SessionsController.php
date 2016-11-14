@@ -69,7 +69,7 @@ class SessionsController extends Controller
     }
 
     /**
-     * @return Response
+     * @return RedirectResponse
      */
     public function destroy()
     {

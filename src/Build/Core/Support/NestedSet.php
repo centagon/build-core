@@ -299,7 +299,7 @@ class NestedSet
      * Return the height of the tree
      * whose root is this node.
      *
-     * @return int|mixed
+     * @return int
      */
     public function getHeight()
     {

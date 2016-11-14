@@ -88,7 +88,7 @@ class Registry
     }
 
     /**
-     * @return Collection|mixed
+     * @return Collection
      */
     public function filters()
     {

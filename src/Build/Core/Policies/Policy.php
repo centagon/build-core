@@ -74,7 +74,7 @@ abstract class Policy
      *
      * @param  null|string  $ability
      *
-     * @return mixed|string
+     * @return string
      */
     protected function getPolicyName($ability = null)
     {

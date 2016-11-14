@@ -16,7 +16,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\RedirectResponse;
 use Build\Core\Eloquent\Models\Website;
-use Build\Core\Http\Requests\SpringboardRequest;
 
 class SpringboardController extends Controller
 {
@@ -32,7 +31,7 @@ class SpringboardController extends Controller
         } else {
             // Filter the websites that the user has access to
             $websites = Website::all()->filter(function ($value) use ($guard) {
-                return ($guard->user()->getRole($value->id, true) ? true:false);
+                return ($guard->user()->getRole($value->id, true) ? true : false);
             });
         }
 

@@ -89,6 +89,11 @@ class InstallController extends Controller
         return redirect()->route('admin.dashboard');
     }
 
+    /**
+     * @param  InstallRequest  $request
+     *
+     * @return bool
+     */
     protected function checkDatabaseConnection($request)
     {
         $env = [];

@@ -15,7 +15,7 @@ class Role extends \Build\Core\Eloquent\Model
 {
 
     // Available user roles.
-    const SUPER_ADMINISTRATORS  = 'superadmin';
+    const SUPER_ADMINISTRATORS = 'superadmin';
     const ADMINISTRATORS = 'admin';
     const EDITORS = 'editor';
     const AUTHORS = 'author';

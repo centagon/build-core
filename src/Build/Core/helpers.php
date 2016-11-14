@@ -125,7 +125,7 @@ if ( ! function_exists('try_method')) {
     /**
      * Test the existence of a certain method and try calling it when it does exist.
      *
-     * @param  mixed   $instance
+     * @param  \Build\Core\Eloquent\Model  $instance
      * @param  string  $method
      * @param  array   $parameters
      */

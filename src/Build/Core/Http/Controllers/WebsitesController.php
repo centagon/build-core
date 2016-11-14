@@ -12,7 +12,6 @@ namespace Build\Core\Http\Controllers;
  */
 
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use Build\Core\Eloquent\Models\Website;
