@@ -179,42 +179,5 @@ class UserEntity extends Manager
                 $form->add('input.actions');
 
             });
-//
-//        $mapper->add('form', function ($form) use ($query) {
-//            $form
-//                ->action(route('admin.users.update', $query))
-//                ->method(Form::METHOD_PUT);
-//
-//            $form->add('input.text', [
-//                'name' => 'name',
-//                'label' => 'The full name of the user'
-//            ]);
-//
-//            $form->add('input.email', [
-//                'name' => 'email',
-//                'label' => 'The users email address'
-//            ]);
-//
-//            $form->add('divider');
-//
-//            $form->add('input.password', [
-//                'name' => 'password',
-//                'label' => 'New password'
-//            ]);
-//
-//            $form->add('input.password',[
-//                'name' => 'password_confirmation',
-//                'label' => 'Confirm new password'
-//            ]);
-//
-//            $form->add('partial', [
-//                'name' => 'build.core::screens.users.partials.opensidebar',
-//                'data' => ['query' => $query]
-//            ]);
-//
-//            $form->add('input.actions');
-//        })->add('partial', [
-//            'name' => 'build.core::screens.users.partials.sidebar',
-//        ]);
     }
 }

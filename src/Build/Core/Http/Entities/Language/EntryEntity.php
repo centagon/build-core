@@ -19,7 +19,7 @@ use Build\Core\Eloquent\Models\Language\Dictionary;
 class EntryEntity extends Manager
 {
 
-    public function index($mapper, $query)
+    public function index($mapper)
     {
         $language = request()->route('language');
 

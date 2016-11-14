@@ -191,7 +191,7 @@ class NestedSet
      *
      * @return array
      */
-    public function getAncestorsAndSelf($columns = [])
+    public function getAncestorsAndSelf()
     {
         return array_merge($this->getAncestors(), [$this]);
     }

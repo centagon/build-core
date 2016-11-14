@@ -392,10 +392,6 @@ class Registrar
             $manifest = $temp->merge(collect($this->getManifest($module)));
 
             $modules->put($module, $manifest);
-
-//            $manifest = collect($this->getManifest($module));
-//
-//            $modules->put($module, collect($cache->get($module))->merge($manifest));
         });
 
         $modules->each(function ($module) {

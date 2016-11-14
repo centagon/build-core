@@ -41,7 +41,7 @@ class UserPolicy extends Policy
      */
     public function updateRole(User $user, array $parameters)
     {
-        list($target, $role, $website) = $parameters;
+        list(, $role, $website) = $parameters;
 
         return ($user->isSuperAdmin() || ($user->isAdmin($website) && ($role !== Role::SUPER_ADMINISTRATORS)));
     }
