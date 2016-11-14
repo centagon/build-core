@@ -50,7 +50,7 @@ class Uuid
 
         // Convert namespace Uuid to bits
         for ($i = 0; $i < strlen($nsHex); $i += 2) {
-            $nsString.= chr(hexdec($nsHex[$i] . $nsHex[$i + 1]));
+            $nsString .= chr(hexdec($nsHex[$i] . $nsHex[$i + 1]));
         }
 
         // Calculate the hash value
@@ -149,7 +149,7 @@ class Uuid
 
         // 16 bits for "time_hi_and_version",
         // four most significant bits holds version number 5
-        $timeHi  = (hexdec(substr($hash, 12, 4)) & 0x0fff) | 0x5000;
+        $timeHi = (hexdec(substr($hash, 12, 4)) & 0x0fff) | 0x5000;
 
         // 16 bits, 8 bits for "clk_seq_hi_res",
         // 8 bits for "clk_seq_low",

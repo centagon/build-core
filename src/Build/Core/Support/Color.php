@@ -76,6 +76,11 @@ class Color
         return 'rgb(' . implode(', ', [$r, $g, $b]) . ')';
     }
 
+    /**
+     * @param  string  $color
+     *
+     * @return array
+     */
     public static function toRgbArray($color)
     {
         $color = explode(',', str_replace(['rgba', 'rgb', '(', ')'], '', $color));
