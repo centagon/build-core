@@ -25,7 +25,7 @@ class Installed
      */
     public function handle($request, \Closure $next)
     {
-        if (! app('files')->exists(storage_path('app/install'))) {
+        if ( ! app('files')->exists(storage_path('app/install'))) {
             return redirect()->route('install');
         }
 

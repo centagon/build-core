@@ -43,7 +43,7 @@ abstract class Widget extends Mapper
                 $modifier = 'get' . studly_case(substr($value, 1)) . 'Modifier';
 
                 // Can we call the modifier method on the field?
-                if (! method_exists($this, $modifier)) {
+                if ( ! method_exists($this, $modifier)) {
                     throw new \InvalidArgumentException("Cannot reach the `$modifier` modifier.");
                 }
 

@@ -16,7 +16,7 @@ class Color
 
     public static function bestContrast($color)
     {
-        if (! self::isRgb($color)) {
+        if ( ! self::isRgb($color)) {
             $color = self::toRgb($color, true);
         }
 
@@ -99,7 +99,7 @@ class Color
             return $color;
         }
 
-        if (! is_array($color)) {
+        if ( ! is_array($color)) {
             $color = array_values(self::toRgbArray($color));
         }
 

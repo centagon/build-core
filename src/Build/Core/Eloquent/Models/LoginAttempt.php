@@ -45,7 +45,7 @@ class LoginAttempt extends \Build\Core\Eloquent\Model
      */
     public static function log(User $user, $type)
     {
-        if (! in_array($type, [static::TYPE_ATTEMPT, static::TYPE_SUCCESS])) {
+        if ( ! in_array($type, [static::TYPE_ATTEMPT, static::TYPE_SUCCESS])) {
             throw new \InvalidArgumentException('Cannot log attempts other than `attempt` or `success`.');
         }
 

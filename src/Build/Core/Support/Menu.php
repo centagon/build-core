@@ -23,7 +23,7 @@ class Menu
 
     public function load($filename)
     {
-        if (! file_exists($filename)) {
+        if ( ! file_exists($filename)) {
             throw new \RuntimeException('Unable to load ' . $filename);
         }
 

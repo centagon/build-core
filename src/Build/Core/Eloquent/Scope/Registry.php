@@ -100,7 +100,7 @@ class Registry
      */
     public static function getInstance()
     {
-        if (! self::$instance) {
+        if ( ! self::$instance) {
             self::$instance = app(static::class);
         }
 

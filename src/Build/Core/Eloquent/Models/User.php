@@ -81,7 +81,7 @@ class User extends Authenticatable
     public function removeRole($role, $website = null)
     {
         // Determine if the user has this role.
-        if (! $this->hasRole($role, $website, true)) {
+        if ( ! $this->hasRole($role, $website, true)) {
             return;
         }
 
@@ -101,7 +101,7 @@ class User extends Authenticatable
      */
     public function hasRole($names, $website = null, $exact = false)
     {
-        if (! is_array($names)) {
+        if ( ! is_array($names)) {
             $names = [$names];
         }
 
@@ -116,7 +116,7 @@ class User extends Authenticatable
             ->where(function ($query) use ($website, $exact) {
                 $query->where('website_id', $website);
 
-                if (! $exact) {
+                if ( ! $exact) {
                     $query->orWhereNull('website_id');
                 }
             })->count();
@@ -160,7 +160,7 @@ class User extends Authenticatable
     {
         $role = $this->roles()->where('website_id', $website)->first();
 
-        if (! $role && ! $exact) {
+        if ( ! $role && ! $exact) {
             $role = $this->roles()->whereNull('website_id')->first();
         }
 

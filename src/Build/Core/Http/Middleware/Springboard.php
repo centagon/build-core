@@ -32,7 +32,7 @@ class Springboard
         if (request()->segment(2) !== 'springboard') {
             $website = session('backend.website_id');
 
-            if (! $website) {
+            if ( ! $website) {
                 return redirect()->intended(route('admin.springboard.index'));
             }
         }

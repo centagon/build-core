@@ -360,7 +360,7 @@ class Registrar
     {
         $path = $this->getCachePath();
 
-        if (! $this->files->exists($path)) {
+        if ( ! $this->files->exists($path)) {
             $content = json_encode([], JSON_PRETTY_PRINT);
 
             $this->files->put($path, $content);
@@ -401,11 +401,11 @@ class Registrar
         $modules->each(function ($module) {
             $module->put('id', crc32($module->get('slug')));
 
-            if (! $module->has('enabled')) {
+            if ( ! $module->has('enabled')) {
                 $module->put('enabled', config('build.core.modules-enabled', true));
             }
 
-            if (! $module->has('order')) {
+            if ( ! $module->has('order')) {
                 $module->put('order', 9001);
             }
 

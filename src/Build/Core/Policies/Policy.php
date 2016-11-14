@@ -54,7 +54,7 @@ abstract class Policy
     public function defineAbilities()
     {
         // Did we define the policy capabilities?
-        if (! property_exists($this, 'capabilities')) {
+        if ( ! property_exists($this, 'capabilities')) {
             throw new \InvalidArgumentException('No policy capabilities defined on ' . get_class($this));
         }
 

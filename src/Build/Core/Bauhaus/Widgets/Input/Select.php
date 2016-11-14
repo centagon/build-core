@@ -58,11 +58,11 @@ class Select extends Widget
      */
     public function getOld($default = null)
     {
-        if (! $default) {
+        if ( ! $default) {
             $default = $this->isMultiple() ? [] : null;
         }
 
-        if (! $default) {
+        if ( ! $default) {
             $default = $this->get('selected', null);
         }
 

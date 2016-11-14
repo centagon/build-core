@@ -62,7 +62,7 @@ class InstallController extends Controller
         file_put_contents(base_path('.env'), $request->env);
 
         // Check if we can make contact to the database with the new settings.
-        if (! $this->checkDatabaseConnection($request)) {
+        if ( ! $this->checkDatabaseConnection($request)) {
             alert()->alert('Cannot connect to the database.')->flash();
 
             // Restore the environment file.
@@ -96,7 +96,7 @@ class InstallController extends Controller
         foreach (explode("\n", $request->env) as $k => $v) {
             $line = explode('=', $v);
 
-            if (! isset($line[1])) {
+            if ( ! isset($line[1])) {
                 continue;
             }
 

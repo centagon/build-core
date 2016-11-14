@@ -123,7 +123,7 @@ class Mapper extends NestedSet
      */
     public function get($property, $default = null)
     {
-        if (! $this->has($property)) {
+        if ( ! $this->has($property)) {
             return $default;
         }
 
@@ -206,12 +206,12 @@ class Mapper extends NestedSet
         if (is_string($instance)) {
             $class = $instance;
 
-            if (! class_exists($instance)) {
+            if ( ! class_exists($instance)) {
                 $instance = app('build.bauhaus.registrar')->get($instance);
             }
 
             // Try again.
-            if (! class_exists($instance)) {
+            if ( ! class_exists($instance)) {
                 throw new \Exception("Mapper cannot create an instance of `{$class}`. Make sure it exists in the config");
             }
 

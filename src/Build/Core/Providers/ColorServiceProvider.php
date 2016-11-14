@@ -23,7 +23,7 @@ class ColorServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function boot()
     {
-        if (! app()->runningInConsole()) {
+        if ( ! app()->runningInConsole()) {
             $this->renderInlineStyles();
         }
     }

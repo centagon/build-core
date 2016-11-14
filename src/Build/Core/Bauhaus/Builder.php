@@ -48,7 +48,7 @@ class Builder
     {
         // We do not have a query set. But we don't need one
         // when we've set the default value on a widget.
-        if (! $query = app('build.bauhaus.query')) {
+        if ( ! $query = app('build.bauhaus.query')) {
             $mapper->set('value', $mapper->get('default'));
 
             return $mapper;
@@ -57,7 +57,7 @@ class Builder
         // When the query is not a collection and not 'paginateable'
         // we can go ahead and build this query as a single row.
         if ($mapper->has('name')
-            && (! $query instanceof Collection && ! $query instanceof LengthAwarePaginator)) {
+            && ( ! $query instanceof Collection && ! $query instanceof LengthAwarePaginator)) {
 
             // It's possible to throw in an array as a query so when
             // that happens, we need to convert it to an object.
@@ -130,7 +130,7 @@ class Builder
 
                     // If there's no value set we'll try to directly
                     // get the value from the entry by field name.
-                    if (! $clone->has('value')) {
+                    if ( ! $clone->has('value')) {
                         $value = $entry->{$name};
                     } else {
                         $value = $clone->get('value');

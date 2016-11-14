@@ -41,7 +41,7 @@ class MenuServiceProvider extends ServiceProvider
              * TODO: Fix this awesomely terrible idea.
              */
             Event::listen(Authenticated::class, function () {
-                if (! $this->booted) {
+                if ( ! $this->booted) {
                     $this->booted = true;
 
                     require_once __DIR__ . '/../menu.php';

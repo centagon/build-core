@@ -29,7 +29,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
 
         if ($scopes->count() > 0) {
             foreach ($scopes as $scope => $values) {
-                if (! empty($values)) {
+                if ( ! empty($values)) {
                     try_method($this, 'filter' . studly_case($scope), [
                         $query, $values,
                     ]);

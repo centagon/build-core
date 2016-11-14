@@ -40,7 +40,7 @@ class Uuid
      */
     public static function v3($namespace, $name)
     {
-        if (!self::isValid($namespace)) {
+        if ( ! self::isValid($namespace)) {
             return false;
         }
 
@@ -125,7 +125,7 @@ class Uuid
      */
     public static function v5($namespace, $name)
     {
-        if (!self::isValid($namespace)) {
+        if ( ! self::isValid($namespace)) {
             return false;
         };
 

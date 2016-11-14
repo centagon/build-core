@@ -33,7 +33,7 @@ class NestedSet
      */
     public function __construct(array $children = [])
     {
-        if (! empty($children)) {
+        if ( ! empty($children)) {
             $this->setChildren($children);
         }
     }
@@ -204,7 +204,7 @@ class NestedSet
      */
     public function getNeighbors()
     {
-        if (! $this->getParent()) {
+        if ( ! $this->getParent()) {
             return [];
         }
 
@@ -224,7 +224,7 @@ class NestedSet
      */
     public function getNeighborsAndSelf()
     {
-        if (! $this->getParent()) {
+        if ( ! $this->getParent()) {
             return [$this];
         }
 

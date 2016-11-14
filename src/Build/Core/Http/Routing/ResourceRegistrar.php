@@ -36,7 +36,7 @@ class ResourceRegistrar extends \Illuminate\Routing\ResourceRegistrar
             $resource = implode('.', $parts) . '.' . $resource;
         }
 
-        if (! empty($group) && $group == config('build.core.uri')) {
+        if ( ! empty($group) && $group == config('build.core.uri')) {
             return trim("{$prefix}admin.{$resource}.{$method}", '.');
         }
 

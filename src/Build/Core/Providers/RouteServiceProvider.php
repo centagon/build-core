@@ -23,7 +23,7 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
     {
         $this->path = __DIR__ . '/../../../routes';
 
-        if (! $this->app->routesAreCached()) {
+        if ( ! $this->app->routesAreCached()) {
             $this->mapProtectedAdminRoutes();
             $this->mapGuestAdminRoutes();
         }

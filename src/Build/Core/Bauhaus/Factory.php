@@ -23,7 +23,7 @@ class Factory
     public function make($entity, $action = null)
     {
         if ($action === null) {
-            if (! str_contains($entity, '@')) {
+            if ( ! str_contains($entity, '@')) {
                 throw new \InvalidArgumentException('No entity action provided.');
             }
 

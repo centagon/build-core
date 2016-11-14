@@ -90,7 +90,7 @@ class Discovery
      */
     public function language()
     {
-        if (! $this->website) {
+        if ( ! $this->website) {
             return null;
         }
 
@@ -104,7 +104,7 @@ class Discovery
      */
     public function userWebsites()
     {
-        if (! $user = request()->user()) {
+        if ( ! $user = request()->user()) {
             return [];
         }
 
@@ -194,7 +194,7 @@ class Discovery
      */
     public function getSlug()
     {
-        if (! $this->website) {
+        if ( ! $this->website) {
             return false;
         }
 
