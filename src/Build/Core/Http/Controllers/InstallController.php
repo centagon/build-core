@@ -98,7 +98,7 @@ class InstallController extends Controller
     {
         $env = [];
 
-        foreach (explode("\n", $request->env) as $k => $v) {
+        foreach (explode("\n", $request->get('env')) as $k => $v) {
             $line = explode('=', $v);
 
             if ( ! isset($line[1])) {
