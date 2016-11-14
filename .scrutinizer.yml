@@ -1,13 +1,17 @@
 filter:
-    excluded_paths:
-        - 'tests/*'
-        - "src/database/migrations/*"
-        - "src/resources/*"
+  excluded_paths:
+    - 'tests/*'
+    - "src/database/migrations/*"
+    - "src/resources/*"
+
 checks:
-    php: true
+  php: true
+
 coding_style:
-    php:
-      spaces:
-        around_operators:
-            concatenation: true
-            negation: true
+  php:
+    spaces:
+      around_operators:
+        concatenation: true
+        negation: true
+      before_parentheses:
+        closure_definition: true
