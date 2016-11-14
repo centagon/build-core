@@ -71,7 +71,7 @@ class BauhausServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('build.bauhaus.container', Registrar::class);
+        $this->app->singleton('build.bauhaus.registrar', Registrar::class);
 
         app('build.bauhaus.registrar')->register($this->miscWidgets);
         app('build.bauhaus.registrar')->register($this->dataWidgets);

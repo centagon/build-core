@@ -207,7 +207,7 @@ class Mapper extends NestedSet
             $class = $instance;
 
             if (! class_exists($instance)) {
-                $instance = app('build.bauhaus.container')->get($instance);
+                $instance = app('build.bauhaus.registrar')->get($instance);
             }
 
             // Try again.
