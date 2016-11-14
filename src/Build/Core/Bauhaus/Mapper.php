@@ -22,6 +22,18 @@ class Mapper extends NestedSet
     const QUERY_TYPE_MULTIPLE = 'multiple';
 
     /**
+     * Whether or not the query is paginated.
+     * @var bool
+     */
+    public $isPaginated = false;
+
+    /**
+     * Holds the possible set of rows from the Builder.
+     * @var mixed
+     */
+    public $rows;
+
+    /**
      * Holds the query type.
      * @var string
      */
@@ -32,18 +44,6 @@ class Mapper extends NestedSet
      * @var array
      */
     protected $properties = [];
-
-    /**
-     * Whether or not the query is paginated.
-     * @var bool
-     */
-    protected $isPaginated = false;
-
-    /**
-     * Holds the possible set of rows from the Builder.
-     * @var mixed
-     */
-    protected $rows;
 
     /**
      * Holds the current row.
