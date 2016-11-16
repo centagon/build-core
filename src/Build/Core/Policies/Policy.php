@@ -63,7 +63,7 @@ abstract class Policy
 
             Gate::define($name, function ($user, $object = null, $param = null) use ($ability, $name) {
                 return is_null($object)
-                    ? $this->before($user, $ability, $object)
+                    ? $this->before($user, $ability)
                     : $user->can($ability, $object, $param);
             });
         }

@@ -13,7 +13,6 @@ namespace Build\Core\Http\Controllers\Languages;
 
 use Illuminate\Http\Response;
 use Build\Core\Http\Controller;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Build\Core\Eloquent\Models\Language;
 use Build\Core\Eloquent\Models\Language\Entry;
