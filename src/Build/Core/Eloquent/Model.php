@@ -21,7 +21,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
     /**
      * @param  Builder  $query
      */
-    public function scopeFiltered(Builder $query)
+    public function scopeFiltered($query)
     {
         $clone = clone $query;
 
