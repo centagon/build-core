@@ -19,6 +19,7 @@ use Build\Core\Providers\AlertServiceProvider;
 use Build\Core\Providers\ColorServiceProvider;
 use Build\Core\Providers\RouteServiceProvider;
 use Build\Core\Providers\AssetServiceProvider;
+use Build\Core\Providers\CookieServiceProvider;
 use Build\Core\Providers\PolicyServiceProvider;
 use Build\Core\Providers\ModulesServiceProvider;
 use Build\Core\Providers\RoutingServiceProvider;
@@ -75,6 +76,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->app->register(ConsoleServiceProvider::class);
         $this->app->register(ModulesServiceProvider::class);
         $this->app->register(PolicyServiceProvider::class);
+        $this->app->register(CookieServiceProvider::class);
         $this->app->register(ColorServiceProvider::class);
         $this->app->register(AlertServiceProvider::class);
         $this->app->register(AssetServiceProvider::class);
