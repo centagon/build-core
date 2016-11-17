@@ -29,7 +29,7 @@ abstract class Widget extends Mapper
 
     public function renderedAttributes()
     {
-        return implode(' ', array_map(function ($key, $value) {
+        return new HtmlString(implode(' ', array_map(function ($key, $value) {
             // Does the string start with a colon? That means that
             // we want to get the value set by the builder and
             // will not provide one on our own.
@@ -51,7 +51,7 @@ abstract class Widget extends Mapper
             }
 
             // Just return the key value pair (html style).
-            return sprintf('%s=%s', $key, $value);
-        }, array_keys($this->attributes), $this->attributes));
+            return sprintf('%s="%s"', $key, $value);
+        }, array_keys($this->attributes), $this->attributes)));
     }
 }

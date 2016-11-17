@@ -11,14 +11,17 @@ namespace Build\Core\Bauhaus\Widgets\Input;
  * file that was distributed with this source code.
  */
 
-use Build\Core\Bauhaus\Widgets\Widget;
-
-class Email extends Widget
+class Email extends Generic
 {
 
     /**
-     * Override the view path.
-     * @var string
+     * Set the field attributes.
+     * @var array
      */
-    protected $view = 'build.core::components.bauhaus.input.email';
+    protected $attributes = [
+        'type' => 'email',
+        'name' => ':name',
+        'value' => ':value',
+        'placeholder' => ':placeholder'
+    ];
 }

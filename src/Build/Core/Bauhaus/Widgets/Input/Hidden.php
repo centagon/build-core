@@ -11,14 +11,16 @@ namespace Build\Core\Bauhaus\Widgets\Input;
  * file that was distributed with this source code.
  */
 
-use Build\Core\Bauhaus\Widgets\Widget;
-
-class Hidden extends Widget
+class Hidden extends Generic
 {
 
     /**
-     * Override the view path.
-     * @var string
+     * Set the field attributes.
+     * @var array
      */
-    protected $view = 'build.core::components.bauhaus.input.hidden';
+    protected $attributes = [
+        'type' => 'hidden',
+        'name' => ':name',
+        'value' => ':value'
+    ];
 }

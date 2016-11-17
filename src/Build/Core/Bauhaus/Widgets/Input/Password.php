@@ -13,14 +13,8 @@ namespace Build\Core\Bauhaus\Widgets\Input;
 
 use Build\Core\Bauhaus\Widgets\Widget;
 
-class Password extends Widget
+class Password extends Generic
 {
-
-    /**
-     * Override the view path.
-     * @var string
-     */
-    protected $view = 'build.core::components.bauhaus.input.password';
 
     /**
      * Set the field attributes.

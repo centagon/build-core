@@ -11,17 +11,14 @@ namespace Build\Core\Bauhaus\Widgets\Input;
  * file that was distributed with this source code.
  */
 
-class Text extends Generic
+use Build\Core\Bauhaus\Widgets\Widget;
+
+class Generic extends Widget
 {
 
     /**
-     * Set the field attributes.
-     * @var array
+     * Override the view path.
+     * @var string
      */
-    protected $attributes = [
-        'type' => 'text',
-        'name' => ':name',
-        'value' => ':value',
-        'placeholder' => ':placeholder'
-    ];
+    protected $view = 'build.core::components.bauhaus.input.generic';
 }
