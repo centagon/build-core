@@ -67,7 +67,14 @@ class Color
             return $color;
         }
 
-        list($r, $g, $b) = sscanf($color, "#%02x%02x%02x");
+        if (strlen($color) == 4) {
+            list($r, $g, $b) = sscanf($color, "#%01x%01x%01x");
+            $r = ($r * 16) + $r;
+            $g = ($g * 16) + $g;
+            $b = ($b * 16) + $b;
+        } else {
+            list($r, $g, $b) = sscanf($color, "#%02x%02x%02x");
+        }
 
         if ($outputArray) {
             return compact('r', 'g', 'b');
