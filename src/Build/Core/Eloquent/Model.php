@@ -46,6 +46,8 @@ class Model extends \Illuminate\Database\Eloquent\Model
      */
     public static function boot()
     {
+        parent::boot();
+
         static::saved(function ($model) {
             event(new ModelSavedEvent($model));
         });
