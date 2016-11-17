@@ -51,8 +51,8 @@ class User extends Authenticatable
     /**
      * Assign a new role to this user.
      *
-     * @param  string            $name
-     * @param  Website|int|null  $website
+     * @param  string  $name
+     * @param  int  $website
      */
     public function assignRole($name, $website = null)
     {
