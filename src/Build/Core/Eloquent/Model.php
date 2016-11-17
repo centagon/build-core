@@ -42,6 +42,18 @@ class Model extends \Illuminate\Database\Eloquent\Model
     }
 
     /**
+     * Get the cache for specific for this model.
+     *
+     * @return string
+     */
+    public function getCacheKey()
+    {
+        $namespace = get_class($this);
+
+        return strtolower(str_replace('\\', '-', $namespace));
+    }
+
+    /**
      * Handle boot events.
      */
     public static function boot()

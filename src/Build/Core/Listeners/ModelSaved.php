@@ -22,10 +22,6 @@ class ModelSaved
      */
     public function handle(ModelSavedEvent $event)
     {
-        $namespace = get_class($event->model);
-
-        $key = 'build.core.model.' . strtolower(str_replace('\\', '-', $namespace));
-
-        Cache::forget($key);
+        Cache::forget($event->model->getCacheKey());
     }
 }
