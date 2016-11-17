@@ -11,7 +11,6 @@ namespace Build\Core\Eloquent;
  * file that was distributed with this source code.
  */
 
-use Illuminate\Database\Query\Builder;
 use Build\Core\Events\ModelSavedEvent;
 use Build\Core\Eloquent\Scope\Registry;
 
@@ -19,7 +18,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
 {
 
     /**
-     * @param  Builder  $query
+     * @param  \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder  $query
      */
     public function scopeFiltered($query)
     {
