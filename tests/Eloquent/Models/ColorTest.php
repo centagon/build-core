@@ -13,48 +13,39 @@ namespace Build\Core\Tests\Eloquent\Models;
 
 use Build\Core\Eloquent\Models\Color;
 use Build\Core\Tests\AbstractTestCase;
+use Build\Core\Support\Color as Support;
 
 class ColorTest extends AbstractTestCase
 {
 
     public function test_can_create_color()
     {
-        $color = $this->getColor();
-        $color->save();
+        $color = factory(Color::class)->make();
 
-        $this->assertEquals($color->name, 'my-dark-color');
-        $this->assertEquals($color->color, '#000000');
+        $this->assertNotEmpty($color->name);
+        $this->assertNotEmpty($color->color);
     }
 
     public function test_can_convert_to_hex()
     {
-        $color = $this->getColor();
-        $color->save();
+        $color = factory(Color::class)->make();
 
-        $this->assertEquals($color->hex_color, '#000000');
+        $this->assertTrue(Support::isHex($color->hex_color));
     }
 
     public function test_can_convert_to_rgb()
     {
-        $color = $this->getColor();
-        $color->save();
+        $color = factory(Color::class)->make();
 
-        $this->assertEquals($color->rgb_color, 'rgb(0, 0, 0)');
+        $this->assertTrue(Support::isRgb($color->rgb_color));
     }
 
     public function test_can_get_best_contrast()
     {
-        $color = $this->getColor();
-        $color->save();
+        $color = factory(Color::class)->make();
 
-        $this->assertEquals($color->best_contrast, 'white');
-    }
-
-    protected function getColor()
-    {
-        return new Color([
-            'name' => 'My Dark Color',
-            'color' => '#000000',
+        $this->assertInArray($color->best_contrast, [
+            'black', 'white',
         ]);
     }
 }

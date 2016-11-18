@@ -28,6 +28,8 @@ abstract class AbstractTestCase extends AbstractPackageTestCase
             '--database' => 'testing',
             '--realpath' => realpath(__DIR__.'/../src/database/migrations'),
         ]);
+
+        $this->withFactories(__DIR__.'/../src/database/factories');
     }
 
     /**
