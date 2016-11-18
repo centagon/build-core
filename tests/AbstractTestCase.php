@@ -11,6 +11,7 @@ namespace Build\Core\Tests;
  * file that was distributed with this source code.
  */
 
+use Build\Core\Eloquent\Model;
 use Build\Core\ServiceProvider;
 use GrahamCampbell\TestBench\AbstractPackageTestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -23,6 +24,8 @@ abstract class AbstractTestCase extends AbstractPackageTestCase
     public function setUp()
     {
         parent::setUp();
+
+        Model::unguard(); // disable eloquent guard
 
         $this->loadMigrationsFrom([
             '--database' => 'testing',
