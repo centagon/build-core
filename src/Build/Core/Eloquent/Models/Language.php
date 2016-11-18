@@ -42,7 +42,7 @@ class Language extends \Build\Core\Eloquent\Model
     /**
      * @return BelongsToMany
      */
-    public function website()
+    public function websites()
     {
         return $this->belongsToMany(Website::class);
     }
