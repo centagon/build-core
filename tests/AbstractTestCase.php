@@ -13,9 +13,22 @@ namespace Build\Core\Tests;
 
 use Build\Core\ServiceProvider;
 use GrahamCampbell\TestBench\AbstractPackageTestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 abstract class AbstractTestCase extends AbstractPackageTestCase
 {
+
+    use DatabaseMigrations;
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->loadMigrationsFrom([
+            '--database' => 'testing',
+            '--realpath' => realpath(__DIR__.'/../src/database/migrations'),
+        ]);
+    }
 
     /**
      * Override the base path.
