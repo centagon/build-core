@@ -7,7 +7,11 @@ php:
 matrix:
   fast_finish: true
 
+services:
+  - mysql
+
 before_script:
+  - mysql -e 'create database build_test;'
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source
 
