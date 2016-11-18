@@ -67,6 +67,18 @@ class Website extends \Build\Core\Eloquent\Model
     }
 
     /**
+     * Force strip the scheme from the given domain.
+     *
+     * @param  string  $value
+     */
+    public function setDomainAttribute($value)
+    {
+        $value = preg_replace('/^https?:\/\//', '', $value);
+
+        $this->attributes['domain'] = $value;
+    }
+
+    /**
      * Get the full url of the website.
      *
      * @param  string|null  $slug
