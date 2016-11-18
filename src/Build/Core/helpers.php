@@ -56,7 +56,7 @@ if ( ! function_exists('entity')) {
      * @param  string  $entity
      * @param  null|string  $method
      *
-     * @return \Illuminate\Http\Response
+     * @return \Build\Core\Bauhaus\Manager
      */
     function entity($entity, $method = null)
     {

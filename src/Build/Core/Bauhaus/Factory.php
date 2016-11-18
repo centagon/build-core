@@ -15,10 +15,10 @@ class Factory
 {
 
     /**
-     * @param  string       $entity
+     * @param  string  $entity
      * @param  string|null  $action
      *
-     * @return mixed
+     * @return Manager
      */
     public function make($entity, $action = null)
     {
