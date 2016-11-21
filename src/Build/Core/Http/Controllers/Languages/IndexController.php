@@ -84,7 +84,7 @@ class IndexController extends Controller
      */
     public function update(IndexRequest $request, Language $language)
     {
-        $this->authorize('edit-language');
+        $this->authorize('edit', $language);
 
         $language->update($request->all());
 
