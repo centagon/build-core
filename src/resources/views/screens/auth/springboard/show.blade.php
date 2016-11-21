@@ -7,8 +7,8 @@
 
             <section class="branding-bar">
                 <section class="title">
-                    <h3>Welcome {{ auth()->user()->name }}</h3>
-                    <p>Please choose a website to login to.</p>
+                    <h3>{{ trans('build.core::auth.welcome', ['name' => auth()->user()->name]) }}</h3>
+                    <p>{{ trans('build.core::auth.welcome-intro') }}</p>
                 </section>
             </section>
 

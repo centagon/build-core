@@ -11,7 +11,7 @@
                 <div class="panel">
                     <section class="branding-bar">
                         <section class="title text-center">
-                            <h3>Centagon Build</h3>
+                            <h3>{{ trans('build.core::auth.title') }}</h3>
                         </section>
                     </section>
 
@@ -26,20 +26,20 @@
                     @endif
 
                     <div class="callout">
-                        <input type="email" id="f-email" name="email" placeholder="Email address" required>
-                        <input type="password" id="f-password" name="password" placeholder="Password" required>
+                        <input type="email" id="f-email" name="email" placeholder="{{ trans('build.core::auth.email-address') }}" required>
+                        <input type="password" id="f-password" name="password" placeholder="{{ trans('build.core::auth.password') }}" required>
 
                         <label>
                             <input type="hidden" name="remember_me" value="0">
                             <input type="checkbox" name="remember_me" value="1" checked>
-                            Remember me
+                            {{ trans('build.core::auth.remember-me') }}
                         </label>
 
                         <br>
 
                         <button class="button button--success">
                             <i class="fa fa-lock"></i>
-                            Sign-in
+                            {{ trans('build.core::auth.sign-in') }}
                         </button>
                     </div>
                 </div>
