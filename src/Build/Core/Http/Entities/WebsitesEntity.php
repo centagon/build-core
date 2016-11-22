@@ -21,50 +21,6 @@ use Build\Core\Bauhaus\Widgets\Navigation\Button;
 class WebsitesEntity extends Manager
 {
 
-    public function index(Mapper $mapper)
-    {
-        $heading = (new Heading)->title('Websites');
-        
-        $heading->add('navigation.button', function ($button) {
-            $button
-                ->permission('create-website')
-                ->label('New website')
-                ->style(Button::STYLE_SUCCESS)
-                ->to(route('admin.websites.create'));
-        });
-
-        $mapper->add($heading);
-
-        $mapper->add('data.table', function ($table) {
-            $table->selectable(true);
-
-            $table->add('navigation.link', function ($link) {
-                $link
-                    ->name('name')
-                    ->label('Domain');
-
-                $link->to(function ($link) {
-                    if (auth()->user()->can('edit-website')) {
-                        return route('admin.websites.edit', $link->getRow()->id);
-                    }
-                });
-
-                $link->subcolumn(function ($link) {
-                    return $link->getRow()->domain;
-                });
-            });
-
-            $table->add('content.icon', function ($icon) {
-                $icon
-                    ->name('is_activated')
-                    ->label('Is activated?')
-                    ->icon(function ($icon) {
-                        return $icon->getRow()->is_active ? 'check' : '';
-                    });
-            });
-        });
-    }
-
     public function create(Mapper $mapper)
     {
         $heading = (new Heading)

@@ -23,15 +23,17 @@ class WebsitesController extends \Build\Core\Http\Controller
 {
 
     /**
-     * @return Response
+     * @return View
      */
     public function index()
     {
         $this->authorize('index-website');
 
-        return entity(WebsitesEntity::class, 'index')
-            ->setQuery(Website::all())
-            ->render();
+        $websites = Website::all();
+
+        return view('build.core::screens.websites.index')->with([
+            'websites' => $websites
+        ]);
     }
 
     /**
