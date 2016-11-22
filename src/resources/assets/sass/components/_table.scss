@@ -17,8 +17,14 @@
         padding: rem-calc(10);
     }
 
-    tr {
-        border-bottom: 1px solid color-get(gray, light);
+    tbody {
+        tr {
+            border-bottom: 1px solid color-get(gray, light);
+
+            &:hover {
+                background-color: color-get(gray, light);
+            }
+        }
     }
 
     a {
