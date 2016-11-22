@@ -29,7 +29,7 @@ export default class Equalizer {
         });
 
         Orientation.onChange(() => {
-            if (Equalizer.shouldEqualize()) {
+            if (this.shouldEqualize()) {
                 this.equalize();
             } else {
                 this.reset();
@@ -53,7 +53,7 @@ export default class Equalizer {
             // Check the visibility of the element. Invisible elements do
             // not consume any space in the document so we cannot
             // reliably calculate the height of this element.
-            if (Visibility.isVisible(element) && Equalizer.shouldEqualize()) {
+            if (Visibility.isVisible(element) && this.shouldEqualize()) {
                 if (!groups[group]) {
                     groups[group] = [];
 
@@ -99,7 +99,7 @@ export default class Equalizer {
      * Determine if the element should be equalized.
      * @returns {boolean}
      */
-    static shouldEqualize() {
-        return ! (this.mediaquery.getCurrent() === 'small');
+    shouldEqualize() {
+        return ! (this.mediaquery.getCurrent().name === 'small');
     }
 }
