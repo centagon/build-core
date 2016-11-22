@@ -6,15 +6,42 @@ label {
     padding-bottom: rem-calc(5);
 }
 
+input[type=checkbox] {
+    appearance: none;
+    margin-right: rem-calc(5);
+    border: 1px solid color-get(gray, medium);
+    width: 14px;
+    height: 14px;
+    border-radius: $global-radius;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: color-get(white);
+
+    &:checked {
+        position: relative;
+        border-color: color-get(black);
+    }
+
+    &:checked::before {
+        position: absolute;
+        top: 0;
+        line-height: 13px;
+        font-family: FontAwesome;
+        content: '\f00c';
+        color: color-get(black);
+    }
+}
+
 input[type=text],
 input[type=email],
-input[type=password] {
+input[type=password],
+input[type=search] {
     display: block;
     box-sizing: border-box;
     width: 100%;
     margin-bottom: $global-margin;
     padding: $global-padding / 3 $global-padding / 2;
     line-height: 1.8;
-    border: 1px solid color-get(gray, light);
-    border-radius: 3px;
+    border: 1px solid color-get(gray, medium);
+    border-radius: $global-radius;
 }

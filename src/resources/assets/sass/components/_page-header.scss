@@ -1,0 +1,16 @@
+.page-header {
+
+    display: flex;
+    margin: ($global-margin * 2) 0;
+    align-items: center;
+    border-bottom: 1px solid color-get(gray, medium);
+
+    @include element(item) {
+        width: 100%;
+        
+        &:last-child {
+            text-align: right;
+        }
+    }
+
+}

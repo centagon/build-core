@@ -1,0 +1,21 @@
+.header-bar {
+    display: flex;
+    height: 5px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .05);
+
+    @include element(left) {
+        background-color: #42ada4;
+        width: 100%;
+    }
+
+    @include element(center) {
+        background-color: #9cc9a8;
+        width: 100%;
+    }
+
+    @include element(right) {
+        background-color: #d9eac1;
+        width: 100%;
+    }
+
+}

@@ -1,15 +1,19 @@
+// Base imports
 @import 'settings';
 
-// Vendor imports
 @import '../components/centagon-primer/src/sass/primer';
+//@import '../components/font-awesome/scss/font-awesome';
 
 // Component imports
-@import 'components/anchors';
 @import 'components/buttons';
-@import 'components/header';
 @import 'components/dropdown';
-@import 'components/table';
-@import 'components/panels';
+@import 'components/header';
+@import 'components/header-bar';
 @import 'components/inputs';
-@import 'components/list-group';
-@import 'components/title';
+@import 'components/page-header';
+@import 'components/panels';
+@import 'components/selectable-row';
+@import 'components/sidebar';
+@import 'components/table';
+@import 'components/tags';
+@import 'components/typography';

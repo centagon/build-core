@@ -1,12 +1,13 @@
 @foreach ($items as $item)
 
     @if ($item->hasChildren())
-        <li>
-            <a href="{!! $item->url() !!}" class="dropdown-toggle">
+        <li class="header__dropdown">
+            <a href="{!! $item->url() !!}" class="header__dropdown__toggle">
                 {!! $item->title !!}
+                <span class="caret"></span>
             </a>
 
-            <ul class="dropdown-menu">
+            <ul class="header__dropdown__menu">
                 @include('build.core::components.navigation', ['items' => $item->children()])
             </ul>
         </li>

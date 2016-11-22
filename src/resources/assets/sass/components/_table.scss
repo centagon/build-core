@@ -1,29 +1,27 @@
-table {
-
-    border-collapse: collapse;
+.table {
     width: 100%;
+    border-collapse: collapse;
+    
+    thead {
+        background-color: color-get(black);
+        color: color-get(white);
 
-    thead tr {
-        background-color: color-get(gray, light);
+        th {
+            font-weight: normal;
+            font-size: rem-calc(16);
+        }
     }
 
-    thead th,
-    tbody td {
-        padding: rem-calc(10) rem-calc(15);
-        border-bottom: 1px solid color-get(gray, medium);
+    tr td,
+    tr th {
+        padding: rem-calc(10);
     }
 
-    tbody tr:hover {
-        background-color: color-get(gray, light);
-    }
-
-    td a {
+    a {
         font-weight: bold;
     }
 
     span.sub-column {
         display: block;
-        font-size: rem-calc(14);
     }
-
 }

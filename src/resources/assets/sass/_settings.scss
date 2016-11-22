@@ -9,11 +9,16 @@ $colors: (
     green: rgb(0, 159, 77),
     red: rgb(184, 58, 75),
     orange: rgb(237, 139, 0),
-    blue: rgb(0, 119, 200)
+    blue: rgb(0, 119, 200),
+    yellow: rgb(240, 173, 78)
 );
 
-$font-family: "Helvetica Neue", Arial, sans-serif !default;
-$font-size: 15px;
+//$font-family: "Helvetica Neue", Arial, sans-serif;
+$font-size: 14px;
 
 $button-font-color: map-get($colors, black);
 $button-border: 1px solid map-get($colors, black);
+
+$panel-border: 1px solid map-get(map-get($colors, gray), medium);
+
+$global-radius: 3px;

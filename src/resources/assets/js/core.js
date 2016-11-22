@@ -9,11 +9,15 @@
 
 import WindowDispatch from './lib/WindowDispatch';
 import AutoGrow from './lib/AutoGrow';
+import Sidebar from './lib/Sidebar';
 
-new AutoGrow('textarea');
+const autogrow = new AutoGrow('textarea');
+const sidebar = new Sidebar;
 
 global.build = {
     core: {
-        WindowDispatch
+        WindowDispatch,
+        autogrow,
+        sidebar
     }
 };

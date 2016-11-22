@@ -1,0 +1,8 @@
+.selectable-row {
+
+    @include modifier(selected) {
+        box-shadow: 0 0 5px color-get(blue);
+        border-color: color-get(blue);
+    }
+
+}

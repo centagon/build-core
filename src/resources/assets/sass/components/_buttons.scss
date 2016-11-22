@@ -1,13 +1,64 @@
 .button {
-
-    margin-bottom: $global-margin;
     padding-top: rem-calc(5);
     padding-bottom: rem-calc(5);
-    border-radius: 3px;
+    border-radius: $global-radius;
 
-    @include modifier(success) {
-        color: color-get(green);
-        border-color: color-get(green);
+    &:hover {
+        background-color: transparentize(color-get(gray, light), .2);
     }
 
+    &[disabled],
+    &:disabled {
+        opacity: .5;
+        cursor: not-allowed;
+    }
+
+    @include modifier(selected) {
+        color: color-get(blue);
+        border-color: color-get(blue);
+    }
+
+    @include modifier(success) {
+        border-color: color-get(green);
+        color: color-get(green);
+
+        &:hover {
+            background-color: transparentize(color-get(green), .9);
+        }
+    }
+
+    @include modifier(error) {
+        border-color: color-get(red);
+        color: color-get(red);
+
+        &:hover {
+            background-color: transparentize(color-get(red), .9);
+        }
+    }
+
+    @include modifier(warning) {
+        border-color: color-get(yellow);
+
+        &:hover {
+            background-color: transparentize(color-get(yellow), .9);
+        }
+    }
+
+}
+
+.button-group {
+    display: inline-block;
+    font-size: 0;
+    margin-bottom: $global-margin;
+
+    .button:not(:last-child) {
+        margin-right: -1px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .button:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
 }

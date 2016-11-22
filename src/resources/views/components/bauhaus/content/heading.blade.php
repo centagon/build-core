@@ -1,3 +1,34 @@
+<div class="row">
+    <div class="small-12">
+
+        <div class="page-header">
+            <div class="page-header__item">
+                <h1>{{ $node->title }}</h1>
+            </div>
+
+            <div class="page-header__item">
+                @if ($node->hasChildren())
+                    <div class="button-actions">
+                        @foreach ($node->getChildren() as $child)
+                            {!! $child->render() !!}
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@foreach (alert()->messages() as $key => $messages)
+    @foreach ($messages as $message)
+        <div class="panel panel--{{ $key }}">
+            {{ $message }}
+        </div>
+    @endforeach
+@endforeach
+
+{{--
 @section('sub-header')
 
     <div class="row">
@@ -45,3 +76,4 @@
     </div>
 
 @endsection
+--}}

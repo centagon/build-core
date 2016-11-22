@@ -1,39 +1,88 @@
-header {
-    padding: rem-calc(10);
+.header {
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
     background-color: color-get(aqua);
-    font-size: rem-calc(14);
 
-    /**
-     * Navigation
-     */
-    nav::after {
-        content: '';
-        display: table;
-        clear: both;
+    @include element(item) {
+        width: 100%;
+
+        @include modifier(right) {
+            .header__nav > li {
+                float: right;
+            }
+        }
     }
 
-    ul {
+    @include element(nav) {
         list-style: none;
         margin: 0;
         padding: 0;
 
-        &.nav-left {
+        & > li {
             float: left;
-        }
-
-        &.nav-right {
-            float: right;
-        }
-
-        li {
-            display: inline-block;
-        }
-
-        li a {
-            color: color-get(white);
+            position: relative;
             display: block;
-            padding: rem-calc(10);
-            line-height: 1;
+        }
+
+        & > li > a {
+            position: relative;
+            display: block;
+            padding: 10px 15px;
+            color: color-get(white);
+        }
+    }
+
+    @include element(dropdown) {
+        position: relative;
+        
+        &:hover ul {
+            display: block;
+        }
+
+        .caret {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 2px;
+            vertical-align: middle;
+            border-top: 4px dashed;
+            border-top: 4px solid\9;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+        }
+
+        @include element(menu) {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            float: left;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            list-style: none;
+            min-width: rem-calc(250);
+            background-color: color-get(white);
+            border: 1px solid color-get(gray, medium);
+            border-radius: $global-radius;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+
+            li.divider {
+                border-top: 1px solid color-get(gray, light);
+            }
+
+            li a {
+                display: block;
+                padding: rem-calc(5 15);
+                color: color-get(black);
+
+                &:hover {
+                    background-color: color-get(gray, light);
+                }
+            }
         }
     }
 }

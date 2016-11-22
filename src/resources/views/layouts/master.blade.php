@@ -1,8 +1,14 @@
 @include('build.core::components.layout.header')
 
-    <header>
-        <nav>
-            <ul class="nav-left dropdown">
+    <div class="header-bar">
+        <div class="header-bar__left"></div>
+        <div class="header-bar__center"></div>
+        <div class="header-bar__right"></div>
+    </div>
+
+    <header class="header">
+        <div class="header__item">
+            <ul class="header__nav">
                 <li>
                     <a href="{{ build_route('dashboard') }}">
                         <img src="{{ asset('vendor/build/core/img/logo.svg') }}" style="width: 150px;">
@@ -13,13 +19,15 @@
                     'items' => app('build.menu')->get('build.header-left')->roots()
                 ])
             </ul>
+        </div>
 
-            <ul class="nav-right dropdown">
+        <div class="header__item header__item--right">
+            <ul class="header__nav">
                 @include('build.core::components.navigation', [
                     'items' => app('build.menu')->get('build.header-right')->roots()
                 ])
             </ul>
-        </nav>
+        </div>
     </header>
 
     <section class="sub-header">
@@ -33,5 +41,9 @@
             </div>
         </div>
     </section>
+
+    <div class="sidebar">
+        <div class="content"></div>
+    </div>
 
 @include('build.core::components.layout.footer')
