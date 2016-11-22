@@ -29,7 +29,7 @@ class WebsitesController extends \Build\Core\Http\Controller
     {
         $this->authorize('index-website');
 
-        $websites = Website::all();
+        $websites = Website::paginate(15);
 
         return view('build.core::screens.websites.index')->with([
             'websites' => $websites

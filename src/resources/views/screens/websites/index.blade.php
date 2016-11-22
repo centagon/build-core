@@ -66,6 +66,8 @@
                 </tbody>
             </table>
 
+            {{ $websites->links() }}
+
         </div>
     </div>
 
