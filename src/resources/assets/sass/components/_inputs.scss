@@ -10,7 +10,7 @@ input[type=checkbox] {
     appearance: none;
     margin-right: rem-calc(5);
     border: 1px solid color-get(gray, medium);
-    width: 14px;
+    width: 14px; 
     height: 14px;
     border-radius: $global-radius;
     vertical-align: middle;
