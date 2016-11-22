@@ -15,6 +15,11 @@
     tr td,
     tr th {
         padding: rem-calc(10);
+        text-align: left;
+
+        &[align=right] {
+            text-align: right;
+        }
     }
 
     tbody {
@@ -27,8 +32,12 @@
         }
     }
 
-    a {
+    a:not(.button) {
         font-weight: bold;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     span.sub-column {
