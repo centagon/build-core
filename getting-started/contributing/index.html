@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title></title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="Taylor Otwell">
+    <meta name="description" content="Laravel - The PHP framework for web artisans.">
+    <meta name="keywords" content="laravel, php, framework, web, artisans, taylor otwell">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="canonical" href="https://laravel.com/docs/5.3/installation" />
+
+    <!--[if lte IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="https://fonts.googleapis.com/css?family=Miriam+Libre:400,700|Source+Sans+Pro:200,400,700,600,400italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/main.css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/atom-one-dark.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/languages/bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/languages/scss.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body class="docs language-php">
+
+    <div class="docs-wrapper container">
+        <section class="sidebar">
+            <ul>
+                <li>
+                    Getting Started
+                    <ul>
+                        <li><a href="/getting-started/installation">Installation</a></li>
+                        <li><a href="/getting-started/configuration">Configuration</a></li>
+                        <li><a href="/getting-started/contributing">Contributing</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    The HTTP Layer
+                    <ul>
+                        <li><a href="/http/routing">Routing</a></li>
+                        <li><a href="/http/middleware">Middleware</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    Security
+                    <ul>
+                        <li><a href="/security/authorization">Authorization</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    Extending Build
+                    <ul>
+                        <li><a href="/extending/modules">Modules</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    Database
+                    <ul>
+                        <li><a href="/database/cache">Cache</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    Appendix
+                    <ul>
+                        <li><a href="/appendix/context">Context</a></li>
+                        <li><a href="/appendix/helpers">Helpers</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <article>
+            <h1>Contributing</h1>
+<ul>
+<li><a href="#using-issue-tracker">Using the issue tracker</a></li>
+<li><a href="#bug-reports">Bug Reports</a></li>
+<li><a href="#feature-requests">Feature Requests</a></li>
+<li><a href="#pull-requests">Pull Requests</a></li>
+</ul>
+<p>Please take a moment to review this document in order to make the contributing process easy and effective for everyone
+involved.</p>
+<p>Following these guidelines helps to communicate that you resepct the time of the developers managing and developing
+this open source project. In return, they should reciprocate that respect in addressing your issue or assessing
+patches and features.</p>
+<p><a name="using-issue-tracker"></a></p>
+<h3>Using the issue tracker</h3>
+<p>This issue tracker is the preferred channel for <a href="#">bug reports</a>, <a href="#">feature requests</a> and <a href="#">submitting pull requests</a>,
+but please respect the following restrictions:</p>
+<ul>
+<li>Please <strong>do not</strong> use the issue tracker for personal support requests (use <a href="http://stackoverflow.com/">Stack Overflow</a>)</li>
+<li>Please <strong>do not</strong> derail or troll issues. Keep the discussion on topic and respect the opinions of others.</li>
+</ul>
+<p><a name="bug-reports"></a></p>
+<h3>Bug reports</h3>
+<p>A bug is a <em>demonstrable problem</em> that is caused by the code in your repository. Good bug reports are extremely helpful - thank you!</p>
+<p>Guidelines for bug reports:</p>
+<ul>
+<li><strong>Use the GitHub issue search</strong><br />Check if the issue has already been reported</li>
+<li><strong>Check if the issue has been fixed</strong><br />Try to reproduce it using the latest <code>master</code> or development branch in the repository.</li>
+<li><strong>Isolate the problem</strong><br />Create a <a href="http://css-tricks.com/reduced-test-cases/">reduced test</a> case and a live example.</li>
+</ul>
+<p>A good bug report shouldn't leave others needing to chase you up for more information. Please try to be as detailed as
+possible in your report. What is your environment? What steps will reproduce the issue? What browser(s) and OS experience
+the problem? What would you expect to be the outcome? All these details will help people to fix any potential bugs.</p>
+<p>Example:</p>
+<blockquote>
+<p>Short and descriptive example bug report title</p>
+<p>A summary of the issue and the browser/OS environment in which it occurs. If
+suitable, include the steps required to reproduce the bug.</p>
+<ol>
+<li>This is the first step</li>
+<li>This is the second step</li>
+<li>Further steps, etc.</li>
+</ol>
+<p><code>&lt;url&gt;</code> - a link to the reduced test case</p>
+<p>Any other information you want to share that is relevant to the issue being
+reported. This might include the lines of code that you have identified as
+causing the bug, and potential solutions (and your opinions on their
+merits).</p>
+</blockquote>
+<p><a name="feature-requests"></a></p>
+<h3>Feature requests</h3>
+<p>Feature requests are welcome. But take a moment to find out whether your idea fits with the scope and aims of the project.
+It's up to you to make a strong case to convince the project's developers of the merits of this feature. Please provide
+as much detail and context as possible.</p>
+<p><a name="pull-requests"></a></p>
+<h3>Pull requests</h3>
+<p>Good pull requests - patches, improvements, new features - are a fantastic help. They should remain focused in scope and
+avoid containing unrelated commits.</p>
+<p><strong>Please ask first</strong> before embarking on any significant pull request (e.g. implementing features, refactoring code,
+porting to a different language), otherwise you risk spending a lot of time working on something that the project's
+developers might not want to merge into the project.</p>
+<p>Please adhere to the coding conventions used throughout a project (indentation, accurate comments, etc.) and any other
+requirements (such as test coverage).</p>
+<p>Follow this process if you'd like your work considered for inclusion in the project:</p>
+<ol>
+<li>
+<p><a href="http://help.github.com/fork-a-repo/">Fork</a> the project, clone your fork,
+and configure the remotes:</p>
+<pre><code class="language-bash"># Clone your fork of the repo into the current directory
+git clone https://github.com/centagon/build-core
+
+# Navigate to the newly cloned directory
+cd &lt;repo-name&gt;
+
+# Assign the original repo to a remote called "upstream"
+git remote add upstream https://github.com/&lt;upstream-owner&gt;/&lt;repo-name&gt;</code></pre>
+</li>
+<li>
+<p>If you cloned a while ago, get the latest changes from upstream:</p>
+<pre><code class="language-bash">git checkout &lt;dev-branch&gt;
+git pull upstream &lt;dev-branch&gt;</code></pre>
+</li>
+<li>
+<p>Create a new topic branch (off the main project development branch) to
+contain your feature, change, or fix:</p>
+<pre><code class="language-bash">git checkout -b &lt;topic-branch-name&gt;</code></pre>
+</li>
+<li>
+<p>Commit your changes in logical chunks. Please adhere to these <a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">git commit
+message guidelines</a>
+or your code is unlikely be merged into the main project. Use Git's
+<a href="https://help.github.com/articles/interactive-rebase">interactive rebase</a>
+feature to tidy up your commits before making them public.</p>
+</li>
+<li>
+<p>Locally merge (or rebase) the upstream development branch into your topic branch:</p>
+<pre><code class="language-bash">git pull [--rebase] upstream &lt;dev-branch&gt;</code></pre>
+</li>
+<li>
+<p>Push your topic branch up to your fork:</p>
+<pre><code class="language-bash">git push origin &lt;topic-branch-name&gt;</code></pre>
+</li>
+<li><a href="https://help.github.com/articles/using-pull-requests/">Open a Pull Request</a>
+with a clear title and description.</li>
+</ol>
+<p><strong>IMPORTANT</strong>: By submitting a patch, you agree to allow the project owner to
+license your work under the same license as that used by the project.</p>
+        </article>
+    </div>
+
+</body>
+</html>
