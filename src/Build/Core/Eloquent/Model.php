@@ -44,13 +44,21 @@ class Model extends \Illuminate\Database\Eloquent\Model
     /**
      * Get the cache for specific for this model.
      *
+     * @param  string|int|null  $id
+     *
      * @return string
      */
-    public function getCacheKey()
+    public function getCacheKey($id = null)
     {
         $namespace = get_class($this);
 
-        return strtolower(str_replace('\\', '-', $namespace));
+        $key =  strtolower(str_replace('\\', '-', $namespace));
+
+        if ($id !== null) {
+            $key .= '.' . $id;
+        }
+
+        return $key;
     }
 
     /**
