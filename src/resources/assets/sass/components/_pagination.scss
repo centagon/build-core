@@ -1,0 +1,31 @@
+.pagination {
+    list-style: none;
+    margin: $global-margin 0 0;
+    padding: 0;
+
+    li {
+        display: inline-block;
+    }
+
+    li span,
+    li a {
+        display: block;
+        line-height: 25px;
+        width: 25px;
+        text-align: center;
+        border: 1px solid color-get(gray, light);
+        color: color-get(blue);
+        font-weight: bold;
+        border-radius: $global-radius;
+    }
+
+    li a:hover {
+        background-color: color-get(gray, light);
+    }
+
+    li.disabled span,
+    li.active span {
+        border: 0;
+        color: color-get(black);
+    }
+}
