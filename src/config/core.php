@@ -14,6 +14,19 @@ return [
 
     /*
      |--------------------------------------------------------------------------
+     | Default pagination setting.
+     |--------------------------------------------------------------------------
+     |
+     | This is the default pagination limit. Use this whenever you're
+     | using pagination on your page instead of your own made up
+     | number so that every page on your modules returns
+     | the same paginated number of rows.
+     */
+
+    'paginate' => env('BUILD_PAGINATE', 15),
+
+    /*
+     |--------------------------------------------------------------------------
      | Backend Middleware
      |--------------------------------------------------------------------------
      |
