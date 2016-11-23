@@ -9,8 +9,11 @@
 
 require('./bootstrap');
 
-// Vue.component('example', require('./components/Example.vue'));
+// import WebsiteTable from './components/websites/Table.vue';
 
 const app = new Vue({
-    el: '#vue-wrapper'
+    el: '#vue-wrapper',
+    components: {
+        
+    }
 });

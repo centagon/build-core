@@ -1,13 +1,12 @@
 .header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: color-get(aqua);
 
     @include element(item) {
-        width: 100%;
-
         @include modifier(right) {
             .header__nav > li {
                 float: right;

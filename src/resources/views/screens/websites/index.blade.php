@@ -66,7 +66,14 @@
                 </tbody>
             </table>
 
-            {{ $websites->links() }}
+            <div class="row">
+                <div class="small-12 medium-6">
+                    <button class="button button--error">test</button>
+                </div>
+                <div class="small-12 medium-6 text-right">
+                    {{ $websites->links() }}
+                </div>
+            </div>
 
         </div>
     </div>

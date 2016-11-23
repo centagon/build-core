@@ -19,4 +19,8 @@
         </li>
     @endif
 
+    @if ($item->divider)
+        <li class="divider"></li>
+    @endif
+
 @endforeach
