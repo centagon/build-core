@@ -30,20 +30,22 @@
         </div>
     </header>
 
-    <section class="sub-header">
-        @yield('sub-header')
-    </section>
+    <div id="vue-wrapper">
+        <section class="sub-header">
+            @yield('sub-header')
+        </section>
 
-    <section class="content">
-        <div class="row">
-            <div class="small-12">
-                @yield('content')
+        <section class="content">
+            <div class="row">
+                <div class="small-12">
+                    @yield('content')
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <div class="sidebar">
-        <div class="content"></div>
+        <div class="sidebar">
+            <div class="content"></div>
+        </div>
     </div>
 
 @include('build.core::components.layout.footer')

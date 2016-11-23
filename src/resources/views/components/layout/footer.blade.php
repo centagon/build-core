@@ -1,8 +1,3 @@
-    <script>
-        var config = {
-            base_url: '{{ url(config('build.core.uri')) }}'
-        }
-    </script>
 
     @yield('sidebar')
 

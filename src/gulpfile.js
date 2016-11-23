@@ -1,5 +1,7 @@
 const elixir = require('laravel-elixir');
 
+require('laravel-elixir-vue-2');
+
 elixir(mix => {
     const __root = __dirname + '/../../../../public/vendor/build/core';
 

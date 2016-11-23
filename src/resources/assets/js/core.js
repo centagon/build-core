@@ -7,17 +7,10 @@
  * file that was distributed with this source code.
  */
 
-import WindowDispatch from './lib/WindowDispatch';
-import AutoGrow from './lib/AutoGrow';
-import Sidebar from './lib/Sidebar';
+require('./bootstrap');
 
-const autogrow = new AutoGrow('textarea');
-const sidebar = new Sidebar;
+// Vue.component('example', require('./components/Example.vue'));
 
-global.build = {
-    core: {
-        WindowDispatch,
-        autogrow,
-        sidebar
-    }
-};
+const app = new Vue({
+    el: '#vue-wrapper'
+});
