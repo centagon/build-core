@@ -170,7 +170,7 @@ class Mapper extends NestedSet
             return $this;
         }
 
-        if (is_callable($value)) {
+        if ($value instanceof \Closure) {
             switch ($this->getParent()->getQueryType()) {
                 case self::QUERY_TYPE_SINGLE:
                     $this->properties[$property] = $value;
