@@ -4346,7 +4346,12 @@ img[data-src] {
 }
 
 .header__item--right .header__nav > li {
-  float: right;
+  text-align: right;
+}
+
+.header__item--right .header__dropdown__menu {
+  right: 0;
+  left: auto;
 }
 
 .header__nav {
