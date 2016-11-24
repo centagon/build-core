@@ -4639,7 +4639,7 @@ body {
   border-bottom: 1px solid #ebebeb;
 }
 
-.table tbody tr:hover {
+.table tbody tr.selected, .table tbody tr:hover {
   background-color: #ebebeb;
 }
 

@@ -27,6 +27,7 @@
         tr {
             border-bottom: 1px solid color-get(gray, light);
 
+            &.selected,
             &:hover {
                 background-color: color-get(gray, light);
             }
