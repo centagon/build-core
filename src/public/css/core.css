@@ -4497,6 +4497,25 @@ input[type=search] {
   border-radius: 3px;
 }
 
+.list-group {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-group__item {
+  position: relative;
+  display: block;
+  margin-bottom: -1px;
+  padding: 0.625rem 0.9375rem;
+  background-color: white;
+  border: 1px solid #ebebeb;
+}
+
+.list-group__item:hover {
+  background-color: #ebebeb;
+}
+
 .page-header {
   display: -webkit-box;
   display: flex;
