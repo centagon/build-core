@@ -31,6 +31,7 @@ function createLeftMenu($menu)
     $menu->design->add('Assets', '#');
 
     $menu->content->add('Language', route('admin.languages.index'));
+    $menu->language->divide();
 
     $menu->administration->add('Queue', '#');
     $menu->administration->add('Modules', route('admin.modules.index'));
@@ -48,8 +49,12 @@ function createRightMenu($menu)
                 continue;
             }
 
-            $siteMenu->add($site->name, route('admin.springboard.open', $site->getKey()));
+            $last = $siteMenu->add($site->name, route('admin.springboard.open', $site->getKey()));
         }
+
+        $last->divide();
+
+        $siteMenu->add('Springboard', route('admin.springboard.index'));
     }
 
     $menu->add('User management', route('admin.users.index'))
