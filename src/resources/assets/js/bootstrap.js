@@ -1,4 +1,5 @@
 import WindowDispatch from './lib/WindowDispatch';
+import Selectable from './lib/Selectable';
 import AutoGrow from './lib/AutoGrow';
 import Sidebar from './lib/Sidebar';
 
@@ -26,6 +27,7 @@ Vue.http.interceptors.push((request, next) => {
 
 const autogrow = new AutoGrow('textarea');
 const sidebar = new Sidebar;
+const selectable = (new Selectable('table.selectable')).registerEvents();
 
 window.build = {
     core: {
