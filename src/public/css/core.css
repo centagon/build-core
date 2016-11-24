@@ -4497,6 +4497,10 @@ input[type=search] {
   border-radius: 3px;
 }
 
+body {
+  padding-bottom: 15px;
+}
+
 .list-group {
   list-style: none;
   margin: 0;
