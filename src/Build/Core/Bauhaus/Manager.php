@@ -27,6 +27,11 @@ class Manager
     protected $query;
 
     /**
+     * @var array
+     */
+    protected $properties = [];
+
+    /**
      * Holds the current Mapper instance.
      * @var Mapper
      */
@@ -99,6 +104,13 @@ class Manager
         return $this;
     }
 
+    public function with(array $properties)
+    {
+        $this->properties = $properties;
+
+        return $this;
+    }
+
     /**
      * Get the Mapper instance.
      *
@@ -135,7 +147,7 @@ class Manager
 
         $this
             ->setMapper($mapper = new Mapper)
-            ->{$this->getMethod()}($mapper, $query);
+            ->{$this->getMethod()}($mapper, $query, $this->properties);
 
         (new Builder)->build($mapper);
 
