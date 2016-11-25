@@ -33,7 +33,6 @@ function createLeftMenu($menu)
     $menu->content->add('Language', route('admin.languages.index'));
     $menu->language->divide();
 
-    $menu->administration->add('Queue', '#');
     $menu->administration->add('Modules', route('admin.modules.index'));
 
     return $menu;
