@@ -23,7 +23,6 @@ function createLeftMenu($menu)
 
     $menu->structure->add(trans('build.core::menu.structure.websites'), route('admin.websites.index'));
     $menu->structure->add(trans('build.core::menu.structure.groups'), '#');
-    $menu->structure->add('Selectables', '#');
 
     $menu
         ->add(trans('build.core::menu.design'))
