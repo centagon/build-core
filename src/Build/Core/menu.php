@@ -43,17 +43,21 @@ function createRightMenu($menu)
     if ($currentSite = Discovery::backendWebsite()) {
         $siteMenu = $menu->add($currentSite->name, route('admin.springboard.open', $currentSite->getKey()));
 
+        $lastItem = null;
+
         foreach (Discovery::userWebsites() as $site) {
             if ($site->getKey() == $currentSite->getKey()) {
                 continue;
             }
 
-            $last = $siteMenu->add($site->name, route('admin.springboard.open', $site->getKey()));
+            $lastItem = $siteMenu->add($site->name, route('admin.springboard.open', $site->getKey()));
         }
 
-        $last->divide();
+        if ($lastItem !== null) {
+            $lastItem->divide();
 
-        $siteMenu->add('Springboard', route('admin.springboard.index'));
+            $siteMenu->add('Springboard', route('admin.springboard.index'));
+        }
     }
 
     $menu->add('User management', route('admin.users.index'))
