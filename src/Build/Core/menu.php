@@ -17,23 +17,37 @@ createRightMenu(Menu::get('build.header-right'));
 
 function createLeftMenu($menu)
 {
-    $menu->add('Structure');
-    $menu->add('Design');
-    $menu->add('Content');
-    $menu->add('Processes');
-    $menu->add('Administration');
+    $menu
+        ->add(trans('build.core::menu.structure'))
+        ->nickname('structure');
 
-    $menu->structure->add('Websites', route('admin.websites.index'));
-    $menu->structure->add('Groups', '#');
+    $menu->structure->add(trans('build.core::menu.structure.websites'), route('admin.websites.index'));
+    $menu->structure->add(trans('build.core::menu.structure.groups'), '#');
     $menu->structure->add('Selectables', '#');
 
-    $menu->design->add('Colors', route('admin.colors.index'));
-    $menu->design->add('Assets', '#');
+    $menu
+        ->add(trans('build.core::menu.design'))
+        ->nickname('design');
 
-    $menu->content->add('Language', route('admin.languages.index'));
-    $menu->language->divide();
+    $menu->design->add(trans('build.core::menu.design.colors'), route('admin.colors.index'));
+    $menu->design->add(trans('build.core::menu.design.assets'), '#');
 
-    $menu->administration->add('Modules', route('admin.modules.index'));
+    $menu
+        ->add(trans('build.core::menu.content'))
+        ->nickname('content');
+
+    $menu->content->add(trans('build.core::menu.content.languages'), route('admin.languages.index'));
+    $menu->languages->divide();
+
+    $menu
+        ->add(trans('build.core::menu.processes'))
+        ->nickname('processes');
+
+    $menu
+        ->add(trans('build.core::menu.admin'))
+        ->nickname('admin');
+
+    $menu->admin->add(trans('build.core::menu.admin.modules'), route('admin.modules.index'));
 
     return $menu;
 }
