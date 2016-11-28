@@ -52,7 +52,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
     {
         $namespace = get_class($this);
 
-        $key =  strtolower(str_replace('\\', '-', $namespace));
+        $key = strtolower(str_replace('\\', '-', $namespace));
 
         if ($id !== null) {
             $key .= '.' . $id;
