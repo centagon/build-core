@@ -25,6 +25,9 @@ return [
     'processes' => 'Processes',
 
     'admin' => 'Administration',
-    'admin.modules' => 'Modules'
+    'admin.modules' => 'Modules',
+
+    'users' => 'User management',
+    'sign-out' => 'Sign-out'
 
 ];

@@ -73,10 +73,10 @@ function createRightMenu($menu)
         }
     }
 
-    $menu->add('User management', route('admin.users.index'))
+    $menu->add(trans('build.core::menu.users'), route('admin.users.index'))
         ->data('permission', 'index-user');
 
-    $menu->add('Sign-out', route('admin.sessions.destroy'));
+    $menu->add(trans('build.core::menu.sign-out'), route('admin.sessions.destroy'));
 
     return $menu;
 }
