@@ -53,6 +53,9 @@ class Discovery
         try {
             // First try to find exact matches.
             $this->website = Website::activated()
+                ->select([
+                    'id', 'domain',
+                ])
                 ->with([
                     'language',
                 ])
