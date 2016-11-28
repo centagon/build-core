@@ -56,9 +56,9 @@ class Discovery
                 ->select([
                     'id', 'domain',
                 ])
-                ->with([
-                    'language',
-                ])
+                ->with(['language' => function ($q) {
+                    $q->select('id');
+                }])
                 ->byDomain($url)
                 ->sorted()
                 ->firstOrFail();
@@ -69,9 +69,9 @@ class Discovery
             // through those results untill we're able to find a new `exact` match. This
             // will be our current domain. Nothing is returned when nothing is found.
             $sites = Website::activated()
-                ->with([
-                    'language',
-                ])
+                ->with(['language' => function ($q) {
+                    $q->select('id');
+                }])
                 ->sorted()
                 ->get();
 
