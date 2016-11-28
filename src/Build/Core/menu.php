@@ -35,8 +35,9 @@ function createLeftMenu($menu)
         ->add(trans('build.core::menu.content'))
         ->nickname('content');
 
-    $menu->content->add(trans('build.core::menu.content.languages'), route('admin.languages.index'));
-    $menu->languages->divide();
+    $menu->content->add(trans('build.core::menu.content.languages'), route('admin.languages.index'))
+        ->nickname('languages')
+        ->divide();
 
     $menu
         ->add(trans('build.core::menu.processes'))
