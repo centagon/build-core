@@ -35,6 +35,10 @@
     </section>
 
     <section class="content">
+        @if ($__env->yieldContent('fluid-content'))
+            @yield('fluid-content')
+        @endif
+
         <div class="row">
             <div class="small-12">
                 @yield('content')
