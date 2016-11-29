@@ -30,6 +30,15 @@ Vue.http.interceptors.push((request, next) => {
 $('select').select2();
 
 /**
+ * Setup spectrum
+ */
+$('input[type=color]').spectrum({
+    showInput:       true,
+    showAlpha:       true,
+    preferredFormat: 'rgb'
+});
+
+/**
  * Here we'll register all required core components.
  */
 const autogrow = new AutoGrow('textarea');

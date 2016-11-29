@@ -50,22 +50,3 @@ input[type=search] {
 select {
     width: 100%;
 }
-
-// select 2 style overrides
-.select2-container .select2-selection--single,
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-    height: rem-calc(37);
-}
-
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-    line-height: rem-calc(37);
-}
-
-.select2-container--default .select2-selection--single {
-    border-radius: $global-radius;
-    border: 1px solid color-get(gray, medium);
-}
-
-.select2-container {
-    margin-bottom: $global-margin;
-}
