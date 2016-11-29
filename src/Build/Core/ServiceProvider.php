@@ -34,21 +34,23 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__ . '/../../config/core.php' => config_path('core.php')
-        ], 'config');
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../../config/core.php' => config_path('core.php')
+            ], 'config');
 
-        $this->publishes([
-            __DIR__ . '/../../database/migrations' => database_path('migrations')
-        ], 'migrations');
+            $this->publishes([
+                __DIR__ . '/../../database/migrations' => database_path('migrations')
+            ], 'migrations');
 
-        $this->publishes([
-            __DIR__ . '/../../resources/views' => resource_path('views/vendor/core')
-        ], 'views');
+            $this->publishes([
+                __DIR__ . '/../../resources/views' => resource_path('views/vendor/core')
+            ], 'views');
 
-        $this->publishes([
-            __DIR__ . '/../../public' => public_path('vendor/build/core'),
-        ], 'public');
+            $this->publishes([
+                __DIR__ . '/../../public' => public_path('vendor/build/core'),
+            ], 'public');
+        }
 
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'build.core');
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'build.core');
