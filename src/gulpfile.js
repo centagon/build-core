@@ -14,6 +14,9 @@ elixir(mix => {
         .copy('public/js/core.js', __root + '/js/core.js');
 
     mix
-        .scripts(['../components/jquery/dist/jquery.min.js'], 'public/js/vendor.js')
+        .scripts([
+            '../components/jquery/dist/jquery.min.js',
+            '../components/select2/dist/js/select2.full.js'
+        ], 'public/js/vendor.js')
         .copy('public/js/vendor.js', __root + '/js/vendor.js');
 });

@@ -4,7 +4,6 @@ import AutoGrow from './lib/AutoGrow';
 import Sidebar from './lib/Sidebar';
 
 window._ = require('lodash');
-window.$ = window.jQuery = require('jquery');
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -25,6 +24,14 @@ Vue.http.interceptors.push((request, next) => {
     next();
 });
 
+/**
+ * Setup select2
+ */
+$('select').select2();
+
+/**
+ * Here we'll register all required core components.
+ */
 const autogrow = new AutoGrow('textarea');
 const sidebar = new Sidebar;
 const selectable = (new Selectable('table.selectable')).registerEvents();

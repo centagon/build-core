@@ -2,6 +2,7 @@ label {
     display: block;
     cursor: pointer;
     line-height: 1.8;
+    margin-bottom: $global-margin;
     padding-top: rem-calc(5);
     padding-bottom: rem-calc(5);
 }
@@ -44,4 +45,27 @@ input[type=search] {
     line-height: 1.8;
     border: 1px solid color-get(gray, medium);
     border-radius: $global-radius;
+}
+
+select {
+    width: 100%;
+}
+
+// select 2 style overrides
+.select2-container .select2-selection--single,
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: rem-calc(37);
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: rem-calc(37);
+}
+
+.select2-container--default .select2-selection--single {
+    border-radius: $global-radius;
+    border: 1px solid color-get(gray, medium);
+}
+
+.select2-container {
+    margin-bottom: $global-margin;
 }
