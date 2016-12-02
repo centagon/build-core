@@ -1,3 +1,21 @@
 .panel {
     border-radius: $global-radius;
+
+    @include element(sidebar) {
+        @include element(title) {
+            margin: rem-calc(5 0 10);
+            font-weight: bold;
+            font-size: rem-calc(16);
+        }
+
+        label {
+            margin-bottom: 0;
+        }
+
+        hr {
+            border: none;
+            background-color: color-get(gray, light);
+            height: 1px;
+        }
+    }
 }
