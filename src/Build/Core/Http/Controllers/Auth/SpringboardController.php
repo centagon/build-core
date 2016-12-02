@@ -47,6 +47,6 @@ class SpringboardController extends Controller
     {
         session()->put('backend.website_id', $website->getKey());
 
-        return redirect()->to(config('build.core.uri'));
+        return redirect()->intended(config('build.core.uri'));
     }
 }
