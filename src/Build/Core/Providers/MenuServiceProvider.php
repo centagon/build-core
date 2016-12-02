@@ -35,7 +35,7 @@ class MenuServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (Context::isBackend()) {
+        if (Context::isBackend() && ! app()->runningInConsole()) {
             /**
              * @see https://github.com/laravel/framework/issues/15072
              * TODO: Fix this awesomely terrible idea.
