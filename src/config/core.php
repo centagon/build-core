@@ -35,6 +35,7 @@ return [
 
     'middleware' => [
 
+        'etag' => Build\Core\Http\Middleware\Etag::class,
         'installed' => Build\Core\Http\Middleware\Installed::class,
         'scope-state' => Build\Core\Http\Middleware\ScopeState::class,
         'springboard' => Build\Core\Http\Middleware\Springboard::class,
