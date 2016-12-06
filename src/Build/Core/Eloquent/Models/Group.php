@@ -33,6 +33,6 @@ class Group extends Model
      */
     public static function scopeBy($query, $namespace)
     {
-        $query->where('segment', $namespace);
+        $query->where('namespace', $namespace);
     }
 }
