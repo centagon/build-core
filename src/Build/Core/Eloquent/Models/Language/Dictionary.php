@@ -25,6 +25,14 @@ class Dictionary extends \Build\Core\Eloquent\Model
      * @var array
      */
     protected $fillable = [
-        'label', 'description'
+        'label', 'description',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function entries()
+    {
+        return $this->hasMany(Entry::class);
+    }
 }
