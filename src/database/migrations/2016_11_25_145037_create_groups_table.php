@@ -17,11 +17,11 @@ class CreateGroupsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('color')->nullable();
-            $table->string('namespace');
+            $table->string('type');
             $table->timestamps();
 
             $table->index([
-                'name', 'namespace',
+                'name', 'type',
             ]);
         });
     }

@@ -10,6 +10,7 @@
  */
 
 use Build\Core\Eloquent\Models\Color;
+use Build\Core\Eloquent\Models\Group;
 use Build\Core\Eloquent\Models\Website;
 use Build\Core\Eloquent\Models\Language;
 
@@ -35,5 +36,13 @@ $factory->define(Language::class, function (Faker\Generator $faker) {
         'locale' => $faker->locale,
         'is_active' => $faker->boolean,
         'is_main' => $faker->boolean
+    ];
+});
+
+$factory->define(Group::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'color' => $faker->hexcolor,
+        'type' => ''
     ];
 });
