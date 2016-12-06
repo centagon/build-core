@@ -10,10 +10,6 @@ matrix:
 services:
   - mysql
 
-cache:
-  directories:
-    - $HOME/.composer/cache
-
 before_script:
   - mysql -e 'create database build_test;'
   - travis_retry composer self-update
