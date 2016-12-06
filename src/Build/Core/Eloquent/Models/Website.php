@@ -12,11 +12,13 @@ namespace Build\Core\Eloquent\Models;
  */
 
 use Illuminate\Database\Query\Builder;
+use Build\Core\Eloquent\Traits\Groupable;
 use Build\Core\Eloquent\Traits\Activatable;
 
 class Website extends \Build\Core\Eloquent\Model
 {
 
+    use Groupable;
     use Activatable;
 
     /**
