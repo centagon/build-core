@@ -22,17 +22,17 @@ class Group extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'color', 'namespace',
+        'name', 'color', 'type',
     ];
 
     /**
-     * Scope the query by the given namespace.
+     * Scope the query by the given type.
      *
      * @param  Builder  $query
-     * @param  string  $namespace
+     * @param  string  $type
      */
-    public static function scopeBy($query, $namespace)
+    public function scopeByType(Builder $query, $type)
     {
-        $query->where('namespace', $namespace);
+        $query->where('type', $type);
     }
 }

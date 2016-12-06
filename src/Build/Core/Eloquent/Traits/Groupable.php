@@ -13,6 +13,7 @@ namespace Build\Core\Eloquent\Traits;
 
 use Illuminate\Support\Collection;
 use Build\Core\Eloquent\Models\Group;
+use Illuminate\Database\Eloquent\Builder;
 
 trait Groupable
 {
@@ -22,7 +23,7 @@ trait Groupable
      */
     public function groups()
     {
-        return $this->morphToMany(Group::class, 'groupable');
+        return $this->morphToMany(static::getGroupClassName(), 'groupable');
     }
 
     /**
@@ -30,14 +31,42 @@ trait Groupable
      *
      * @param  array|Collection  $groups
      *
-     * @return mixed
+     * @return $this
      */
     public function syncGroups($groups)
     {
-        if ($groups instanceof Collection) {
-            $groups = $groups->pluck('id')->all();
+        if ( ! $groups instanceof Collection) {
+            $groups = collect($groups);
         }
 
-        return $this->groups()->sync($groups);
+        $this->groups()->sync($groups->pluck('id')->toArray());
+
+        return $this;
+    }
+
+    /**
+     * Restrict the query on a certain set of groups.
+     *
+     * @param  Builder  $query
+     * @param  null|string|array  $type
+     */
+    public function scopeAllByGroup(Builder $query, $type = null)
+    {
+        if ($type === null) {
+            $type = collect(get_class($this));
+        }
+
+        if ( ! $type instanceof Collection) {
+            $type = collect($type);
+        }
+
+        $query->whereHas('groups', function ($q) use ($type) {
+            $q->whereIn('type', $type->toArray());
+        });
+    }
+
+    public static function getGroupClassName()
+    {
+        return Group::class;
     }
 }
