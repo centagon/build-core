@@ -1,0 +1,22 @@
+dl {
+    font-size: 0;
+
+    dt,
+    dd {
+        display: inline-block;
+        margin: 0;
+        border-bottom: 1px solid color-get(gray, light);
+        padding: 10px 0;
+        font-size: rem-calc(14);
+    }
+
+    dt {
+        font-weight: bold;
+        width: 30%;
+    }
+
+    dd {
+        width: 70%;
+    }
+
+}

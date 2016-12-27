@@ -13,6 +13,7 @@ namespace Build\Core;
 
 use Build\Core\Support\Context;
 use Build\Core\Http\Routing\Discovery;
+use Intervention\Image\ImageServiceProvider;
 use Build\Core\Providers\MenuServiceProvider;
 use Build\Core\Providers\EventServiceProvider;
 use Build\Core\Providers\AlertServiceProvider;
@@ -84,6 +85,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->app->register(AssetServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(EventServiceProvider::class);
+        $this->app->register(ImageServiceProvider::class);
         $this->app->register(MenuServiceProvider::class);
     }
 

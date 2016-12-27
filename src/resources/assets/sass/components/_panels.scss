@@ -1,4 +1,5 @@
 .panel {
+    position: relative;
     border-radius: $global-radius;
 
     @include element(sidebar) {
@@ -9,13 +10,31 @@
         }
 
         label {
-            margin-bottom: 0;
+            margin-top: 0;
+            font-weight: normal;
         }
 
         hr {
             border: none;
             background-color: color-get(gray, light);
             height: 1px;
+        }
+    }
+
+    @include element(preview) {
+        height: rem-calc(200);
+
+        .preview__image {
+            height: rem-calc(150);
+            background-size: cover;
+            background-position: 50% 50%;
+            border-radius: $global-radius;
+            margin-bottom: rem-calc(5);
+            cursor: pointer;
+        }
+
+        &:hover {
+            background-color: color-get(gray, light);
         }
     }
 }

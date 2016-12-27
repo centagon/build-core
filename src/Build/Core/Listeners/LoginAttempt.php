@@ -45,9 +45,11 @@ class LoginAttempt
      */
     protected function logAttempt()
     {
-        $user = User::where('email', $this->event->credentials['email'])->firstOrFail();
+        $user = User::where('email', $this->event->credentials['email'])->first();
 
-        Attempt::log($user, Attempt::TYPE_ATTEMPT);
+        if ($user) {
+            Attempt::log($user, Attempt::TYPE_ATTEMPT);
+        }
     }
 
     /**

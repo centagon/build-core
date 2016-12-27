@@ -52,8 +52,11 @@ class Model extends \Illuminate\Database\Eloquent\Model
     {
         $namespace = get_class($this);
 
+        // Transform namespace back-slashes to namespace dashes.
         $key = strtolower(str_replace('\\', '-', $namespace));
 
+        // When supplied, append the record id to the cache
+        // key for better unique record caching.
         if ($id !== null) {
             $key .= '.' . $id;
         }

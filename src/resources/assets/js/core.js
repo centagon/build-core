@@ -8,14 +8,13 @@
  */
 
 require('./bootstrap');
+require('./lib/SidebarScroll');
 
-import AssetWrapper from './components/asset/Wrapper.vue';
-import Example from './components/Example.vue';
+import AssetContainer from './screens/asset/Container.vue';
 
 const app = new Vue({
     el: '#vue-wrapper',
     components: {
-        AssetWrapper,
-        Example
+        AssetContainer
     }
 });

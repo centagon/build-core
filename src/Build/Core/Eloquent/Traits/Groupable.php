@@ -35,11 +35,11 @@ trait Groupable
      */
     public function syncGroups($groups)
     {
-        if ( ! $groups instanceof Collection) {
-            $groups = collect($groups);
+        if ( $groups instanceof Collection) {
+            $groups = $groups->pluck('id')->toArray();
         }
 
-        $this->groups()->sync($groups->pluck('id')->toArray());
+        $this->groups()->sync($groups);
 
         return $this;
     }
