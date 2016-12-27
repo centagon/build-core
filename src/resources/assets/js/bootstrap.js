@@ -43,7 +43,7 @@ $('input[type=color]').spectrum({
  */
 const autogrow = new AutoGrow('textarea');
 const sidebar = new Sidebar;
-const selectable = (new Selectable('table.selectable')).registerEvents();
+const selectable = (new Selectable('table.table--selectable')).registerEvents();
 
 window.build = {
     core: {
