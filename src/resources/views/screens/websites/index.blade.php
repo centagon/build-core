@@ -41,7 +41,7 @@
 
                 <tbody>
                     @foreach ($websites as $website)
-                        <tr>
+                        <tr class="selectable--row">
                             <td>
                                 <input type="checkbox" value="{{ $website->getKey() }}">
                             </td>
