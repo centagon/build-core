@@ -28,8 +28,6 @@ class Container {
         
         this.buttons = this.queryButtons();
         this.idCollector = this.queryIdCollector();
-        
-        console.error(this.idCollector);
     }
     
     /**
@@ -76,7 +74,7 @@ class Container {
         selectables.change( (e) => {
 
             var checked = $(e.target).is(':checked'),
-                    row = $(e.target).closest('.selectable-row');
+                    row = $(e.target).closest('.selectable--row');
 
             // Enable/Disable the Action buttons
             if (checked) {
