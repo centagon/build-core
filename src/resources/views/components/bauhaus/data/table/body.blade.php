@@ -1,4 +1,4 @@
-<tr class="selectable-row">
+<tr class="selectable--row">
     @if ($node->selectable() === true)
         <td width="20">
             <input type="checkbox" class="row-id" value="{{ $row->getKey() }}">

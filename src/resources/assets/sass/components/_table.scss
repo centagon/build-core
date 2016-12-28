@@ -31,6 +31,10 @@
             &:hover {
                 background-color: color-get(gray, light);
             }
+
+            &.selectable--row.selected {
+                background-color: color-get(gray, light);
+            }
         }
     }
 

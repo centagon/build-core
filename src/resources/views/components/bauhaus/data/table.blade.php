@@ -2,7 +2,7 @@
     @include('build.core::components.bauhaus.data.no-records')
 @else
 
-    <table class="table {{ $node->selectable() === true ? 'selectable' : '' }}">
+    <table class="table {{ $node->selectable() === true ? 'table--selectable' : '' }}">
 
         @if ($node->get('head') !== false)
             <thead>
