@@ -28,7 +28,7 @@ function createLeftMenu($menu)
         ->nickname('design');
 
     $menu->design->add(trans('build.core::menu.design.colors'), route('admin.colors.index'));
-    $menu->design->add(trans('build.core::menu.design.assets'), '#');
+    $menu->design->add(trans('build.core::menu.design.assets'), route('admin.assets.index'));
 
     $menu
         ->add(trans('build.core::menu.content'))

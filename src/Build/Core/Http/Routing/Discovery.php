@@ -54,23 +54,26 @@ class Discovery
             // First try to find exact matches.
             $this->website = Website::activated()
                 ->select([
-                    'id', 'domain',
+                    'id', 'domain', 'language_id',
                 ])
                 ->with(['language' => function ($q) {
-                    $q->select('id');
+                    $q->select(['id', 'locale']);
                 }])
                 ->byDomain($url)
                 ->sorted()
                 ->firstOrFail();
         } catch (\RuntimeException $e) {
 
-            // When we're unable to find the exact matche we'll try to figure out the best match.
-            // This is done by sorting all the domains by length (sortest first) and looping
-            // through those results untill we're able to find a new `exact` match. This
+            // When we're unable to find the exact match we'll try to figure out the best match.
+            // This is done by sorting all the domains by length (shortest first) and looping
+            // through those results until we're able to find a new `exact` match. This
             // will be our current domain. Nothing is returned when nothing is found.
             $sites = Website::activated()
+                ->select([
+                    'id', 'domain', 'language_id',
+                ])
                 ->with(['language' => function ($q) {
-                    $q->select('id');
+                    $q->select(['id', 'locale']);
                 }])
                 ->sorted()
                 ->get();

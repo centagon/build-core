@@ -11,6 +11,7 @@
 
 Route::get('/', 'DashboardController@index')->name('admin.dashboard');
 
+require __DIR__ . '/guarded/assets.php';
 require __DIR__ . '/guarded/color.php';
 require __DIR__ . '/guarded/language.php';
 require __DIR__ . '/guarded/modules.php';

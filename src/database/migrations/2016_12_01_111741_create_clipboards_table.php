@@ -19,6 +19,7 @@ class CreateClipboardsTable extends Migration
             $table->text('clipboard_data');
             $table->string('slug');
             $table->string('type');
+            $table->tinyInteger('is_persistent')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')

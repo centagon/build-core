@@ -12,6 +12,8 @@ namespace Build\Core\Eloquent\Models;
  */
 
 use Illuminate\Database\Query\Builder;
+use Build\Core\Support\Facades\Context;
+use Build\Core\Support\Facades\Discovery;
 use Build\Core\Eloquent\Traits\Groupable;
 use Build\Core\Eloquent\Traits\Activatable;
 

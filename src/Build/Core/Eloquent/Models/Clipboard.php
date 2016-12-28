@@ -12,6 +12,7 @@ namespace Build\Core\Eloquent\Models;
  */
 
 use Build\Core\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Clipboard extends Model
@@ -22,7 +23,7 @@ class Clipboard extends Model
      * @var array
      */
     protected $fillable = [
-        'clipboard_data', 'slug', 'type',
+        'clipboard_data', 'slug', 'type', 'is_persistent',
     ];
 
     /**
@@ -34,24 +35,21 @@ class Clipboard extends Model
     }
 
     /**
-     * @param  string  $slug
-     * @param  string  $type
-     * @param  mixed  $data
-     *
-     * @return static
+     * @param  Builder  $query
+     * @param  string   $slug
      */
-    public static function store($slug, $type, $data)
+    public function scopeBySlug($query, $slug)
     {
-        $clipboard = new static([
-            'clipboard_data' => $data,
-            'slug' => $slug,
-            'type' => $type
-        ]);
+        $query->where('slug', str_slug($slug));
+    }
 
-        $clipboard->user()->associate(auth()->user()->getKey());
-        $clipboard->save();
-
-        return $clipboard;
+    /**
+     * @param  Builder  $query
+     * @param  string   $type
+     */
+    public function scopeByType($query, $type)
+    {
+        $query->where('type', $type);
     }
 
     /**
@@ -88,5 +86,33 @@ class Clipboard extends Model
     public function setSlugAttribute($value)
     {
         $this->attributes['slug'] = str_slug($value);
+    }
+
+    public function fetch()
+    {
+        throw new \Exception('not yet implemented');
+    }
+
+    /**
+     * @param  string  $slug
+     * @param  string  $type
+     * @param  mixed   $data
+     * @param  bool    $persistent
+     *
+     * @return static
+     */
+    public static function store($slug, $type, $data, $persistent = false)
+    {
+        $clipboard = new static([
+            'clipboard_data' => $data,
+            'slug' => $slug,
+            'type' => $type,
+            'is_persistent' => $persistent
+        ]);
+
+        $clipboard->user()->associate(auth()->user()->getKey());
+        $clipboard->save();
+
+        return $clipboard;
     }
 }

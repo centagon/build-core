@@ -1,21 +1,55 @@
 .header-bar {
+    position: fixed;
     display: flex;
+    top: 0;
+    width: 100%;
     height: 5px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, .05);
+    z-index: 19;
 
     @include element(left) {
-        background-color: #42ada4;
+        background-color: #af3b3c;
         width: 100%;
     }
 
     @include element(center) {
-        background-color: #9cc9a8;
+        background-color: #cb8369;
         width: 100%;
     }
 
     @include element(right) {
-        background-color: #d9eac1;
+        background-color: #458aa1;
         width: 100%;
     }
 
+    &.animated {
+        .header-bar__left,
+        .header-bar__center,
+        .header-bar__right {
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+
+        .header-bar__left { animation-name: loading-animation-1; }
+        .header-bar__center { animation-name: loading-animation-2; }
+        .header-bar__right { animation-name: loading-animation-3; }
+    }
+
+}
+
+@keyframes loading-animation-1 {
+    0% { order: 0; }
+    33% { order: 1; }
+    66% { order: 2; }
+}
+
+@keyframes loading-animation-2 {
+    0% { order: 1; }
+    33% { order: 2; }
+    66% { order: 0; }
+}
+
+@keyframes loading-animation-3 {
+    0% { order: 2; }
+    33% { order: 0; }
+    66% { order: 1; }
 }

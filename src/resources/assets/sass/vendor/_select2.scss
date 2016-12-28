@@ -16,3 +16,7 @@
 .select2-container {
     margin-bottom: $global-margin;
 }
+
+.select2-selection--multiple input.select2-search__field[type=search] {
+    margin-bottom: auto;
+}

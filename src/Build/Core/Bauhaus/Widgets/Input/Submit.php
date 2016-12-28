@@ -11,16 +11,14 @@ namespace Build\Core\Bauhaus\Widgets\Input;
  * file that was distributed with this source code.
  */
 
-class File extends Generic
+use Build\Core\Bauhaus\Widgets\Widget;
+
+class Submit extends Widget
 {
 
     /**
-     * Set the field attributes.
-     * @var array
+     * Override the view path.
+     * @var string
      */
-    protected $attributes = [
-        'type' => 'file',
-        'name' => ':name',
-        'value' => ':value'
-    ];
+    protected $view = 'build.core::components.bauhaus.input.submit';
 }

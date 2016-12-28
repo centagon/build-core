@@ -54,4 +54,6 @@
         <div class="content"></div>
     </div>
 
+    <div class="sidebar-overflow"></div>
+
 @include('build.core::components.layout.footer')

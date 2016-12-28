@@ -1,3 +1,5 @@
+<?php
+
 /*
  * This file is part of the Build package.
  *
@@ -7,14 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require('./bootstrap');
-require('./lib/SidebarScroll');
+Route::get('assets/fetch-groups', 'AssetsController@fetchGroups');
+Route::get('assets/fetch-websites', 'AssetsController@fetchWebsites');
+Route::resource('assets', 'AssetsController');
 
-import AssetContainer from './screens/asset/Container.vue';
-
-const app = new Vue({
-    el: '#vue-wrapper',
-    components: {
-        AssetContainer
-    }
-});

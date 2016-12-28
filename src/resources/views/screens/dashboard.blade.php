@@ -4,6 +4,6 @@
 
     <h1>Dashboard</h1>
 
-    <example ></example>
+    <select name="" class="tagged" multiple id=""></select>
 
 @endsection

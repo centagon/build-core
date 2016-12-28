@@ -11,6 +11,7 @@ namespace Build\Core\Eloquent\Traits;
  * file that was distributed with this source code.
  */
 
+use Build\Core\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Build\Core\Eloquent\Models\Group;
 use Illuminate\Database\Eloquent\Builder;
@@ -35,11 +36,15 @@ trait Groupable
      */
     public function syncGroups($groups)
     {
-        if ( ! $groups instanceof Collection) {
+        if (is_array($groups) && ($groups[0] instanceof Model)) {
             $groups = collect($groups);
         }
 
-        $this->groups()->sync($groups->pluck('id')->toArray());
+        if ($groups instanceof Collection) {
+            $groups = $groups->pluck('id')->toArray();
+        }
+
+        $this->groups()->sync($groups);
 
         return $this;
     }

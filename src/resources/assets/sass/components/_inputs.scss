@@ -1,10 +1,20 @@
+.floating-action-bar {
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, .9);
+    padding: rem-calc(15 0);
+    width: 100%;
+    text-align: right;
+}
+
 label {
     display: block;
     cursor: pointer;
     line-height: 1.8;
-    margin-bottom: $global-margin;
+    margin-top: $global-margin;
     padding-top: rem-calc(5);
     padding-bottom: rem-calc(5);
+    font-weight: bold;
 }
 
 input[type=checkbox] {

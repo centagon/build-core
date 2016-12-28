@@ -26,6 +26,7 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
         if ( ! $this->app->routesAreCached()) {
             $this->mapProtectedAdminRoutes();
             $this->mapGuestAdminRoutes();
+            $this->mapAsyncAdminRoutes();
         }
     }
 
@@ -45,5 +46,16 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
         ], function () {
             require $this->path . '/guest.php';
         });
+    }
+
+    protected function mapAsyncAdminRoutes()
+    {
+        Route::group([
+            'middleware' => ['web'],
+            'namespace' => $this->namespace . '\\Async',
+            'prefix' => config('build.core.uri') . '/async',
+        ], function () {
+            require $this->path . '/async.php';
+        }, ['namespace' => $this->namespace]);
     }
 }
