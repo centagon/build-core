@@ -35,7 +35,12 @@ class SpringboardController extends Controller
             });
         }
 
-        return view('build.core::screens.auth.springboard.show')->with(compact('websites'));
+        $response = view('build.core::screens.auth.springboard.show')
+            ->with(compact('websites'));
+
+        // Return 401: Unauthorized when rendering this route. This is used to
+        // catch ajax errors when laravel forgot our site we're logged into.
+        return response($response, 401);
     }
 
     /**
