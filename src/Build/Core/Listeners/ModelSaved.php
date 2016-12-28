@@ -22,6 +22,12 @@ class ModelSaved
      */
     public function handle(ModelSavedEvent $event)
     {
-        Cache::forget($event->model->getCacheKey());
+        $model = $event->model;
+
+        // Forget the model's 'master' cache.
+        Cache::forget($model->getCacheKey());
+
+        // Forget the model's key specific cache (when applicable).
+        Cache::forget($model->getCacheKey($model->getKey()));
     }
 }
