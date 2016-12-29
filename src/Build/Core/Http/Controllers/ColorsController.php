@@ -13,6 +13,8 @@ namespace Build\Core\Http\Controllers;
 
 use Illuminate\Http\Response;
 use Build\Core\Http\Controller;
+use Build\Core\Support\Facades\Asset;
+use Illuminate\Support\Facades\Cache;
 use Build\Core\Eloquent\Models\Color;
 use Illuminate\Http\RedirectResponse;
 use Build\Core\Http\Entities\ColorEntity;
@@ -88,6 +90,26 @@ class ColorsController extends Controller
         alert()->success('Successfully updated a color')->flash();
 
         return redirect()->route('admin.colors.index');
+    }
+
+    public function render()
+    {
+        $styles = [];
+
+        $colors = Cache::rememberForever('build.colors.all', function () {
+            return Color::all();
+        });
+
+        foreach ($colors as $color) {
+            $styles[] = '.background-' . $color->name . '{background-color:' . $color->color . ';}';
+            $styles[] = '.foreground-' . $color->name . '{color:' . $color->color . ';}';
+        }
+
+        $response = implode('', $styles);
+
+        return response($response, 304, [
+            'Content-Type' => 'text/css'
+        ]);
     }
 
     /**

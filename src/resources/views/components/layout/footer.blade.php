@@ -1,8 +1,6 @@
 
     @yield('sidebar')
 
-    <script src="{{ asset('vendor/build/core/js/vendor.js') }}"></script>
-    <script src="{{ asset('vendor/build/core/js/core.js') }}"></script>
     {!! Build\Core\Support\Facades\Asset::scripts() !!}
     @stack('javascripts')
 

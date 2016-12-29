@@ -10,8 +10,7 @@
 
     <title>[{{ strtoupper(app()->environment()) }}] &mdash; Centagon Build</title>
 
-    <link rel="stylesheet" href="{{ asset('vendor/build/core/css/core.css') }}">
-    {!! Build\Core\Support\Facades\Asset::styles() !!}
+    {!! Build\Core\Support\Facades\Asset::get('backend.css')->css() !!}
     @stack('stylesheets')
 
     <script>
