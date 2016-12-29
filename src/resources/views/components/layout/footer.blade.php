@@ -1,7 +1,7 @@
 
     @yield('sidebar')
 
-    {!! Build\Core\Support\Facades\Asset::scripts() !!}
+    {!! Build\Core\Support\Facades\Asset::get('backend.js')->js() !!}
     @stack('javascripts')
 
     <script>
