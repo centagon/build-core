@@ -27,6 +27,7 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
             $this->mapProtectedAdminRoutes();
             $this->mapGuestAdminRoutes();
             $this->mapAsyncAdminRoutes();
+            $this->mapFrontendRoutes();
         }
     }
 
@@ -56,6 +57,16 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
             'prefix' => config('build.core.uri') . '/async',
         ], function () {
             require $this->path . '/async.php';
+        }, ['namespace' => $this->namespace]);
+    }
+
+    protected function mapFrontendRoutes()
+    {
+        Route::group([
+            'middleware' => ['web'],
+            'namespace' => $this->namespace
+        ], function () {
+            require $this->path . '/frontend.php';
         }, ['namespace' => $this->namespace]);
     }
 }

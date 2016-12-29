@@ -80,7 +80,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->app->register(ModulesServiceProvider::class);
         $this->app->register(PolicyServiceProvider::class);
         $this->app->register(CookieServiceProvider::class);
-        $this->app->register(ColorServiceProvider::class);
         $this->app->register(AlertServiceProvider::class);
         $this->app->register(AssetServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
