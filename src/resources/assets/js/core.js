@@ -12,9 +12,14 @@ require('./lib/SidebarScroll');
 
 import AssetContainer from './screens/asset/Container.vue';
 
-const app = new Vue({
-    el: '#vue-wrapper',
-    components: {
-        AssetContainer
-    }
+$( window ).load( function () {
+    
+    const app = new Vue({
+        el: '#vue-wrapper',
+        components: {
+            AssetContainer
+        }
+    });
+
+    window.app = app;
 });
