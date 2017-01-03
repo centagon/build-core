@@ -63,6 +63,7 @@ class BauhausServiceProvider extends \Illuminate\Support\ServiceProvider
     protected $navigationWidgets = [
         'navigation.link' => Widgets\Navigation\Link::class,
         'navigation.button' => Widgets\Navigation\Button::class,
+        'navigation.popout-menu' => Widgets\Navigation\PopoutMenu::class,
     ];
 
     protected $miscWidgets = [

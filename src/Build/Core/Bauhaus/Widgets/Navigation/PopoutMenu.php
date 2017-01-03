@@ -13,22 +13,12 @@ namespace Build\Core\Bauhaus\Widgets\Navigation;
 
 use Build\Core\Bauhaus\Widgets\Widget;
 
-class Link extends Widget
+class PopoutMenu extends Widget
 {
 
     /**
      * Override the view path.
      * @var string
      */
-    protected $view = 'build.core::components.bauhaus.navigation.link';
-    
-    public function getUrl() {
-        $to = $this->get('to');
-
-        if (!is_callable($to)) {
-            return $to;
-        }
-        
-        return $to($this);
-    }
+    protected $view = 'build.core::components.bauhaus.navigation.popout-menu';
 }
