@@ -124,9 +124,9 @@ class Asset extends Model
      */
     public function upload(UploadedFile $file)
     {
-        $filename = $this->getQualifiedKeyName();
+        $filename = $this->getQualifiedFilename($file);
 
-        $this->move($this->directory_path, $filename);
+        $file->move($this->directory_path, $filename);
     }
 
     /**
