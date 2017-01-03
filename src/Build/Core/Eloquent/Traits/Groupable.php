@@ -36,7 +36,7 @@ trait Groupable
      */
     public function syncGroups($groups)
     {
-        if (is_array($groups) && ($groups[0] instanceof Model)) {
+        if (is_array($groups) && isset($groups[0]) && ($groups[0] instanceof Model)) {
             $groups = collect($groups);
         }
 
