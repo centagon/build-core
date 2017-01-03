@@ -2,6 +2,8 @@ $popout-background-color: #0077c8 !default;
 $popout-border-color: #0077c8 !default;
 $popout-border-radius: 4px !default;
 $popout-menu-color: #a2a2a2 !default;
+$popout-menu-link-color: #7d8589 !default;
+$popout-menu-icon-color: #0077c8 !default;
 $popout-menu-disabled-color: gray !default;
 $popout-menu-hover-color: #f1f1f1 !default;
 $popout-button-size: 30px;
@@ -86,6 +88,16 @@ $popout-menu-displacement: 4px;
 
                 .fa { 
                     width: 2em;
+                }
+                
+                a {
+                    font-weight: normal !important;
+                    color: $popout-menu-link-color;
+                    
+                    i {
+                        color: $popout-menu-icon-color;
+                    }
+                    
                 }
 
                 &:hover{
