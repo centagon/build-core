@@ -12,52 +12,53 @@ namespace Build\Core\Tests\Resources;
  */
 
 use Build\Core\Support\Facades\Asset;
+use Build\Core\Resources\Assets\Group;
 use Build\Core\Tests\AbstractTestCase;
 
 class AssetTest extends AbstractTestCase
 {
 
-    function test_empty_stylesheet_on_initial_load()
+    function test_can_create_new_empty_group()
     {
-        $this->assertEmpty(Asset::styles());
+        $group = Asset::make('my-group');
+
+        $this->assertEquals(Group::class, get_class($group));
+        $this->assertEmpty($group->js());
+        $this->assertEmpty($group->css());
     }
 
-    function test_empty_javascripts_on_initial_load()
+    function test_can_add_css()
     {
-        $this->assertEmpty(Asset::scripts());
+        $group = Asset::make('my-css-group')->add('test.css');
+
+        $this->assertInternalType('string', $group->css());
+        $this->assertNotEmpty($group->css());
+        $this->assertEmpty($group->js());
+
+        $this->assertEquals('<link rel="stylesheet" href="test.css">
+', $group->css());
     }
 
-    function test_can_add_style_reference()
+    function test_can_add_js()
     {
-        Asset::addStylesheet('test.css');
+        $group = Asset::make('my-js-group')->add('test.js');
 
-        // Assert that the stack is empty.
-        $this->assertNotEmpty(Asset::styles());
+        $this->assertInternalType('string', $group->js());
+        $this->assertNotEmpty($group->js());
+        $this->assertEmpty($group->css());
 
-        // Assert sure that we've added 1 stylesheet to the stack.
-        $this->assertCount(1, explode("\n", Asset::styles()));
-
-        // Determine that the string equals what we expected.
-        $this->assertEquals('<link rel="stylesheet" href="test.css" />', Asset::styles());
-
-        Asset::addStylesheet('another.css');
-
-        // We've added another style, so we should get two lines now.
-        $this->assertCount(2, explode("\n", Asset::styles()));
-        $this->assertEquals('<link rel="stylesheet" href="test.css" />
-<link rel="stylesheet" href="another.css" />', Asset::styles());
+        $this->assertEquals('<script type="text/javascript" src="test.js"></script>
+', $group->js());
     }
 
-    function test_can_add_inline_styles()
+    function test_can_add_dependency()
     {
-        $style = 'body { background: red; }';
+        $group = Asset::make('my-js-group');
+        $group->add('test1.js', 'test1')->dependsOn('test2');
+        $group->add('test2.js', 'test2');
 
-        // Assert that the stack is empty.
-        $this->assertEmpty(Asset::styles());
-
-        Asset::inlineStyle($style);
-
-        $this->assertNotEmpty(Asset::styles());
-        $this->assertEquals(Asset::styles(), '<style>' . $style . '</style>');
+        $this->assertEquals('<script type="text/javascript" src="test2.js"></script>
+<script type="text/javascript" src="test1.js"></script>
+', $group->js());
     }
 }
