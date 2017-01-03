@@ -1,0 +1,109 @@
+$popout-background-color: #0077c8 !default;
+$popout-border-color: #0077c8 !default;
+$popout-border-radius: 4px !default;
+$popout-menu-color: #a2a2a2 !default;
+$popout-menu-disabled-color: gray !default;
+$popout-menu-hover-color: #f1f1f1 !default;
+$popout-button-size: 30px;
+$popout-menu-displacement: 4px;
+
+.popout {
+
+    @include element(hover) {
+        position: relative;
+        padding-bottom: $popout-menu-displacement;
+
+        &:hover {
+            
+            .popout__hover__button {
+                color: white;
+                background-color: $popout-background-color;
+            }
+
+            .popout__hover__menu {
+                display: block;
+            }
+            
+        }
+        
+        @include modifier(right) {
+            text-align: right;
+            
+            .popout__hover__menu {
+                 left: auto;
+                 right: 0;
+            }
+            
+        }
+
+        @include element(button) {
+            pointer-events: none;
+            text-decoration: none !important;
+            display: inline-block;
+            border: 1px solid $popout-border-color;
+            min-width: $popout-button-size;
+            height: $popout-button-size;
+            line-height: $popout-button-size;
+            padding: 0 6px;
+            border-radius: $popout-border-radius;
+            text-align: center;
+            cursor: pointer;
+            
+            @include element(label) {
+                margin-left: 6px;
+            }
+            
+        }
+
+        @include element(menu) {
+            display: none;
+            position: absolute;
+            left: 0;
+            /*min-width: 100%;*/
+            top: $popout-button-size + $popout-menu-displacement;
+            list-style: none;
+            background: white;
+            padding: 6px 0;
+            z-index: 2;
+            border-radius: 4px;
+            border: 1px solid $popout-menu-color;
+            box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.2);
+            text-align: left;
+            margin: 0;
+            cursor: pointer;
+
+            @include modifier(disabled) {
+                color: $popout-menu-disabled-color;
+                cursor: initial;
+            }
+
+            li{
+                line-height: 1em;
+                padding: .5em 3em .5em 1em;
+                white-space: nowrap;
+
+                font-size: .9em;
+
+                .fa { 
+                    width: 2em;
+                }
+
+                &:hover{
+                    background-color: $popout-menu-hover-color;
+                    
+                    a {
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                }
+                
+            }
+        }
+
+    }
+
+}
+
+
+

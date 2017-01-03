@@ -1,4 +1,14 @@
-<a href="{{ $node->get('to') }}">
+<a 
+    href="{{ $node->getUrl() }}"
+    @if ($sidebar = $node->get('sidebar'))
+    data-open-sidebar = {{ $sidebar }}
+    @endif
+    >
+    
+    @if ($icon = $node->get('icon'))
+    <i class="fa fa-{{ $icon }}"></i>
+    @endif
+    
     {!! $node->get('value') !!}
 </a>
 
