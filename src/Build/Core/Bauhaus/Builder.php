@@ -66,7 +66,7 @@ class Builder
             }
 
             // Get the value from the query.
-            $value = $query->{$mapper->get('name')};
+            $value = $query->{$mapper->get('name')} ? : $mapper->get('default');
 
             // In case the value is an object (e.g. a multi select) we'll
             // need to fetch the array of id's and use them as the value.
