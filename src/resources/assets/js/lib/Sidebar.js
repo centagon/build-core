@@ -23,7 +23,7 @@ class Sidebar {
     load(sidebar, url) {
         sidebar.addClass('sidebar--open');
 
-        $.ajax(url)
+        return $.ajax(url)
             .done(response => sidebar.find('.content').html(response))
             .fail(response => {
 
