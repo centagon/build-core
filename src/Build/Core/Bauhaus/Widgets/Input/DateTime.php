@@ -13,7 +13,7 @@ namespace Build\Core\Bauhaus\Widgets\Input;
 
 use Build\Core\Bauhaus\Widgets\Input\Generic;
 
-class Date extends Generic
+class DateTime extends Generic
 {
 
     /**
@@ -21,7 +21,7 @@ class Date extends Generic
      * @var array
      */
     protected $attributes = [
-        'type' => 'date',
+        'type' => 'datetime-local',
         'name' => ':name',
         'value' => ':value',
         'placeholder' => ':placeholder'

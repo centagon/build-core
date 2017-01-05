@@ -33,6 +33,8 @@ class BauhausServiceProvider extends \Illuminate\Support\ServiceProvider
         'input.form' => Widgets\Input\Form::class,
         'input.tags' => Widgets\Input\Tags::class,
         'input.text' => Widgets\Input\Text::class,
+        'input.date' => Widgets\Input\Date::class,
+        'input.datetime' => Widgets\Input\DateTime::class,
         'input.email' => Widgets\Input\Email::class,
         'input.color' => Widgets\Input\Color::class,
         'input.radio' => Widgets\Input\Radio::class,
