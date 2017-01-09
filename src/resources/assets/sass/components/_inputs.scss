@@ -62,3 +62,37 @@ input[type=search] {
 select {
     width: 100%;
 }
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+
+    input[type=text] {
+        display: table-cell;
+        position: relative;
+        z-index: 2;
+        float: left;
+        width: 100%;
+        margin-bottom: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
+
+.input-group__addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: color-get(black);
+    text-align: center;
+    background-color: color-get(gray, light);
+    border: 1px solid color-get(gray, medium);
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+    border-right: none;
+    border-radius: $global-radius 0 0 $global-radius;
+}
