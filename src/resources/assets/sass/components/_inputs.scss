@@ -1,3 +1,5 @@
+$input-radius : 0px !default;
+
 .floating-action-bar {
     position: fixed;
     bottom: 0;
@@ -23,7 +25,7 @@ input[type=checkbox] {
     border: 1px solid color-get(gray, medium);
     width: 14px;
     height: 14px;
-    border-radius: $global-radius;
+    border-radius: $input-radius;
     vertical-align: middle;
     cursor: pointer;
     background-color: color-get(white);
@@ -56,7 +58,7 @@ input[type=search] {
     padding: $global-padding / 3 $global-padding / 2;
     line-height: 1.8;
     border: 1px solid color-get(gray, medium);
-    border-radius: $global-radius;
+    border-radius: $input-radius;
 }
 
 select {
