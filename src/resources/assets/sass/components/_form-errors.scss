@@ -1,14 +1,37 @@
-form {
+$form-errors-primary-color: #ea4235;
+$form-errors-input-background-color: lighten($form-errors-primary-color, 40%);
+
+@mixin form_errors_input_styling() {
     
+    input,
+    select {
+        background-color: $form-errors-input-background-color;
+        border: 1px solid $form-errors-primary-color;
+        
+        outline-color: $form-errors-input-background-color;
+    }
+    
+}
+
+form {
     
     .form-error {
         display: none;
     }
     
     .error {
+        > div {
+            @include form_errors_input_styling();
+        }
         
         .form-error {
+            margin-top: -$global-margin;
+            margin-bottom: $global-margin;
+            
             display: block;
+            text-align: right;
+            font-weight: bold;
+            color: $form-errors-primary-color;
         }
         
     }
