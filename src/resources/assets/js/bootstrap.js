@@ -32,10 +32,10 @@ $('select').select2();
 /**
  * Setup spectrum
  */
-$('input[type=color]').spectrum({
-    showInput:       true,
-    showAlpha:       true,
-    preferredFormat: 'rgb'
+$('.color-picker').spectrum({
+    showInput: true,
+    showAlpha: true,
+    preferredFormat: 'rgb',
 });
 
 /**

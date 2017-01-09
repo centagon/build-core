@@ -11,14 +11,18 @@ namespace Build\Core\Bauhaus\Widgets\Input;
  * file that was distributed with this source code.
  */
 
-use Build\Core\Bauhaus\Widgets\Widget;
-
-class Color extends Widget
+class Color extends Generic
 {
 
     /**
-     * Override the view path.
-     * @var string
+     * Set the field attributes.
+     * @var array
      */
-    protected $view = 'build.core::components.bauhaus.input.color';
+    protected $attributes = [
+        'type' => 'text',
+        'name' => ':name',
+        'value' => ':value',
+        'class' => 'color-picker',
+        'placeholder' => ':placeholder'
+    ];
 }
