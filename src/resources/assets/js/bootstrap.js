@@ -1,7 +1,7 @@
-import WindowDispatch from './lib/WindowDispatch';
-import Selectable from './lib/Selectable';
-import AutoGrow from './lib/AutoGrow';
-import Sidebar from './lib/Sidebar';
+import {WindowDispatch} from 'centagon-build-core-js';
+import {Selectable} from 'centagon-build-core-js';
+import {AutoGrow} from 'centagon-build-core-js';
+import {Sidebar} from 'centagon-build-core-js';
 
 window._ = require('lodash');
 
