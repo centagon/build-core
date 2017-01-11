@@ -13,7 +13,6 @@ namespace Build\Core\Http\Controllers;
 
 use Illuminate\Http\Response;
 use Build\Core\Http\Controller;
-use Build\Core\Support\Facades\Asset;
 use Illuminate\Support\Facades\Cache;
 use Build\Core\Eloquent\Models\Color;
 use Illuminate\Http\RedirectResponse;
@@ -107,7 +106,7 @@ class ColorsController extends Controller
 
         $response = implode('', $styles);
 
-        return response($response, 304, [
+        return response($response, 200, [
             'Content-Type' => 'text/css'
         ]);
     }
