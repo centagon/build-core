@@ -101,8 +101,8 @@ class ColorsController extends Controller
         });
 
         foreach ($colors as $color) {
-            $styles[] = '.background-' . $color->name . '{background-color:' . $color->color . ';}';
-            $styles[] = '.foreground-' . $color->name . '{color:' . $color->color . ';}';
+            $styles[] = '.background-' . $color->name . '{background-color:' . $color->color . '!important;}';
+            $styles[] = '.foreground-' . $color->name . '{color:' . $color->color . '!important;}';
         }
 
         $response = implode('', $styles);
