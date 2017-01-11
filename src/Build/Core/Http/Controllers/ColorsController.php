@@ -13,7 +13,6 @@ namespace Build\Core\Http\Controllers;
 
 use Illuminate\Http\Response;
 use Build\Core\Http\Controller;
-use Build\Core\Support\Facades\Asset;
 use Illuminate\Support\Facades\Cache;
 use Build\Core\Eloquent\Models\Color;
 use Illuminate\Http\RedirectResponse;
@@ -101,13 +100,13 @@ class ColorsController extends Controller
         });
 
         foreach ($colors as $color) {
-            $styles[] = '.background-' . $color->name . '{background-color:' . $color->color . ';}';
-            $styles[] = '.foreground-' . $color->name . '{color:' . $color->color . ';}';
+            $styles[] = '.background-' . $color->name . '{background-color:' . $color->color . '!important;}';
+            $styles[] = '.foreground-' . $color->name . '{color:' . $color->color . '!important;}';
         }
 
         $response = implode('', $styles);
 
-        return response($response, 304, [
+        return response($response, 200, [
             'Content-Type' => 'text/css'
         ]);
     }
