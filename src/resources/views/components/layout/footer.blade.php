@@ -8,7 +8,7 @@
         $.fx.speeds._default = 100;
         $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                'X-CSRF-TOKEN': config.csrf_token
             }
         });
     </script>
