@@ -1,10 +1,10 @@
 <div class="row {{ $errors->has($node->get('name')) ? 'error' : '' }}">
-	<div class="small-12 medium-4 columns">
-		<label for="f-{{ $node->get('name') }}" class="text-right middle">
+	<div class="small-12 medium-6 medium-push-3">
+		<label for="f-{{ $node->get('name') }}">
 			{{ $node->get('label') }}
 		</label>
 	</div>
-	<div class="small-12 medium-8 columns">
+	<div class="small-12 medium-6 medium-push-3">
 
 		@if ( $node->isMultiple() )
 			<select name="{{ $node->get('name') }}[]" id="f-{{ $node->get('name') }}" {!! $node->getData()  !!} {!! $node->getAttributes()  !!} multiple>
