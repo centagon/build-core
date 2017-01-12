@@ -11,13 +11,15 @@ require('./bootstrap');
 require('./lib/SidebarScroll');
 
 import AssetContainer from './screens/asset/Container.vue';
+import AssetPicker from './screens/asset/Picker.vue';
 
 $( window ).load( function () {
     
     const app = new Vue({
         el: '#vue-wrapper',
         components: {
-            AssetContainer
+            AssetContainer,
+            AssetPicker
         }
     });
 
