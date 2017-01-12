@@ -10,3 +10,9 @@
  */
 
 Route::resource('assets', 'AssetsController');
+
+Route::group(['prefix' => 'asset-browser'], function () {
+
+    Route::get('files', 'Assets\BrowserController@files')->name('admin.assets.browser.files');
+
+});
