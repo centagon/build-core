@@ -80,8 +80,8 @@ $popout-menu-displacement: 4px;
             }
 
             li{
+                padding: 0;
                 line-height: 1em;
-                padding: .5em 3em .5em 1em;
                 white-space: nowrap;
 
                 font-size: .9em;
@@ -91,6 +91,8 @@ $popout-menu-displacement: 4px;
                 }
                 
                 a {
+                    display: block;
+                    padding: .5em 3em .5em 1em;
                     font-weight: normal !important;
                     color: $popout-menu-link-color;
                     
