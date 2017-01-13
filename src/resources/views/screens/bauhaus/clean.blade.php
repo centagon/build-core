@@ -1,13 +1,9 @@
-@extends('build.core::layouts.clean')
+<div class="row">
+    <div class="small-12">
 
-@section('content')
-    <div class="row">
-        <div class="small-12">
+        @foreach ($manager->getMapper()->getChildren() as $node)
+        {!! $node->render() !!}
+        @endforeach
 
-            @foreach ($manager->getMapper()->getChildren() as $node)
-                {!! $node->render() !!}
-            @endforeach
-
-        </div>
     </div>
-@endsection
+</div>
