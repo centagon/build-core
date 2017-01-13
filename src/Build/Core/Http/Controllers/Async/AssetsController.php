@@ -38,23 +38,42 @@ class AssetsController extends Controller
         ])->get();
 
         foreach ($query as $asset) {
-            $rows[] = [
-                'id' => $asset->getKey(),
-                'filename' => $asset->filename,
-                'url' => $asset->url,
-                'preview_url' => $asset->preview_url,
-                'path' => $asset->path,
-                'size' => $asset->image_size,
-                'filesize' => [
-                    'bytes' => $asset->filesize,
-                    'formatted' => $asset->formatted_filesize
-                ],
-                'groups' => $asset->groups,
-                'websites' => $asset->websites
-            ];
+            $rows[] = $this->format($asset);
         }
 
         return $rows;
+    }
+    
+    /**
+     * 
+     * @param integer $asset The Asset
+     * @return Response
+     */
+    public function show(Asset $asset) {
+        return response()->json( $this->format( $asset ) );
+    }
+    
+    /**
+     * Format the asset
+     * 
+     * @param Asset $asset
+     * @return array
+     */
+    private function format($asset) {
+        return [
+            'id' => $asset->getKey(),
+            'filename' => $asset->filename,
+            'url' => $asset->url,
+            'preview_url' => $asset->preview_url,
+            'path' => $asset->path,
+            'size' => $asset->image_size,
+            'filesize' => [
+                'bytes' => $asset->filesize,
+                'formatted' => $asset->formatted_filesize
+            ],
+            'groups' => $asset->groups,
+            'websites' => $asset->websites
+        ];
     }
 
     /**

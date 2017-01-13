@@ -1,0 +1,14 @@
+.custom-input {
+    
+    @include modifier(asset) {
+        
+        label {
+            color: color-get( black );
+            font-weight: normal;
+            display: inline-block;
+            margin-left: 1em;
+        }
+        
+    }
+    
+}
