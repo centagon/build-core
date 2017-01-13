@@ -123,6 +123,14 @@ class Mapper extends NestedSet
      */
     public function get($property, $default = null)
     {
+        // If our mapper has a name field and we came back from
+        // a response where input is passed back, we must be
+        // very sure that we could use the old input with
+        // the same name as our new value.
+        if ($this->has('name') && $property === 'value' && old($this->get('name'))) {
+            $this->properties['value'] = old($this->get('name'));
+        }
+
         if ( ! $this->has($property)) {
             return $default;
         }
