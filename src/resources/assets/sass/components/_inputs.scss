@@ -50,6 +50,7 @@ input[type=date],
 input[type=datetime-local],
 input[type=email],
 input[type=password],
+textarea,
 input[type=search] {
     display: block;
     box-sizing: border-box;
@@ -63,6 +64,10 @@ input[type=search] {
 
 select {
     width: 100%;
+}
+
+textarea {
+    min-height: 100px;
 }
 
 .input-group {
