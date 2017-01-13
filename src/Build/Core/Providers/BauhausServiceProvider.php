@@ -28,6 +28,7 @@ class BauhausServiceProvider extends \Illuminate\Support\ServiceProvider
      * @var array
      */
     protected $inputWidgets = [
+        'input.asset' => Widgets\Input\Asset::class,
         'input.date' => Widgets\Input\Date::class,
         'input.file' => Widgets\Input\File::class,
         'input.form' => Widgets\Input\Form::class,

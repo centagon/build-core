@@ -12,6 +12,7 @@ require('./lib/SidebarScroll');
 
 import AssetContainer from './screens/asset/Container.vue';
 import AssetPicker from './screens/asset/Picker.vue';
+import InputAsset from './components/input/Asset.vue';
 
 $( window ).load( function () {
     
@@ -19,7 +20,8 @@ $( window ).load( function () {
         el: '#vue-wrapper',
         components: {
             AssetContainer,
-            AssetPicker
+            AssetPicker,
+            InputAsset
         }
     });
 
