@@ -12,6 +12,7 @@ namespace Build\Core\Eloquent\Models;
  */
 
 use Ramsey\Uuid\Uuid;
+use Build\Core\Support\System;
 use Build\Core\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Intervention\Image\Constraint;
@@ -162,7 +163,13 @@ class Asset extends Model
     public static function boot()
     {
         static::creating(function (self $model) {
-            $model->setAttribute('uuid', Uuid::uuid1()->toString());
+            if (System::is64Bits()) {
+                $uuid = Uuid::uuid1();
+            } else {
+                $uuid = Uuid::uuid4();
+            }
+
+            $model->setAttribute('uuid', $uuid->toString());
         });
     }
 }
