@@ -25,11 +25,6 @@ Vue.http.interceptors.push((request, next) => {
 });
 
 /**
- * Setup select2
- */
-$('select').select2();
-
-/**
  * Setup spectrum
  */
 $('.color-picker').spectrum({
