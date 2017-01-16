@@ -26,10 +26,4 @@ $( window ).load( function () {
     });
 
     window.app = app;
-    
-    /**
-     * Setup select2
-     */
-    $('select').select2();
-
 });
