@@ -47,6 +47,10 @@ class Asset
 
     public function get($namespace, $default = null)
     {
+        if ( ! $this->collection->has($namespace)) {
+            $this->make($namespace);
+        }
+
         return $this->collection->get($namespace, $default);
     }
 }
