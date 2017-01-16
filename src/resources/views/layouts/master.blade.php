@@ -9,9 +9,9 @@
     <header class="header">
         <div class="header__item">
             <ul class="header__nav">
-                <li>
-                    <a href="{{ build_route('dashboard') }}">
-                        <img src="{{ asset('vendor/build/core/img/logo.svg') }}" style="width: 150px;">
+                <li id="logo">
+                    <a href="{{ route('admin.dashboard') }}">
+                        <img src="{{ asset('vendor/build/core/img/logo.svg') }}">
                     </a>
                 </li>
 
