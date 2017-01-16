@@ -34,7 +34,7 @@
         @yield('sub-header')
     </section>
 
-    <section class="content" id="vue-wrapper">
+    <section class="content">
         @if ($__env->yieldContent('fluid-content'))
             @yield('fluid-content')
         @endif
@@ -44,7 +44,9 @@
                 @yield('content')
             </div>
         </div>
-        
+    </section>
+
+    <section class="content" id="vue-wrapper">
         @yield('vue-content')
     </section>
 
