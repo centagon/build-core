@@ -11,13 +11,15 @@ namespace Build\Core\Eloquent\Models;
  * file that was distributed with this source code.
  */
 
-use Ramsey\Uuid\Uuid;
-use Build\Core\Support\System;
 use Build\Core\Eloquent\Model;
+use Build\Core\Eloquent\Traits\Groupable;
+use Build\Core\Support\Mime;
+use Build\Core\Support\System;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Constraint;
 use Intervention\Image\Facades\Image;
-use Build\Core\Eloquent\Traits\Groupable;
+use Ramsey\Uuid\Uuid;
 
 class Asset extends Model
 {
@@ -140,10 +142,14 @@ class Asset extends Model
         $filename = $this->directory_path . '/' . $this->getQualifiedFilename($file);
 
         $previewPath = $this->preview_directory_path . '/' . $this->getQualifiedFilename($file);
+        
+        if (Mime::isImage($filename))
+        {
+            Image::make($filename)->resize(235, null, function (Constraint $constraint) {
+                $constraint->aspectRatio();
+            })->save($previewPath);
+        }
 
-        Image::make($filename)->resize(235, null, function (Constraint $constraint) {
-            $constraint->aspectRatio();
-        })->save($previewPath);
     }
 
     /**
@@ -157,6 +163,7 @@ class Asset extends Model
     {
         return $this->uuid . '.' . $file->getClientOriginalExtension();
     }
+
     /**
      * Handle the model boot events.
      */
