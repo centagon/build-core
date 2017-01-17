@@ -2,6 +2,8 @@
 
 namespace Build\Core\Support;
 
+use Illuminate\Support\Facades\File;
+
 /*
  * This file is part of the Build package.
  *
