@@ -92,4 +92,25 @@ class Context
     {
         return ! $this->isFrontend();
     }
+    
+    /**
+     * Run the callable in the specified Context
+     * 
+     * @param string $context The desired context
+     * @param callable $callable A Closure 
+     * 
+     * @return mixed Returns the result from the callable
+     */
+    public function runInContext( $context, $callable ) {
+        $current = $this->get();
+        
+        $this->override($context);
+        
+        $result = $callable();
+        
+        $this->override($current);
+        
+        return $result;
+    }
+    
 }
