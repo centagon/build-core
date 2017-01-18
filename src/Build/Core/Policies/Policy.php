@@ -14,6 +14,7 @@ namespace Build\Core\Policies;
 use Build\Core\Eloquent\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Build\Core\Support\Facades\Discovery;
+use Build\Core\Eloquent\Traits\BelongsToWebsite;
 
 abstract class Policy
 {
@@ -31,8 +32,9 @@ abstract class Policy
      *
      * @return bool
      */
-    public function before(User $user, $ability)
+    public function before(User $user, $ability, $object = null)
     {
+        
         // The almighty may enter
         if ($user->isSuperAdmin()) {
             return true;
@@ -40,12 +42,50 @@ abstract class Policy
 
         $ability = $this->getAbilityName($ability);
 
-        $websiteId = ($website = Discovery::backendWebsite())
-            ? $website->getKey()
-            : null;
-
+        if ($this->objectBelongsToWebsite($object)) {
+            
+            $websiteId = $object->website_id;
+            
+        } else {
+            
+            $websiteId = $this->discoverWebsiteId();
+            
+        }
+        
         // Check the user's capabilities.
         return $user->hasRole(array_get($this->capabilities, $ability, []), $websiteId);
+    }
+    
+    /**
+     * Check if an object belongs to a website
+     * @param mixed $object An object to check
+     * @return boolean Returns true when the object is website-aware
+     */
+    private function objectBelongsToWebsite($object) {
+        
+        if (is_null($object)) {
+            return false;
+        }
+        
+        if (!is_object($object)) {
+            return false;
+        }
+        
+        if ( has_trait($object, BelongsToWebsite::class) ) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    /**
+     * returns the discovered websiteId
+     * 
+     * @return mixed Returns an integer value or null
+     */
+    private function discoverWebsiteId() {
+        
+        return ($website = Discovery::backendWebsite()) ? $website->getKey() : null;
     }
 
     /**
