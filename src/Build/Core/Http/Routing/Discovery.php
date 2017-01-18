@@ -184,13 +184,7 @@ class Discovery
      */
     public function getUrl()
     {
-        $url = request()->url();
-
-        if (in_array('_', request()->segments())) {
-            $url = url()->previous();
-        }
-
-        return str_replace(['http://', 'https://'], '', $url);
+        return str_replace(['http://', 'https://'], '', request()->url());
     }
 
     /**
