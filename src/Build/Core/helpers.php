@@ -136,3 +136,17 @@ if ( ! function_exists('try_method')) {
         }
     }
 }
+
+if (!function_exists('form_select')) {
+
+    function form_select($name, $options = [], $default = '', $attr = [])
+    {
+        $attributes = [];
+        foreach ($attr as $key => $value) {
+            $attributes[] = "{$key}=\"$value\"";
+        }
+        $attributes = implode(' ', $attributes);
+        return (string) view('build.core::components.form.select', compact('name', 'options', 'default', 'attributes'));
+    }
+
+}
