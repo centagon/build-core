@@ -99,4 +99,24 @@ class Website extends \Build\Core\Eloquent\Model
 
         return $domain;
     }
+    
+    /**
+     * Return the slug part of the website
+     * @return string
+     */
+    public function slug() {
+        $path = (parse_url($this->domain, PHP_URL_PATH));
+        $pos = strpos($path, '/');
+        
+        return $pos ? substr($path, $pos) : '';
+    }
+    
+    /**
+     * Return the slug part of the website
+     * @return string
+     */
+    public function getSlugAttribute() {
+        return $this->slug();
+    }
+    
 }
