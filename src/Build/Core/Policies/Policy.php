@@ -34,6 +34,39 @@ abstract class Policy
      */
     public function before(User $user, $ability, $object = null)
     {
+                    
+        return $this->allowsUser($user, $ability, $object);
+
+    }
+    
+    /**
+     * Allows for calling the policy Externally
+     * 
+     * @param string $ability
+     * @param mixed $object
+     * @param integer $websiteId
+     * 
+     * @return boolean
+     */
+    public function allows( $ability, $object = null, $websiteId = null) {
+        
+        $user = auth()->user();
+        
+        return $this->allowsUser($user, $ability, $object, $websiteId);
+        
+    }
+    
+    /**
+     * Allows for calling the policy Externally
+     * 
+     * @param User $user
+     * @param string $ability
+     * @param mixed $object
+     * @param integer $websiteId
+     * 
+     * @return boolean
+     */
+    public function allowsUser(User $user, $ability, $object = null, $websiteId = null) {
         
         // The almighty may enter
         if ($user->isSuperAdmin()) {
@@ -46,7 +79,9 @@ abstract class Policy
             
             $websiteId = $object->website_id;
             
-        } else {
+        }
+        
+        if (empty($websiteId)) {
             
             $websiteId = $this->discoverWebsiteId();
             
@@ -54,6 +89,7 @@ abstract class Policy
         
         // Check the user's capabilities.
         return $user->hasRole(array_get($this->capabilities, $ability, []), $websiteId);
+        
     }
     
     /**
