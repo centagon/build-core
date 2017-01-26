@@ -118,12 +118,12 @@ class Sidebar {
                         data: arr,
                         dataType: 'json'
                     }).then( (response) => {
-                        P.resolve(response);
+                        P.resolve(response, arr);
                         this.close($sidebar);
                     }).fail( (response) => {
                         
                         if (!response.responseJSON) {
-                            P.reject(response);
+                            P.reject(response, arr);
                             this.close($sidebar);
                             return;
                         }
