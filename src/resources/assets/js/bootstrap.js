@@ -1,7 +1,7 @@
-import {WindowDispatch} from 'centagon-build-core-js';
-import {Selectable} from 'centagon-build-core-js';
-import {AutoGrow} from 'centagon-build-core-js';
-import {Sidebar} from 'centagon-build-core-js';
+import WindowDispatch from './lib/WindowDispatch';
+import Selectable from './lib/Selectable';
+import AutoGrow from './lib/AutoGrow';
+import Sidebar from './lib/Sidebar';
 
 window._ = require('lodash');
 
@@ -11,7 +11,7 @@ window._ = require('lodash');
  * and simple, leaving you to focus on building your next great project.
  */
 window.Vue = require('vue');
-require('vue-resource');
+require('vue-resource');  
 
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of

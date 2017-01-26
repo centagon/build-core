@@ -2,3 +2,5 @@
 /src/resources/assets/components
 /vendor
 composer.lock
+src/yarn.lock
+yarn.lock

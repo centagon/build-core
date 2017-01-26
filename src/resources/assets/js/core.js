@@ -24,6 +24,6 @@ $( window ).load( function () {
             InputAsset
         }
     });
-
+    
     window.app = app;
 });

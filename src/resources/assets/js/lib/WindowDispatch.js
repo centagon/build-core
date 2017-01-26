@@ -1,4 +1,4 @@
-import { Window } from '../../components/centagon-primer/src/js/lib/Util';
+import {Util} from 'centagon-primer';
 
 class WindowDispatch {
 
@@ -35,7 +35,7 @@ class WindowDispatch {
      * @returns {WindowDispatch}
      */
     static open(url, title = 'document', width = 500, height = 250) {
-        const { top, left } = Window.getCenter(width, height);
+        const { top, left } = Util.Window.getCenter(width, height);
         const reference = window.open(url, title, this.parseArguments(width, height, top, left));
 
         reference.focus();
