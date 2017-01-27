@@ -45,13 +45,7 @@
 
 <script>
 
-    import TagSelect from '../../components/input/TagSelect.vue';
-
     export default {
-
-        components: {
-            'tag-select': TagSelect
-        },
 
         mounted() {
             this.$root.$on('asset-show', event => {

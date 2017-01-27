@@ -13,16 +13,18 @@ require('./lib/SidebarScroll');
 import AssetContainer from './screens/asset/Container.vue';
 import AssetPicker from './screens/asset/Picker.vue';
 import InputAsset from './components/input/Asset.vue';
+import TagSelect from './components/input/TagSelect.vue';
+
+
+Vue.component('tag-select', TagSelect);
+Vue.component('input-asset', InputAsset);
+Vue.component('asset-container', AssetContainer);
+Vue.component('asset-picker', AssetPicker);
 
 $( window ).load( function () {
     
     const app = new Vue({
-        el: '#vue-wrapper',
-        components: {
-            AssetContainer,
-            AssetPicker,
-            InputAsset
-        }
+        el: '#vue-wrapper'
     });
     
     window.app = app;
