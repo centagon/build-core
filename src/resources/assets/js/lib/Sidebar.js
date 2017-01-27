@@ -58,7 +58,7 @@ class Sidebar {
 
     close(sidebar) {
         sidebar 
-                .off('click','.button--secondary')
+                .off('click','.button--cancel')
                 .off('submit','form')
                 .removeClass('sidebar--open')
                 .find('.content').html('');
@@ -137,7 +137,7 @@ class Sidebar {
                     });
 
                 })
-                .on('click', '.button--secondary', (e) => {
+                .on('click', '.button--cancel', (e) => {
                     P.reject();
             
                     e.preventDefault();
