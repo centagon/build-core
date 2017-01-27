@@ -67,16 +67,16 @@ class UserEntity extends Manager
      */
     public function create($mapper)
     {
-        $mapper->add('heading', function ($heading) {
+        $mapper->add('content.heading', function ($heading) {
             $heading->title('Users');
             $heading->subtitle('Create a new user');
-            $heading->add('button', [
+            $heading->add('navigation.button', [
                 'label' => 'Cancel',
                 'to' => route('admin.users.index')
             ]);
         });
 
-        $mapper->add('form', function ($form) {
+        $mapper->add('input.form', function ($form) {
             $form->action(route('admin.users.store'));
 
             $form->add('input.text', [
@@ -89,7 +89,7 @@ class UserEntity extends Manager
                 'label' => 'The users email address'
             ]);
 
-            $form->add('divider');
+            $form->add('input.divider');
 
             $form->add('input.password', [
                 'name'  => 'password',
