@@ -99,7 +99,15 @@
         },
 
         watch: {
-
+            
+            selected: function () {
+                
+                if (this.selected && ( this.selected.id !== parseInt(this.value) ) ) {
+                    this.$emit('change', this.selected);
+                }
+                
+            }
+            
         }
 
     }
