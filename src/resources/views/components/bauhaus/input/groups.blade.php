@@ -6,7 +6,7 @@
     </div>
     <div class="small-12 medium-6 medium-push-3">
 
-        <select name="{{ $node->name }}[]" id="f-{{ $node->name }}" multiple data-placeholder="gaaf">
+        <select name="{{ $node->name }}[]" id="f-{{ $node->name }}" multiple data-placeholder="{{ $node->placeholder }}">
             @foreach ($node->getGroups() as $group)
                 <option value="{{ $group->getKey() }}">{{ $group->name }}</option>
             @endforeach
