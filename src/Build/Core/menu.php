@@ -59,10 +59,6 @@ function createRightMenu($menu)
         $lastItem = null;
 
         foreach (Discovery::userWebsites() as $site) {
-            if ($site->getKey() == $currentSite->getKey()) {
-                continue;
-            }
-
             $lastItem = $siteMenu->add($site->name, route('admin.springboard.open', $site->getKey()));
         }
 
