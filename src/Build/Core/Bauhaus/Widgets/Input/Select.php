@@ -59,11 +59,7 @@ class Select extends Widget
     public function getOld($default = null)
     {
         if ( ! $default) {
-            $default = $this->isMultiple() ? [] : null;
-        }
-
-        if ( ! $default) {
-            $default = $this->get('selected', null);
+            $default = $default ? : $this->get('selected', $this->isMultiple() ? [] : null);
         }
 
         return old($this->get('name'), $this->get('value', $default));
@@ -87,5 +83,14 @@ class Select extends Widget
     public function getOptions()
     {
         return $this->get('options', []);
+    }
+    
+    public function isSelected($key) {
+        
+        if ($this->isMultiple()) {
+            return in_array($key, $this->getOld());
+        }
+        
+        return $key === $this->getOld();
     }
 }
