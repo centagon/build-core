@@ -70,7 +70,7 @@ class Builder
 
             // In case the value is an object (e.g. a multi select) we'll
             // need to fetch the array of id's and use them as the value.
-            if (is_object($value)) {
+            if (is_object($value) && method_exists($value, 'pluck')) {
                 $value = $value->pluck('id');
             }
 
