@@ -13,23 +13,25 @@
 				<option value="">Select an option</option>
 		@endif
 
-			@if( $node->isMultiple() )
-				@foreach ($node->getOptions() as $key => $value)
-					@if ( array_get( $node->getOld(), $key ) )
-						<option value="{{ $key }}" selected>{{ $value }}</option>
-					@else
-						<option value="{{ $key }}">{{ $value }}</option>
-					@endif
-				@endforeach
-			@else
-				@foreach ($node->getOptions() as $key => $value)
-					@if ( $node->getOld() == $key )
-						<option value="{{ $key }}" selected>{{ $value }}</option>
-					@else
-						<option value="{{ $key }}">{{ $value }}</option>
-					@endif
-				@endforeach
-			@endif
+        @foreach ($node->getOptions() as $key => $value)
+            @if (is_array($value))
+                <optgroup label='{{$key}}'>
+                    @foreach ($value as $option=>$label)
+                        @if ( $node->isSelected($option) )
+                            <option value="{{ $option }}" selected>{{ $label }}</option>
+                        @else
+                            <option value="{{ $option }}">{{ $label }}</option>
+                        @endif
+                    @endforeach
+                </optgroup>
+            @else
+                @if ( $node->isSelected($key) )
+                    <option value="{{ $key }}" selected>{{ $value }}</option>
+                @else
+                    <option value="{{ $key }}">{{ $value }}</option>
+                @endif
+            @endif
+        @endforeach
 
 		</select>
 
