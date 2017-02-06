@@ -64,14 +64,17 @@ class Builder
             if (is_array($query)) {
                 $query = (object) $query;
             }
-
+            
             // Get the value from the query.
             $value = $query->{$mapper->get('name')} ? : $mapper->get('default');
 
             // In case the value is an object (e.g. a multi select) we'll
             // need to fetch the array of id's and use them as the value.
+            // Else, we will check if the object is an eloquent model and grab it's id
             if (is_object($value) && method_exists($value, 'pluck')) {
                 $value = $value->pluck('id');
+            } elseif (is_object($value) && method_exists($value, 'getKey')) {
+                $value = $value->getKey();
             }
 
             $mapper->set('value', $value);
