@@ -13,7 +13,7 @@ class CreateAssetWebsitesTable extends Migration
      */
     public function up()
     {
-        Schema::create('asset_websites', function (Blueprint $table) {
+        Schema::create('asset_website', function (Blueprint $table) {
             $table->unsignedInteger('asset_id');
             $table->unsignedInteger('website_id');
 
@@ -34,6 +34,6 @@ class CreateAssetWebsitesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asset_websites');
+        Schema::dropIfExists('asset_website');
     }
 }
