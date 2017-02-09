@@ -11,6 +11,7 @@ namespace Build\Core\Http\Controllers;
  * file that was distributed with this source code.
  */
 
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\Response;
 use Build\Core\Http\Controller;
@@ -103,6 +104,8 @@ class UsersController extends Controller
             unset($payload['password'], $payload['password_confirmation']);
         }
 
+        $this->updateRoles($request, $user);
+
         $user->update($payload);
 
         alert()->success('Successfully updated the user.');
@@ -139,29 +142,22 @@ class UsersController extends Controller
     }
 
     /**
-     * @param  UserRoleRequest  $request
-     * @param  User  $user
-     *
+     * @param  Request  $request
+     * @param  User $user
      * @return array
      */
-    public function updateRoles(UserRoleRequest $request, User $user)
+    public function updateRoles(Request $request, User $user)
     {
-        $this->authorize('update_roles-user');
-
-        $roles = $request->input('role');
-        $user = User::findOrFail($user);
+        $roles = $request->get('role');
 
         foreach ($roles as $website => $role) {
             $website = $website ?: null;
-            $role = ($role === 'none') ? null : $role;
 
-            if ($request->user()->cannot('updateRole', [$user, $role, $website])) {
+            if (! $role) {
                 continue;
             }
 
             $user->assignRole($role, $website);
         }
-
-        return ['status' => 'OK'];
     }
 }
