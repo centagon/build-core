@@ -42,7 +42,9 @@
                     <div class="small-6 large-3" v-for="asset in rows">
                         <div class="panel panel__preview">
                             <div class="preview__image" v-bind:style="{ 'background-image': 'url(' + asset.preview_url + ')' }" v-on:click="show(asset.id)"></div>
+                            <!--
                             <input type="checkbox" v-bind:value="asset.id" v-model="checkedAssets" class="selectable-item">
+                            -->
                         </div>
                     </div>
 

@@ -12,4 +12,4 @@
 Route::get('assets/fetch-groups', 'AssetsController@fetchGroups');
 Route::get('assets/fetch-websites', 'AssetsController@fetchWebsites');
 Route::resource('assets', 'AssetsController');
-
+Route::delete('asset/{asset}', 'AssetsController@remove');

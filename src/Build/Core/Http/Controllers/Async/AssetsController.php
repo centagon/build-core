@@ -52,6 +52,11 @@ class AssetsController extends Controller
     public function show(Asset $asset) {
         return response()->json( $this->format( $asset ) );
     }
+
+    public function remove(Asset $asset)
+    {
+        $asset->delete();
+    }
     
     /**
      * Format the asset
