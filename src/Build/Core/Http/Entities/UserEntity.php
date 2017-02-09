@@ -171,7 +171,7 @@ class UserEntity extends Manager
                     $form->add('input.select', [
                         'name' => "role[{$website->getKey()}]",
                         'label' => $website->name,
-                        'options' => Role::pluck('id')->toArray(),
+                        'options' => Role::pluck('id', 'id')->toArray(),
                         'selected' => $role ?: 9000 // massively hacky
                     ]);
                 }

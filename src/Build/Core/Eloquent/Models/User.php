@@ -63,10 +63,6 @@ class User extends Authenticatable
 
         $role = Role::find($name);
 
-        if ($name == Role::SUPER_ADMINISTRATORS) {
-            $website = null;
-        }
-
         if ($current) {
             $this->roles()->detach($current, ['website_id' => $website]);
         }
