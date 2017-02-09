@@ -19,7 +19,7 @@
 
         <div class="panel">
             <p>Are you sure you want to remove this asset? This action cannot be reverted!</p>
-            <button class="button button--error">Yes, remove this asset!</button>
+            <button class="button button--error" v-on:click="destroy">Yes, remove this asset!</button>
         </div>
 
     </div>
@@ -38,7 +38,6 @@
 
         mounted() {
             this.$root.$on('asset-remove', event => {
-                window.console.log(event);
                 this.hide();
 
                 this.asset = event.asset;
@@ -55,6 +54,13 @@
             hide() {
                 this.asset = {};
                 this.visible = false;
+            },
+
+            destroy() {
+                this.$http.post(config.base_url + '/async/asset/' + this.asset.id, { _method: 'DELETE' })
+                    .then(response => {
+                        window.location.reload();
+                    });
             }
         }
 
