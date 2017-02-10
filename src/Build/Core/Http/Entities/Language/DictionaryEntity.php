@@ -47,7 +47,7 @@ class DictionaryEntity extends Manager
                     }
                 ]);
 
-                $table->add('content.label', [
+                $table->add('content.text', [
                     'name' => 'description',
                     'label' => 'Description',
                     'value' => function ($table) {
