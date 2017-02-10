@@ -61,7 +61,7 @@ class Language extends \Build\Core\Eloquent\Model
     {
         if ($website = Discovery::backendWebsite()) {
             $query
-                ->select('languages.*', 'websites.id')
+                ->select('languages.*', 'websites.id AS website_id')
                 ->leftJoin('websites', 'languages.id', '=', 'websites.language_id')
                 ->where('websites.id', $website->getKey());
         }
