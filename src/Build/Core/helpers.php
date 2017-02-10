@@ -9,6 +9,9 @@
  * file that was distributed with this source code.
  */
 
+use Build\Content\Support\Facades\Discovery;
+use Build\Core\Eloquent\Models\Language\Entry;
+
 if ( ! function_exists('alert')) {
     /**
      * @return Build\Core\Support\Alert\MessageBag
@@ -134,6 +137,24 @@ if ( ! function_exists('try_method')) {
         if (method_exists($instance, $method)) {
             call_user_func_array([$instance, $method], $parameters);
         }
+    }
+}
+
+if (! function_exists('lang')) {
+
+    function lang($label, $locale = null)
+    {
+        if ($locale === null && Discovery::website()) {
+            $locale = Discovery::website()->language->locale;
+        }
+
+        $entry = (new Entry)->translate($label, $locale);
+
+        if ($entry == $label) {
+            return null;
+        }
+
+        return $entry;
     }
 }
 
