@@ -51,7 +51,7 @@ class Entry extends \Build\Core\Eloquent\Model
     {
         $locale = $locale ?: app()->getLocale();
 
-        return app('cache')->rememberForever($this->getCacheKey($this->getKey()), function () use ($entry, $locale) {
+        return app('cache')->rememberForever($this->getCacheKey($this->getKey().$locale), function () use ($entry, $locale) {
             $result = (new self)->where([
                 'locale' => $locale,
                 'entry' => $entry
