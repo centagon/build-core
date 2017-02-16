@@ -3,6 +3,8 @@ import Selectable from './lib/Selectable';
 import AutoGrow from './lib/AutoGrow';
 import Sidebar from './lib/Sidebar';
 
+require('./lib/Modals/Driver');
+
 window._ = require('lodash');
 
 /**
