@@ -13,6 +13,13 @@ Route::resource('assets', 'AssetsController');
 
 Route::group(['prefix' => 'asset-browser'], function () {
 
-    Route::get('files', 'Assets\BrowserController@files')->name('admin.assets.browser.files');
+    Route::get('files', 'Assets\BrowserController@files')
+        ->name('admin.assets.browser.files');
+
+    Route::get('create', 'Assets\BrowserController@create')
+        ->name('admin.assets.browser.create');
+
+    Route::post('create', 'Assets\BrowserController@store')
+        ->name('admin.assets.browser.store');
 
 });
