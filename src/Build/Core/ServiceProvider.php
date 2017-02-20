@@ -45,7 +45,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             ], 'migrations');
 
             $this->publishes([
-                __DIR__ . '/../../resources/views' => resource_path('views/vendor/core')
+                __DIR__ . '/../../resources/views' => resource_path('views/vendor/build.core')
             ], 'views');
 
             $this->publishes([
