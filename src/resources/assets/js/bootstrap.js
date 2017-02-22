@@ -2,6 +2,7 @@ import WindowDispatch from './lib/WindowDispatch';
 import Selectable from './lib/Selectable';
 import AutoGrow from './lib/AutoGrow';
 import Sidebar from './lib/Sidebar';
+import TabsDriver from './lib/Tabs/TabsDriver';
 
 require('./lib/Modals/Driver');
 
@@ -46,6 +47,8 @@ $('.color-picker').spectrum({
 const autogrow = new AutoGrow('textarea');
 const sidebar = new Sidebar;
 const selectable = (new Selectable('table.table--selectable')).registerEvents();
+
+const tabsdriver = (new TabsDriver('.tabs')).registerEvents();
 
 window.build = {
     core: {
