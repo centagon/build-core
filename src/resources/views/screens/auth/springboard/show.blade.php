@@ -15,7 +15,7 @@
             <ul class="list-group">
                 @foreach ($websites as $website)
                     <li>
-                        <a href="{{ route('admin.springboard.open', $website->getKey()) }}" class="list-group__item">
+                        <a href="{{ route('admin.springboard.open', $website->getKey()) }}" class="list-group__item" style="border-left: 10px solid {{ $website->color }};">
                             {{ $website->name }}
                         </a>
                     </li>
