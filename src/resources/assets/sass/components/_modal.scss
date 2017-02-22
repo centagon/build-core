@@ -1,0 +1,78 @@
+$modal-dialog-padding:          $global-padding !default;
+$modal-dialog-backdrop:         rgba(0,0,0,0.8);
+$modal-dialog-background:       white;
+$modal-dialog-header-height:    40px;
+$modal-dialog-header-color:     white;
+$modal-dialog-header-background:#27333b;
+$modal-dialog-close-background: black;
+$modal-dialog-close-color:      white;
+
+.modal[role="dialog"] {
+    display: none;
+    position: fixed;
+
+    background: $modal-dialog-backdrop;
+    overflow: auto;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.modal[role="dialog"].modal--visible {
+    display: block;
+
+    .modal-dialog {
+        max-height: calc(100vh - 80px);
+        overflow: auto;
+        position: absolute;
+        left: 25%;
+        top: 25%;
+        margin-bottom: 40px;
+        width: 50%;
+        background: $modal-dialog-background;
+
+        .modal-content {
+            position: relative;
+            padding: $modal-dialog-padding;
+
+            .modal-header {
+                background: $modal-dialog-header-background;
+                position: absolute;
+                padding: 0 $modal-dialog-padding;
+                left: 0;
+                top: 0;
+                right: 0;
+                height: $modal-dialog-header-height;
+
+                * {
+                    float: left;
+                }
+
+                .close {
+                    position: absolute;
+                    top:0;
+                    right: 0;
+                    height: $modal-dialog-header-height;
+                    background: $modal-dialog-close-background;
+                    color: $modal-dialog-close-color;
+                }
+                
+                .modal-title {
+                    margin: 0;
+                    color: $modal-dialog-header-color;
+                    line-height: $modal-dialog-header-height;
+                }
+
+            }
+            
+            .modal-body {
+                margin-top: $modal-dialog-header-height;
+            }
+
+        }
+
+    }
+
+}
