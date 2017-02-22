@@ -11,12 +11,11 @@ namespace Build\Core\Http\Controllers\Assets;
  * file that was distributed with this source code.
  */
 
-use Illuminate\Http\Response;
 use Build\Core\Http\Controller;
 use Build\Core\Eloquent\Models\Asset;
-use Build\Core\Support\Facades\Discovery;
 use Build\Core\Http\Entities\AssetEntity;
 use Build\Core\Http\Requests\AssetRequest;
+use Build\Core\Support\Facades\Discovery;
 
 class BrowserController extends Controller
 {
@@ -28,5 +27,33 @@ class BrowserController extends Controller
         return view('build.core::screens.assets.browser.files')->with([
             'assets' => $assets
         ]);
+    }
+
+    public function create()
+    {
+        return entity(AssetEntity::class, 'browserCreate')->render();
+    }
+
+    public function store(AssetRequest $request)
+    {
+        $file = $request->file('file');
+
+        $asset = new Asset([
+            'filename' => $file->getClientOriginalName(),
+            'filesize' => $file->getClientSize(),
+            'mimetype' => $file->getClientMimeType(),
+            'extension' => $file->getClientOriginalExtension(),
+        ]);
+
+        $asset->save();
+
+        $asset->websites()->save(Discovery::backendWebsite());
+
+        $asset->syncGroups($request->get('groups', []));
+
+        $asset->upload($file);
+        $asset->generatePreview($file);
+
+        return redirect()->route('admin.assets.browser.files');
     }
 }
