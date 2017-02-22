@@ -37,7 +37,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../../config/core.php' => config_path('core.php')
+                __DIR__ . '/../../config/core.php' => config_path('build/core.php')
             ], 'config');
 
             $this->publishes([
