@@ -1,0 +1,38 @@
+/*
+    Extends on the primer tabs
+*/
+$tab-active-font-color: $tab-hover-font-color !default;
+$tab-active-background-color: $tab-hover-background-color !default;
+
+.tabs {
+
+    .tabs__item {
+
+        @include modifier(active) {
+
+            a {
+                color: $tab-active-font-color;
+                background-color: $tab-active-background-color;
+            }
+
+        }
+
+    }
+
+}
+
+.tabs {
+    
+    @include element(content) {
+    }
+    
+    @include element(panel) {
+        display: none;
+
+        @include modifier(active) {
+            display: block;
+        }
+
+    }
+
+}
