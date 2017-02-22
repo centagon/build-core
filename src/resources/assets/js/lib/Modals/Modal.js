@@ -22,9 +22,10 @@ export default class Modal {
             $(document).trigger('modal.closed', this);
         }
         
-        show() {
+        show(stack) {
             $(document).trigger('modal.opening', this);
             this.element.addClass('modal--visible');
+            this.element.css('z-index', stack + 100);
             $(document).trigger('modal.opened', this);
         }
         
