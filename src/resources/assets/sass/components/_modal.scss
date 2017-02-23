@@ -36,6 +36,7 @@ $modal-dialog-close-color:      white;
         .modal-content {
             position: relative;
             padding: $modal-dialog-padding;
+            overflow-y: auto;
 
             .modal-header {
                 background: $modal-dialog-header-background;
@@ -69,6 +70,7 @@ $modal-dialog-close-color:      white;
             
             .modal-body {
                 margin-top: $modal-dialog-header-height;
+                overflow-x: auto;
             }
 
         }
