@@ -47,4 +47,37 @@ class AssetEntity extends Manager
 
         });
     }
+
+    public function browserCreate($mapper)
+    {
+        $this->view = 'build.core::screens.bauhaus.no-nav';
+
+        $mapper->add('input.form', function ($form) {
+
+            $form->action(route('admin.assets.browser.store'));
+            $form->files(true);
+
+            $form->add('content.heading', function ($heading) {
+
+                $heading
+                    ->title('New File')
+                    ->add('navigation.button', [
+                        'to' => route('admin.assets.browser.files'),
+                        'label' => 'Cancel'
+                    ])->add('input.submit');
+            });
+
+            $form->add('input.file', [
+                'name' => 'file',
+                'label' => 'Upload a new file'
+            ]);
+
+            $form->add('input.groups', [
+                'name' => 'groups',
+                'model' => Asset::class,
+                'label' => 'Asset groups'
+            ]);
+
+        });
+    }
 }
