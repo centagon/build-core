@@ -137,7 +137,7 @@ class Asset extends Model
      *
      * @param UploadedFile $file
      */
-    public function generatePreview(UploadedFile $file)
+    public function generatePreview(UploadedFile $file = null)
     {
         $filename = $this->directory_path . '/' . $this->getQualifiedFilename($file);
 
@@ -159,9 +159,9 @@ class Asset extends Model
      *
      * @return string
      */
-    protected function getQualifiedFilename(UploadedFile $file)
+    protected function getQualifiedFilename(UploadedFile $file = null)
     {
-        return $this->uuid . '.' . $file->getClientOriginalExtension();
+        return $this->uuid . '.' . ($file ? $file->getClientOriginalExtension() : $this->extension );
     }
 
     /**
