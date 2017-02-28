@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use DB;
+use Build\Core\Eloquent\Models\Asset;
 
 class CreateAssetsTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -13,6 +16,16 @@ class CreateAssetsTable extends Migration
      */
     public function up()
     {
+
+        if (!Schema::hasTable('assets')) {
+
+            $this->fresh();
+        }
+    }
+
+    private function fresh()
+    {
+
         Schema::create('assets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('uuid')->unique();
@@ -33,4 +46,5 @@ class CreateAssetsTable extends Migration
     {
         Schema::dropIfExists('assets');
     }
+
 }
