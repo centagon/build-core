@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use DB;
-use Build\Core\Eloquent\Models\Asset;
 
 class CreateAssetsTable extends Migration
 {
@@ -16,7 +14,6 @@ class CreateAssetsTable extends Migration
      */
     public function up()
     {
-
         if (!Schema::hasTable('assets')) {
 
             $this->fresh();
