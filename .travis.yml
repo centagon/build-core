@@ -5,6 +5,9 @@ php:
   - 7.0
   - nightly
 
+node_js:
+  - node
+  
 matrix:
   fast_finish: true
 
@@ -15,6 +18,8 @@ before_script:
   - mysql -e 'create database build_test;'
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source
-
+  - install.sh
+  
 script:
   - vendor/bin/phpunit --verbose
+  - build.sh --verbose
