@@ -145,9 +145,12 @@ class Asset extends Model
         
         if (Mime::isImage($filename))
         {
-            Image::make($filename)->resize(235, null, function (Constraint $constraint) {
+            $image = Image::make($filename)->resize(235, null, function (Constraint $constraint) {
                 $constraint->aspectRatio();
             })->save($previewPath);
+            
+            // Free resources
+            $image->destroy();
         }
 
     }
