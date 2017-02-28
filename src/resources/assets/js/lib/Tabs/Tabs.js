@@ -14,7 +14,13 @@ export default class Tabs {
     }
     
     getItemId($item) {
-        return $item.find('a[href]').attr('href').replace('#','');
+        let $link = $item.find('a[href^="#"]');
+        
+        if ($link.length === 0) {
+            return undefined;
+        }
+        
+        return $link.attr('href').replace('#','');
     }
     
     getPanel(id) {
@@ -26,8 +32,13 @@ export default class Tabs {
     }
     
     switchPanel(id) {
+        if (!id) {
+            return;
+        }
+        
         this.$panels.removeClass('tabs__panel--active');
         this.$items.removeClass('tabs__item--active');
+        
         var $activePanel = this.getPanel(id);
         var $activeItem = this.getItem(id);
         
@@ -38,8 +49,15 @@ export default class Tabs {
     registerEvents() {
         var self = this;
         
-        this.$items.on('click',this.$items, function () {
-            self.switchPanel(self.getItemId($(this)));
+        this.$items.on('click',this.$items, function (e) {
+            let id = self.getItemId($(this));
+            
+            if (!id) {
+                return;
+            }
+            
+            e.preventDefault();
+            self.switchPanel(id);
         });
     }
     
