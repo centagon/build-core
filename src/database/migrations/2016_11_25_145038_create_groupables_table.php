@@ -13,6 +13,10 @@ class CreateGroupablesTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('groupables')) {
+            return;
+        }
+        
         Schema::create('groupables', function (Blueprint $table) {
             $table->unsignedInteger('group_id');
             $table->unsignedInteger('groupable_id');

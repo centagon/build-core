@@ -13,6 +13,10 @@ class CreateLanguageEntriesTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('language_entries')) {
+            return;
+        }
+        
         Schema::create('language_entries', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('language_id')->unsigned();
