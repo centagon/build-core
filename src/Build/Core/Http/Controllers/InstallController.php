@@ -15,6 +15,7 @@ use PDO;
 use PDOException;
 use Build\Core\Http\Controller;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Artisan;
 use Build\Core\Http\Requests\InstallRequest;
@@ -85,6 +86,9 @@ class InstallController extends Controller
         Artisan::call('db:seed', ['--class' => 'Build\Core\Eloquent\Seeders\WebsiteTableSeeder']);
 
         $this->files->put('install', date('Y-m-d H:i:s'));
+
+        // Create the preview-media folder in the public directory.
+        File::makeDirectory('preview-media');
 
         return redirect()->route('admin.dashboard');
     }
