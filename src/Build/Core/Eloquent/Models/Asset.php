@@ -137,7 +137,7 @@ class Asset extends Model
      *
      * @param UploadedFile $file
      */
-    public function generatePreview(UploadedFile $file)
+    public function generatePreview(UploadedFile $file = null)
     {
         $filename = $this->directory_path . '/' . $this->getQualifiedFilename($file);
 
@@ -145,9 +145,12 @@ class Asset extends Model
         
         if (Mime::isImage($filename))
         {
-            Image::make($filename)->resize(235, null, function (Constraint $constraint) {
+            $image = Image::make($filename)->resize(235, null, function (Constraint $constraint) {
                 $constraint->aspectRatio();
             })->save($previewPath);
+            
+            // Free resources
+            $image->destroy();
         }
 
     }
@@ -159,9 +162,9 @@ class Asset extends Model
      *
      * @return string
      */
-    protected function getQualifiedFilename(UploadedFile $file)
+    protected function getQualifiedFilename(UploadedFile $file = null)
     {
-        return $this->uuid . '.' . $file->getClientOriginalExtension();
+        return $this->uuid . '.' . ($file ? $file->getClientOriginalExtension() : $this->extension );
     }
 
     /**

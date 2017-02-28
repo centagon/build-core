@@ -8,6 +8,20 @@ $tab-active-background-color: $tab-hover-background-color !default;
 
     .tabs__item {
 
+        &:first-child {
+            a {
+                border-top-left-radius: $global-radius;
+                border-bottom-left-radius: $global-radius;
+            }
+        }
+        
+        &:last-child {
+            a {
+                border-top-right-radius: $global-radius;
+                border-bottom-right-radius: $global-radius;
+            }
+        }
+        
         @include modifier(active) {
 
             a {
@@ -22,10 +36,15 @@ $tab-active-background-color: $tab-hover-background-color !default;
 }
 
 .tabs {
-    
+
+    margin-bottom: rem-calc($global-margin);
+
     @include element(content) {
+        padding: rem-calc($global-padding);
+        border-radius: $global-radius;
+        border: $panel-border;
     }
-    
+
     @include element(panel) {
         display: none;
 
