@@ -2,8 +2,11 @@
 
 @section('content')
 
-    <h1>Dashboard</h1>
-
-    <select name="" class="tagged" multiple id=""></select>
+    <div class="page-header">
+        <h1>
+            {{ \Build\Core\Support\Facades\Discovery::backendWebsite()->name }}
+            &mdash; Dashboard
+        </h1>
+    </div>
 
 @endsection
