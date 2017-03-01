@@ -4,7 +4,7 @@ set -e # Exit with nonzero exit code if anything fails
 
 
 
-SOURCE_BRANCH="master"
+SOURCE_BRANCH="travis-build-assets"
 TARGET_BRANCH="nightly-builds"
 
 
