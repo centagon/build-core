@@ -10,7 +10,7 @@ project, you'll need to follow a couple of easy steps:
 - [Open the installation page](#open-installation)
 
 <a name="update-composer"></a>
-### Add Build-Core to your composer file
+## Add Build-Core to your composer file
 
 Open the `composer.json` file in the root of your project
 and add the latest version of `centagon/build-core` to the
@@ -30,7 +30,7 @@ $ composer up
 ```
 
 <a name="register-package"></a>
-### Registering the package
+## Registering the package
 
 Open `config/app.php` and scroll to the `providers` array key and
 add the following:
@@ -43,7 +43,7 @@ add the following:
 ```
 
 <a name="update-kernel"></a>
-### Update the application kernel
+## Update the application kernel
 
 Open your `app/Http/Kernel.php` file and add the following trait to the top of the class:
 
@@ -56,7 +56,7 @@ class Kernel extends HttpKernel
 ```
 
 <a name="update-auth-config"></a>
-### Update the auth config
+## Update the auth config
 
 Open the config/auth.php file and replace the user model with Build\Core\Eloquent\Models\User like so:
 
@@ -70,7 +70,7 @@ Open the config/auth.php file and replace the user model with Build\Core\Eloquen
 ```
 
 <a name="open-installation"></a>
-### Open the installation page
+## Open the installation page
 
 Once you've completed all the above steps it's save to proceed
 with the installation in your browser. Go to `http://your-awesome-host/admin/install`
