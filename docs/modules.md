@@ -1,33 +1,30 @@
 # Modules
 
-### Module structure
+- [Module structure](#module-structure)
+- [Manifest file](#manifest-file)
+- [Service provider](#service-provider)
+- [Composer support](#composer-support)
+
+<a name="module-structure"></a>
+## Module structure
 
 Modules follow the same app structure adopted with the latest version of Laravel, ensuring that modules
 feel like a natural part of your application.
+
+To get Core to notice a new module, you have to provide [the manifest file](#manifest-file) and the [service provider](#service-provider) following the structure below:
 
 ```
 laravel-project/
 	app/
 	|-- Modules/
 		|-- Blog/
-			|-- Console/
-			|-- Database/
-				|-- Migrations/
-				|-- Seeds/
-			|-- Http/
-				|-- Controllers/
-				|-- Middleware/
-				|-- Requests/
 			|-- Providers/
-				|-- BlogServiceProvider/
-				|-- RouteServiceProvder/
-			|-- Resources/
-				|-- lang/
-				|-- views/
-			|-- manifest.json/
+				|-- BlogServiceProvider.php
+			|-- manifest.json
 ```
 
-### Manifest file
+<a name="manifest-file"></a>
+## Manifest file
 
 Along with the structure, every module has a `manifest.json` manifest file. This manifest file is used
 to outline information such as the description, version, author(s) and anything you'd like to store
@@ -51,7 +48,13 @@ pertaining to the module at hand.
 - __author__ - The module's author name(s).
 - __license__ - The module's license.
 
-### Composer support
+<a name="service-provider"></a>
+## Service provider
+
+There's nothing special about the service providers for your modules. See the [Laravel documentation](https://laravel.com/docs/providers) for more information on this topic.
+
+<a name="composer-support"></a>
+## Composer support
 
 Bringing in Composer support for individual modules is simple through the use of
 [Wikimedia's Composer Merge Plugin](https://github.com/wikimedia/composer-merge-plugin).
