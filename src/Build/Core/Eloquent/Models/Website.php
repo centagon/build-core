@@ -28,7 +28,7 @@ class Website extends \Build\Core\Eloquent\Model
      * @var array
      */
     protected $fillable = [
-        'name', 'domain', 'color'
+        'is_active', 'name', 'domain', 'color',
     ];
 
     /**
