@@ -1,3 +1,28 @@
+@mixin header_submenu() {
+    
+    .header__dropdown__menu {
+        
+        .header__dropdown__menu {
+            top:0;
+            left: 50%;
+        }
+        
+        .header__dropdown__toggle {
+            
+            > .caret {
+                border-right: 0;
+                border-left: 4px dashed;
+                border-left: 4px solid\9;
+                border-top: 4px solid transparent;
+                border-bottom: 4px solid transparent;
+            }
+            
+        }
+        
+    }
+    
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -42,7 +67,7 @@
     @include element(dropdown) {
         position: relative;
         
-        &:hover ul {
+        &:hover > ul {
             display: block;
         }
 
@@ -57,7 +82,7 @@
             border-right: 4px solid transparent;
             border-left: 4px solid transparent;
         }
-
+        
         @include element(menu) {
             position: absolute;
             top: 100%;
@@ -88,6 +113,9 @@
                     background-color: color-get(gray, light);
                 }
             }
+            
         }
+        
+        @include header_submenu();
     }
 }
