@@ -13,6 +13,10 @@ class CreateClipboardsTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('clipboards')) {
+            return;
+        }
+        
         Schema::create('clipboards', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
