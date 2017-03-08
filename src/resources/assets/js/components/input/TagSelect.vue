@@ -2,7 +2,7 @@
     <div>
 
         <select v-model="selected" v-on:change="onChange">
-            <option value="0" disabled selected>-- select an option--</option>
+            <option value="0" disabled>-- select an option--</option>
             <option v-for="option in options" :value="option.id">
                 {{ option.name }}
             </option>
