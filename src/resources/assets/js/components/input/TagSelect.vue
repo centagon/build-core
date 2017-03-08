@@ -78,13 +78,18 @@
             },
     
             onChange: function () {
-                this.addSelectedOption(this.selected);
+                if (this.selected) {
+                    this.addSelectedOption(this.selected);
+                }
+
                 this.$emit('input', this.selected_options);
             },
 
             remove: function (selected) {
                 this.selected_options.splice(selected, 1);
                 this.selected = null;
+
+                this.$emit('input', this.selected_options);
             }
         }
     }
