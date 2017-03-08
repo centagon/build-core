@@ -11,10 +11,12 @@ namespace Build\Core\Http\Controllers\Async;
  * file that was distributed with this source code.
  */
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Build\Core\Http\Controller;
 use Build\Core\Eloquent\Models\Asset;
 use Build\Core\Eloquent\Models\Group;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Build\Core\Eloquent\Models\Website;
 
@@ -51,6 +53,15 @@ class AssetsController extends Controller
      */
     public function show(Asset $asset) {
         return response()->json( $this->format( $asset ) );
+    }
+
+    public function update(Request $request, Asset $asset)
+    {
+        $groups = Arr::pluck($request->get('asset')['groups'], 'id');
+
+        $asset->syncGroups($groups);
+
+        return ['success'];
     }
 
     public function remove(Asset $asset)
