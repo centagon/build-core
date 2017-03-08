@@ -1,9 +1,21 @@
 <template>
+    <div>
 
-    <select :options="options" v-model="selected" multiple>
-        <option disabled value="0">Select one</option>
-    </select>
+        <select v-model="selected" v-on:change="onChange">
+            <option value="0" disabled selected>-- select an option--</option>
+            <option v-for="option in options" :value="option.id">
+                {{ option.name }}
+            </option>
+        </select>
 
+        <ul>
+            <li v-for="option in selected_options">
+                {{ option.name }}
+                <button v-on:click="remove(option)">x</button>
+            </li>
+        </ul>
+
+    </div>
 </template>
 
 <script>
@@ -15,36 +27,37 @@
             'value'
         ],
 
-        mounted() {
-            let vm = this;
-
-            $(this.$el)
-                .val(this.value)
-                .select2({
-                    data: this.options,
-                    tags: true
-                })
-                .on('change', function () {
-                    vm.$emit('input', this.value);
-                });
+        mounted: function () {
+            this.selected_options = this.value;
         },
 
-        destroyed() {
-            $(this.$el).off().select2('destroy');
+        data: function () {
+            return {
+                options: [],
+                selected_options: [],
+                selected: null
+            }
         },
 
-        watch: {
-            value(value) {
-                $(this.$el).select2('val', value);
+        methods: {
+            onChange: function () {
+                const options = this.options;
+
+                for (let i = 0; i < options.length; i++) {
+                    let option = options[i];
+
+                    if (option.id == this.selected) {
+                        this.selected_options.push(option);
+                    }
+                }
+
+                this.$emit('input', this.selected_options);
             },
 
-            options(options) {
-                $(this.$el).select2({
-                    data: options
-                });
+            remove: function (selected) {
+                this.selected_options.splice(selected, 1);
             }
         }
-
     }
 
 </script>
