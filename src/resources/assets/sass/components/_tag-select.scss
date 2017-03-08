@@ -1,0 +1,28 @@
+.tag-select {
+    
+    select {
+        padding: $global-padding / 3 $global-padding / 2;
+        border-radius: $input-radius;
+    }
+    
+    @include element(selected) {
+        list-style: none;
+        padding-left: 0;
+        
+        li {
+            display: inline-block;
+            border: 1px solid color-get(gray, medium);
+            background: color-get(gray, light);
+            padding: 4px 8px;
+            margin-right: 8px;
+        }
+        
+        @include element(remove) {
+            margin-left: 16px;
+            font-weight: bold;
+            padding: 4px;
+            cursor: pointer;
+        }
+    }
+    
+}
