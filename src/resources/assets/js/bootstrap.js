@@ -27,6 +27,13 @@ Vue.http.interceptors.push((request, next) => {
     next();
 });
 
+// Register a global errorhandler
+if (!Vue.config.errorHandler) {
+     Vue.config.errorHandler = function (err, vm, info) {
+         window.console.error(err);
+     };
+}
+
 /**
  * Setup select2
  */
