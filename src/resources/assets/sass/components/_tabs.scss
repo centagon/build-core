@@ -43,15 +43,31 @@ $tab-active-background-color: $tab-hover-background-color !default;
         padding: rem-calc($global-padding);
         border-radius: $global-radius;
         border: $panel-border;
+        margin-bottom: rem-calc($global-margin);
+
+        @include modifier(initialized) {
+            
+            .tabs__panel {
+                height: initial;
+                visibility: initial;
+                overflow: initial;
+                
+                display: none;
+            }
+            
+        }
+        
     }
 
     @include element(panel) {
-        display: none;
+        height: 0;
+        visibility: hidden;
+        overflow: hidden;
 
         @include modifier(active) {
-            display: block;
+            display: block !important;
         }
 
     }
-
+    
 }
