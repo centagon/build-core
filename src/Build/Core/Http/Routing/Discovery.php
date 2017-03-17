@@ -38,6 +38,15 @@ class Discovery
     protected $backendLanguage;
 
     /**
+     * Force the website to be set to this value without discovery
+     * 
+     * @param Website $website
+     */
+    public function setWebsite(Website $website) {
+        $this->website = $website;
+    }
+    
+    /**
      * Get the current website.
      *
      * @return Website|null
