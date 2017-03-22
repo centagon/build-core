@@ -1,4 +1,4 @@
-<div class="row{{ $errors->has($node->name) ? ' error' : '' }}">
+<div class="row{{ $errors->has($node->name) ? ' error' : '' }}" for="{{ $node->get('name') }}">
 	<div class="small-12 medium-6 medium-push-3">
 		<label>
 			<input type="hidden" name="{{ $node->get('name') }}" value="0">
