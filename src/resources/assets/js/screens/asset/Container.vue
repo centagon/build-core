@@ -12,7 +12,12 @@
 
                     <hr>
 
-                    <h3 class="panel__sidebar__title">Asset Group</h3>
+                    <h3 class="panel__sidebar__title">
+                        <div class="float-right" v-on:click="openGroupManager">
+                            <i class="fa fa-cog"></i>
+                        </div>
+                        Asset Group
+                    </h3>
 
                     <label v-for="group in groups">
                         <input type="checkbox" v-bind:value="group.id" v-model="checkedGroups">
@@ -213,6 +218,16 @@
 
             removeAsset(key) {
                 this.assets.splice(key, 1);
+            },
+
+            openGroupManager() {
+                 var dispatcher = build.core.WindowDispatch.open('/admin/group-browser?type=Build\\Core\\Eloquent\\Models\\Asset', 'Group Browser', 1000, 600);
+
+                build.core.WindowDispatch.listen(function (message) {
+                    if (dispatcher.reference === message.source) {
+                        window.location.reload();
+                    }
+                });
             }
 
         }

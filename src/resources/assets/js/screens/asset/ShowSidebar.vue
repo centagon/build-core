@@ -14,7 +14,7 @@
                     <button class="button" v-on:click="hide">
                         Cancel
                     </button>
-                    <button class="button button--success" disabled>
+                    <button class="button button--success" v-on:click="save">
                         Save
                     </button>
                 </div>
@@ -23,7 +23,7 @@
 
         <h3>{{ asset.filename }}</h3>
 
-        <tag-select :options="groups"></tag-select>
+        <tag-select :options="groups" v-model="asset.groups"></tag-select>
 
         <div class="panel">
             <img v-bind:src="asset.preview_url" width="100%">
@@ -54,20 +54,6 @@
                 this.groups = event.groups;
                 this.asset = event.asset;
 
-                // var data = _.map(event.groups, (group) => {
-                //     return _.pick(group, 'id', 'name')
-                // });
-                //
-                // var rows = [];
-                // for (var row in data) {
-                //     rows.push({
-                //         id: data[row].id,
-                //         text: data[row].name
-                //     });
-                // }
-                //
-                // this.groups = rows;
-
                 this.show();
             });
         },
@@ -95,9 +81,18 @@
                 this.$root.$emit('asset-remove', { asset: this.asset });
 
                 this.hide();
+            },
+
+            save() {
+                const asset = this.asset;
+
+                this.$http.put(config.base_url + `/async/assets/${asset.id}`, { asset })
+                    .then(response => {
+                        window.location.reload();
+                    });
+
             }
         }
-
     }
 
 </script>

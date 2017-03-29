@@ -3,6 +3,10 @@
     <div class="custom-input custom-input--asset">
         
         <div v-if="selected" >
+            <div v-if="preview" class="custom-input--asset__preview">
+                <img v-if="selected.preview_url" v-bind:src="selected.preview_url"/>
+                <img v-else src="//placehold.it/100x100">
+            </div>
             <input type="hidden" v-bind:name="name" v-model="selected.id"/>
             
             <a class="button" v-on:click="browseAsset">Choose file</a>
@@ -37,6 +41,7 @@
         props: {
             'name': null,
             'value': null,
+            'preview': false,
             'placeholder': {
                 default: 'None selected'
             }
