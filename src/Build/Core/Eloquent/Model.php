@@ -50,10 +50,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
      */
     public function getCacheKey($id = null)
     {
-        $namespace = get_class($this);
-
-        // Transform namespace back-slashes to namespace dashes.
-        $key = strtolower(str_replace('\\', '-', $namespace));
+        $key = $this->getQualifiedModelName();
 
         // When supplied, append the record id to the cache
         // key for better unique record caching.
@@ -62,6 +59,20 @@ class Model extends \Illuminate\Database\Eloquent\Model
         }
 
         return $key;
+    }
+
+    /**
+     * Retrieve the qualified model instance name.
+     *
+     * @param  mixed  $instance
+     * @return string
+     */
+    public function getQualifiedModelName($instance = null)
+    {
+        $namespace = $instance ?: get_class($this);
+
+        // Transform namespace back-slashes to namespace dashes.
+        return strtolower(str_replace('\\', '-', $namespace));
     }
 
     /**
