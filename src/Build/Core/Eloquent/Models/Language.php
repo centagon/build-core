@@ -28,7 +28,7 @@ class Language extends \Build\Core\Eloquent\Model
      * @var array
      */
     protected $fillable = [
-        'name', 'locale', 'is_main'
+        'name', 'locale', 'is_main', 'is_active'
     ];
 
     /**
