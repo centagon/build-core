@@ -69,7 +69,14 @@ trait Groupable
             $q->whereIn('type', $type->toArray());
         });
     }
-
+    
+    public function scopeAllByName(Builder $query, $name)
+    {
+        $query->whereHas('groups', function ($q) use ($name) {
+            $q->whereName($name);
+        });
+    }
+    
     public static function getGroupClassName()
     {
         return Group::class;
