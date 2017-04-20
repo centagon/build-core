@@ -161,7 +161,7 @@ class ImageFormatter
 
         call_user_func_array([$image, $before], $beforeArgs);
 
-        $command = 'resizecanvas';
+        $command = 'resizeCanvas';
     }
 
     /**
