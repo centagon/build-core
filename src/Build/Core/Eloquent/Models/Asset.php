@@ -16,15 +16,20 @@ use Build\Core\Eloquent\Traits\Groupable;
 use Build\Core\Support\Mime;
 use Build\Core\Support\System;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Constraint;
 use Intervention\Image\Facades\Image;
+use Build\Core\Support\ImageFormatter;
 use Ramsey\Uuid\Uuid;
 
 class Asset extends Model
 {
 
     use Groupable;
+    
+    /**
+     * @var ImageFormatter
+     */
+    private $_formatter;
 
     /**
      * Mass-assignment protection.
@@ -165,6 +170,18 @@ class Asset extends Model
     protected function getQualifiedFilename(UploadedFile $file = null)
     {
         return $this->uuid . '.' . ($file ? $file->getClientOriginalExtension() : $this->extension );
+    }
+    
+    /**
+     * Gets the imageformatter
+     * 
+     * @return ImageFormatter
+     */
+    public function formatter() {
+        if (!$this->_formatter) {
+            $this->_formatter = new ImageFormatter($this);
+        }
+        return $this->_formatter;
     }
 
     /**
