@@ -12,10 +12,17 @@ namespace Build\Core\Bauhaus\Widgets\Input;
  */
 
 use Build\Core\Bauhaus\Widgets\Input\Generic;
+use Carbon;
 
 class DateTime extends Generic
 {
 
+    /**
+     * Override the view path.
+     * @var string
+     */
+    protected $view = 'build.core::components.bauhaus.input.datetime';
+    
     /**
      * Set the field attributes.
      * @var array
@@ -26,5 +33,15 @@ class DateTime extends Generic
         'value' => ':value',
         'placeholder' => ':placeholder'
     ];
+    
+    public function getValue() {
+        $value = $this->value ? : null;
+        
+        if ($value) {
+            $value = format_datetime_local(Carbon\Carbon::createFromTimestamp(strtotime($value)));
+        }
+        
+        return old($this->name, $value);
+    }
     
 }
