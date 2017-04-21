@@ -9,4 +9,5 @@
  * file that was distributed with this source code.
  */
 
-Route::get('css/colors.css', 'ColorsController@render');
+require __DIR__ . '/frontend/assets.php';
+require __DIR__ . '/frontend/colors.php';
