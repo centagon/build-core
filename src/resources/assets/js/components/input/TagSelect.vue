@@ -86,7 +86,8 @@
             },
 
             remove: function (selected) {
-                this.selected_options.splice(selected, 1);
+                let index = this.selected_options.indexOf(selected);
+                this.selected_options.splice(index, 1);
                 this.selected = null;
 
                 this.$emit('input', this.selected_options);
