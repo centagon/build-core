@@ -13,6 +13,10 @@ class CreateLoginAttemptsTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('login_attempts')) {
+            return;
+        }
+        
         Schema::create('login_attempts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');

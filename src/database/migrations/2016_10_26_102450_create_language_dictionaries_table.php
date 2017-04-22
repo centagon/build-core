@@ -13,6 +13,10 @@ class CreateLanguageDictionariesTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('language_dictionaries')) {
+            return;
+        }
+        
         Schema::create('language_dictionaries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('label')->unique()->index();
