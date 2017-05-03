@@ -92,7 +92,8 @@ export default class Tabs {
     registerEvents() {
         var self = this;
         
-        this.$items.on('click',this.$items, function (e) {
+        this.$items.on('click', function (e) {
+            
             let id = self.getItemId($(this));
             
             if (!id) {
@@ -102,6 +103,9 @@ export default class Tabs {
             e.preventDefault();
             self.switchPanel(id);
         });
+        
+        return this;
+        
     }
     
 }

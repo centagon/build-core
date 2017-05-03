@@ -55,10 +55,11 @@ const autogrow = new AutoGrow('textarea');
 const sidebar = new Sidebar;
 const selectable = (new Selectable('table.table--selectable')).registerEvents();
 
-const tabsdriver = (new TabsDriver('.tabs')).registerEvents();
+const tabs = (new TabsDriver('.tabs')).registerEvents();
 
 window.build = {
     core: {
+        tabs,
         WindowDispatch,
         autogrow,
         sidebar
