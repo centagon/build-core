@@ -11,6 +11,19 @@
 
 use Build\Content\Support\Facades\Discovery;
 use Build\Core\Eloquent\Models\Language\Entry;
+use Build\Core\Support\System;
+use Ramsey\Uuid\Uuid;
+
+if ( ! function_exists('uuid')) {
+    /**
+     * Generates a uuid
+     * @return string
+     */
+    if (System::is64Bits()) {
+        return Uuid::uuid1();
+    }
+    return Uuid::uuid4();
+}
 
 if ( ! function_exists('alert')) {
     /**
