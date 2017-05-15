@@ -16,13 +16,15 @@ use Ramsey\Uuid\Uuid;
 
 if ( ! function_exists('uuid')) {
     /**
-     * Generates a uuid
+     * Generate a uuid based on 
      * @return string
      */
-    if (System::is64Bits()) {
-        return Uuid::uuid1();
+    function uuid() {
+        if (System::is64Bits()) {
+            return Uuid::uuid1();
+        }
+        return Uuid::uuid4();
     }
-    return Uuid::uuid4();
 }
 
 if ( ! function_exists('alert')) {
