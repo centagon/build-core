@@ -31,17 +31,8 @@
 
         mounted: function () {
             
-            // Map the values to the id's when we only get an array
-            if (this.value.length) {
-                
-                _.each(this.value, (value) => {
-                    if (value.id) {
-                        this.addSelectedOption(value.id);
-                    } else {
-                        this.addSelectedOption(value);
-                    }
-                });
-            }
+            this.reselectOptions();
+            
         },
 
         data: function () {
@@ -51,7 +42,36 @@
             };
         },
         
+        watch: {
+            options() {
+                this.reselectOptions();
+            },
+            value() {
+                this.reselectOptions();
+            }
+        },
+        
         methods: {
+            
+            reselectOptions() {
+                
+                this.selected_options = [];
+        
+                // Map the values to the id's when we only get an array
+                if (this.value.length) {
+
+                    _.each(this.value, (value) => {
+                        if (value.id) {
+                            this.addSelectedOption(value.id);
+                        } else {
+                            this.addSelectedOption(value);
+                        }
+                    });
+                    
+                }
+                
+            },
+            
             addSelectedOption(id) {
                 
                 const options = this.options;
