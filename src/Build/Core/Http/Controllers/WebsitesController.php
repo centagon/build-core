@@ -31,9 +31,9 @@ class WebsitesController extends \Build\Core\Http\Controller
 
         $websites = Website::paginate(config('build.core.paginate'));
 
-        return view('build.core::screens.websites.index')->with([
-            'websites' => $websites
-        ]);
+        return entity(WebsitesEntity::class, 'index')
+            ->setQuery($websites)
+            ->render();
     }
 
     /**
