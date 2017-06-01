@@ -1,3 +1,1 @@
-<span class="material-icons">
-    {{ $node->get('icon') }}
-</span>
+<i class="fa fa-{!! $node->get('icon') !!}"></i>
