@@ -21,9 +21,7 @@ Vue.component('input-asset', InputAsset);
 Vue.component('asset-container', AssetContainer);
 Vue.component('asset-picker', AssetPicker);
 
-window.vuedata = {
-    build: window.build
-};
+window.vuedata = window.vuedata || {};
 
 $( window ).load( function () {
     
