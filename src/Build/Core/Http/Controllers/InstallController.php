@@ -80,15 +80,26 @@ class InstallController extends Controller
         // Migrate the database
         Artisan::call('migrate');
 
-        Artisan::call('db:seed', ['--class' => 'Build\Core\Eloquent\Seeders\RolesTableSeeder']);
-        Artisan::call('db:seed', ['--class' => 'Build\Core\Eloquent\Seeders\UserTableSeeder']);
-        Artisan::call('db:seed', ['--class' => 'Build\Core\Eloquent\Seeders\LanguageTableSeeder']);
-        Artisan::call('db:seed', ['--class' => 'Build\Core\Eloquent\Seeders\WebsiteTableSeeder']);
+        $seeders = [
+            'Build\Core\Eloquent\Seeders\RolesTableSeeder',
+            'Build\Core\Eloquent\Seeders\UserTableSeeder',
+            'Build\Core\Eloquent\Seeders\LanguageTableSeeder',
+            'Build\Core\Eloquent\Seeders\WebsiteTableSeeder',
+        ];
+
+        foreach ($seeders as $seeder) {
+            Artisan::call('db:seed', [
+                '--class' => $seeder,
+                '--force' => true,
+            ]);
+        }
 
         $this->files->put('install', date('Y-m-d H:i:s'));
 
         // Create the preview-media folder in the public directory.
-        File::makeDirectory('preview-media');
+        if (! File::exists('preview-media')) {
+            File::makeDirectory('preview-media');
+        }
 
         return redirect()->route('admin.dashboard');
     }
