@@ -15,8 +15,8 @@
                 <span class="tag-select__selected__remove" v-on:click="remove(option)">x</span>
             </li>
         </ul>
-
     </div>
+
 </template>
 
 <script>
@@ -30,9 +30,9 @@
         ],
 
         mounted: function () {
-            
+
             this.reselectOptions();
-            
+
         },
 
         data: function () {
@@ -41,7 +41,7 @@
                 selected: null
             };
         },
-        
+
         watch: {
             options() {
                 this.reselectOptions();
@@ -50,13 +50,13 @@
                 this.reselectOptions();
             }
         },
-        
+
         methods: {
-            
+
             reselectOptions() {
-                
+
                 this.selected_options = [];
-        
+
                 // Map the values to the id's when we only get an array
                 if (this.value.length) {
 
@@ -67,13 +67,13 @@
                             this.addSelectedOption(value);
                         }
                     });
-                    
+
                 }
-                
+
             },
-            
+
             addSelectedOption(id) {
-                
+
                 const options = this.options;
 
                 for (let i = 0; i < options.length; i++) {
@@ -85,7 +85,7 @@
                 }
 
             },
-            
+
             isSelected(check) {
                 let selected = false;
                 _.each(this.selected_options, (option) => {
@@ -96,7 +96,7 @@
                 });
                 return selected;
             },
-    
+
             onChange: function () {
                 if (this.selected) {
                     this.addSelectedOption(this.selected);
