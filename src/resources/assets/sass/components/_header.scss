@@ -23,6 +23,18 @@
     
 }
 
+#header-logo {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-top: 50%;
+    margin-bottom: rem-calc(25);
+}
+
+li#logo a {
+    padding: 3px 25px;
+}
+
 .header {
     display: flex;
     justify-content: space-between;

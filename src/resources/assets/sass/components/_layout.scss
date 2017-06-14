@@ -4,4 +4,23 @@ html, body {
 
 body {
     padding-bottom: $global-padding;
+
+    &.variant-dark {
+        background-color: color-get(black);
+
+        .accordion__content label,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: white;
+        }
+
+        .accordion__title {
+            background-color: #1e2327;
+            color: white;
+        }
+    }
 }
