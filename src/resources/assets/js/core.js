@@ -21,10 +21,15 @@ Vue.component('input-asset', InputAsset);
 Vue.component('asset-container', AssetContainer);
 Vue.component('asset-picker', AssetPicker);
 
+window.vuedata = window.vuedata || {};
+
 $( window ).load( function () {
     
     const app = new Vue({
-        el: '#vue-wrapper'
+        el: '#vue-wrapper',
+        data: {
+            vuedata: window.vuedata
+        }
     });
     
     window.app = app;
