@@ -11,14 +11,14 @@ namespace Build\Core\Http\Controllers\Async;
  * file that was distributed with this source code.
  */
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Build\Core\Http\Controller;
 use Build\Core\Eloquent\Models\Asset;
 use Build\Core\Eloquent\Models\Group;
+use Build\Core\Eloquent\Models\Website;
+use Build\Core\Http\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
-use Build\Core\Eloquent\Models\Website;
 
 class AssetsController extends Controller
 {
@@ -31,12 +31,12 @@ class AssetsController extends Controller
         $rows = [];
 
         $query = Asset::with([
-            'groups' => function ($q) {
+            'groups'   => function ($q) {
                 return $q->select('id', 'name');
             },
             'websites' => function ($q) {
                 return $q->select('id');
-            }
+            },
         ])->get();
 
         foreach ($query as $asset) {
@@ -45,14 +45,15 @@ class AssetsController extends Controller
 
         return $rows;
     }
-    
+
     /**
-     * 
+     *
      * @param integer $asset The Asset
      * @return Response
      */
-    public function show(Asset $asset) {
-        return response()->json( $this->format( $asset ) );
+    public function show(Asset $asset)
+    {
+        return response()->json($this->format($asset));
     }
 
     public function update(Request $request, Asset $asset)
@@ -68,28 +69,49 @@ class AssetsController extends Controller
     {
         $asset->delete();
     }
-    
+
     /**
      * Format the asset
-     * 
+     *
      * @param Asset $asset
      * @return array
      */
-    private function format($asset) {
+    private function format($asset)
+    {
         return [
-            'id' => $asset->getKey(),
-            'filename' => $asset->filename,
-            'url' => $asset->url,
+            'id'          => $asset->getKey(),
+            'filename'    => $asset->filename,
+            'url'         => $asset->url,
             'preview_url' => $asset->preview_url,
-            'path' => $asset->path,
-            'size' => $asset->image_size,
-            'filesize' => [
-                'bytes' => $asset->filesize,
-                'formatted' => $asset->formatted_filesize
+            'path'        => $asset->path,
+            'size'        => $asset->image_size,
+            'filesize'    => [
+                'bytes'     => $asset->filesize,
+                'formatted' => $asset->formatted_filesize,
             ],
-            'groups' => $asset->groups,
-            'websites' => $asset->websites
+            'groups'      => $asset->groups,
+            'websites'    => $asset->websites,
         ];
+    }
+
+    public function replace(Request $request, Asset $asset)
+    {
+        // $assetData = json_decode($request->get('asset'));
+        // $asset = Asset::find($assetData->id);
+
+        $file = $request->file('photos')[0];
+
+        $asset->upload($file);
+        $asset->generatePreview($file);
+
+        $asset->filename  = $file->getClientOriginalName();
+        $asset->filesize  = $file->getClientSize();
+        $asset->mimetype  = $file->getClientMimeType();
+        $asset->extension = $file->getClientOriginalExtension();
+
+        $asset->save();
+
+        return ['success'];
     }
 
     /**

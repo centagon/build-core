@@ -13,19 +13,19 @@ namespace Build\Core\Eloquent\Models;
 
 use Build\Core\Eloquent\Model;
 use Build\Core\Eloquent\Traits\Groupable;
+use Build\Core\Support\ImageFormatter;
 use Build\Core\Support\Mime;
 use Build\Core\Support\System;
 use Illuminate\Http\UploadedFile;
 use Intervention\Image\Constraint;
 use Intervention\Image\Facades\Image;
-use Build\Core\Support\ImageFormatter;
 use Ramsey\Uuid\Uuid;
 
 class Asset extends Model
 {
 
     use Groupable;
-    
+
     /**
      * @var ImageFormatter
      */
@@ -78,6 +78,16 @@ class Asset extends Model
     }
 
     /**
+     * Get the previewpath attribute.
+     *
+     * @return string
+     */
+    public function getPreviewPathAttribute()
+    {
+        return public_path('preview-media/' . $this->uuid . '.' . $this->extension);
+    }
+
+    /**
      * Get the path to the media directory.
      *
      * @return string
@@ -107,7 +117,7 @@ class Asset extends Model
         list($width, $height) = @getimagesize($this->path);
 
         return [
-            'width' => $width,
+            'width'  => $width,
             'height' => $height,
         ];
     }
@@ -147,13 +157,12 @@ class Asset extends Model
         $filename = $this->directory_path . '/' . $this->getQualifiedFilename($file);
 
         $previewPath = $this->preview_directory_path . '/' . $this->getQualifiedFilename($file);
-        
-        if (Mime::isImage($filename))
-        {
+
+        if (Mime::isImage($filename)) {
             $image = Image::make($filename)->resize(235, null, function (Constraint $constraint) {
                 $constraint->aspectRatio();
             })->save($previewPath);
-            
+
             // Free resources
             $image->destroy();
         }
@@ -169,15 +178,16 @@ class Asset extends Model
      */
     protected function getQualifiedFilename(UploadedFile $file = null)
     {
-        return $this->uuid . '.' . ($file ? $file->getClientOriginalExtension() : $this->extension );
+        return $this->uuid . '.' . ($file ? $file->getClientOriginalExtension() : $this->extension);
     }
-    
+
     /**
      * Gets the imageformatter
-     * 
+     *
      * @return ImageFormatter
      */
-    public function formatter() {
+    public function formatter()
+    {
         if (!$this->_formatter) {
             $this->_formatter = new ImageFormatter($this);
         }
