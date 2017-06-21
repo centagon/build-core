@@ -46,7 +46,7 @@
 
                     <div class="small-6 large-3" v-for="asset in rows">
                         <div class="panel panel__preview">
-                            <div class="preview__image" v-bind:style="{ 'background-image': 'url(' + asset.preview_url + ')' }" v-on:click="show(asset.id)"></div>
+                            <div class="preview__image" v-bind:style="{ 'background-image': 'url(' + asset.preview_url + updated +')' }" v-on:click="show(asset.id)"></div>
                             <!--
                             <input type="checkbox" v-bind:value="asset.id" v-model="checkedAssets" class="selectable-item">
                             -->
@@ -69,7 +69,8 @@
         </div>
 
         <remove-sidebar v-bind:visible="false"></remove-sidebar>
-        <show-sidebar v-bind:visible="false"></show-sidebar>
+        <update-sidebar v-bind:visible="false"></update-sidebar>
+        <show-sidebar   v-bind:visible="false"></show-sidebar>
     </div>
 
 </template>
@@ -77,24 +78,27 @@
 <script>
 
     import RemoveSidebar from './RemoveSidebar.vue';
-    import ShowSidebar from './ShowSidebar.vue';
+    import ShowSidebar   from './ShowSidebar.vue';
+    import UpdateSidebar from './UpdateSidebar.vue';
 
     export default {
 
         components: {
             'remove-sidebar': RemoveSidebar,
-            'show-sidebar': ShowSidebar
+            'update-sidebar': UpdateSidebar,
+            'show-sidebar'  : ShowSidebar
         },
 
         data: function () {
             return {
-                assets: [],
-                groups: [],
+                assets  : [],
+                groups  : [],
                 websites: [],
-                query: '',
+                query   : '',
+                updated : '',
 
-                checkedAssets: [],
-                checkedGroups: [],
+                checkedAssets  : [],
+                checkedGroups  : [],
                 checkedWebsites: []
             }
         },
@@ -138,6 +142,12 @@
          */
         mounted() {
             this.prepareComponent();
+
+            this.$root.$on('asset-reload', event => {
+                window.console.log('!');
+                this.reloadAssets();
+            });
+
         },
 
         methods: {
@@ -147,11 +157,24 @@
              * assets, groups and websites.
              */
             prepareComponent() {
+
                 this.fetchAssets();
 
                 this.fetchGroups();
 
                 this.fetchWebsites();
+
+            },
+
+            /*
+             * Refetch the assets.
+             * Add cache buster
+             */
+            reloadAssets(){
+                this.updated = '?time=' + new Date().getTime();
+
+                this.fetchAssets();
+
             },
 
             /*
