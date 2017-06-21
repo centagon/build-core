@@ -11,7 +11,7 @@
             <ul class="header__nav">
                 <li id="logo">
                     <a href="{{ route('admin.dashboard') }}">
-                        <img src="{{ asset('vendor/build/core/img/logo.svg') }}" width="140">
+                        <img src="{{ asset('vendor/build/core/img/logo-vertical.png') }}" width="140">
                     </a>
                 </li>
 

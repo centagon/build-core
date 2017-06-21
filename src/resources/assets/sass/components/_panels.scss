@@ -1,6 +1,7 @@
 .panel {
     position: relative;
     border-radius: $global-radius;
+    background-color: color-get(white);
 
     @include element(sidebar) {
         @include element(title) {
