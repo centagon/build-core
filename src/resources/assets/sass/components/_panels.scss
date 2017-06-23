@@ -2,6 +2,7 @@
     position: relative;
     border-radius: $global-radius;
     background-color: color-get(white);
+    box-shadow: 0 2px 4px rgba(50,50,93,.1);
 
     @include element(sidebar) {
         @include element(title) {
@@ -37,5 +38,20 @@
         &:hover {
             background-color: color-get(gray, light);
         }
+    }
+}
+
+body.variant-dark .panel {
+    background-color: rgba(0,0,0,.2);
+    border-color: transparent;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        color: color-get(white);
     }
 }

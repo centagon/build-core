@@ -9,7 +9,7 @@
                 {{ csrf_field() }}
 
                 <div id="header-logo">
-                    <img src="{{ asset('vendor/build/core/img/logo-horizontal.png') }}">
+                    <img src="{{ asset('vendor/build/core/img/logo-horizontal.png') }}" width="181" height="99">
                 </div>
 
                 <div class="panel">

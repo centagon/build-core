@@ -3,6 +3,9 @@ import Selectable from './lib/Selectable';
 import AutoGrow from './lib/AutoGrow';
 import Sidebar from './lib/Sidebar';
 import TabsDriver from './lib/Tabs/TabsDriver';
+import Dashboard from './lib/Dashboard';
+import Equalizer from '../components/centagon-primer/src/js/lib/Equalizer';
+(new Equalizer()).register();
 
 require('./lib/Modals/Driver');
 
@@ -54,6 +57,7 @@ $('.color-picker').spectrum({
 const autogrow = new AutoGrow('textarea');
 const sidebar = new Sidebar;
 const selectable = (new Selectable('table.table--selectable')).registerEvents();
+const dashboard = (new Dashboard());
 
 const tabs = (new TabsDriver('.tabs')).registerEvents();
 

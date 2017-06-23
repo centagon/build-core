@@ -19,6 +19,12 @@ class Sidebar {
             self.load(sidebar, href);
         });
 
+        doc.on('sidebar:opened', function (e, sidebar) {
+            $('.sidebar').resizable({
+                handles: "w"
+            });
+        });
+
         doc.on('click', '.sidebar .cancel-button', function () {
             self.close($(this).closest('.sidebar'));
         });

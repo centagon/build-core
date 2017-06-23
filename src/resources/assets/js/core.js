@@ -10,6 +10,8 @@
 require('./bootstrap');
 require('./lib/SidebarScroll');
 
+require('../components/gridstack/src/gridstack.js');
+
 import AssetContainer from './screens/asset/Container.vue';
 import AssetPicker from './screens/asset/Picker.vue';
 import InputAsset from './components/input/Asset.vue';

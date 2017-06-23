@@ -9,8 +9,7 @@
  * file that was distributed with this source code.
  */
 
-Route::get('/', 'DashboardController@index')->name('admin.dashboard');
-
+require __DIR__ . '/guarded/dashboard.php';
 require __DIR__ . '/guarded/assets.php';
 require __DIR__ . '/guarded/color.php';
 require __DIR__ . '/guarded/groups.php';

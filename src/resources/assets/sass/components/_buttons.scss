@@ -1,11 +1,21 @@
 .button {
-    appearance: none;
+
     padding-top: rem-calc(5);
     padding-bottom: rem-calc(5);
     border-radius: $global-radius;
+    border-color: color-get(gray, medium);
+    background-color: color-get(white);
+    font-weight: bold;
+    transition: all .1s ease;
 
     &:hover {
-        background-color: transparentize(color-get(gray, light), .2);
+        background-color: color-get(gray, light);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+    }
+
+    &:active {
+        transform: translateY(1px);
     }
 
     &[disabled],
@@ -15,51 +25,134 @@
     }
 
     @include modifier(selected) {
-        color: color-get(blue);
+        background-color: color-get(blue);
         border-color: color-get(blue);
+        color: color-get(white);
+
+        &:hover {
+            background-color: lighten(color-get(blue), 3%);
+        }
     }
 
     @include modifier(success) {
+        background-color: color-get(green);
         border-color: color-get(green);
-        color: color-get(green);
+        color: color-get(white);
 
         &:hover {
-            background-color: transparentize(color-get(green), .9);
+            background-color: lighten(color-get(green), 3%);
         }
     }
 
     @include modifier(error) {
+        background-color: color-get(red);
         border-color: color-get(red);
-        color: color-get(red);
+        color: color-get(white);
 
         &:hover {
-            background-color: transparentize(color-get(red), .9);
+            background-color: lighten(color-get(red), 3%);
         }
     }
 
     @include modifier(warning) {
+        background-color: color-get(yellow);
         border-color: color-get(yellow);
+        color: darken(color-get(yellow), 35%);
 
         &:hover {
-            background-color: transparentize(color-get(yellow), .9);
+            background-color: lighten(color-get(yellow), 3%);
         }
     }
 
-}
-
-.button-group {
-    display: inline-block;
-    font-size: 0;
-    margin-bottom: $global-margin;
-
-    .button:not(:last-child) {
-        margin-right: -1px;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+    @include modifier(small) {
+        padding-top: 0;
+        padding-bottom: 0;
     }
 
-    .button:not(:first-child) {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
+    @include modifier(icon-left) {
+        i.fa { margin-right: rem-calc(10); }
+    }
+
+    @include modifier(icon-right) {
+        i.fa { margin-left: rem-calc(10); }
     }
 }
+
+
+
+//.button {
+//    appearance: none;
+//    padding-top: rem-calc(5);
+//    padding-bottom: rem-calc(5);
+//    border-radius: $global-radius;
+//    font-weight: bold;
+//
+//    &:hover {
+//        background-color: transparentize(color-get(gray, light), .2);
+//    }
+//
+//    &[disabled],
+//    &:disabled {
+//        opacity: .5;
+//        cursor: not-allowed;
+//    }
+//
+//    @include modifier(small) {
+//        padding-top: 0;
+//        padding-bottom: 0;
+//    }
+//
+//    @include modifier(selected) {
+//        color: color-get(blue);
+//        border-color: color-get(blue);
+//    }
+//
+//    @include modifier(success) {
+//        background-color: color-get(green);
+//        border-color: color-get(green);
+//        color: color-get(white);
+//
+//        &:hover {
+//            background-color: lighten(color-get(green), 3%);
+//        }
+//    }
+//
+//    @include modifier(error) {
+//        border-color: color-get(red);
+//        color: color-get(red);
+//
+//        &:hover {
+//            background-color: transparentize(color-get(red), .9);
+//        }
+//    }
+//
+//    @include modifier(warning) {
+//        border-color: color-get(yellow);
+//
+//        &:hover {
+//            background-color: transparentize(color-get(yellow), .9);
+//        }
+//    }
+//
+//    @include modifier(icon-left) {
+//        i.fa { margin-right: rem-calc(10); }
+//    }
+//
+//}
+//
+//.button-group {
+//    display: inline-block;
+//    font-size: 0;
+//    margin-bottom: $global-margin;
+//
+//    .button:not(:last-child) {
+//        margin-right: -1px;
+//        border-top-right-radius: 0;
+//        border-bottom-right-radius: 0;
+//    }
+//
+//    .button:not(:first-child) {
+//        border-top-left-radius: 0;
+//        border-bottom-left-radius: 0;
+//    }
+//}
