@@ -32,8 +32,6 @@
                     $selected = ($key == $old);
                 }
                 
-                ?>
-            
             ?>
             <option value='{{$key}}' {{ $selected ? 'selected':'' }}>{{$option}}</option>
         @endif
