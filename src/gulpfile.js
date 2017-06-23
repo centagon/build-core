@@ -17,7 +17,7 @@ elixir(mix => {
         .scripts([
             '../components/jquery/dist/jquery.min.js',
             '../components/select2/dist/js/select2.full.js',
-            '../components/spectrum/spectrum.js'
+            '../components/spectrum/spectrum.js',
         ], 'public/js/vendor.js')
         .copy('public/js/vendor.js', __root + '/js/vendor.js');
 });

@@ -1,0 +1,46 @@
+.grid-stack {
+    margin-bottom: rem-calc(50);
+}
+
+.grid-stack-item-content {
+    background: white;
+    color: #2c3e50;
+    box-shadow: 3px 3px 25px rgba(0, 0, 0, 0.5);
+    border-radius: $global-radius;
+
+    .grid-stack-item-inside {
+        padding: 15px;
+    }
+
+    &:hover {
+        border-color: #458aa1;
+    }
+
+    &:hover .grid-stack-item-header {
+        cursor: move;
+    }
+    &:hover .grid-stack-item-header .float-right {
+        display: block;
+    }
+
+    .fa {
+        font-size: 64px;
+        display: block;
+        margin: 20px 0 10px;
+    }
+
+    .grid-stack-item-header {
+        background-color: color-get(gray, light);
+        padding: 7px 10px;
+
+        h3 {
+            margin: 0;
+            font-size: rem-calc(15);
+            font-weight: bold;
+        }
+        
+        .float-right {
+            display: none;
+        }
+    }
+}

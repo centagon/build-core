@@ -5,14 +5,15 @@
 	<div class="row">
 		<div class="small-12">
 
-			<section class="title">
-				<div class="float-right">
+			<section class="page-header">
+				<div class="page-header__item">
+					<h1>Colors</h1>
+				</div>
+				<div class="page-header__item">
 					<a href="{{ route('admin.colors.create') }}" class="button button--success">
 						New color
 					</a>
 				</div>
-
-				<h1>Colors</h1>
 			</section>
 
 			@foreach (alert()->messages() as $key => $messages)
@@ -34,7 +35,7 @@
 		@foreach ($colors as $color)
 
 			<div class="small-6 medium-4 large-2">
-				<div class="panel" style="background-color: {{ $color->hex_color }};">
+				<div class="equalized panel" style="background-color: {{ $color->hex_color }};" data-equalize="color.panel">
 					<a href="{{ route('admin.colors.edit', $color) }}" style="color: {{ $color->best_contrast }};">
 						{{ $color->name }}
 					</a>

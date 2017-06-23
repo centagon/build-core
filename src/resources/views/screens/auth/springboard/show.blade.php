@@ -6,7 +6,8 @@
         <div class="small-12 medium-4 medium-push-4">
 
             <div id="header-logo">
-                <img src="{{ asset('vendor/build/core/img/logo-horizontal.png') }}">
+                <img src="{{ asset('vendor/build/core/img/logo-horizontal.png') }}" width="181" height="99">
+                <p>Build Campaign Manager <span>3.5</span></p>
             </div>
 
             <ul class="list-group">

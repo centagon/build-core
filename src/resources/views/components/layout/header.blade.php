@@ -10,6 +10,7 @@
 
     <title>[{{ strtoupper(app()->environment()) }}] &mdash; Centagon Build</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     {!! Build\Core\Support\Facades\Asset::get('backend.css')->css() !!}
     @stack('stylesheets')
 

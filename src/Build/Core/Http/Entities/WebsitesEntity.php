@@ -38,7 +38,7 @@ class WebsitesEntity extends Manager
                 'name' => 'name',
                 'label' => 'Domain',
                 'subcolumn' => function ($link) {
-                    return $link->getRow()->domain;
+                    return route('admin.springboard.open', $link->getRow()->getKey());
                 }
             ]);
 

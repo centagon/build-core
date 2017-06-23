@@ -64,8 +64,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/core.php', 'build.core');
 
-        $this->registerProviders();
         $this->registerAliases();
+        $this->registerProviders();
         $this->registerHelpers();
     }
 

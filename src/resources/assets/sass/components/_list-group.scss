@@ -10,9 +10,33 @@
         padding: rem-calc(10 15);
         background-color: color-get(white);
         border: 1px solid color-get(gray, light);
+        transition: background-color 0.1s ease;
 
         &:hover {
             background-color: color-get(gray, light);
+        }
+    }
+
+    &:hover .list-group__item {
+        opacity: 0.3;
+    }
+
+    .list-group__item:hover {
+        opacity: 1;
+        color: white;
+    }
+}
+
+&.variant-dark .list-group {
+    @include element(item) {
+        border-left: none !important;
+        border-right: none;
+        border-color: rgba(235, 235, 235, 0.14);
+        background-color: transparent;
+        color: transparentize(color-get(white), .2);
+
+        &:hover {
+            background-color: transparentize(color-get(white), .9);
         }
     }
 }
