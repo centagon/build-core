@@ -52,10 +52,16 @@ class DashboardController extends Controller
 
         $website = Discovery::backendWebsite();
 
+        if (!$lastBlock) {
+            $y = $lastBlock->y + $lastBlock->height
+        } else {
+            $y = 0;
+        }
+
         $block = new DashboardBlock($request->all() + [
             'width' => 12,
             'height' => 5,
-            'y' => $lastBlock->y + $lastBlock->height,
+            'y' => $y,
         ]);
 
         $block->website()->associate($website);
