@@ -62,7 +62,7 @@
 
                                         @if ($label = $block->button_label)
                                             <p>
-                                                <a href="{{ $block->button_link ?: '#' }}" class="button">{{ $label }}</a>
+                                                <a href="{{ $block->button_url ?: '#' }}" class="button">{{ $label }}</a>
                                             </p>
                                         @endif
                                     </div>
@@ -70,7 +70,7 @@
                             @else
                                 {!! $block->content !!}
                                 @if ($label = $block->button_label)
-                                    <a href="{{ $block->button_link ?: '#' }}" class="button">{{ $label }}</a>
+                                    <a href="{{ $block->button_url ?: '#' }}" class="button">{{ $label }}</a>
                                 @endif
                             @endif
 
