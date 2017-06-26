@@ -4,8 +4,10 @@ import AutoGrow from './lib/AutoGrow';
 import Sidebar from './lib/Sidebar';
 import TabsDriver from './lib/Tabs/TabsDriver';
 import Dashboard from './lib/Dashboard';
+import Platform from './lib/Platform';
 import Equalizer from '../components/centagon-primer/src/js/lib/Equalizer';
 (new Equalizer()).register();
+(new Platform()).register();
 
 require('./lib/Modals/Driver');
 
