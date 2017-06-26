@@ -1,7 +1,27 @@
-html, body {
-    height: 100%;
-}
+
 
 body {
-    padding-bottom: $global-padding;
+    margin-bottom: $global-padding;
+    color: #5c676f;
+
+    &.variant-dark {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0) 200px) no-repeat;
+        background-color: color-get(black);
+
+        .accordion__content label,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        label {
+            color: white;
+        }
+
+        .accordion__title {
+            background-color: #1e2327;
+            color: white;
+        }
+    }
 }

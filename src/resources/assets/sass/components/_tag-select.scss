@@ -15,6 +15,7 @@
             background: color-get(gray, light);
             padding: 4px 8px;
             margin-right: 8px;
+            border-radius: $global-radius;
         }
         
         @include element(remove) {

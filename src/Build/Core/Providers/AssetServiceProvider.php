@@ -12,6 +12,7 @@ namespace Build\Core\Providers;
  */
 
 use Build\Core\Resources\Assets\Asset;
+use Build\Core\Support\Facades\Context;
 use Build\Core\Support\Facades\Asset as AssetFacade;
 
 class AssetServiceProvider extends \Illuminate\Support\ServiceProvider
@@ -41,5 +42,10 @@ class AssetServiceProvider extends \Illuminate\Support\ServiceProvider
 
         AssetFacade::get('backend.js')->add(asset('vendor/build/core/js/vendor.js'), 'vendor');
         AssetFacade::get('backend.js')->add(asset('vendor/build/core/js/core.js'), 'core');
+
+        AssetFacade::get('backend.css')->add(asset('//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.2.6/gridstack.min.css'));
+        if (Context::isBackend()) {
+            AssetFacade::get('backend.js')->add(asset('https://cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.2.6/gridstack.min.js'));
+        }
     }
 }

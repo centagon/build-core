@@ -10,6 +10,8 @@
 require('./bootstrap');
 require('./lib/SidebarScroll');
 
+require('../components/gridstack/src/gridstack.js');
+
 import AssetContainer from './screens/asset/Container.vue';
 import AssetPicker from './screens/asset/Picker.vue';
 import InputAsset from './components/input/Asset.vue';
@@ -21,10 +23,15 @@ Vue.component('input-asset', InputAsset);
 Vue.component('asset-container', AssetContainer);
 Vue.component('asset-picker', AssetPicker);
 
+window.vuedata = window.vuedata || {};
+
 $( window ).load( function () {
     
     const app = new Vue({
-        el: '#vue-wrapper'
+        el: '#vue-wrapper',
+        data: {
+            vuedata: window.vuedata
+        }
     });
     
     window.app = app;

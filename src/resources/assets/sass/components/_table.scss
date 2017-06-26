@@ -33,11 +33,11 @@
 
             &.selected,
             &:hover {
-                background-color: color-get(gray, light);
+                background-color: rgba(69, 138, 161, 0.08);
             }
 
             &.selectable--row.selected {
-                background-color: color-get(gray, light);
+                background-color: rgba(69, 138, 161, 0.08);
             }
         }
     }

@@ -10,11 +10,13 @@
 
     <title>[{{ strtoupper(app()->environment()) }}] &mdash; Centagon Build</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     {!! Build\Core\Support\Facades\Asset::get('backend.css')->css() !!}
     @stack('stylesheets')
 
     <script>
         var config = {
+            debug: '{{ config('app.debug') }}',
             base_url: '{{ url(config('build.core.uri')) }}',
             csrf_token: '{{ csrf_token() }}'
         };

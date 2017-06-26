@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+Route::post('assets/{asset}/replace', 'AssetsController@replace');
+
 Route::get('assets/fetch-groups', 'AssetsController@fetchGroups');
 Route::get('assets/fetch-websites', 'AssetsController@fetchWebsites');
 Route::resource('assets', 'AssetsController');

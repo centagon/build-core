@@ -5,12 +5,10 @@
     <div class="row">
         <div class="small-12 medium-4 medium-push-4">
 
-            <section class="branding-bar">
-                <section class="title">
-                    <h3>{{ trans('build.core::auth.welcome', ['name' => auth()->user()->name]) }}</h3>
-                    <p>{{ trans('build.core::auth.welcome-intro') }}</p>
-                </section>
-            </section>
+            <div id="header-logo">
+                <img src="{{ asset('vendor/build/core/img/logo-horizontal.png') }}" width="181" height="99">
+                <p>Build Campaign Manager <span>3.5</span></p>
+            </div>
 
             <ul class="list-group">
                 @foreach ($websites as $website)
