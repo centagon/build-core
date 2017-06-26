@@ -11,10 +11,10 @@ namespace Build\Core\Http\Controllers;
  * file that was distributed with this source code.
  */
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Build\Core\Http\Controller;
+use Illuminate\Http\RedirectResponse;
 use Build\Core\Eloquent\Models\Color;
 use Build\Core\Support\Facades\Discovery;
 use Build\Core\Eloquent\Models\DashboardBlock;
@@ -33,6 +33,9 @@ class DashboardController extends Controller
         ]);
     }
 
+    /**
+     * @return View
+     */
     public function create(): View
     {
         $colors = Color::all();
@@ -48,23 +51,19 @@ class DashboardController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $lastBlock = DashboardBlock::orderBy('y', 'desc')->first();
+        $lastBlock = DashboardBlock::byWebsite()
+            ->orderBy('y', 'desc')
+            ->first();
 
-        $website = Discovery::backendWebsite();
-
-        if (!$lastBlock) {
-            $y = $lastBlock->y + $lastBlock->height
-        } else {
-            $y = 0;
-        }
+        $y = $lastBlock ? ($lastBlock->y + $lastBlock->height) : 0;
 
         $block = new DashboardBlock($request->all() + [
+            'y' => $y,
             'width' => 12,
             'height' => 5,
-            'y' => $y,
         ]);
 
-        $block->website()->associate($website);
+        $block->website()->associate(Discovery::backendWebsite());
         $block->save();
 
         return redirect()->back();
