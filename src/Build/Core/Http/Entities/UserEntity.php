@@ -151,16 +151,18 @@ class UserEntity extends Manager
                 ]);
 
                 $form->add('input.divider');
+                
+                $globalRole = $query->getRole(null);
 
                 $form->add('input.select', [
                     'name' => 'role[0]',
                     'label' => 'Global',
                     'options' => Role::pluck('id', 'id')->toArray(),
-                    'selected' => auth()->user()->getRole(null)->id
+                    'selected' => $globalRole ? $globalRole->id : 9000
                 ]);
-
+                
                 foreach (Website::all() as $website) {
-                    $role = auth()->user()->getRole($website->getKey());
+                    $role = $query->getRole($website->getKey());
 
                     if ($role) {
                         $role = $role->getKey();
