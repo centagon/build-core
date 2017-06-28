@@ -30,3 +30,23 @@
     }
 
 }
+
+.sidebar-overflow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+body.sidebar-open {
+    overflow: hidden;
+
+    .sidebar-overflow {
+        pointer-events: initial;
+        opacity: 1;
+    }
+}

@@ -20,3 +20,21 @@ dl {
     }
 
 }
+
+ul.color-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .color-list__item  {
+        display: inline-block;
+        padding-right: rem-calc(15);
+    }
+
+    .color-list__color {
+        border-radius: $global-radius;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQoU2O8ffv2fwY0oKqqyoguxjgUFKI7GsTH5m4M3w1ChQBLoyXbEjDuswAAAABJRU5ErkJggg==');
+    }
+}

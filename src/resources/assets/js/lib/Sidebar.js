@@ -23,10 +23,13 @@ class Sidebar {
             $('.sidebar').resizable({
                 handles: "w"
             });
+
+            $('body').addClass('sidebar-open');
         });
 
         doc.on('click', '.sidebar .cancel-button', function () {
             self.close($(this).closest('.sidebar'));
+            $('body').removeClass('sidebar-open');
         });
 
         return this;
@@ -68,6 +71,8 @@ class Sidebar {
                 .off('submit','form')
                 .removeClass('sidebar--open')
                 .find('.content').html('');
+
+        $('body').removeClass('sidebar-open');
         
         this.trigger('closed', sidebar);
     }
