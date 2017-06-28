@@ -11,12 +11,15 @@ $input-radius : $global-radius !default;
 
 label {
     display: block;
-    cursor: pointer;
     line-height: 1.8;
     margin-top: $global-margin;
     padding-top: rem-calc(5);
     padding-bottom: rem-calc(5);
     font-weight: bold;
+
+    &[for] {
+        cursor: pointer;
+    }
 }
 
 input[type=checkbox] {
@@ -45,6 +48,7 @@ input[type=checkbox] {
     }
 }
 
+input[type=number],
 input[type=text],
 input[type=date],
 input[type=datetime-local],
@@ -75,7 +79,9 @@ textarea {
     display: table;
     border-collapse: separate;
 
-    input[type=text] {
+    > .input-group__item,
+    > input[type=range],
+    > input[type=text] {
         display: table-cell;
         position: relative;
         z-index: 2;
@@ -84,6 +90,18 @@ textarea {
         margin-bottom: 0;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
+
+        &.spaced {
+            padding-right: 15px;
+        }
+    }
+
+    input[type=range] {
+        vertical-align: bottom;
+    }
+
+    input[type=number] {
+        width: auto;
     }
 }
 
@@ -102,4 +120,45 @@ textarea {
     display: table-cell;
     border-right: none;
     border-radius: $global-radius 0 0 $global-radius;
+
+    &.no-panel {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        border: 0;
+    }
 }
+
+input[type=range] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: color-get(blue);
+    margin-top: -5px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
