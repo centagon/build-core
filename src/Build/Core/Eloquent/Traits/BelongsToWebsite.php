@@ -52,7 +52,7 @@ trait BelongsToWebsite
     /**
      * @return string
      */
-    protected function getQualifiedWebsiteIdColumn()
+    public function getQualifiedWebsiteIdColumn()
     {
         return 'website_id';
     }
