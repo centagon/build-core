@@ -162,3 +162,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     background: #ccc;
 }
 
+.form-actions {
+    margin-top: rem-calc(15);
+    padding: rem-calc(25 0);
+    background-color: lighten(color-get(gray, light), 5%);
+    border-radius: $global-radius;
+}

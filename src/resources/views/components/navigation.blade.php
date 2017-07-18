@@ -14,7 +14,7 @@
     @else
         <li>
             <a href="{{ $item->url() }}">
-                {{ $item->title }}
+                {!! $item->title !!}
             </a>
         </li>
     @endif

@@ -6,7 +6,8 @@
     "font-awesome": "^4.7.0",
     "select2": "^4.0.3",
     "spectrum": "^1.8.0",
-    "gridstack": "^0.3.0"
+    "gridstack": "^0.3.0",
+    "tipsy": "^0.1.7"
   },
   "resolutions": {
     "jquery": "2.2.*"

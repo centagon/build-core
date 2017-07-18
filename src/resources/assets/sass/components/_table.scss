@@ -6,6 +6,7 @@
     thead {
         background-color: color-get(black);
         color: color-get(white);
+        box-shadow: 0 4px 5px rgba(0,0,0,.1);
 
         th {
             font-weight: normal;
@@ -49,8 +50,8 @@
             text-decoration: underline;
         }
     }
+}
 
-    span.sub-column {
-        display: block;
-    }
+span.sub-column {
+    display: block;
 }
