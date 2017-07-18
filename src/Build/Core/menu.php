@@ -21,7 +21,8 @@ function createLeftMenu($menu)
         ->add(trans('build.core::menu.structure'))
         ->nickname('structure');
 
-    $menu->structure->add(trans('build.core::menu.structure.websites'), route('admin.websites.index'));
+    $menu->structure->add(trans('build.core::menu.structure.websites'), route('admin.websites.index'))
+        ->prepend('<i class="fa fa-globe"></i> ');
 
     $menu
         ->add(trans('build.core::menu.design'))
