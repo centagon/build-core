@@ -1,0 +1,34 @@
+.tipsy {
+    padding: rem-calc(5);
+    font-size: rem-calc(14);
+
+    &::after {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        content: "";
+        left: 50%;
+        top: 0;
+        border: 7px solid transparent;
+        border-top-width: 0;
+        border-bottom-color: color-get(black);
+    }
+}
+
+.tipsy-inner {
+    padding: rem-calc(5 8 4 8);
+    background-color: color-get(black);
+    color: color-get(white);
+    max-width: rem-calc(200);
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(50,50,93,.1);
+}
+
+.tipsy-inner {
+    border-radius: $global-radius
+}
+
+.tipsy-south {
+    background-position: bottom center;
+}
