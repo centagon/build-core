@@ -43,8 +43,29 @@
     }
 }
 
-li#logo a {
-    padding: 3px 25px;
+li#logo {
+    a {
+        padding: 3px 25px;
+        height: rem-calc(35);
+        overflow: hidden;
+
+        > div {
+            transition: margin 0.2s ease-in-out;
+        }
+
+        &:hover > div {
+            margin-top: -44px;
+        }
+    }
+
+    h1 {
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: bold;
+        i {
+            margin-right: 10px;
+        }
+    }
 }
 
 @include breakpoint(medium) {
@@ -140,15 +161,11 @@ li#logo a {
                 display: block;
                 width: 0;
                 height: 0;
-                border-color: transparent;
-                border-style: solid;
-            }
-
-            &::after {
                 content: "";
-                border-width: 0 7px 7px;
                 left: 20px;
                 top: -7px;
+                border: 7px solid transparent;
+                border-top-width: 0;
                 border-bottom-color: #f7f7f7;
             }
 

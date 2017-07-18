@@ -23,6 +23,26 @@
         }
     }
 
+    @include modifier(success) {
+        border-top: 3px solid color-get(green);
+    }
+
+    @include modifier(error) {
+        border-top: 3px solid color-get(red);
+    }
+
+    @include element(title) {
+        font-size: rem-calc(14);
+        font-weight: bold;
+        margin-top: 0;
+    }
+
+    @include element(footer) {
+        margin-top: rem-calc(15);
+        padding-top: rem-calc(10);
+        border-top: 1px solid color-get(gray, light);
+    }
+
     @include element(preview) {
         height: rem-calc(200);
 
