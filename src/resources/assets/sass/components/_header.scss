@@ -181,6 +181,11 @@ li#logo {
                 &:hover {
                     background-color: color-get(gray, light);
                 }
+
+                i.fa {
+                    width: 20px;
+                    color: color-get(gray, dark);
+                }
             }
             
         }
