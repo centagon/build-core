@@ -25,57 +25,28 @@
     @include('build.core::components.messages')
 
     <div class="row">
-        <div class="small-12">
 
-            <table class="table table--selectable">
-                <thead>
-                    <tr>
-                        <th width="20">
-                            <input type="checkbox">
-                        </th>
-                        <th>Domain</th>
-                        <th>Is activated?</th>
-                        <th></th>
-                    </tr>
-                </thead>
+        @foreach ($websites as $website)
+        <div class="small-12 medium-4">
+            <div class="equalized panel panel--{{ $website->is_active ? 'success' : 'error' }}">
 
-                <tbody>
-                    @foreach ($websites as $website)
-                        <tr class="selectable--row">
-                            <td>
-                                <input type="checkbox" value="{{ $website->getKey() }}">
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.websites.edit', $website) }}">
-                                    {{ $website->name }}
-                                </a>
-                                <span class="sub-column">
-                                    {{ $website->domain }}
-                                </span>
-                            </td>
-                            <td>
-                                @if ($website->is_active)
-                                    <i class="fa fa-check"></i>
-                                @endif
-                            </td>
-                            <td align="right">
-                                <a href="{{ route('admin.websites.edit', $website) }}" class="button">Edit website</a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                @if ($website->is_active)
+                    <div class="float-right">
+                        <i class="fa fa-check"></i>
+                    </div>
+                @endif
 
-            <div class="row">
-                <div class="small-12 medium-6">
-                    <button class="button button--error">test</button>
-                </div>
-                <div class="small-12 medium-6 text-right">
-                    {{ $websites->links() }}
+                <h3 class="panel__title">
+                    <a href="{{ route('admin.websites.edit', $website) }}" rel="tipsy" original-title="{{ $website->domain }}">{{ $website->name }}</a>
+                </h3>
+
+                <div class="panel__footer">
+                    Last update: {{ $website->updated_at->diffForHumans() }}
                 </div>
             </div>
-
         </div>
+        @endforeach
+
     </div>
 
 @endsection

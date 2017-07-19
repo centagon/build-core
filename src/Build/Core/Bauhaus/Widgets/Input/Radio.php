@@ -21,4 +21,23 @@ class Radio extends Widget
      * @var string
      */
     protected $view = 'build.core::components.bauhaus.input.radio';
+
+    public function getOptions()
+    {
+        return $this->get('options', []);
+    }
+
+    public function isChecked($key)
+    {
+        return $key == $this->getOld();
+    }
+
+    public function getOld($default = null)
+    {
+        if (! $default) {
+            $default = $default ?: $this->get('checked', null);
+        }
+
+        return old($this->get('name'), $this->get('value', $default));
+    }
 }

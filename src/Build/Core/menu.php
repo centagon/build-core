@@ -21,14 +21,18 @@ function createLeftMenu($menu)
         ->add(trans('build.core::menu.structure'))
         ->nickname('structure');
 
-    $menu->structure->add(trans('build.core::menu.structure.websites'), route('admin.websites.index'));
+    $menu->structure->add(trans('build.core::menu.structure.websites'), route('admin.websites.index'))
+        ->prepend('<i class="fa fa-globe"></i> ');
 
     $menu
         ->add(trans('build.core::menu.design'))
         ->nickname('design');
 
-    $menu->design->add(trans('build.core::menu.design.colors'), route('admin.colors.index'));
-    $menu->design->add(trans('build.core::menu.design.assets'), route('admin.assets.index'));
+    $menu->design->add(trans('build.core::menu.design.colors'), route('admin.colors.index'))
+        ->prepend('<i class="fa fa-paint-brush"></i> ');
+
+    $menu->design->add(trans('build.core::menu.design.assets'), route('admin.assets.index'))
+        ->prepend('<i class="fa fa-image"></i> ');
 
     $menu
         ->add(trans('build.core::menu.content'))
@@ -36,6 +40,7 @@ function createLeftMenu($menu)
 
     $menu->content->add(trans('build.core::menu.content.languages'), route('admin.languages.index'))
         ->nickname('languages')
+        ->prepend('<i class="fa fa-language"></i> ')
         ->divide();
 
     $menu

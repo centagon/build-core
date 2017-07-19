@@ -4,12 +4,18 @@ import AutoGrow from './lib/AutoGrow';
 import Sidebar from './lib/Sidebar';
 import TabsDriver from './lib/Tabs/TabsDriver';
 import Dashboard from './lib/Dashboard';
+import Platform from './lib/Platform';
 import Equalizer from '../components/centagon-primer/src/js/lib/Equalizer';
 (new Equalizer()).register();
+(new Platform()).register();
 
+require('../components/tipsy/src/javascripts/jquery.tipsy');
 require('./lib/Modals/Driver');
 
 window._ = require('lodash');
+
+// Tipsy
+$('[rel=tipsy]').tipsy({ gravity: 'n'});
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces

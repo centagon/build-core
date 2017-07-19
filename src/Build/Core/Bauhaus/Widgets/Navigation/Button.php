@@ -17,9 +17,9 @@ class Button extends Widget
 {
 
     const STYLE_SECONDARY = 'secondary';
-    const STYLE_PRIMARY = 'button--primary';
-    const STYLE_SUCCESS = 'button--success';
-    const STYLE_ALERT = 'button--error';
+    const STYLE_PRIMARY = 'primary';
+    const STYLE_SUCCESS = 'success';
+    const STYLE_ALERT = 'error';
 
     /**
      * Override the view path.

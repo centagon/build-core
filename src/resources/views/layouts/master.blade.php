@@ -11,7 +11,13 @@
             <ul class="header__nav">
                 <li id="logo">
                     <a href="{{ route('admin.dashboard') }}">
-                        <img src="{{ asset('vendor/build/core/img/logo-vertical.png') }}" width="140">
+                        <div>
+                            <img src="{{ asset('vendor/build/core/img/logo-vertical.png') }}" width="140">
+                            <h1>
+                                <i class="fa fa-dashboard"></i>
+                                Dashboard
+                            </h1>
+                        </div>
                     </a>
                 </li>
 

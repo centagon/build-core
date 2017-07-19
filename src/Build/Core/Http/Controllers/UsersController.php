@@ -153,7 +153,14 @@ class UsersController extends Controller
         foreach ($roles as $website => $role) {
             $website = $website ?: null;
 
+            // Role has been unset
             if (! $role) {
+                
+                // Remove the currently assigned role
+                if ( ( $revoke = $user->getRole($website)) ) {
+                    $user->removeRole($revoke->id, $website);
+                }
+                
                 continue;
             }
 
