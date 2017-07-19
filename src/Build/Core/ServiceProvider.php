@@ -11,8 +11,6 @@ namespace Build\Core;
  * file that was distributed with this source code.
  */
 
-use Build\Core\Support\Context;
-use Build\Core\Http\Routing\Discovery;
 use Intervention\Image\ImageServiceProvider;
 use Build\Core\Providers\MenuServiceProvider;
 use Build\Core\Providers\EventServiceProvider;
@@ -22,6 +20,7 @@ use Build\Core\Providers\RouteServiceProvider;
 use Build\Core\Providers\AssetServiceProvider;
 use Build\Core\Providers\CookieServiceProvider;
 use Build\Core\Providers\PolicyServiceProvider;
+use Build\Core\Providers\RequestServiceProvider;
 use Build\Core\Providers\ModulesServiceProvider;
 use Build\Core\Providers\RoutingServiceProvider;
 use Build\Core\Providers\ConsoleServiceProvider;
@@ -64,7 +63,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/core.php', 'build.core');
 
-        $this->registerAliases();
         $this->registerProviders();
         $this->registerHelpers();
     }
@@ -75,6 +73,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     protected function registerProviders()
     {
         $this->app->register(BauhausServiceProvider::class);
+        $this->app->register(RequestServiceProvider::class);
         $this->app->register(RoutingServiceProvider::class);
         $this->app->register(ConsoleServiceProvider::class);
         $this->app->register(ModulesServiceProvider::class);
@@ -86,16 +85,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->app->register(EventServiceProvider::class);
         $this->app->register(ImageServiceProvider::class);
         $this->app->register(MenuServiceProvider::class);
-    }
-
-    /**
-     * Register the Build aliases.
-     * @deprecated 2.0.0
-     */
-    protected function registerAliases()
-    {
-        $this->app->singleton('build.core.discovery', Discovery::class);
-        $this->app->singleton('build.context', Context::class);
     }
 
     /**
