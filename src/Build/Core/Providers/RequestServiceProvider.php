@@ -34,6 +34,10 @@ class RequestServiceProvider extends ServiceProvider
      */
     protected function registerMacros()
     {
+        Request::macro('context', function (): string {
+            return app('build.context')->get();
+        });
+
         Request::macro('isFrontend', function (): bool {
             return app('build.context')->isFrontend();
         });

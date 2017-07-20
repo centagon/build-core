@@ -69,6 +69,23 @@ if ( ! function_exists('build_route')) {
     }
 }
 
+if (! function_exists('cc')) {
+    /**
+     * Contextual tagged file caching.
+     *
+     * @param  array|mixed  $names
+     * @return Build\Core\Cache\TaggedCache
+     */
+    function cc($names)
+    {
+        $names = is_array($names) ? $names : func_get_args();
+
+        array_unshift($names, request()->context());
+
+        return cache()->tags($names);
+    }
+}
+
 if ( ! function_exists('entity')) {
     /**
      * @param  string  $entity
