@@ -13,6 +13,7 @@ namespace Build\Core;
 
 use Intervention\Image\ImageServiceProvider;
 use Build\Core\Providers\MenuServiceProvider;
+use Build\Core\Providers\CacheServiceProvider;
 use Build\Core\Providers\EventServiceProvider;
 use Build\Core\Providers\AlertServiceProvider;
 use Build\Core\Providers\ColorServiceProvider;
@@ -83,6 +84,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->app->register(AssetServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(EventServiceProvider::class);
+        $this->app->register(CacheServiceProvider::class);
         $this->app->register(ImageServiceProvider::class);
         $this->app->register(MenuServiceProvider::class);
     }
