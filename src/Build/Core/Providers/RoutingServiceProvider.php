@@ -41,8 +41,14 @@ class RoutingServiceProvider extends \Illuminate\Routing\RoutingServiceProvider
      */
     protected function registerMiddlewares()
     {
-        foreach (config('build.core.middleware') as $name => $middleware) {
-            app('router')->aliasMiddleware($name, $middleware);
+        $router = app('router');
+
+        $method = method_exists($router, 'middleware')
+            ? 'middleware' // Laravel 5.3 support
+            : 'aliasMiddleware'; // Laravel 5.4+ support
+
+        foreach (config('build.core.middleware') as $name => $class) {
+            $router->$method($name, $class);
         }
     }
 
@@ -52,6 +58,9 @@ class RoutingServiceProvider extends \Illuminate\Routing\RoutingServiceProvider
             $middleware = array_keys(config('build.core.middleware'));
 
             array_unshift($middleware, 'web');
+
+            // Hacky way to fix Laravel-Debugbar middleware errors.
+            $middleware = array_combine($middleware, $middleware);
 
             $attributes = array_merge([
                 'prefix' => config('build.core.uri'),
