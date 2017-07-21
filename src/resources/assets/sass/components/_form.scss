@@ -1,0 +1,4 @@
+.form,
+form {
+    @include form-errors();
+}
