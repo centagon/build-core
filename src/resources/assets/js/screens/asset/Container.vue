@@ -244,7 +244,7 @@
             },
 
             openGroupManager() {
-                 var dispatcher = build.core.WindowDispatch.open('/admin/group-browser?type=Build\\Core\\Eloquent\\Models\\Asset', 'Group Browser', 1000, 600);
+                 var dispatcher = build.core.WindowDispatch.open(config.base_url + '/group-browser?type=Build\\Core\\Eloquent\\Models\\Asset', 'Group Browser', 1000, 600);
 
                 build.core.WindowDispatch.listen(function (message) {
                     if (dispatcher.reference === message.source) {
