@@ -82,7 +82,7 @@
 
                 let asset_id = this.asset.id;
                 let xhr = new XMLHttpRequest();
-                xhr.open('POST', `/admin/async/assets/${asset_id}/replace`, true);
+                xhr.open('POST', `${config.base_url}/async/assets/${asset_id}/replace`, true);
                 xhr.setRequestHeader('X-CSRF-TOKEN', config.csrf_token);
 
                 xhr.onload = function () {
