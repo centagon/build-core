@@ -21,7 +21,7 @@ class SpringboardController extends Controller
 {
 
     /**
-     * @return Response
+     * @return Response|RedirectResponse
      */
     public function index(Guard $guard)
     {
@@ -33,6 +33,12 @@ class SpringboardController extends Controller
             $websites = Website::all()->filter(function ($value) use ($guard) {
                 return ($guard->user()->getRole($value->id, true) ? true : false);
             });
+        }
+
+        // Don't show the website selector when the user
+        // has only one website.
+        if ($websites->count() === 1) {
+            return $this->open($websites->first());
         }
 
         $response = view('build.core::screens.auth.springboard.show')
