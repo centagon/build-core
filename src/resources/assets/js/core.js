@@ -16,12 +16,11 @@ import AssetContainer from './screens/asset/Container.vue';
 import AssetPicker from './screens/asset/Picker.vue';
 import InputAsset from './components/input/Asset.vue';
 import TagSelect from './components/input/TagSelect.vue';
-import VueSelect from './components/input/VueSelect.vue';
-
+import vSelect from "vue-select";
 
 Vue.component('tag-select', TagSelect);
 Vue.component('input-asset', InputAsset);
-Vue.component('vue-select', VueSelect);
+Vue.component('v-select', vSelect);
 Vue.component('asset-container', AssetContainer);
 Vue.component('asset-picker', AssetPicker);
 
