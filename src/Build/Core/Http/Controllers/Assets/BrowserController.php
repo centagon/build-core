@@ -40,7 +40,7 @@ class BrowserController extends Controller
 
         if(substr($file->getMimeType(), 0, 5) == 'image') {
             $this->validate($request, [
-                'file' => 'size:'.config('build.core.max-image-size'),
+                'file' => 'max:'.config('build.core.max-image-size'),
             ]);
         }
 
