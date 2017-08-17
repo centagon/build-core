@@ -17,6 +17,7 @@
     <script>
         var config = {
             debug: '{{ config('app.debug') }}',
+            root_url: '{{ url('/') }}',
             base_url: '{{ url(config('build.core.uri')) }}',
             csrf_token: '{{ csrf_token() }}'
         };
