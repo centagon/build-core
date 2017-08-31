@@ -17,3 +17,11 @@
         {{ $node->get('subcolumn') }}
     </span>
 @endif
+
+@push('javascripts')
+    @if ($sidebar = $node->get('sidebar'))
+        <div id="{{ $sidebar }}" class="sidebar">
+            <div class="content"></div>
+        </div>
+    @endif
+@endpush
