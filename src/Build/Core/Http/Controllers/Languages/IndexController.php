@@ -34,8 +34,10 @@ class IndexController extends Controller
         } else {
             $q = Language::byWebsite();
         }
-        
-        $languages = request('all',0) ? $q->get():$q->where('is_active',1)->get();
+
+        $languages = request('all', 0)
+            ? $q->get()
+            : $q->where('languages.is_active', 1)->get();
 
         return entity(LanguageEntity::class, 'index')
             ->setQuery($languages)
