@@ -17,15 +17,14 @@ createRightMenu(Menu::get('build.header-right'));
 
 function createLeftMenu($menu)
 {
-    $menu
-        ->add(trans('build.core::menu.structure'))
+    $menu->add(trans('build.core::menu.structure'),null)
         ->nickname('structure');
 
     $menu->structure->add(trans('build.core::menu.structure.websites'), route('admin.websites.index'))
         ->prepend('<i class="fa fa-globe"></i> ');
 
     $menu
-        ->add(trans('build.core::menu.design'))
+        ->add(trans('build.core::menu.design'),null)
         ->nickname('design');
 
     $menu->design->add(trans('build.core::menu.design.colors'), route('admin.colors.index'))
@@ -35,7 +34,7 @@ function createLeftMenu($menu)
         ->prepend('<i class="fa fa-image"></i> ');
 
     $menu
-        ->add(trans('build.core::menu.content'))
+        ->add(trans('build.core::menu.content'),null)
         ->nickname('content');
 
     $menu->content->add(trans('build.core::menu.content.languages'), route('admin.languages.index'))
@@ -44,11 +43,11 @@ function createLeftMenu($menu)
         ->divide();
 
     $menu
-        ->add(trans('build.core::menu.processes'))
+        ->add(trans('build.core::menu.processes'),null)
         ->nickname('processes');
 
     $menu
-        ->add(trans('build.core::menu.admin'))
+        ->add(trans('build.core::menu.admin'),null)
         ->nickname('admin');
 
     $menu->admin->add(trans('build.core::menu.admin.modules'), route('admin.modules.index'));

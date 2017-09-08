@@ -30,10 +30,14 @@ class IndexController extends Controller
         $this->authorize('index-language');
 
         if (auth()->user()->can('edit-language')) {
-            $languages = Language::all();
+            $q = Language::query();
         } else {
-            $languages = Language::byWebsite()->get();
+            $q = Language::byWebsite();
         }
+
+        $languages = request('all', 0)
+            ? $q->get()
+            : $q->where('languages.is_active', 1)->get();
 
         return entity(LanguageEntity::class, 'index')
             ->setQuery($languages)
