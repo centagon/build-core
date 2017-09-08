@@ -31,6 +31,6 @@ class ModelSaved
         Cache::forget($model->getCacheKey($model->getKey()));
 
         // Forget the model's specific tagged cache (when applicable).
-        cache()->tags(['widgets', 'response'])->forget($this->getKey());
+        cache()->tags(['widgets', 'response'])->forget($model->getKey());
     }
 }
