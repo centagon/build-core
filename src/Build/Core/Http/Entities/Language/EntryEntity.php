@@ -31,7 +31,7 @@ class EntryEntity extends Manager
             ->add('navigation.button', [
                 'to' => route('admin.languages.entries.create', $language->getKey()),
                 'label' => 'Add a new entry',
-                'style' => 'button--success'
+                'style' => 'success'
             ]);
 
         $mapper
@@ -83,10 +83,13 @@ class EntryEntity extends Manager
 
                 $form->action(route('admin.languages.entries.store', request()->route('language')));
 
+                // Only list the items that we do not already have entries for
                 $form->add('input.select', [
                     'name' => 'dictionary_id',
                     'label' => 'Dictionary entry',
-                    'options' => Dictionary::pluck('label', 'id')
+                    'options' => Dictionary::whereDoesntHave('entries', function ($q) {
+                        $q->where('language_id', request()->route('language'));
+                    })->pluck('label', 'id')
                 ]);
 
                 $form->add('input.textarea', [
