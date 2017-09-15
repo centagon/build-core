@@ -17,6 +17,7 @@ class AddUniqueIndexToLanguageEntriesTable extends Migration
         $tableName = $model->getTable();
         
         // Delete entries that already have more then one entry
+        /**
         DB::statement("delete FROM {$tableName}
             where {$tableName}.id in (
                 select id from (
@@ -29,6 +30,7 @@ class AddUniqueIndexToLanguageEntriesTable extends Migration
                      having counter > 1
                  ) as invalid_counters
              )");
+         * */
         
         Schema::table('language_entries', function (Blueprint $table) {
            $table->unique(['language_id', 'dictionary_id'], 'language_entries_language_id_dictionary_id_unique');
