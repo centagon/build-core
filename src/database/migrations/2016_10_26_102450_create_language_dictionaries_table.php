@@ -16,7 +16,7 @@ class CreateLanguageDictionariesTable extends Migration
         Schema::create('language_dictionaries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('label')->unique()->index();
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
