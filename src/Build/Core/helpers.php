@@ -9,10 +9,25 @@
  * file that was distributed with this source code.
  */
 
+use Ramsey\Uuid\Uuid;
+use Build\Core\Support\System;
+use Build\Core\Support\AssetContainer;
 use Build\Content\Support\Facades\Discovery;
 use Build\Core\Eloquent\Models\Language\Entry;
-use Build\Core\Support\System;
-use Ramsey\Uuid\Uuid;
+
+if (! function_exists('asset_get')) {
+    /**
+     * Get the cached asset. If the asset isn't cached we try to
+     * safely fall back to get the asset from the eloquent model.
+     *
+     * @param  int $id
+     * @return \Build\Core\Eloquent\Models\Asset|null
+     */
+    function asset_get($id)
+    {
+        return AssetContainer::get($id);
+    }
+}
 
 if ( ! function_exists('uuid')) {
     /**

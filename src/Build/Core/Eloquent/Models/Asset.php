@@ -13,6 +13,7 @@ namespace Build\Core\Eloquent\Models;
 
 use Build\Core\Eloquent\Model;
 use Build\Core\Eloquent\Traits\Groupable;
+use Build\Core\Support\AssetContainer;
 use Build\Core\Support\ImageFormatter;
 use Build\Core\Support\Mime;
 use Build\Core\Support\System;
@@ -199,6 +200,14 @@ class Asset extends Model
      */
     public static function boot()
     {
+        // Flush and warm the asset container.
+        static::saved(function ($model) {
+            foreach ($model->websites as $website) {
+                AssetContainer::flush($website);
+                AssetContainer::warm($website);
+            }
+        });
+
         static::creating(function (self $model) {
             if (System::is64Bits()) {
                 $uuid = Uuid::uuid1();

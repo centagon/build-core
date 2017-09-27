@@ -40,6 +40,16 @@ class Website extends \Build\Core\Eloquent\Model
     }
 
     /**
+     * The assets relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function assets()
+    {
+        return $this->belongsToMany(Asset::class);
+    }
+
+    /**
      * Scope the query by a given domain.
      *
      * @param  Builder  $query
