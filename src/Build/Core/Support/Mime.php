@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\File;
 
 class Mime
 {
-
     /**
      * Determine if we can create a preview
      *
@@ -25,8 +24,6 @@ class Mime
      */
     public static function isImage($filename)
     {
-        if ( File::mimeType($filename) == "application/pdf" ) return false;
-        return true;
+        return substr(File::mimeType($filename), 0, 5) == 'image';
     }
-
 }
