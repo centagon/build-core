@@ -18,5 +18,10 @@ Route::resource('languages', 'Languages\IndexController', [
     'except' => ['show']
 ]);
 
+Route::get('languages/refresh', [
+    'as' => 'admin.languages.refresh',
+    'uses' => 'Languages\IndexController@refresh',
+]);
+
 Route::resource('languages.entries', 'Languages\EntriesController');
 Route::resource('languages/dictionary', 'Languages\DictionaryController');
