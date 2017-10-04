@@ -36,6 +36,11 @@ class LanguageEntity extends Manager
             ]);
         }
 
+        $heading->add('navigation.button', [
+            'label' => 'Refresh languages',
+            'to' => route('admin.languages.refresh'),
+        ]);
+
         if (auth()->user()->can('create-language')) {
             $heading->add('navigation.button', [
                 'to' => route('admin.languages.dictionary.index'),

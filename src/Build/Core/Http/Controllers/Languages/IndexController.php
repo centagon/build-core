@@ -113,6 +113,15 @@ class IndexController extends Controller
         return view('build.core::screens.languages.remove');
     }
 
+    public function refresh()
+    {
+        app('cache')->tags('language-labels')->flush();
+
+        alert()->success('Successfully refreshed the languages')->flash();
+
+        return redirect()->back();
+    }
+
     /**
      * @return RedirectResponse
      */
