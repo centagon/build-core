@@ -2,46 +2,48 @@
 
 namespace Build\Core\Http\Controllers;
 
-/*
- * This file is part of the Build package.
- *
- * (c) Centagon <contact@centagon.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-use Illuminate\View\View;
-use Illuminate\Http\Response;
-use Illuminate\Http\RedirectResponse;
+use Build\Core\Http\Controller;
 use Build\Core\Eloquent\Models\Website;
-use Build\Core\Eloquent\Models\Language;
 use Build\Core\Http\Entities\WebsitesEntity;
 use Build\Core\Http\Requests\WebsiteRequest;
+use Build\Core\Contracts\Repositories\Website as Repository;
 
-class WebsitesController extends \Build\Core\Http\Controller
+class WebsitesController extends Controller
 {
+    /**
+     * @var \Build\Core\Contracts\Repositories\Website
+     */
+    protected $website;
 
     /**
-     * @return View
+     * Create a new websites controller instance.
+     *
+     * @param  \Build\Core\Contracts\Repositories\Website  $website
+     * @return void
+     */
+    public function __construct(Repository $website)
+    {
+        $this->website = $website;
+    }
+
+    /**
+     * Show a list of websites.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {
         $this->authorize('index-website');
 
-        $websites = Website::paginate(config('build.core.paginate'));
-
-        return view('build.core::screens.websites.index')->with([
-            'websites' => $websites,
+        return view('build.core::screens.websites.index', [
+            'websites' => $this->website->getAllWebsites(),
         ]);
-
-//        return entity(WebsitesEntity::class, 'index')
-//            ->setQuery($websites)
-//            ->render();
     }
 
     /**
-     * @return Response
+     * Show the create website form.
+     *
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -51,19 +53,16 @@ class WebsitesController extends \Build\Core\Http\Controller
     }
 
     /**
-     * @param  WebsiteRequest  $request
+     * Store a new website in the database.
      *
-     * @return RedirectResponse
+     * @param  \Build\Core\Http\Requests\WebsiteRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(WebsiteRequest $request)
     {
         $this->authorize('create-website');
 
-        $language = Language::findOrFail($request->get('language_id'));
-
-        $website = new Website($request->all());
-        $website->language()->associate($language);
-        $website->save();
+        $this->website->createWebsite($request->all());
 
         alert()->success('Successfully created a website.')->flash();
 
@@ -71,9 +70,10 @@ class WebsitesController extends \Build\Core\Http\Controller
     }
 
     /**
-     * @param  Website  $website
+     * Show the edit website form.
      *
-     * @return Response
+     * @param  \Build\Core\Eloquent\Models\Website  $website
+     * @return \Illuminate\View\View
      */
     public function edit(Website $website)
     {
@@ -85,20 +85,17 @@ class WebsitesController extends \Build\Core\Http\Controller
     }
 
     /**
-     * @param  WebsiteRequest  $request
-     * @param  Website         $website
+     * Update the given website.
      *
-     * @return RedirectResponse
+     * @param  \Build\Core\Http\Requests\WebsiteRequest  $request
+     * @param  \Build\Core\Eloquent\Models\Website  $website
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(WebsiteRequest $request, Website $website)
     {
         $this->authorize('edit-website');
 
-        $language = Language::findOrFail($request->get('language_id'));
-
-        $website->update($request->all());
-        $website->language()->associate($language);
-        $website->save();
+        $this->website->updateWebsite($website, $request->all());
 
         alert()->success('Successfully updated a website.')->flash();
 
@@ -106,7 +103,9 @@ class WebsitesController extends \Build\Core\Http\Controller
     }
 
     /**
-     * @return View
+     * Show the website remove form.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function remove()
     {
@@ -116,14 +115,17 @@ class WebsitesController extends \Build\Core\Http\Controller
     }
 
     /**
-     * @return RedirectResponse
+     * Destroy the given website.
+     *
+     * @param  \Build\Core\Eloquent\Models\Website  $website
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy()
+    public function destroy($website)
     {
         $this->authorize('delete-website');
 
-        Website::destroy(explode(',', request('ids')));
+        $website->delete();
 
-        return redirect()->back();
+        return redirect()->route('admin.websites.index');
     }
 }
