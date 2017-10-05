@@ -36,6 +36,23 @@ class WebsiteRepository implements Contract
     }
 
     /**
+     * Create a new website.
+     *
+     * @param  array  $payload
+     * @return \Build\Core\Eloquent\Models\Website
+     */
+    public function createWebsite($payload = [])
+    {
+        $website = new Website($payload);
+
+        $website->language()->associate(array_get($payload, 'language_id'));
+
+        $website->save();
+
+        return $website;
+    }
+
+    /**
      * Update the given website.
      *
      * @param  \Build\Core\Eloquent\Models\Website  $website

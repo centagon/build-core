@@ -14,6 +14,14 @@ interface Website
     public function getAllWebsites();
 
     /**
+     * Create a new website.
+     *
+     * @param  array  $payload
+     * @return \Build\Core\Eloquent\Models\Website
+     */
+    public function createWebsite($payload = []);
+
+    /**
      * Update the given website.
      *
      * @param  \Build\Core\Eloquent\Models\Website  $website

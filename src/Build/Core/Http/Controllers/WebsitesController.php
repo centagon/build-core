@@ -53,6 +53,23 @@ class WebsitesController extends Controller
     }
 
     /**
+     * Store a new website in the database.
+     *
+     * @param  \Build\Core\Http\Requests\WebsiteRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(WebsiteRequest $request)
+    {
+        $this->authorize('create-website');
+
+        $this->website->createWebsite($request->all());
+
+        alert()->success('Successfully created a website.')->flash();
+
+        return redirect()->route('admin.websites.index');
+    }
+
+    /**
      * Show the edit website form.
      *
      * @param  \Build\Core\Eloquent\Models\Website  $website
