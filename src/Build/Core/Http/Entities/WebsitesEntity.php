@@ -110,7 +110,15 @@ class WebsitesEntity extends Manager
                 });
             }
 
-            $form->add('input.actions');
+            $actionAttributes = [];
+            if (auth()->user()->isSuperAdmin()) {
+                $actionAttributes = [
+                    'remove-url' => route('admin.websites.remove', $query->getKey()),
+                    'destroy-url' => route('admin.websites.destroy', $query->getKey()),
+                ];
+            }
+
+            $form->add('input.actions', $actionAttributes);
         });
     }
 }
