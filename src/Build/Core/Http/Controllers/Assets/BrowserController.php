@@ -38,6 +38,12 @@ class BrowserController extends Controller
     {
         $file = $request->file('file');
 
+        if(substr($file->getMimeType(), 0, 5) == 'image') {
+            $this->validate($request, [
+                'file' => 'max:'.config('build.core.max-image-size'),
+            ]);
+        }
+
         $asset = new Asset([
             'filename' => $file->getClientOriginalName(),
             'filesize' => $file->getClientSize(),

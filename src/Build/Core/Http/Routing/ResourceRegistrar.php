@@ -13,6 +13,22 @@ namespace Build\Core\Http\Routing;
 
 class ResourceRegistrar extends \Illuminate\Routing\ResourceRegistrar
 {
+    /**
+     * Get the name for a given resource.
+     *
+     * @param  string  $resource
+     * @param  string  $method
+     * @param  array   $options
+     * @return string
+     */
+    protected function getResourceRouteName($resource, $method, $options): string
+    {
+        return sprintf(
+            '%s.%s',
+            $this->router->getLastGroupPrefix(),
+            parent::getResourceRouteName($resource, $method, $options)
+        );
+    }
 
     /**
      * Get the name for a grouped resource.

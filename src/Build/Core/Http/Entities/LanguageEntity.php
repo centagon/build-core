@@ -22,6 +22,25 @@ class LanguageEntity extends Manager
     {
         $heading = (new Heading)->title('Languages');
 
+        if (request()->get('all',0)) {
+            $heading->add('navigation.button', [
+                'to' => route('admin.languages.index'),
+                'label' => 'Show Active',
+                'style' => 'selected'
+            ]);
+        } else {
+            $heading->add('navigation.button', [
+                'to' => route('admin.languages.index', ['all' => 1]),
+                'label' => 'Show all',
+                'style' => 'selected'
+            ]);
+        }
+
+        $heading->add('navigation.button', [
+            'label' => 'Refresh languages',
+            'to' => route('admin.languages.refresh'),
+        ]);
+
         if (auth()->user()->can('create-language')) {
             $heading->add('navigation.button', [
                 'to' => route('admin.languages.dictionary.index'),
@@ -31,7 +50,7 @@ class LanguageEntity extends Manager
             $heading->add('navigation.button', [
                 'to' => route('admin.languages.create'),
                 'label' => 'Create a new language',
-                'style' => 'button--success'
+                'style' => 'success'
             ]);
         }
 

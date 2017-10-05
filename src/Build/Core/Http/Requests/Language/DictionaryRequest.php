@@ -31,8 +31,18 @@ class DictionaryRequest extends \Illuminate\Foundation\Http\FormRequest
      */
     public function rules()
     {
-        return [
-            'label' => 'required'
-        ];
+        switch ($this->getMethod()) {
+            case 'PUT':
+            case 'PATCH':
+                $dictionary = $this->route('dictionary');
+                 return [
+                    'label' => 'required|unique:language_dictionaries,label,'.$dictionary->id
+                ];
+            default:
+                return [
+                    'label' => 'required|unique:language_dictionaries,label'
+                ];
+        }
+        
     }
 }

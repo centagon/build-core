@@ -30,10 +30,14 @@ class IndexController extends Controller
         $this->authorize('index-language');
 
         if (auth()->user()->can('edit-language')) {
-            $languages = Language::all();
+            $q = Language::query();
         } else {
-            $languages = Language::byWebsite()->get();
+            $q = Language::byWebsite();
         }
+
+        $languages = request('all', 0)
+            ? $q->get()
+            : $q->where('languages.is_active', 1)->get();
 
         return entity(LanguageEntity::class, 'index')
             ->setQuery($languages)
@@ -107,6 +111,15 @@ class IndexController extends Controller
         $this->authorize('delete-language');
 
         return view('build.core::screens.languages.remove');
+    }
+
+    public function refresh()
+    {
+        app('cache')->tags('language-labels')->flush();
+
+        alert()->success('Successfully refreshed the languages')->flash();
+
+        return redirect()->back();
     }
 
     /**

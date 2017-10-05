@@ -24,11 +24,18 @@
     }
 
     @include modifier(success) {
-        border-top: 3px solid color-get(green);
+        border-top: solid color-get(green);
+        border-top-width: 3px !important;
     }
 
     @include modifier(error) {
-        border-top: 3px solid color-get(red);
+        border-top: solid color-get(red);
+        border-top-width: 3px !important;
+    }
+
+    @include modifier(warning) {
+        border-top: solid color-get(orange);
+        border-top-width: 3px !important;
     }
 
     @include element(title) {

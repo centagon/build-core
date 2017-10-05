@@ -5,6 +5,9 @@
 @import '../components/font-awesome/scss/font-awesome';
 @import '../components/select2/src/scss/core';
 
+// Mixin imports
+@import 'mixins/errors';
+
 // Component imports
 @import 'components/buttons';
 @import 'components/dropdown';
@@ -14,7 +17,7 @@
 @import 'components/header-bar';
 @import 'components/inputs';
 @import 'components/custom-inputs';
-@import 'components/form-errors';
+@import 'components/form';
 @import 'components/layout';
 @import 'components/list-group';
 @import 'components/lists';

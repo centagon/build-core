@@ -9,10 +9,25 @@
  * file that was distributed with this source code.
  */
 
+use Ramsey\Uuid\Uuid;
+use Build\Core\Support\System;
+use Build\Core\Support\AssetContainer;
 use Build\Content\Support\Facades\Discovery;
 use Build\Core\Eloquent\Models\Language\Entry;
-use Build\Core\Support\System;
-use Ramsey\Uuid\Uuid;
+
+if (! function_exists('asset_get')) {
+    /**
+     * Get the cached asset. If the asset isn't cached we try to
+     * safely fall back to get the asset from the eloquent model.
+     *
+     * @param  int $id
+     * @return \Build\Core\Eloquent\Models\Asset|null
+     */
+    function asset_get($id)
+    {
+        return AssetContainer::get($id);
+    }
+}
 
 if ( ! function_exists('uuid')) {
     /**
@@ -66,6 +81,23 @@ if ( ! function_exists('build_route')) {
     function build_route($name, $parameters = [], $absolute = true)
     {
         return route(build_route_string($name), $parameters, $absolute);
+    }
+}
+
+if (! function_exists('cc')) {
+    /**
+     * Contextual tagged file caching.
+     *
+     * @param  array|mixed  $names
+     * @return Build\Core\Cache\TaggedCache
+     */
+    function cc($names)
+    {
+        $names = is_array($names) ? $names : func_get_args();
+
+        array_unshift($names, request()->context());
+
+        return cache()->tags($names);
     }
 }
 

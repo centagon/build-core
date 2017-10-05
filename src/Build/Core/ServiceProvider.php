@@ -12,56 +12,51 @@ namespace Build\Core;
  */
 
 use Intervention\Image\ImageServiceProvider;
-use Build\Core\Providers\MenuServiceProvider;
-use Build\Core\Providers\EventServiceProvider;
-use Build\Core\Providers\AlertServiceProvider;
-use Build\Core\Providers\ColorServiceProvider;
-use Build\Core\Providers\RouteServiceProvider;
-use Build\Core\Providers\AssetServiceProvider;
-use Build\Core\Providers\CookieServiceProvider;
-use Build\Core\Providers\PolicyServiceProvider;
-use Build\Core\Providers\RequestServiceProvider;
-use Build\Core\Providers\ModulesServiceProvider;
-use Build\Core\Providers\RoutingServiceProvider;
-use Build\Core\Providers\ConsoleServiceProvider;
-use Build\Core\Providers\BauhausServiceProvider;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
-
     /**
      * Boot the service provider.
+     *
+     * @return void
      */
     public function boot()
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../../config/core.php' => config_path('build/core.php')
-            ], 'config');
+                BUILD_PATH.'/config/core.php' => config_path('build/core.php')
+            ], 'core-config');
 
             $this->publishes([
-                __DIR__ . '/../../database/migrations' => database_path('migrations')
-            ], 'migrations');
+                BUILD_PATH.'/database/migrations' => database_path('migrations')
+            ], 'core-migrations');
 
             $this->publishes([
-                __DIR__ . '/../../resources/views' => resource_path('views/vendor/build.core')
-            ], 'views');
+                BUILD_PATH.'/resources/views' => resource_path('views/vendor/build.core')
+            ], 'core-views');
 
             $this->publishes([
-                __DIR__ . '/../../public' => public_path('vendor/build/core'),
-            ], 'public');
+                BUILD_PATH.'/public' => public_path('vendor/build/core'),
+            ], 'core-assets');
         }
 
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'build.core');
-        $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'build.core');
+        $this->loadMigrationsFrom(BUILD_PATH.'/database/migrations');
+        $this->loadViewsFrom(BUILD_PATH.'/resources/views', 'build.core');
+        $this->loadTranslationsFrom(BUILD_PATH.'/resources/lang', 'build.core');
     }
 
     /**
      * Register the service provider.
+     *
+     * @return void
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/core.php', 'build.core');
+        if (! defined('BUILD_PATH')) {
+            define('BUILD_PATH', realpath(__DIR__.'/../../'));
+        }
+
+        $this->mergeConfigFrom(BUILD_PATH.'/config/core.php', 'build.core');
 
         $this->registerProviders();
         $this->registerHelpers();
@@ -69,29 +64,34 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
     /**
      * Register the required Build service providers.
+     *
+     * @return void
      */
     protected function registerProviders()
     {
-        $this->app->register(BauhausServiceProvider::class);
-        $this->app->register(RequestServiceProvider::class);
-        $this->app->register(RoutingServiceProvider::class);
-        $this->app->register(ConsoleServiceProvider::class);
-        $this->app->register(ModulesServiceProvider::class);
-        $this->app->register(PolicyServiceProvider::class);
-        $this->app->register(CookieServiceProvider::class);
-        $this->app->register(AlertServiceProvider::class);
-        $this->app->register(AssetServiceProvider::class);
-        $this->app->register(RouteServiceProvider::class);
-        $this->app->register(EventServiceProvider::class);
+        $this->app->register(Providers\BauhausServiceProvider::class);
+        $this->app->register(Providers\RequestServiceProvider::class);
+        $this->app->register(Providers\RoutingServiceProvider::class);
+        $this->app->register(Providers\ConsoleServiceProvider::class);
+        $this->app->register(Providers\ModulesServiceProvider::class);
+        $this->app->register(Providers\PolicyServiceProvider::class);
+        $this->app->register(Providers\CookieServiceProvider::class);
+        $this->app->register(Providers\AlertServiceProvider::class);
+        $this->app->register(Providers\AssetServiceProvider::class);
+        $this->app->register(Providers\RouteServiceProvider::class);
+        $this->app->register(Providers\EventServiceProvider::class);
+        $this->app->register(Providers\CacheServiceProvider::class);
+        $this->app->register(Providers\MenuServiceProvider::class);
         $this->app->register(ImageServiceProvider::class);
-        $this->app->register(MenuServiceProvider::class);
     }
 
     /**
      * Include the helpers file.
+     *
+     * @return void
      */
     protected function registerHelpers()
     {
-        require __DIR__ . '/helpers.php';
+        require __DIR__.'/helpers.php';
     }
 }

@@ -87,8 +87,11 @@ abstract class Policy
             
         }
         
+        // TODO: FIX THIS HACK !
+        $roles = array_merge(['superadmin'], array_get($this->capabilities, $ability, []));
+        
         // Check the user's capabilities.
-        return $user->hasRole(array_get($this->capabilities, $ability, []), $websiteId);
+        return $user->hasRole($roles, $websiteId);
         
     }
     
