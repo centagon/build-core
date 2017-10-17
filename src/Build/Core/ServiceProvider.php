@@ -15,6 +15,8 @@ use Intervention\Image\ImageServiceProvider;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
+    use ServiceBindings;
+
     /**
      * Boot the service provider.
      *
@@ -58,8 +60,23 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
         $this->mergeConfigFrom(BUILD_PATH.'/config/core.php', 'build.core');
 
+        $this->registerServiceBindings();
         $this->registerProviders();
         $this->registerHelpers();
+    }
+
+    /**
+     * Register Core's services in the container.
+     *
+     * @return void
+     */
+    protected function registerServiceBindings()
+    {
+        foreach ($this->bindings as $key => $value) {
+            is_numeric($key)
+                ? $this->app->singleton($value)
+                : $this->app->singleton($key, $value);
+        }
     }
 
     /**
