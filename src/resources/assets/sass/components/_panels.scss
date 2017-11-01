@@ -52,14 +52,16 @@
 
     @include element(preview) {
         height: rem-calc(200);
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQoU2O8ffv2fwY0oKqqyoguxjgUFKI7GsTH5m4M3w1ChQBLoyXbEjDuswAAAABJRU5ErkJggg==');
 
         .preview__image {
             height: rem-calc(150);
-            background-size: cover;
+            background-size: contain;
             background-position: 50% 50%;
             border-radius: $global-radius;
             margin-bottom: rem-calc(5);
             cursor: pointer;
+            background-repeat: no-repeat;
         }
 
         &:hover {
