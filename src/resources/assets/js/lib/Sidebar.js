@@ -99,38 +99,46 @@ class Sidebar {
                     e.preventDefault();
             
                     const $form = $(e.target);
-                    
+
                     // Clear old errors
                     $form.find('.error[for]').removeClass('error');
-                    
-                    var obj = $(e.target).serializeArray();
-                    var arr = {};
-                    
+
+                    var arr = $(e.target).serializeArray();
+                    var obj = {};
+
+                    // Create an object from the form data
+                    _.each(arr, (o) => {
+                        if (obj[o.name]) {
+                            if (!obj[o.name].push) {
+                                obj[o.name] = [obj[o.name]];
+                            }
+                            obj[o.name].push(o.value || '');
+                        } else {
+                            obj[o.name] = o.value || '';
+                        }
+                    }); 
+
                     const action = $form.attr('action');
                     var method = $form.attr('method');
-                    
+
                     // Put the actor's value in the serialized array
                     if (currentActor) {
                         let name = $(currentActor).attr('name');
-                        
+
                         if (name) {
-                            arr[name] = $(currentActor).attr('value');
+                            obj[name] = $(currentActor).attr('value');
                         }
                     }
-                    
-                    _.each(obj, (o) => {
-                        arr[o.name] = o.value;
-                    });
-                    
+
                     $.ajax({
-                        url: action,
-                        beforeSend: this.setHeaders,
-                        type: method,
-                        data: arr,
-                        dataType: 'json'
+                            url: action,
+                            beforeSend: this.setHeaders,
+                            type: method,
+                            data: obj,
+                            dataType: 'json'
                     }).then( (response) => {
-                        P.resolve(response, arr);
-                        this.close($sidebar);
+                            P.resolve(response, obj);
+                            this.close($sidebar);
                     }).fail( (response) => {
                         
                         if (!response.responseJSON) {
