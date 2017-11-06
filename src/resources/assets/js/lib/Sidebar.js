@@ -116,7 +116,7 @@ class Sidebar {
                         } else {
                             obj[o.name] = o.value || '';
                         }
-                    });
+                    }); 
 
                     const action = $form.attr('action');
                     var method = $form.attr('method');
