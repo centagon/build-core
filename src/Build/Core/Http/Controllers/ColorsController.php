@@ -100,6 +100,7 @@ class ColorsController extends Controller
         });
 
         foreach ($colors as $color) {
+            $styles[] = '.border-' . $color->name . '{border-color:' . $color->color . '!important;}';
             $styles[] = '.background-' . $color->name . '{background-color:' . $color->color . '!important;}';
             $styles[] = '.foreground-' . $color->name . '{color:' . $color->color . '!important;}';
         }
