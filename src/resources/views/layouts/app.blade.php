@@ -1,0 +1,47 @@
+@include('build.core::components.layout.header')
+
+    <div class="header-bar">
+        <div class="header-bar__left"></div>
+        <div class="header-bar__center"></div>
+        <div class="header-bar__right"></div>
+    </div>
+
+    <header class="header">
+        <div class="header__item">
+            <ul class="header__nav">
+                <li id="logo">
+                    <a href="{{ route('admin.dashboard') }}">
+                        <div>
+                            <img src="{{ asset('vendor/build/core/img/logo-vertical.png') }}" width="140">
+                            <h1>
+                                <i class="fa fa-dashboard"></i>
+                                Dashboard
+                            </h1>
+                        </div>
+                    </a>
+                </li>
+
+                @include('build.core::components.navigation', [
+                    'items' => app('build.menu')->get('build.header-left')->roots()
+                ])
+            </ul>
+        </div>
+
+        <div class="header__item header__item--right">
+            <ul class="header__nav">
+                @include('build.core::components.navigation', [
+                    'items' => app('build.menu')->get('build.header-right')->roots()
+                ])
+            </ul>
+        </div>
+    </header>
+
+    <section class="sub-header">
+        @yield('sub-header')
+    </section>
+
+    <section class="content" id="app-wrapper">
+        @yield('app-content')
+    </section>
+
+@include('build.core::components.layout.footer')
