@@ -5,3 +5,4 @@
 composer.lock
 src/yarn.lock
 yarn.lock
+/.idea
