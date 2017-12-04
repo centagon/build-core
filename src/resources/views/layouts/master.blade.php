@@ -56,10 +56,6 @@
         @yield('vue-content')
     </section>
 
-    <section class="content" id="app-wrapper">
-        @yield('app-content')
-    </section>
-
     <div class="sidebar">
         <div class="content"></div>
     </div>
