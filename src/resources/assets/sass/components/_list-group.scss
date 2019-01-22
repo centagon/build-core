@@ -22,7 +22,7 @@
     }
 }
 
-&.variant-dark .list-group {
+.variant-dark .list-group {
     @include element(item) {
         border-left: none !important;
         border-right: none;
