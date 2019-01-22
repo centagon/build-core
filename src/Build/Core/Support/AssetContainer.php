@@ -57,10 +57,11 @@ class AssetContainer
      */
     public static function get($id)
     {
-        $cache = cache()->get(
-            static::$cacheKey.request()->website()->getKey()
-        );
+        return Asset::find($id);
+//         $cache = cache()->get(
+//             static::$cacheKey.request()->website()->getKey()
+//         );
 
-        return array_get($cache, $id) ?: Asset::find($id);
+//         return array_get($cache, $id) ?: Asset::find($id);
     }
 }
