@@ -85,8 +85,7 @@ class Sidebar {
         var P = $.Deferred();
         
         this.load( $sidebar, url, params).then( () => {
-            console.log('test2');
-            
+
             // Actors (buttons) will not be serialized ; so we make sure we do it ourselves
             var $actors = $(sidebar).find('form input[type=submit], form button');
             var currentActor = null;
@@ -120,7 +119,7 @@ class Sidebar {
                     }
 
                     _.each(obj, (o) => {
-                        // LVA (Lex vieze hack for multiple select and checkboxes)
+                        // hack for multiple select and checkboxes)
                         if(o.name.charAt(o.name.length-1) == ']' && o.name.charAt(o.name.length-2) == '[') {
                             if(!arr[o.name]) {
                                 arr[o.name] = [];
